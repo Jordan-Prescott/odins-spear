@@ -31,31 +31,6 @@ class Post():
 
 #ACCOUNT AUTHORIZATION CODES
 #ADMINISTRATORS
-
-    def group_admin(self, service_provider_id: str, group_id: str, user_id: str, password: str, payload: dict = {}):
-        """Builds a group-level administrator.
-
-        Args:
-            service_provider_id (str): Service provider ID where the admin should be built.
-            group_id (str): Group ID where the admin should be built
-            user_id (str): User ID of the admin. 
-            password (str): Password for the administrator profile. Note get.password_generate() can be used to get this.
-            payload (dict, optional): Admin configuration data. 
-        
-        Returns:
-            Dict: Returns the admin profile. 
-        """
-
-        endpoint = "/groups/admins"
-
-        payload["serviceProviderId"] = service_provider_id
-        payload["groupId"] = group_id
-        payload["userId"] = user_id
-        payload["password"] = password
-
-        return self.requester.post(endpoint, data=payload)
-
-
 #ADVICE OF CHARGE
 #ALTERNATE NUMBERS
 #ANSWER CONFIRMATION
@@ -65,92 +40,6 @@ class Post():
 #ATTENDANT CONSOLE
 #AUTHENTICATION
 #AUTO ATTENDANTS
-
-    def auto_attendant(self, service_provider_id: str, group_id: str, service_user_id: str, aa_name: str, aa_type: str ="Basic", payload: dict ={}):
-        """Builds an Auto Attendant (AA) from the given payload.
-
-        Args:
-            service_provider_id (str): Service Provider ID of the group where the AA should be built.
-            group_id (str): Group ID where the AA should be built.
-            service_user_id (str): Service User ID of the AA (including the domain). 
-            aa_name (str): Name of the AA
-            aa_type (str, optional): Type of AA: "Basic" or "Standard". Will default to "Basic". NOTE: The "Auto Attendant - Standard" service must be enabled on the group in order for the aa_type to be set to "Standard".
-            payload (dict, optional): Additional AA configuration data.
-
-        Returns:
-            Dict: Returns the AA profile.
-        """
-
-        endpoint = "/groups/auto-attendants"
-
-        payload["serviceProviderId"] = service_provider_id
-        payload["groupId"] = group_id
-        payload["serviceUserId"] = service_user_id
-        payload["serviceInstanceProfile"]["name"] = aa_name
-        payload["type"] = aa_type
-
-        default_payload_values = {
-            "enableVideo": "false", 
-            "extensionDialingScope":"Group",
-            "nameDialingScope":"Group",
-            "nameDialingEntries":"LastName + FirstName",
-            "firstDigitTimeoutSeconds":1
-            }
-
-        for key, default_value in default_payload_values.items():
-            payload.setdefault(key, default_value)
-        
-        return self.requester.post(endpoint, data=payload)
-
-    
-    def auto_attendant_remove_user(self, service_provider_id: str, group_id: str, user_id: str):
-        """Returns a list of the available Auto Attendants (AAs) built in the same group as the specified user.
-
-        Args:
-            service_provider_id (str): Service Provider ID where the user is built. 
-            group_id (str): Group ID where the user is built. 
-            user_id (str): User ID of the user.
-
-        Returns:
-            List: List of the Service User IDs of the AAs in the group.
-        """
-
-        endpoint = "/groups/auto-attendants/removeUser"
-
-        payload = {
-            "serviceProviderId": service_provider_id, 
-            "groupId": group_id, 
-            "userId": user_id
-        }
-
-        return self.requester.post(endpoint, data=payload)
-    
-
-    def auto_attendant_submenu(self, service_user_id: str, submenu_id: str, announcement_selection: str="Default", extension_dialing: bool= True):
-        """Posts a new submenu to the specified Auto Attendant (AA).
-
-        Args:
-            service_user_id (str): Service User ID of the AA.
-            submenu_id (str): ID of the submenu to be created. 
-            announcement_selection (str, optional): "Default" or "Personal". Defaults to "Default".
-            extension_dialing (bool, optional): Whether Level Extension Dialing is enabled or not. Defaults to True.
-
-        Returns:
-            None: This method does not return any specific value.
-        """
-
-        endpoint = "/groups/auto-attendants/submenus"
-
-        payload = {
-            "serviceUserId": service_user_id, 
-            "submenuId": submenu_id, 
-            "announcementSelection": announcement_selection,
-            "enableLevelExtensionDialing": extension_dialing
-        }
-
-        return self.requester.post(endpoint, data=payload)
-
-
 #AUTOMATIC CALLBACK
 #AUTOMATIC HOLD RETRIEVE
 #BARGE IN EXEMPT
@@ -366,30 +255,6 @@ class Post():
 #DOMAINS
 #EMERGENCY NOTIFICATIONS
 #EMERGENCY ZONES
-
-    def group_emergency_zones(self, service_provider_id: str, group_id: str, ip_addresses: list):
-        """Updates the IP address(es) for the Emergency Zone configured in the group. 
-       
-        Args:
-            service_provider_id (str): Service provider ID where the Emergency Zone to be updated exists.
-            group_id (str): Group ID where the Emergency Zone to be updated exists.
-            ip_addresses (list): A list of IP address ranges (dicts) to be added to the Emergency Zone. If the IP address to be applied is not a range, the min and max values should be the same.
-            
-        Returns:
-            Dict: Emergency Zone profile with updated IP addresses.
-        """
-
-        endpoint = "/groups/emergency-zones"
-
-        data = {
-            "serviceProviderId": service_provider_id, 
-            "groupId": group_id, 
-            "ipAddresses": ip_addresses
-        }
-
-        return self.requester.post(endpoint, data=data)
-
-
 #ENTERPRISE TRUNKS
 #EXECUTIVE
 #EXECUTIVE ASSISTANT
@@ -524,33 +389,6 @@ class Post():
 #SERVICE PROVIDERS
 #SERVICES
 #SHARED CALL APPEARANCE
-
-    def user_shared_call_appearance_endpoint(self, user_id: str, line_port: str, device_name):
-        """Creates a new Shared Call Apprance (SCA) on a single user.
-
-        Args:
-            user_id (str): Target user id of user to create SCA on.
-            line_port (str): Line port to be assigned to the new SCA.
-            device_name (_type_): Device to add for SCA from available devices.
-
-        Returns:
-            dict: New SCA details applied to user. 
-        """
-        
-        endpoint = "/users/shared-call-appearance/endpoints"
-        
-        data = {
-            "userId":user_id,
-            "linePort":line_port,
-            "isActive":True,
-            "allowOrigination":True,
-            "allowTermination":True,
-            "deviceName":device_name,
-            "deviceLevel":"Group"
-        }
-        
-        return self.requester.post(endpoint, data=data)
-
 #SILENT ALERTING
 #SIMULTANEOUS RING PERSONAL
 #SMARTY ADDRESS
@@ -615,7 +453,7 @@ class Post():
         for key, default_value in default_payload_values.items():
             payload.setdefault(key, default_value)
 
-        if payload["requireAuthentication"]:
+        if payload["requireAuthentication"] == "true":
             payload["sipAuthenticationUserName"] = sip_authentication_username
             payload["sipAuthenticationPassword"] = sip_authentication_password
 
@@ -625,7 +463,7 @@ class Post():
 #USERS
         
     def user(self, service_provider_id: str, group_id: str, user_id: str, first_name: str, last_name: str, 
-             extension: str, web_auth_password: str, payload: dict={}):
+             extension: str, web_auth_password: str, payload: dict):
         """
             Creates a new user in the specified group with the configuration defined in the payload.
 
@@ -637,7 +475,7 @@ class Post():
             last_name (str): Last name of new user.
             extension (str): Extension number of new user.
             web_auth_password (str): Web authentication password. Note get.password_generate() can be used to get this.
-            payload (dict, optional): User configuration.
+            payload (dict): User configuration.
 
         Returns:
             Dict: New user entity.
@@ -657,6 +495,31 @@ class Post():
         payload["password"] = web_auth_password   
         
         return self.requester.post(endpoint, data=payload)
+    
+    def user_reset(
+    self,
+    user_id: str,
+    remove_from_group_services: bool,
+    remove_call_records: bool,
+    remove_alternate_user_ids: bool,
+    remove_webex_person: bool,
+    cycle_service_packs: bool,
+    reset_password_passcode: bool,
+    ):
+    
+        endpoint = "/users/reset"
+
+        data = {
+            "userId": user_id,
+            "removeFromGroupServices": remove_from_group_services,
+            "removeCallRecords": remove_call_records,
+            "removeAlternateUserIds": remove_alternate_user_ids,
+            "removeWebexPerson": remove_webex_person,
+            "cycleServicePacks": cycle_service_packs,
+            "resetPasswordPasscode": reset_password_passcode
+        }
+
+        return self.requester.post(endpoint, data=data)
     
 #USER CUSTOM RINGBACK
 #VIDEO ADD ON
