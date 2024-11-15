@@ -213,3 +213,15 @@ class Scripter:
         
         return scripts.webex_builder.main(self.api, service_provider_id, group_id, user_id, device_type, 
                                           email, primary_device, webex_feature_pack_name, enable_integrated_imp)
+    
+    def user_registration(self, service_provider_id: str, group_id: str):
+        """Generates a dictionary deatiling each users device, lineport and registration status within a group.
+
+        Args:
+            service_provider_id (str):  Service Provider/ Enterprise where group is hosted.
+            group_id (str): Target Group you would like to know user statistics for.
+
+        Returns:
+            dict: User's device, lineport and registration status.
+        """
+        return scripts.user_registration.main(self.api, service_provider_id, group_id)
