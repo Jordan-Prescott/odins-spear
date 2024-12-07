@@ -12,10 +12,11 @@ Setting environment variable (Windows):
 
 Passing environment variable to API object:
 
-<pre class="language-python" data-overflow="wrap"><code class="lang-python"><strong>from odins_spear import api
-</strong>
-magic = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-</code></pre>
+```python
+from odins_spear import API
+
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+```
 
 ## Guide on setting environmental variables:&#x20;
 
