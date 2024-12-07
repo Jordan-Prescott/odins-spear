@@ -1,7 +1,4 @@
----
-description: api.put.user_group_id_update()
----
-# 🤝 PUT - User Group ID Update
+# PUT - User Group ID Update
 
 Moves the specified User to another Group under the same Enterprise.
 
@@ -24,7 +21,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.user_group_id_update(
+my_api.users.put_user_group_id_update(
     "user_ID@userId.com",
     "userIdbutbetter@userId.com",
     False

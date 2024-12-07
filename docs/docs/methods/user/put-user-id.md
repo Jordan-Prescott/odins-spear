@@ -1,7 +1,4 @@
----
-description: api.put.user_id()
----
-# 🆔 PUT - User ID
+# PUT - User ID
 
 Updates the specified user's UserID, including domain.
 
@@ -26,7 +23,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.user_id(
+my_api.users.put_user_id(
     "user_ID"
 )
 ```

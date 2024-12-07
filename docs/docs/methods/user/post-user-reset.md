@@ -1,8 +1,4 @@
----
-description: api.post.user_reset()
----
-
-# ⭕ POST - User Reset
+# POST - User Reset
 
 {% hint style="danger" %}
 **Warning:** This action will remove elemnts of a User, and once completed cannot be undone without prior backup. Proceed with caution.
@@ -33,7 +29,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.post.user_reset(
+my_api.users.post_user_reset(
     "user@domain.com", 
     True,
     False,

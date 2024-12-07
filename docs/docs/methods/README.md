@@ -1,2 +1,2 @@
-# 📦 Standard Methods
+# Standard Methods
 

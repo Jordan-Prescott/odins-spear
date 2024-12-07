@@ -1,7 +1,4 @@
----
-description: api.delete.user()
----
-# ❌ DELETE - Delete User
+# DELETE - Delete User
 
 Removes the specified user from the platform entirely.
 
@@ -26,7 +23,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.delete.user(
+my_api.users.delete_user(
     "user_ID"
 )
 ```

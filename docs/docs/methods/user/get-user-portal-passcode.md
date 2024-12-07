@@ -1,8 +1,4 @@
----
-description: api.get.user_portal_passcode()
----
-
-# 🔐 GET - User Portal Passcode
+# GET - User Portal Passcode
 
 Pulls the Portal Passcode form a given user.
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.user_portal_passcode(
+my_api.users.get_user_portal_passcode(
     "user_ID"
 )
 ```

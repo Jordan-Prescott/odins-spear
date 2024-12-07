@@ -1,8 +1,4 @@
----
-description: api.put.users_bulk()
----
-
-# 👩‍👩‍👧‍👧 PUT - Users Bulk
+# PUT - Users Bulk
 
 Updates specified list of User's options, such as extension, name and etc.
 
@@ -42,7 +38,7 @@ my_user_payload = {
     }
 }
 
-my_api.put.users_bulk(
+my_api.users.put_users_bulk(
     my_users,
     my_user_payload
 )

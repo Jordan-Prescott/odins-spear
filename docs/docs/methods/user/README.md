@@ -1,3 +1,3 @@
-# 🤵 User
+# User
 
-All things users
+All things Users

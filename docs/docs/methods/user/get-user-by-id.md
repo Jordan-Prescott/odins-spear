@@ -1,8 +1,4 @@
----
-description: api.get.user_by_id()
----
-
-# 🆔 GET - User By ID
+# GET - User By ID
 
 Returns extensive details of a single user including alias, enpoint device, and more common details like first and last name.
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.user_by_id(
+my_api.users.get_user_by_id(
     "user_ID"
 )
 ```

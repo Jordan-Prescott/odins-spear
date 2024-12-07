@@ -1,8 +1,4 @@
----
-description: api.post.user()
----
-
-# 📮 POST - User
+# POST - User
 
 Creates a new user in the specified group with the configuration defined in the payload.
 
@@ -34,7 +30,7 @@ my_user_payload = {
 
 }
 
-my_api.post.user(
+my_api.users.post_user(
     "my_service_provider_id", 
     "my_group_id", 
     "john.smith@testdomain.net",

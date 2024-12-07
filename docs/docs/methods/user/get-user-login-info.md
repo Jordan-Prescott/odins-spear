@@ -1,8 +1,4 @@
----
-description: api.get.user_login_info()
----
-
-# 🧅 GET - User Login Info
+# GET - User Login Info
 
 Pulls the Login Type and other general information about a user.
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.user_login_info(
+my_api.users.get_user_login_info(
     "user_ID"
 )
 ```
