@@ -1,8 +1,4 @@
----
-description: my_api.get.group_events()
----
-
-# 📅 GET - Group Events
+# GET - Group Events
 
 Retrieves the Business Schedule's Events for the specified group.
 
@@ -26,7 +22,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_events(
+my_api.schedules.get_group_events(
     "serviceProviderID",
     "groupID",
     "eventName",
