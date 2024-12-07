@@ -1,8 +1,4 @@
----
-description: my_api.get.password_generate()
----
-
-# 🔓 GET - Password Generate
+# GET - Password Generate
 
 Generates a single passwords following the groups rules.
 
@@ -24,7 +20,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.password_generate(
+my_api.password_generate.get_password_generate(
     "serviceProviderId",
     "groupID",
 )

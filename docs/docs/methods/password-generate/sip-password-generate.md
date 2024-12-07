@@ -1,8 +1,4 @@
----
-description: my_api.get.sip_password_generate()
----
-
-# 🗝️ GET - SIP Password Generate
+# GET - SIP Password Generate
 
 Generates a single SIP password.
 
@@ -24,7 +20,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.sip_password_generate(
+my_api.password_generate.get_sip_password_generate(
     "serviceProviderId",
     "groupID",
 )
