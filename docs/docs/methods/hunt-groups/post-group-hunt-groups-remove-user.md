@@ -1,8 +1,4 @@
----
-description: my_api.post.group_hunt_groups_remove_user()
----
-
-#  👋 POST - Group Hunt Groups Remove User
+# POST - Group Hunt Groups Remove User
 
 Removes the specified user from all hunt groups in which it currently exists. 
 
@@ -25,7 +21,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.post.group_hunt_groups_remove_user(
+my_api.hunt_groups.post_group_hunt_groups_remove_user(
     service_provider_id = "Test Service Provider ID",
     group_id = "Test Group ID",
     user_id = "test_user@domain.com"

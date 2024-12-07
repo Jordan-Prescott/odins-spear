@@ -1,8 +1,4 @@
----
-description: my_api.put.group_hunt_group_weighted_call_distribution()
----
-
-# 💯 PUT - Group Hunt Group Weighted Call Distribution
+# PUT - Group Hunt Group Weighted Call Distribution
 
 Update the Weighted Call Distribution (WCD) between users in a Hunt Group (HG).
 
@@ -53,7 +49,7 @@ my_agents = [
         }
     ]
 
-my_api.put.group_hunt_group_weighted_call_distribution(
+my_api.hunt_groups.put_group_hunt_group_weighted_call_distribution(
     service_provider_id = my_service_provider_id ,
     group_id = my_group_id,
     hunt_group_user_id = my_hunt_group_user_id,

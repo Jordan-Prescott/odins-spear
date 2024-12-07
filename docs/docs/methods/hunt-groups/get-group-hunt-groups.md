@@ -1,8 +1,4 @@
----
-description: my_api.get.group_hunt_groups()
----
-
-#  🍇 GET - Group Hunt Groups
+# GET - Group Hunt Groups
 
 Returns a list of all the Hunt Groups within the specified Group.
 
@@ -24,7 +20,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_hunt_groups(
+my_api.hunt_groups.get_group_hunt_groups(
     service_provider_id="serviceProviderID",
     group_id="groupID"
 )

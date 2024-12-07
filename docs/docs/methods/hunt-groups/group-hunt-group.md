@@ -1,8 +1,4 @@
----
-description: my_api.put.group_hunt_group()
----
-
-# 🍏 PUT - Group Hunt Group
+# PUT - Group Hunt Group
 
 Update a Hunt Groups (HG) settings.
 
@@ -60,7 +56,7 @@ updates = {
 	]
 }
 
-my_api.put.group_hunt_group(
+my_api.hunt_groups.put_group_hunt_group(
     service_provider_id = my_service_provider_id ,
     group_id = my_group_id,
     hunt_group_user_id = my_hunt_group_user_id,

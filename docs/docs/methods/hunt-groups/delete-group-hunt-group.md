@@ -1,8 +1,4 @@
----
-description: my_api.delete.group_hunt_group()
----
-
-#  💔 DELETE - Group Hunt Group
+# DELETE - Group Hunt Group
 
 Deletes the specified hunt group.
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.delete.group_hunt_group(
+my_api.hunt_groups.delete_group_hunt_group(
     service_user_id = "test_hunt_groupd@domain.com"
 )
 ```

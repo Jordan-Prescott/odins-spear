@@ -1,8 +1,4 @@
----
-description: my_api.post.group_hunt_group()
----
-
-# 🙋‍♂️ POST - Group Hunt Group
+# POST - Group Hunt Group
 
 Builds a hunt group (HG) in the specified group. 
 
@@ -37,7 +33,7 @@ hunt_group_agents= [
     "hunt_group_user2@microv-works.com"
 ]
 
-my_api.post.group_hunt_group(
+my_api.hunt_groups.post_group_hunt_group(
     my_service_provider_id = "ServiceProviderID",
     my_group_id = "GroupID", 
     service_user_id = "odin.mock.hg.2@microv-works.com", 

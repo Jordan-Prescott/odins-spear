@@ -1,8 +1,4 @@
----
-description: my_api.get.group_hunt_group_user()
----
-
-#  🍐 GET - Group Hunt Group User
+# GET - Group Hunt Group User
 
 Returns the Hunt Group's the specified User is apart of.
 
@@ -25,7 +21,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_hunt_group_user(
+my_api.hunt_groups.get_group_hunt_group_user(
     service_provider_id="serviceProviderId",
     group_is="groupId",
     user_id="TargetUserId@domain.com"
