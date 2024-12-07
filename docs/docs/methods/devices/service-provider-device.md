@@ -1,8 +1,4 @@
----
-description: my_api.put.service_provider_device()
----
-
-# 📞 PUT - Service Provider Device
+# PUT - Service Provider Device
 
 Update a single device in a Service Provider or Enterprise.
 
@@ -43,7 +39,7 @@ updates = {
 }
 
 
-my_api.put.service_provider_device(
+my_api.devices.put_service_provider_device(
     "service_provider_id",
     "group_id",
     updates=updates

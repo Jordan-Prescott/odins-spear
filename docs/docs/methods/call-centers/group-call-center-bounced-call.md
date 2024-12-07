@@ -1,8 +1,4 @@
----
-description: my_api.group_call_center_bounced_calls()
----
-
-# ⚽ PUT - Group Call Center Bounced Call
+# PUT - Group Call Center Bounced Call
 
 Update the bounced call settings of a single Call Center (CC).
 
@@ -35,7 +31,7 @@ my_updates= {
 	"bounceCallCenterCallOnHoldSeconds":60,
 }
 
-my_api.put.group_call_center_bounced_calls(
+my_api.call_centers.put_group_call_center_bounced_calls(
     call_center_user_id = my_call_center,
     updates = my_updates
 )

@@ -1,8 +1,4 @@
----
-description: my_api.post.auto_attendant_submenu()
----
-
-#  👋 POST - Auto Attendant Submenu
+# POST - Auto Attendant Submenu
 
 Posts a new submenu to the specified Auto Attendant (AA).
 
@@ -26,7 +22,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.post.auto_attendant_submenu(
+my_api.auto_attendants.post_auto_attendant_submenu(
     service_user_id= "test_aa@domain.net", 
     submenu_id="Menu 1"
 )

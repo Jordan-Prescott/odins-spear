@@ -1,8 +1,4 @@
----
-description: my_api.get.group_call_center_overflow()
----
-
-#  📞 GET - Group Call Center Overflow
+# GET - Group Call Center Overflow
 
 Retrieves the forwarding number for a user when all call center agents are busy, along with any associated audio messages.
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_call_center_overflow(
+my_api.call_centers.get_group_call_center_overflow(
     service_user_id="TestCallCenter@domain.com"
 )
 ```

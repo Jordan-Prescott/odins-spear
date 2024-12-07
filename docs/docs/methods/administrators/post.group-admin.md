@@ -1,4 +1,4 @@
-# 🤵 POST - Group Admin
+# POST - Group Admin
 
 Builds a group-level administrator.
 
@@ -22,7 +22,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.post.group_admin(
+my_api.administrators.post_group_admin(
     "my_service_provider_id",
     "my_group_id",
     "john_smith@domain.net", 

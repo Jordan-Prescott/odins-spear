@@ -1,8 +1,4 @@
----
-description: my_api.get.bulk_call_forwarding_not_reachable()
----
-
-# 🚗 GET - Bulk Call Forward Not Reachable
+# GET - Bulk Call Forward Not Reachable
 
 Retrieves the Forwarding Not Reachable status for all users within a specified group.
 
@@ -24,7 +20,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.bulk_call_forwarding_not_reachable{
+my_api.call_forwarding_not_reachable.get_bulk_call_forwarding_not_reachable{
     "serviceProviderId",
     "groupId"
 }

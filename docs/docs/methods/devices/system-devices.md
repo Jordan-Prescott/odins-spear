@@ -1,8 +1,4 @@
----
-description: my_api.put.system_devices()
----
-
-# 💻 PUT - System Devices
+# PUT - System Devices
 
 Update a single device in the Broadworks system.
 
@@ -32,7 +28,7 @@ updates = {
 }
 
 
-my_api.put.system_devices(
+my_api.devices.put_system_devices(
     "device_name",
     updates=updates
 )

@@ -1,6 +1,3 @@
----
-description: All things alternate numbers
----
+# Alternate Numbers
 
-# 🔢 Alternate Numbers
-
+All things alternate numbers.

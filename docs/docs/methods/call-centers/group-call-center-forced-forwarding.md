@@ -1,8 +1,4 @@
----
-description: my_api.group_call_center_forced_forwarding()
----
-
-# ⏩ PUT - Group Call Center Forced Forwarding
+# PUT - Group Call Center Forced Forwarding
 
 Update the forced forwarding settings of a single Call Center (CC).
 
@@ -39,7 +35,7 @@ my_updates= {
 	"videoFileList":[]
 }
 
-my_api.put.group_call_center_forced_forwarding(
+my_api.call_centers.put_group_call_center_forced_forwarding(
     call_center_user_id = my_call_center,
     updates = my_updates
 )

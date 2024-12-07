@@ -1,8 +1,4 @@
----
-description: my_api.put.group_call_center()
----
-
-# 🎧 PUT - Group Call Center
+# PUT - Group Call Center
 
 In this method, you can control the status of your Call Centers (CC) by activating and deactivating them. The method takes in two parameters, they are a list of the CC service user IDs and a status which is a boolean value of True (Active) or False (Deactivate).
 
@@ -40,7 +36,7 @@ my_changes = {
   "enableVideo": False,
 }
 
-my_api.put.group_call_center(
+my_api.call_centers.put_group_call_center(
     call_center_user_id = "TestCallCenter@domain.com",
     updates=my_changes
 )

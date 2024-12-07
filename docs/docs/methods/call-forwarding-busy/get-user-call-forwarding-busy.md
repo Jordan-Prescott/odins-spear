@@ -1,10 +1,6 @@
----
-description: my_api.get.user_call_forwarding_always()
----
+# GET - Call Forward Busy
 
-# 🚗 GET - Call Forward Always
-
-Retrieves the Forwarding Always status for the specified User.
+Retrieves the Forwarding Busy status for the specified User.
 
 ### Parameters&#x20;
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.user_call_forwarding_always{
+my_api.call_forwarding_busy.get_user_call_forwarding_busy{
     "userId"
 }
 

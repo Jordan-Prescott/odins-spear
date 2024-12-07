@@ -1,8 +1,4 @@
----
-description: my_api.group_devices()
----
-
-# 📱 PUT - Group Devices
+# PUT - Group Devices
 
 Update a single device in a group.
 
@@ -56,7 +52,7 @@ updates = {
     "relatedServices": []
 }
 
-my_api.put.group_devices(
+my_api.devices.put_group_devices(
     "service_provider_id",
     "group_id",
     "device_name",

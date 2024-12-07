@@ -1,8 +1,4 @@
----
-description: my_api.get.bulk_call_forwarding_busy()
----
-
-# 🚗 GET - Bulk Call Forward Busy
+# GET - Bulk Call Forward Busy
 
 Retrieves the Forwarding Busy status for the specified User.
 
@@ -26,7 +22,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.bulk_call_forwarding_busy{
+my_api.call_forwarding_busy.get_bulk_call_forwarding_busy{
     "serviceProviderId",
     "groupId"
 }

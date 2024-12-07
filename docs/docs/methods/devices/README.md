@@ -1,3 +1,3 @@
-# ☎️ Devices
+# Devices
 
 All things updating Devices.

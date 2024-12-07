@@ -1,8 +1,4 @@
----
-description: my_api.get.group_call_center_stranded_calls_unavailable()
----
-
-#  🚫 GET - Group Call Center Stranded Calls Unavailable
+# GET - Group Call Center Stranded Calls Unavailable
 
 Retrieves the forwarding number for a user when a call center doesn't answer, along with the count of agents with an unavailable code in the call center.
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_call_center_stranded_calls_unavailable(
+my_api.call_centers.get_group_call_center_stranded_calls_unavailable(
     service_user_id="TestCallCenter@domain.com"
 )
 ```

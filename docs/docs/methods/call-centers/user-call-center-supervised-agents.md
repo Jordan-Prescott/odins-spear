@@ -1,8 +1,4 @@
----
-description: my_api.user_call_center_supervised_agents()
----
-
-# 👓 PUT - User Call Center Supervised Agents
+# PUT - User Call Center Supervised Agents
 
 Update the list of agents a supervisor has in a single Call Center (CC).
 
@@ -28,7 +24,7 @@ my_call_center = "call_center_user_id@domain.com"
 my_supervsor_id = "supervisor_id@domain.com"
 my_agents = ["userid_1@domain.com", "userid_2@domain.com", "userid_3@domain.com"]
 
-my_api.put.user_call_center_supervised_agents(
+my_api.call_centers.put_user_call_center_supervised_agents(
     call_center_user_id = my_call_center,
     supervsor_user_id = my_supervsor_id,
     agent_ids = my_agents

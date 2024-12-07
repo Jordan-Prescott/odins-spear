@@ -1,8 +1,4 @@
----
-description: my_api.get.call_pickup_group_user()
----
-
-# 🤳 GET - Call Pickup Group User
+# GET - Call Pickup Group User
 
 Retrieves Pickup Group information for the specified user.
 
@@ -25,7 +21,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.call_pickup_group_user(
+my_api.call_pickup.put_call_pickup_group_user(
     "my_service_provider_id", 
     "my_group_id", 
     "john.smith@testdomain.net"

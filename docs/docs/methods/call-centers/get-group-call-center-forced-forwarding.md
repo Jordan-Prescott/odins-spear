@@ -1,8 +1,4 @@
----
-description: my_api.get.group_call_center_forced_forwarding()
----
-
-#  📞 GET - Group Call Center Forced Forwarding
+# GET - Group Call Center Forced Forwarding
 
 Retrieves the forwarding number for a call center if it is set to forward calls, along with any associated audio messages.
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_call_center_forced_forwarding(
+my_api.call_centers.get_group_call_center_forced_forwarding(
     service_user_id="TestCallCenter@domain.com"
 )
 ```

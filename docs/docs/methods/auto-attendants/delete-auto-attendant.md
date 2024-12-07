@@ -1,8 +1,4 @@
----
-description: my_api.delete.auto_attendant()
----
-
-#  🚮 DELETE - Auto Attendant
+# DELETE - Auto Attendant
 
 Removes an Auto Attendant (AA) from a group. 
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.delete.auto_attendant(
+my_api.auto_attendants.delete_auto_attendant(
     service_user_id="test_aa@domain.net"
 )
 ```

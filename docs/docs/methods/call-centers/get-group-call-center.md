@@ -1,8 +1,4 @@
----
-description: my_api.get.group_call_center()
----
-
-#  🎧 GET - Group Call Center
+# GET - Group Call Center
 
 Retrieves deatiled information on a single Call Center.
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_call_center(
+my_api.call_centers.get_group_call_center(
     service_user_id="myCallCenterUserID"
 )
 ```

@@ -1,8 +1,4 @@
----
-description: my_api.service_provider_device_type_tag()
----
-
-# 🎐 PUT - Service Provider Device Type Tag
+# PUT - Service Provider Device Type Tag
 
 Update tags applied to device types at the Service Provider or Enterprise level.
 
@@ -25,7 +21,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.service_provider_device_type_tag(
+my_api.devices.put_service_provider_device_type_tag(
     "servivce_provider_id",
     "group_id",
     "device_type",

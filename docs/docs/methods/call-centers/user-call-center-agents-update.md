@@ -1,8 +1,4 @@
----
-description: my_api.user_call_center_agents_update()
----
-
-# 🙋‍♂️ PUT - User Call Center Agents Update
+# PUT - User Call Center Agents Update
 
 Update the Call Centers (CC) a user is assigned to.
 
@@ -26,7 +22,7 @@ my_api.authenticate()
 my_agent_user_id = "user_id@domain.com"
 my_call_centers = ["userid_1@domain.com", "userid_2@domain.com", "userid_3@domain.com"]
 
-my_api.put.user_call_center_agents_update(
+my_api.call_centers.put_user_call_center_agents_update(
     user_id = my_agent_user_id,
     call_center_service_ids= my_call_centers 
 )

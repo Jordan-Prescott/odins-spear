@@ -1,3 +1,3 @@
-# 💬 Call Pickup
+# Call Pickup
 
 All things call pickup.

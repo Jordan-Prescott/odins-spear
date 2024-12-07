@@ -1,4 +1,4 @@
-# 🗃️ POST - Group Device
+# POST - Group Device
 
 Adds a new device to a group. 
 
@@ -61,7 +61,7 @@ payload = {
 }
 
 
-my_api.post.group_device(
+my_api.devices.post_group_device(
     "service_provider_id",
     "group_id",
     "device_name", 

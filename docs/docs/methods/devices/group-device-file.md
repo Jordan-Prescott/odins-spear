@@ -1,8 +1,4 @@
----
-description: my_api.put.service_provider_device_file()
----
-
-# 🗃️ PUT - Group Device File
+# PUT - Group Device File
 
 Update a config file for a single device at the Group level.
 
@@ -30,7 +26,7 @@ updates = {
 }
 
 
-my_api.put.service_provider_device_file(
+my_api.devices.put_service_provider_device_file(
     "device_name",
     updates=updates
 )

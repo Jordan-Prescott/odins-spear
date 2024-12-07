@@ -1,8 +1,4 @@
----
-description: my_api.group_call_center_dnis_instance()
----
-
-# 📞 PUT - Group Call Center DNIS Instance
+# PUT - Group Call Center DNIS Instance
 
 Update a DNIS instance of a single Call Center (CC).
 
@@ -36,7 +32,7 @@ my_updates= {
 	"newDNISName":"mock.dnis.2"
 }
 
-my_api.put.group_call_center_dnis_instance(
+my_api.call_centers.put_group_call_center_dnis_instance(
     call_center_user_id = my_call_center,
     updates = my_updates
 )

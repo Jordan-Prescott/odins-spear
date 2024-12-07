@@ -1,8 +1,4 @@
----
-description: my_api.put.auto_attendant()
----
-
-# 🍅 PUT - Auto Attendant
+# PUT - Auto Attendant
 
 In this method, you can update your AAs&#x20;
 
@@ -44,7 +40,7 @@ my_changes = {
   "nameDialingScope": "Group",
 }
 
-my_api.put.auto_attendant(
+my_api.auto_attendants.put_auto_attendant(
     service_provider_id="serviceProviderID",
     group_id="groupID"
     auto_attendant_user_id="AAUserID",

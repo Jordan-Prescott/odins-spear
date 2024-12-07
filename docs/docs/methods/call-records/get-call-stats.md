@@ -1,8 +1,4 @@
----
-description: my_api.get.users_stats()
----
-
-# 🧾 GET - User Call Stats
+# GET - User Call Stats
 
 Pulls a single users call statistics for a specified period of time. 
 
@@ -35,7 +31,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.users_stats{
+my_api.call_records.get_users_stats{
     "userIds",
     "startTime",
     "endTime"

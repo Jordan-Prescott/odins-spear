@@ -1,8 +1,4 @@
----
-description: my_api.user_call_center()
----
-
-# 🟢 PUT - User Call Center
+# PUT - User Call Center
 
 ### Parameters&#x20;
 
@@ -49,7 +45,7 @@ my_updates = {
 	]
 }
 
-my_api.put.user_call_center(
+my_api.call_centers.put_user_call_center(
     user_id = my_user_id,
     updates= my_updates 
 )

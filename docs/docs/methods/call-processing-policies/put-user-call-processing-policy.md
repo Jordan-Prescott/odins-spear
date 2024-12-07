@@ -1,8 +1,4 @@
----
-description: my_api.put.user_call_processing_policy()
----
-
-# 🗃️ PUT - User Call Processing Policy
+# PUT - User Call Processing Policy
 
 Update the Call Processing Policies for a specified user. 
 
@@ -24,7 +20,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.user_call_processing_policy(
+my_api.call_processing_policies.put_user_call_processing_policy(
     "userID@domain.com",
     updates = {
         "clidPolicy": "Use DN",

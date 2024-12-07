@@ -1,8 +1,4 @@
----
-description: my_api.group_call_center_stranded_calls()
----
-
-# 🏝️ PUT - Group Call Center Stranded Calls
+# PUT - Group Call Center Stranded Calls
 
 Update the overflow settings of a single Call Center (CC).
 
@@ -37,7 +33,7 @@ my_updates= {
 	"videoFileList":[]
 }
 
-my_api.put.group_call_center_forced_forwarding(
+my_api.call_centers.put_group_call_center_forced_forwarding(
     call_center_user_id = my_call_center,
     updates = my_updates
 )

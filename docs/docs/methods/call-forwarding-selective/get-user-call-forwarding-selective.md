@@ -1,8 +1,4 @@
----
-description: my_api.get.user_call_forwarding_selective()
----
-
-# 🚗 GET - Call Forward Selective
+# GET - Call Forward Selective
 
 Retrieves the Forwarding Selective status for a specified User, alongside the criteria
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.user_call_forwarding_selective{
+my_api.call_forwarding_selective.get_user_call_forwarding_selective{
     "userId"
 }
 

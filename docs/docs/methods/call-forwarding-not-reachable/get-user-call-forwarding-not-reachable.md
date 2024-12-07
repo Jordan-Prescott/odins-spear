@@ -1,10 +1,6 @@
----
-description: my_api.get.user_call_forwarding_no_answer()
----
+# GET - Call Forward Not Reachable
 
-# 🚗 GET - Call Forward No Answer
-
-Retrieves the Forwarding No Answer status for the specified user
+Retrieves the Forwarding Not Reachable status for the specified user
 
 ### Parameters&#x20;
 
@@ -23,7 +19,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.user_call_forwarding_no_answer{
+my_api.call_forwarding_not_reachable.get_user_call_forwarding_no_answer{
     "userId"
 }
 

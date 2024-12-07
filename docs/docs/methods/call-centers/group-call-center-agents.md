@@ -1,8 +1,4 @@
----
-description: my_api.group_call_center_agents()
----
-
-# 🎧 PUT - Group Call Center Agents
+# PUT - Group Call Center Agents
 
 This method allows you to add or remove agents in a Call Center (CC).&#x20;
 
@@ -28,7 +24,7 @@ my_api.authenticate()
 my_call_center = "call_center_user_id@domain.com"
 my_agents = ["userid_1@domain.com", "userid_2@domain.com", "userid_3@domain.com"]
 
-my_api.put.group_call_center_agents(
+my_api.call_centers.put_group_call_center_agents(
     call_center_user_id = my_call_center,
     agent_user_ids = my_agents
 )

@@ -1,8 +1,4 @@
----
-description: my_api.get.bulk_call_forwarding_no_answer()
----
-
-# 🚗 GET - Bulk Call Forward No Answer
+# GET - Bulk Call Forward No Answer
 
 Retrieves the Forwarding No Answer status for all users within a specified group
 
@@ -24,7 +20,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.bulk_call_forwarding_no_answer{
+my_api.call_forwarding_no_answer.get_bulk_call_forwarding_no_answer{
     "serviceProviderId",
     "groupId"
 }
