@@ -1,8 +1,4 @@
----
-description: my_api.get.bulk_user_registration()
----
-
-# 💚 GET - Bulk User Registration
+# GET - Bulk User Registration
 
 Gets all users in a group and their device registrations. This includes soft phones.
 
@@ -28,7 +24,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.bulk_user_registration(
+my_api.registration.get_bulk_user_registration(
     "serviceProviderID",
     "groupID"
 )

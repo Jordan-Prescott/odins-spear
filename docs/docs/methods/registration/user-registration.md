@@ -1,8 +1,4 @@
----
-description: my_api.get.user_registration()
----
-
-# 💚 GET - User Registration
+# GET - User Registration
 
 Gets a users devices and if those devices are registered. This includes soft phones.
 
@@ -27,7 +23,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.user_registration(
+my_api.registration.get_user_registration(
     "testUserId@domain.com"
 )
 ```

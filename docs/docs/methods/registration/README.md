@@ -1,6 +1,3 @@
----
-description: All things registration.
----
+# Registration
 
-# 🟢 Registration
-
+All things Registrations
