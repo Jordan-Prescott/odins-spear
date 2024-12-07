@@ -1,8 +1,4 @@
----
-description: my_api.post.service_provider_dns()
----
-
-# 4️⃣ POST - Service Provider DNs
+# POST - Service Provider DNs
 
 Adds a range of numbers to a Service Provider/ Enterprise. Range of numbers must be complete and format of number must follow: +{country code}-{number}.
 
@@ -33,7 +29,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.post.service_provider_dns(
+my_api.dns.post_service_provider_dns(
     "serviceProviderId",
     start_of_range_number="+1-1234567891,
     end_of_range_number="+1-1234567892

@@ -1,8 +1,4 @@
----
-description: my_api.post.group_dns()
----
-
-# 1️⃣ POST - Group DNs
+# POST - Group DNs
 
 Adds a range of numbers to a Group. Range of numbers must be complete and format of number must follow: +{country code}-{number}.
 
@@ -34,7 +30,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.post.group_dns(
+my_api.dns.post_group_dns(
     "serviceProviderId",
     "groupID",
     start_of_range_number="+1-1234567891,

@@ -1,8 +1,4 @@
----
-description: my_api.get.group_dn_details()
----
-
-# 3️⃣ GET - Group DN Details
+# GET - Group DN Details
 
 Gets all numbers assigned to Group in detail. This will show where the number is assigned in a group such as which user or hunt group.
 
@@ -24,7 +20,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_dn_details(
+my_api.dns.get_group_dn_details(
     "serviceProviderId",
     "groupID",
 )

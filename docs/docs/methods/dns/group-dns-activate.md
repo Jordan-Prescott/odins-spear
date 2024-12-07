@@ -1,8 +1,4 @@
----
-description: my_api.put.group_dns_activate()
----
-
-# 1️⃣ PUT - Group DNs Activate
+# PUT - Group DNs Activate
 
 Update activation state of a list of numbers assigned to a group.
 
@@ -36,7 +32,7 @@ numbers = [
     "+1-1234567893",
 ]
 
-my_api.put.group_dns_activate(
+my_api.dns.put_group_dns_activate(
     "serviceProviderId",
     "groupID",
     activated =True,

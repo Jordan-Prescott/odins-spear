@@ -1,8 +1,4 @@
----
-description: my_api.delete.group_dns()
----
-
-# 1️⃣ DELETE - Group DNs
+# DELETE - Group DNs
 
 Removes range of numbers from a Group.
 
@@ -30,7 +26,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.delete.group_dns(
+my_api.dns.delete_group_dns(
     "serviceProviderId",
     "groupID",
     start_of_range_number= "+1-1234567891", 
