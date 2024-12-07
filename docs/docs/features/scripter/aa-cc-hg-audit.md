@@ -1,18 +1,14 @@
----
-description: my_api.scripter.aa_cc_hg_audit()
----
-
-# ✔️ AA, CC, HG Audit
+# AA, CC, HG Audit
 
 This script returns the services assigned to Auto Attendants, Call Centres, and Hunt Groups. Only services are applied to these entities and there are scenarios one would need to focus services assigned to these entities.
 
 The script makes use of the following methods:
 
 ```python
-api.get.auto_attendants()
-api.get.group_call_centers()
-api.get.group_hunt_groups()
-api.get.user_services_assigned()
+api.auto_attendants.get_auto_attendants()
+api.call_centers.get_group_call_centers()
+api.hunt_groups.get_group_hunt_groups()
+api.services.get_user_services_assigned()
 ```
 
 ### Parameters&#x20;
@@ -27,9 +23,9 @@ api.get.user_services_assigned()
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 print(my_api.scripter.aa_cc_hg_audit(

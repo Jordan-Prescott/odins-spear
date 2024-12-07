@@ -1,8 +1,4 @@
----
-description: my_api.scripter.remove_numbers()
----
-
-# 🔢 Remove Numbers
+# Remove Numbers
 
 Removes a singular or range of numbers from the entire Broadworks instance.
 
@@ -15,8 +11,8 @@ Numbers need to be strings and follow this format: +{country code}-{number}.
 The script makes use of the following methods:
 
 ```python
-api.delete.group_dns()
-api.delete.service_provider_dns()
+api.dns.delete_group_dns()
+api.dns.delete_service_provider_dns()
 ```
 
 ### Parameters&#x20;
@@ -32,13 +28,14 @@ api.delete.service_provider_dns()
 
 ### How To Use:
 
-<pre class="language-python"><code class="lang-python">from odins_spear import api
+```python
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+from odins_spear import API
+
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-<strong># Removes the range 234567891-3 from Broadworks instance.
-</strong>api.scripter.move_numbers(
+api.scripter.move_numbers(
     service_provider_id="ServiceProviderID-A",
     group_id="GroupID-A",
     start_of_range_number="+1-234567891",
@@ -51,4 +48,4 @@ api.scripter.move_numbers(
     group_id="GroupID-A",
     start_of_range_number="+1-234567891"
 )
-</code></pre>
+```

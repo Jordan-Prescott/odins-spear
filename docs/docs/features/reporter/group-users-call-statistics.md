@@ -1,4 +1,4 @@
-# 🔢 Group Users Call Statistics
+# Group Users Call Statistics
 
 Generates CSV file detailing all users in a single groups outgoing and incoming call statistics for a specified time range.
 
@@ -36,18 +36,18 @@ We have found that customers like to review how busy their users are and identif
 The script makes use of the following methods:
 
 ```python
-api.get.users()
-api.get.users_stats()
-api.get.user_services()
+api.users.get_users()
+api.reports.get_users_stats()
+api.users.get_user_services()
 ```
 
 ### How To Use:
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear.api import Api
+from odins_spear import API
 
-my_api = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 # Whole day in date range

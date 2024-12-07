@@ -1,4 +1,4 @@
-# 🛑 Rate Limiting API Calls
+# Rate Limiting API Calls
 
 The API object has a default parameter of 'rate\_limit' set to True which limits the amounts of API calls the library will make to 5 calls per 1 second. If the limit is reach the system will wait for the limit to pass before executing the next 5 calls.&#x20;
 

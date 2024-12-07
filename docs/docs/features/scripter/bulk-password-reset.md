@@ -1,8 +1,4 @@
----
-description: my_api.scripter.bulk_password_reset()
----
-
-# 🔑 Bulk Password Reset
+# Bulk Password Reset
 
 Resets a list of users SIP passwords, Voicemail passcodes, or Web Authentication Password. Specifify in password\_type with the options of SIP = 'SIP', Voicemail = 'VM', or Web = "WEB" and the script will perform the necessary actions.
 
@@ -15,12 +11,12 @@ This script ONLY updates SIP passwords, Voicemail passcodes, or Web Authenticati
 The script makes use of the following methods:
 
 ```python
-api.get.passwords_generate()
-api.put.user_authentication_service()
-api.get.passcodes_generate()
-api.put.user_portal_passcode()
-api.get.passwords_generate()
-api.put.user_web_authentication_password()
+api.password_generate.get_passwords_generate()
+api.authentication.put_user_authentication_service()
+api.password_generate.get_passcodes_generate()
+api.authentication.put_user_portal_passcode()
+api.password_generate.get_passwords_generate()
+api.authentication.put_user_web_authentication_password()
 ```
 
 ### Parameters
@@ -36,14 +32,14 @@ api.put.user_web_authentication_password()
 
 ### Return
 
-* Jdict: Returns dictionary containing user ID and new password set.
+* dict: Returns dictionary containing user ID and new password set.
 
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 

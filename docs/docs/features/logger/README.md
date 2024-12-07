@@ -1,4 +1,4 @@
-# 📜 Logger
+# Logger
 
 The Logger object logs API calls made using Odin's Spear.&#x20;
 
@@ -8,9 +8,9 @@ Logs are sent to os.log by default but can be changed in set\_up\_file\_handler(
 
 {% code overflow="wrap" %}
 ```python
-from odin_api import api
+from odins_spear import API
 
-my_api = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_api.logger.set_up_file_handler()

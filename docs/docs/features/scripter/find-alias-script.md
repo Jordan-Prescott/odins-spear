@@ -1,4 +1,4 @@
-# 🔎 Find Alias
+# Find Alias
 
 Locates alias if assigned to Broadworks entity.
 
@@ -14,13 +14,13 @@ If the alias is found, the method returns a dict specifying the type of entity a
 The script makes use of the following methods:
 
 ```python
-api.get.auto_attendants()
-api.get.auto_attendant()
-api.get.group_hunt_groups()
-api.get.group_hunt_group()
-api.get.call_centers()
-api.get.call_center()
-api.get.users()
+api.auto_attendants.get_auto_attendants()
+api.auto_attendants.get_auto_attendant()
+api.hunt_groups.get_group_hunt_groups()
+api.hunt_groups.get_group_hunt_group()
+api.call_centers.get_call_centers()
+api.call_centers.get_call_center()
+api.users.get_users()
 ```
 
 ### Parameters&#x20;
@@ -41,9 +41,9 @@ api.get.users()
 
 {% code overflow="wrap" %}
 ```python
-from odin_api import api
+from odins_spear import API
 
-my_api = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 # find alias method

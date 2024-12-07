@@ -1,8 +1,4 @@
----
-description: api.logger.set_up_sys_log_handler()
----
-
-# ☁️ Sending Logs To A Syslog Server
+# Sending Logs To A Syslog Server
 
 Logger lets you send your logs externally to a server which can be handy for system administrators that need accountability. When making calls to Odin's API **not all** calls are logged in the event history in the web portal. Using this feature can ensure you get the full benefits of the library and have complete accountability of the team.
 
@@ -20,9 +16,9 @@ Logger lets you send your logs externally to a server which can be handy for sys
 When creating your API object it will set up the logger automatically and start to send logs of API calls made to `os.logg`. When authenticating your API object this sends a call to the API and will Logger will send this to `os.logg`. Therefore, to capture all logs including the authentication call this method before authenticating.
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-may_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+may_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 
 my_api.logger.set_up_sys_log_handler('yourURL', 1234)
 

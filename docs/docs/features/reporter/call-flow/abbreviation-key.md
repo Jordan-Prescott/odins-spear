@@ -4,7 +4,7 @@ description: >-
   place
 ---
 
-# 🔑 Abbreviation Key
+# Abbreviation Key
 
 <figure><img src="../../../../.gitbook/assets/call_flow.jpg" alt=""><figcaption><p>Example of Call Flow showing abbreviations.</p></figcaption></figure>
 

@@ -1,8 +1,4 @@
----
-description: api.scripter.group_audit()
----
-
-# ☑️ Group Audit
+# Group Audit
 
 This script will  generate a JSON output containing detail, and summaries, of elements of the group which are typically chargeable to a customer.
 
@@ -18,11 +14,11 @@ Currently, the script produces information around:
 The script makes use of the following methods:
 
 ```python
-api.get.group_services()
-api.get.group_services_assigned()
-api.get.group_dns()
-api.get.group()
-api.get.group_trunk_groups_call_capacity()
+api.services.get_group_services()
+api.services.get_group_services_assigned()
+api.dns.get_group_dns()
+api.groups.get_group()
+api.trunk_groups.get_group_trunk_groups_call_capacity()
 ```
 
 ### Parameters&#x20;
@@ -37,9 +33,9 @@ api.get.group_trunk_groups_call_capacity()
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 

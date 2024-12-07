@@ -8,9 +8,9 @@ The policy confifuration is for customers with access to your odin portal but ca
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear.api import Api
+from odins_spear import API
 
-my_api = Api("base_url", "username", "ENV-PASSWORD")
+my_api = API("base_url", "username", "ENV-PASSWORD")
 magic.authenticate()
 
 # CHANGE ME

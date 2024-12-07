@@ -1,15 +1,12 @@
----
-description: api.scripter.service_pack_audit()
----
-
-# ✅ Service Pack Audit
+# Service Pack Audit
 
 A stripped down version of group audit focussing only on the service packs assigned within the group. This only shows the service packs assigned and total count of unlike group audit which details the users this is assigned to.
 
 The script makes use of the following methods:
 
-<pre class="language-python"><code class="lang-python"><strong>api.get.group_services()
-</strong></code></pre>
+```python
+api.services.get_group_services()
+```
 
 ### Parameters&#x20;
 
@@ -23,9 +20,9 @@ The script makes use of the following methods:
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 print(

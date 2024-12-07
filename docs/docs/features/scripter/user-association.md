@@ -1,18 +1,14 @@
----
-description: api.scripter.user_association()
----
-
-# 🔗 User Association
+# User Association
 
 This script is to identify a user's associations with Call Centers (CC), Hunt Groups (HG), and Pick Up Groups. Additionally, this returns other key information of the user such as extension, phone number, and services and feature packs assigned as this data can be useful when reviewing which CC and HG they are associated to for example if an agent in a CC has a higher feature pack than needed for work in x CC.
 
 This script uses the below methods to achieve this:
 
 ```python
-api.get.call_pickup_group_user()
-api.get.group_hunt_group_user()
-api.get.user_call_center()
-api.get.user_report()
+api.call_pick_ups.get_call_pickup_group_user()
+api.hunt_gorups.get_group_hunt_group_user()
+api.call_centers.get_user_call_center()
+api.reports.get_user_report()
 ```
 
 ### Parameters&#x20;

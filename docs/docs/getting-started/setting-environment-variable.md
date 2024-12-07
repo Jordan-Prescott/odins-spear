@@ -1,4 +1,4 @@
-# ⚠️ Setting Environment Variable
+# Setting Environment Variable
 
 In the library to send requests an API object is built which needs your Odin username and password. The username is passed in as a variable however the password parameter is the key to your local environment variable where the value is your password. The API object will pull this password from your local machine and use it to authenticate.&#x20;
 
