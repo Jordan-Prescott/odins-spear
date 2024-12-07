@@ -1,8 +1,4 @@
----
-description: api.get.group_trunk_groups_call_capacity()
----
-
-# 📞 GET - Group Trunk Groups Call Capacity
+# GET - Group Trunk Groups Call Capacity
 
 Fetches Trunk Call Capacity data for a single Group.
 
@@ -24,7 +20,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_trunk_groups_call_capacity(
+my_api.trunk_groups.get_group_trunk_groups_call_capacity(
     "ServiceProviderID",
     "GroupID"
     

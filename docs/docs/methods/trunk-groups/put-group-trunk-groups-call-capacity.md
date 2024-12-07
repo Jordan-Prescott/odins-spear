@@ -1,8 +1,4 @@
----
-description: api.put.group_trunk_groups_call_capacity()
----
-
-# 📞 PUT - Group Trunk Groups Call Capacity
+# PUT - Group Trunk Groups Call Capacity
 
 Updates the trunking call capacity in the specified group. 
 NOTE: The max available active calls cannot be changed here. Please see service_providers_trunk_group_call_capacity to update this.
@@ -28,7 +24,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.group_trunk_groups_call_capacity(
+my_api.trunk_groups.put_group_trunk_groups_call_capacity(
   my_service_provider_id = "ServiceProviderID",
   my_group_id = "GroupID",
   max_active_calls = 5, 

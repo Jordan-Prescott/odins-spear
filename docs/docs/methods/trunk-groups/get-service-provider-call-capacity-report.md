@@ -1,8 +1,4 @@
----
-description: api.get.service_provider_trunk_call_capacity_report()
----
-
-# 📂 GET - Service Provider Call Capacity Report
+# GET - Service Provider Call Capacity Report
 
 Fetches trunk call capacity details of Service Provider/ Enterprise and all Groups in the SP/ ENT.
 
@@ -31,7 +27,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.service_provider_trunk_call_capacity_report(
+my_api.trunk_groups.get_service_provider_trunk_call_capacity_report(
     "ServiceProviderID"
 )
 ```

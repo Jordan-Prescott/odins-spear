@@ -1,8 +1,4 @@
----
-description: api.put.service_provider_trunk_group_call_capacity()
----
-
-# 🚿 PUT - Service Provider Trunk Group Call Capacity
+# PUT - Service Provider Trunk Group Call Capacity
 
 Updates the max active calls and the bursting max active calls for the given service provider.
 
@@ -24,7 +20,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.service_provider_trunk_group_call_capacity(
+my_api.trunk_groups.put_service_provider_trunk_group_call_capacity(
   my_service_provider_id = "ServiceProviderID",
   updates = {
     "maxActiveCalls": 30,

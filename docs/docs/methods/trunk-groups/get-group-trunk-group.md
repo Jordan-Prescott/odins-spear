@@ -1,8 +1,4 @@
----
-description: api.get.group_trunk_group()
----
-
-# ☎️ GET - Group Trunk Group
+# GET - Group Trunk Group
 
 Fetches all Trunk Group details of a single Trunk Group in a Group.
 
@@ -25,7 +21,7 @@ from odins_spear import api
 my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_trunk_group(
+my_api.trunk_groups.get_group_trunk_group(
     "ServiceProviderID",
     "GroupID",
     "trunkGroupName"
