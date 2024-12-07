@@ -1,2 +1,2 @@
-# 🐛 Common Issues
+# Common Issues
 

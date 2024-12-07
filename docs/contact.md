@@ -1,8 +1,8 @@
-# 🤙 Contact
+# Contact
 
 We value your feedback and are here to help with any questions or issues you may have. Please use the information below to get in touch with us.
 
-* **Email:** Jordan.Prescott@fourteenip.com​​
+* **Email:** hello@minimalmind.io
 
 ***
 

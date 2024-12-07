@@ -1,4 +1,4 @@
-# 1️⃣ Do You Need To Set Up Multiple Loggers For Multiple API Objects? No.
+# Do You Need To Set Up Multiple Loggers For Multiple API Objects?
 
 The Logger object is a Singleton and can only be created once across multiple API objects for your multiple Broadwork instances. All API calls for all your API objects will be sent to the same places you defined in one API object.&#x20;
 
