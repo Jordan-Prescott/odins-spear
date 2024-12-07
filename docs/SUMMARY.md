@@ -1,7 +1,9 @@
 # Table of contents
 
 * [Welcome!!](README.md)
+* [What's New](whats-new.md)
 * [Docs](docs/README.md)
+  * [API Object](docs/api-object.md)
   * [Getting Started](docs/getting-started/README.md)
     * [Getting the Essentials (Python + IDE)](docs/getting-started/getting-the-essentials-python-+-ide.md)
     * [Setting Environment Variable](docs/getting-started/setting-environment-variable.md)
@@ -208,5 +210,6 @@
   * [Frequently Asked Questions](troubleshooting-and-faq/faq/README.md)
   * [Common Issues](troubleshooting-and-faq/common-issues/README.md)
     * [Graphviz Troubleshooting](troubleshooting-and-faq/common-issues/graphviz-troubleshooting.md)
+* [Change Log](change-log/README.md)
 * [Bugs and Issues](bugs-and-issues.md)
 * [Contact](contact.md)
