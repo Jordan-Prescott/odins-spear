@@ -1,3 +1,3 @@
-# 🎭 Shared Call Appearance
+# Shared Call Appearance
 
 All things shared call appearance.
