@@ -1,8 +1,4 @@
----
-description: my_api.get.group_services()
----
-
-# 🧍 GET - Group Services
+# GET - Group Services
 
 Fetch all userServices, groupServices and servicePackServices assigned to a group
 
@@ -23,7 +19,7 @@ my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", passw
 my_api.authenticate()
 
 # Pulling down group service
-my_api.get.group_services(
+my_api.services.get_group_services(
     "groupId",
     "serviceProviderId"
 )

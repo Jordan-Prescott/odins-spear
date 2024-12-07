@@ -1,9 +1,4 @@
----
-description: my_api.get.user_services_assigned()
----
-
-
-# 🍒 GET - user_services_assigned
+# GET - user_services_assigned
 
 This method updates a Broadwork entity's services and service packs if applicable. Any entity that can have a service or service pack assigned can be pulled down, such as a user's service pack or a Hunt Group services. Note that services and service packs are separated into two lists when passed to the method, if you only want to get one list only pass in the list you wish to update. For example, adding the service pack 'SP-A' to user A will only require I pass this in the service_pack parameter
 
@@ -27,7 +22,7 @@ my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", passw
 my_api.authenticate()
 
 # Get a users service pack
-my_api.get.user_services_assigned(
+my_api.services.get_user_services_assigned(
     "userId@domain.com"
 )
 ```

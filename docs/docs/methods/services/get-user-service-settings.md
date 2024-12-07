@@ -1,8 +1,4 @@
----
-description: my_api.get.user_service_settings()
----
-
-# ⚙️ GET - User Service Settings
+# GET - User Service Settings
 
 This method grabs all of a Broadwork entity's service settings.
 
@@ -23,7 +19,7 @@ my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", passw
 my_api.authenticate()
 
 # updating a users service pack
-my_api.get.user_service_settings(
+my_api.services.get_user_service_settings(
     "userId@domain.com"
 )
 ```

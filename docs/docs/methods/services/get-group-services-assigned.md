@@ -1,8 +1,4 @@
----
-description: my_api.get.group_services_assigned()
----
-
-# 🧍 GET - Group Services Assigned
+# GET - Group Services Assigned
 
 Get details of the user/service instances where a particular service is assigned.
 
@@ -26,7 +22,7 @@ my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", passw
 my_api.authenticate()
 
 # Get details of the user/service instances where a particular service is assigned.
-my_api.get.group_services_assigned(
+my_api.services.get_group_services_assigned(
     "groupId",
     "serviceProviderId",
     "serviceType",

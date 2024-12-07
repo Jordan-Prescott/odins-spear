@@ -1,8 +1,4 @@
----
-description: my_api.put.user_service_settings()
----
-
-# ⚙️ PUT - User Service Settings
+# PUT - User Service Settings
 
 This method updates a Broadwork entity's service settings. This uses a dicitonary as an input to apply changes, the structure of this dictionary should mirror the API's expected format for updating service settings.
 
@@ -47,7 +43,7 @@ settings = {"Call Forwarding Always": {"isActive": false, "forwardToPhoneNumber"
 
 settings = {'Call Forwarding No Answer': {'isActive': True, 'numberOfRings': 20, 'forwardToPhoneNumber': 1509}}
 
-my_api.put.user_service_settings(
+my_api.services.put_user_service_settings(
     "userId@domain.com",
     settings
 )
