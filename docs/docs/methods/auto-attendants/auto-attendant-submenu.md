@@ -15,7 +15,9 @@ This method allows you to update the configuration of the submenus for your AAs.
 ### How To Use:
 
 <pre class="language-python"><code class="lang-python">
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+from odins_spear import API
+
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_changes = {
