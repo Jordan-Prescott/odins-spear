@@ -13,9 +13,9 @@ This method fetches the Do Not Disturb (DND) and Ring Splash (RS) status of a si
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_api.do_not_disturb.get_user_do_not_disturb(userId)
