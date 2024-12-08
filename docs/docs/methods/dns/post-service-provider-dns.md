@@ -24,9 +24,9 @@ format of number must follow: +{country code}-{number} and the range must be com
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_api.dns.post_service_provider_dns(
