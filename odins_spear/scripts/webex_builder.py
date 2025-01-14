@@ -17,7 +17,9 @@ def main(
     }
 
     try:
-        api.put.user(service_provider_id, group_id, user_id, updates=email_alt_userid)
+        api.users.put_user(
+            service_provider_id, group_id, user_id, updates=email_alt_userid
+        )
         print("Updated email and alt user ID.")
     except Exception as e:
         print(f"\tERROR: Failed to update users email and alt user ID. Detail: {e}")
@@ -25,7 +27,7 @@ def main(
     # Assign feature pack
     try:
         if webex_feature_pack_name:
-            api.put.user_services(
+            api.services.put_user_services(
                 user_id=user_id, service_packs=[webex_feature_pack_name]
             )
         print(f"Added feature: {webex_feature_pack_name}")
@@ -38,16 +40,16 @@ def main(
     if enable_integarated_imp:
         enable_IMP = {"Integrated IMP": {"isActive": True}}
         try:
-            api.put.user_service_settings(user_id=user_id, settings=enable_IMP)
+            api.services.put_user_service_settings(user_id=user_id, settings=enable_IMP)
             print("Enabled integrated IMP.")
         except Exception as e:
             print(f"\tERROR: Failed to enable Integrated IMP. Detail: {e}")
 
     # build device
     device_name = f"{user_id.split('@')[0]}_WBX"
-    device_password = api.get.password_generate(service_provider_id, group_id)[
-        "password"
-    ]
+    device_password = api.password_generate.get_password_generate(
+        service_provider_id, group_id
+    )["password"]
 
     device_payload = {
         "useCustomUserNamePassword": "true",
@@ -59,7 +61,7 @@ def main(
     }
 
     try:
-        api.post.group_device(
+        api.devices.post_group_device(
             service_provider_id=service_provider_id,
             group_id=group_id,
             device_name=device_name,
@@ -86,7 +88,7 @@ def main(
             },
         }
         try:
-            api.put.user(
+            api.users.put_user(
                 service_provider_id, group_id, user_id, primary_device_configuration
             )
             print("Added device to user as primary.")
@@ -94,7 +96,7 @@ def main(
             print(f"\tERROR: Failed to add device as primary. Detail: {e}")
     else:
         try:
-            api.post.user_shared_call_appearance_endpoint(
+            api.shared_call_appearance.post_user_shared_call_appearance_endpoint(
                 user_id, user_id.replace("@", "_WBX@"), device_name
             )
             print("Added device as shared call appearance.")
@@ -103,8 +105,10 @@ def main(
 
     # Get webex password
     try:
-        password = api.get.password_generate(service_provider_id, group_id)["password"]
-        api.put.user_web_authentication_password(user_id, password)
+        password = api.password_generate.get_password_generate(
+            service_provider_id, group_id
+        )["password"]
+        api.authentication.put_user_web_authentication_password(user_id, password)
         print("Set webex password.")
     except Exception as e:
         print(f"\tERROR: Failed to set webex password. Detail {e}")
