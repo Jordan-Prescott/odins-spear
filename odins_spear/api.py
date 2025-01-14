@@ -1,7 +1,6 @@
 from .requester import Requester
 from .logger import Logger
-from .scripter import Scripter
-from .reporter import Reporter
+
 
 from .exceptions import (
     OSApiAuthenticationFail,
@@ -42,8 +41,6 @@ class API:
         self.logger = Logger.get_instance(self.username)
         self._requester = Requester(self.base_url, self.rate_limit, self.logger)
 
-        self.scripter = Scripter(api=self)
-        self.reporter = Reporter(api=self)
         self.administrators = Administrators()
         self.alternate_numbers = AlternateNumbers()
         self.authentication = Authentication()
@@ -174,6 +171,6 @@ class API:
 
     def __str__(self) -> str:
         return (
-            f"API - url: {self.base_url}, username: {self.username}"
+            f"API - url: {self.base_url}, username: {self.username} "
             f"Authenticated: {self.authorised}"
         )
