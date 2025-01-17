@@ -1,7 +1,5 @@
 from .requester import Requester
 from .logger import Logger
-
-
 from .exceptions import (
     OSApiAuthenticationFail,
     OSSessionRefreshFail,
