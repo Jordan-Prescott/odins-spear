@@ -24,41 +24,48 @@ def main(
     print("Fetching Service Provider & Group details.")
     # Gather entities
     service_provider = bre.ServiceProvider.from_dict(
-        data=api.get.service_provider(service_provider_id)
+        data=api.service_providers.get_service_provider(service_provider_id)
     )
     group = bre.Group.from_dict(
         service_provider=service_provider,
-        data=api.get.group(service_provider_id, group_id),
+        data=api.groups.get_group(service_provider_id, group_id),
     )
 
     data_store.store_objects(service_provider, group)
 
-    auto_attendants = api.get.auto_attendants(service_provider_id, group_id)
+    auto_attendants = api.auto_attendants.get_auto_attendants(
+        service_provider_id, group_id
+    )
     for aa in tqdm(auto_attendants, desc="Fetching all Auto Attendants."):
         auto_attendant = bre.AutoAttendant.from_dict(
-            group=group, data=api.get.auto_attendant(aa["serviceUserId"])
+            group=group,
+            data=api.auto_attendants.get_auto_attendant(aa["serviceUserId"]),
         )
         data_store.auto_attendants.append(auto_attendant)
 
     print("Fetching all users this may take a couple of minutes, please wait.")
-    users = api.get.users(service_provider_id, group_id, extended=True)
+    users = api.users.get_users(service_provider_id, group_id, extended=True)
 
     # Captures users with the forward fucntionality
     call_forward_always_users = [
         item["user"]["userId"]
-        for item in api.get.bulk_call_forwarding_always(service_provider_id, group_id)
+        for item in api.call_forwarding_always.get_bulk_call_forwarding_always(
+            service_provider_id, group_id
+        )
         if item["service"]["assigned"] and item["data"]["isActive"]
     ]
 
     call_forward_busy_users = [
         item["user"]["userId"]
-        for item in api.get.bulk_call_forwarding_busy(service_provider_id, group_id)
+        for item in api.call_forwarding_busy.get_bulk_call_forwarding_busy(
+            service_provider_id, group_id
+        )
         if item["service"]["assigned"] and item["data"]["isActive"]
     ]
 
     call_forward_no_answer_users = [
         item["user"]["userId"]
-        for item in api.get.bulk_call_forwarding_no_answer(
+        for item in api.call_forwarding_no_answer.get_bulk_call_forwarding_no_answer(
             service_provider_id, group_id
         )
         if item["service"]["assigned"] and item["data"]["isActive"]
@@ -66,7 +73,7 @@ def main(
 
     call_forward_not_reachable = [
         item["user"]["userId"]
-        for item in api.get.bulk_call_forwarding_not_reachable(
+        for item in api.call_forwarding_not_reachable.get_bulk_call_forwarding_not_reachable(
             service_provider_id, group_id
         )
         if item["service"]["assigned"] and item["data"]["isActive"]
@@ -77,36 +84,44 @@ def main(
 
         if user.id in call_forward_always_users:
             user.call_forwarding_always = str(
-                api.get.user_call_forwarding_always(user.id)["forwardToPhoneNumber"]
+                api.call_forwarding_always.get_user_call_forwarding_always(user.id)[
+                    "forwardToPhoneNumber"
+                ]
             )
         if user.id in call_forward_busy_users:
             user.call_forwarding_busy = str(
-                api.get.user_call_forwarding_busy(user.id)["forwardToPhoneNumber"]
+                api.call_forwarding_busy.get_user_call_forwarding_busy(user.id)[
+                    "forwardToPhoneNumber"
+                ]
             )
         if user.id in call_forward_no_answer_users:
             user.call_forwarding_no_answer = str(
-                api.get.user_call_forwarding_no_answer(user.id)["forwardToPhoneNumber"]
+                api.call_forwarding_no_answer.get_user_call_forwarding_no_answer(
+                    user.id
+                )["forwardToPhoneNumber"]
             )
         if user.id in call_forward_not_reachable:
             user.call_forwarding_not_reachable = str(
-                api.get.user_call_forwarding_not_reachable(user.id)[
-                    "forwardToPhoneNumber"
-                ]
+                api.call_forwarding_not_reachable.get_user_call_forwarding_not_reachable(
+                    user.id
+                )["forwardToPhoneNumber"]
             )
 
         data_store.users.append(user)
 
-    call_centers = api.get.group_call_centers(service_provider_id, group_id)
+    call_centers = api.call_centers.get_group_call_centers(
+        service_provider_id, group_id
+    )
     for cc in tqdm(call_centers, desc="Fetching all Call Centers."):
-        call_center = api.get.group_call_center(cc["serviceUserId"])
-        call_center["agents"] = api.get.group_call_center_agents(cc["serviceUserId"])[
-            "agents"
-        ]
+        call_center = api.call_centers.get_group_call_center(cc["serviceUserId"])
+        call_center["agents"] = api.call_centers.get_group_call_center_agents(
+            cc["serviceUserId"]
+        )["agents"]
 
         call_center = bre.CallCenter.from_dict(group=group, data=call_center)
 
         try:
-            overflow_settings = api.get.group_call_center_overflow(
+            overflow_settings = api.call_centers.get_group_call_center_overflow(
                 call_center.service_user_id
             )
             call_center.overflow_calls_action = overflow_settings["action"]
@@ -120,8 +135,10 @@ def main(
             call_center.overflow_calls_transfer_to_phone_number = None
 
         try:
-            stranded_calls_settings = api.get.group_call_center_stranded_calls(
-                call_center.service_user_id
+            stranded_calls_settings = (
+                api.call_centers.get_group_call_center_stranded_calls(
+                    call_center.service_user_id
+                )
             )
             call_center.stranded_calls_action = stranded_calls_settings["action"]
             call_center.stranded_calls_transfer_to_phone_number = (
@@ -135,7 +152,7 @@ def main(
 
         try:
             stranded_calls_unavailable_settings = (
-                api.get.group_call_center_stranded_calls_unavailable(
+                api.call_centers.get_group_call_center_stranded_calls_unavailable(
                     call_center.service_user_id
                 )
             )
@@ -153,8 +170,10 @@ def main(
             call_center.stranded_call_unavailable_transfer_to_phone_number = None
 
         try:
-            forced_forwarding_settings = api.get.group_call_center_forced_forwarding(
-                call_center.service_user_id
+            forced_forwarding_settings = (
+                api.call_centers.get_group_call_center_forced_forwarding(
+                    call_center.service_user_id
+                )
             )
             call_center.forced_forwarding_enabled = forced_forwarding_settings[
                 "enabled"
@@ -170,10 +189,10 @@ def main(
 
         data_store.call_centers.append(call_center)
 
-    hunt_groups = api.get.group_hunt_groups(service_provider_id, group_id)
+    hunt_groups = api.hunt_groups.get_group_hunt_groups(service_provider_id, group_id)
     for hg in tqdm(hunt_groups, desc="Fetching all Hunt Groups."):
         hunt_group = bre.HuntGroup.from_dict(
-            group=group, data=api.get.group_hunt_group(hg["serviceUserId"])
+            group=group, data=api.hunt_groups.get_group_hunt_group(hg["serviceUserId"])
         )
         data_store.hunt_groups.append(hunt_group)
 
