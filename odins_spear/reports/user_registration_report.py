@@ -1,5 +1,7 @@
 import pandas as pd
 
+from ..scripter import Scripter
+
 
 def export_to_xlsx(data: dict, group_id: str):
     rows = []
@@ -35,7 +37,9 @@ def main(api, service_provider_id: str, group_id: str):
     Returns:
             Xlsx File into .os_reports/ named "Registration_report_for_(GroupID)"
     """
-    data = api.scripter.user_registration(service_provider_id, group_id)
+
+    scripter = Scripter.get_instance(api)
+    data = scripter.user_registration(service_provider_id, group_id)
 
     export_to_xlsx(data, group_id)
     return True
