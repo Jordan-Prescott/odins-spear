@@ -41,7 +41,7 @@ def main(
     print(f"Fetching list of users in {group_id}.")
 
     # Fetches complete list of users in group
-    users = api.get.users(service_provider_id, group_id)
+    users = api.users.get_users(service_provider_id, group_id)
     failed_users = []
 
     # Pulls stats for each user, instantiates call_records_statistics, and append to group_users_statistics
@@ -49,16 +49,16 @@ def main(
         users, "Fetching individual stats for each user. This may take several minutes"
     ):
         try:
-            user_statistics = api.get.users_stats(
+            user_statistics = api.call_records.get_users_stats(
                 user["userId"], start_date, end_date, start_time, end_time, time_zone
             )
 
-            user_services = api.get.user_services(user_id=user["userId"])
+            user_services = api.services.get_user_services(user_id=user["userId"])
 
         except Exception:
             # attempt 2 in case of connection time out
             try:
-                user_statistics = api.get.users_stats(
+                user_statistics = api.call_records.get_users_stats(
                     user["userId"],
                     start_date,
                     end_date,
@@ -67,7 +67,7 @@ def main(
                     time_zone,
                 )
 
-                user_services = api.get.user_services(user_id=user["userId"])
+                user_services = api.services.get_user_services(user_id=user["userId"])
 
             except Exception:
                 failed_users.append(user)
