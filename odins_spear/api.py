@@ -1,6 +1,5 @@
 from .requester import Requester
 from .logger import Logger
-
 from .exceptions import (
     OSApiAuthenticationFail,
     OSSessionRefreshFail,
@@ -170,6 +169,6 @@ class API:
 
     def __str__(self) -> str:
         return (
-            f"API - url: {self.base_url}, username: {self.username}"
+            f"API - url: {self.base_url}, username: {self.username} "
             f"Authenticated: {self.authorised}"
         )
