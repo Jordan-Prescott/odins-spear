@@ -35,6 +35,7 @@ class Reporter:
 
     def call_flow(
         self,
+        *,
         service_provider_id: str,
         group_id: str,
         number: str,
@@ -68,6 +69,7 @@ class Reporter:
 
     def group_users_call_statistics(
         self,
+        *,
         service_provider_id: str,
         group_id: str,
         start_date: str,
@@ -107,7 +109,9 @@ class Reporter:
             time_zone,
         )
 
-    def user_registration_report(self, service_provider_id: str, group_id: str) -> bool:
+    def user_registration_report(
+        self, *, service_provider_id: str, group_id: str
+    ) -> bool:
         """Generates an Excel Worksheet detailing each Users ID, device name and registration status within a group.
 
         NOTE: Xlsx File into .os_reports/ named "Registration_report_for_(GroupID)"

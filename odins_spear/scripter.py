@@ -68,24 +68,13 @@ class Scripter:
             )
         return script_function(self.api, *args, **kwargs)
 
-    def aa_cc_hg_audit(self, service_provider_id: str, group_id: str) -> Dict[str, Any]:
-        """
-            This script returns the services assigned to Auto Attendants,
-            Call Centres, and Hunt Groups. Only services are applied to these
-            entities and there are scenarios one would need to focus services
-            assigned to these entities.
-
-        Args:
-            service_provider_id: Service Provider ID or Enterprise ID containing the Group ID.
-            group_id: Group ID to generate the report for.
-
-        Returns:
-            Dict: Formatted report of service packs assigned to AA, CC, and HG.
-        """
-        return self._run_script("aa_cc_hg_audit", service_provider_id, group_id)
-
     def bulk_password_reset(
-        self, service_provider_id: str, group_id: str, users: list, password_type: str
+        self,
+        *,
+        service_provider_id: str,
+        group_id: str,
+        users: list,
+        password_type: str,
     ) -> Dict[str, any]:
         """Resets a list of users SIP passwords or Voicemail passcodes. Specify in password_type with the options of
         'SIP' or 'Voicemail' and the script will perform the necessary actions.
@@ -107,7 +96,7 @@ class Scripter:
         )
 
     def find_alias(
-        self, service_provider_id: str, group_id: str, alias: str
+        self, *, service_provider_id: str, group_id: str, alias: str
     ) -> Dict[str, any]:
         """Locates alias if assigned to broadworks entity.
 
@@ -125,7 +114,7 @@ class Scripter:
         """
         return self._run_script("find_alias", service_provider_id, group_id, alias)
 
-    def group_audit(self, service_provider_id: str, group_id: str) -> Dict[str, any]:
+    def group_audit(self, *, service_provider_id: str, group_id: str) -> Dict[str, any]:
         """
         Produces a report of key information within the group.
         Reports on DN usage, Service and Service pack usage, Trunking call capacity and group info.
@@ -140,7 +129,12 @@ class Scripter:
         return self._run_script("group_audit", service_provider_id, group_id)
 
     def locate_free_extension(
-        self, service_provider_id: str, group_id: str, range_start: int, range_end: int
+        self,
+        *,
+        service_provider_id: str,
+        group_id: str,
+        range_start: int,
+        range_end: int,
     ) -> Dict[str, any]:
         """Locates the lowest value free extension given the provided range of extension numbers.
 
@@ -165,6 +159,7 @@ class Scripter:
 
     def move_numbers(
         self,
+        *,
         current_service_provider_id: str,
         current_group_id: str,
         target_service_provider_id: str,
@@ -201,6 +196,7 @@ class Scripter:
 
     def remove_numbers(
         self,
+        *,
         service_provider_id: str,
         group_id: str,
         start_of_range_number: str,
@@ -228,23 +224,8 @@ class Scripter:
             end_of_range_number,
         )
 
-    def service_pack_audit(self, service_provider_id, group_id) -> Dict[str, any]:
-        """
-        A stripped down version of group audit focussing only on the service packs assigned within
-        the group. This only shows the service packs assigned and total count of unlike group audit
-        which details the users this is assigned to.
-
-        Args:
-            service_provider_id (str): Service Provider ID or Enterprise ID containing the Group ID.
-            group_id (str): Group ID to generate the report for.
-
-        Returns:
-            Dict: Formatted report of service packs assigned in the group.
-        """
-        return self._run_script("service_pack_audit", service_provider_id, group_id)
-
     def service_provider_trunking_capacity(
-        self, service_provider_id: str
+        self, *, service_provider_id: str
     ) -> Dict[str, any]:
         """Returns a JSON breakdown of the Trunking Call Capacity of a Service Provider/ Enterprise (SP/ENT). 
         This will show the totals at each level from SP/ ENT to Group to Trunk Groups located in Groups. 
@@ -266,7 +247,7 @@ class Scripter:
         )
 
     def user_association(
-        self, service_provider_id: str, group_id: str, user_id: str
+        self, *, service_provider_id: str, group_id: str, user_id: str
     ) -> Dict[str, any]:
         """
         Identify a user's associations with Call Centers (CC), Hunt Groups (HG),
@@ -283,7 +264,7 @@ class Scripter:
         self._run_script("user_association", service_provider_id, group_id, user_id)
 
     def user_registration(
-        self, service_provider_id: str, group_id: str
+        self, *, service_provider_id: str, group_id: str
     ) -> Dict[str, any]:
         """Generates a dictionary detailing each Users ID, device name and registration status within a group.
 
@@ -298,6 +279,7 @@ class Scripter:
 
     def webex_builder(
         self,
+        *,
         service_provider_id: str,
         group_id: str,
         user_id: str,
