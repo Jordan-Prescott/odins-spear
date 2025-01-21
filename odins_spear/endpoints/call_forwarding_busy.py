@@ -5,7 +5,7 @@ class CallForwardingBusy(BaseEndpoint):
     def __init__(self):
         super().__init__()
 
-# GET
+    # GET
 
     def get_user_call_forwarding_busy(self, user_id: str):
         """Retrieves the Forwarding Not Reachable status for the specified user.
@@ -40,6 +40,7 @@ class CallForwardingBusy(BaseEndpoint):
         params = {"serviceProviderId": service_provider_id, "groupId": group_id}
 
         return self._requester.get(endpoint, params=params)
+
 
 # POST
 

@@ -5,30 +5,27 @@ class AlternateNumbers(BaseEndpoint):
     def __init__(self):
         super().__init__()
 
+    # GET
 
-# GET
+    def get_user_alternate_numbers(self, user_id: str):
+        """Fetches a list of a user/ service such as Auto Attendant, Hunt Group, or Call Centres
+        alternate numebrs.
 
+        Args:
+            user_id (str): Target user/ service_user_id
 
-def get_user_alternate_numbers(self, user_id: str):
-    """Fetches a list of a user/ service such as Auto Attendant, Hunt Group, or Call Centres
-    alternate numebrs.
+        Returns:
+            Dict: List of all alternate numbers assigned to the user/ service.
+        """
 
-    Args:
-        user_id (str): Target user/ service_user_id
+        endpoint = "/users/alternate-numbers"
 
-    Returns:
-        Dict: List of all alternate numbers assigned to the user/ service.
-    """
+        params = {"userId": user_id}
 
-    endpoint = "/users/alternate-numbers"
+        return self._requester.get(endpoint, params=params)
 
-    params = {"userId": user_id}
+    # POST
 
-    return self._requester.get(endpoint, params=params)
+    # PUT
 
-
-# POST
-
-# PUT
-
-# DELETE
+    # DELETE

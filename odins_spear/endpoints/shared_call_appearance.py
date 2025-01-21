@@ -5,11 +5,11 @@ class SharedCallAppearance(BaseEndpoint):
     def __init__(self):
         super().__init__()
 
-# GET
+    # GET
 
-# POST
+    # POST
 
-def post_user_shared_call_appearance_endpoint(
+    def post_user_shared_call_appearance_endpoint(
         self, user_id: str, line_port: str, device_name: str
     ):
         """Creates a new Shared Call Apprance (SCA) on a single user.
@@ -37,6 +37,6 @@ def post_user_shared_call_appearance_endpoint(
 
         return self._requester.post(endpoint, data=data)
 
-# PUT
+    # PUT
 
-# DELETE
+    # DELETE

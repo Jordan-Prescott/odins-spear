@@ -5,7 +5,7 @@ class CallForwardingNoAnswer(BaseEndpoint):
     def __init__(self):
         super().__init__()
 
-# GET
+    # GET
 
     def get_user_call_forwarding_no_answer(self, user_id: str):
         """Retrieves the Forwarding No Answer status for the specified user
@@ -23,7 +23,9 @@ class CallForwardingNoAnswer(BaseEndpoint):
 
         return self._requester.get(endpoint, params=params)
 
-    def get_bulk_call_forwarding_no_answer(self, service_provider_id: str, group_id: str):
+    def get_bulk_call_forwarding_no_answer(
+        self, service_provider_id: str, group_id: str
+    ):
         """Retrieves the Forwarding No Answer status for all users within a specified group.
 
         Args:
@@ -40,6 +42,7 @@ class CallForwardingNoAnswer(BaseEndpoint):
         params = {"serviceProviderId": service_provider_id, "groupId": group_id}
 
         return self._requester.get(endpoint, params=params)
+
 
 # POST
 

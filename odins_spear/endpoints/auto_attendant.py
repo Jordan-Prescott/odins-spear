@@ -1,5 +1,7 @@
 from .base_endpoint import BaseEndpoint
 
+from ..utils.formatters import format_service_instance_profile as format_sip
+
 
 class AutoAttendants(BaseEndpoint):
     def __init__(self):
@@ -123,6 +125,8 @@ class AutoAttendants(BaseEndpoint):
         """
 
         endpoint = "/groups/auto-attendants"
+
+        payload = format_sip(payload)
 
         payload["serviceProviderId"] = service_provider_id
         payload["groupId"] = group_id
@@ -248,8 +252,7 @@ class AutoAttendants(BaseEndpoint):
 
         endpoint = "/groups/auto-attendants"
 
-        if "serviceInstanceProfile" not in updates:
-            updates.setdefault("serviceInstanceProfile", {})
+        updates = format_sip(updates)
 
         updates["serviceProviderId"] = service_provider_id
         updates["groupId"] = group_id

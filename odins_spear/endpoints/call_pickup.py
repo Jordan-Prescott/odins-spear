@@ -31,8 +31,9 @@ class CallPickup(BaseEndpoint):
 
         return self._requester.get(endpoint, params=params)
 
-    # POST
 
-    # PUT
+# POST
 
-    # DELETE
+# PUT
+
+# DELETE

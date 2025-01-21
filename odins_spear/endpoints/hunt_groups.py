@@ -1,5 +1,7 @@
 from .base_endpoint import BaseEndpoint
 
+from ..utils.formatters import format_service_instance_profile as format_sip
+
 
 class HuntGroups(BaseEndpoint):
     def __init__(self):
@@ -26,7 +28,6 @@ class HuntGroups(BaseEndpoint):
 
     def get_group_hunt_group(self, service_user_id):
         """Returns detailed information about the specified Hunt Group.
-
         Args:
             service_user_id (str): UserID of the target Hunt Group.
 
@@ -129,8 +130,7 @@ class HuntGroups(BaseEndpoint):
         if agents:
             payload["agents"] = [{"userId": agent} for agent in agents]
 
-        if "serviceInstanceProfile" not in payload:
-            payload.setdefault("serviceInstanceProfile", {})
+        payload = format_sip(payload)
 
         payload["serviceInstanceProfile"]["callingLineIdFirstName"] = clid_first_name
         payload["serviceInstanceProfile"]["callingLineIdLastName"] = clid_last_name
@@ -210,11 +210,11 @@ class HuntGroups(BaseEndpoint):
 
         endpoint = "/groups/hunt-groups"
 
+        updates = format_sip(updates)
+
         updates["serviceProviderId"] = service_provider_id
         updates["groupId"] = group_id
         updates["serviceUserId"] = service_user_id
-        if not updates.get("serviceInstanceProfile"):
-            updates["serviceInstanceProfile"] = {}
 
         return self._requester.put(endpoint, data=updates)
 

@@ -5,8 +5,10 @@ class TrunkGroups(BaseEndpoint):
     def __init__(self):
         super().__init__()
 
-# GET
-def get_group_trunk_groups_call_capacity(self, service_provider_id: str, group_id: str):
+    # GET
+    def get_group_trunk_groups_call_capacity(
+        self, service_provider_id: str, group_id: str
+    ):
         """Fetches Trunk Call Capacity data for a single Group.
 
         Args:
@@ -23,7 +25,7 @@ def get_group_trunk_groups_call_capacity(self, service_provider_id: str, group_i
 
         return self._requester.get(endpoint, params=params)
 
-def get_group_trunk_group(
+    def get_group_trunk_group(
         self, service_provider_id: str, group_id: str, trunk_group_name: str
     ):
         """Fetches all Trunk Group details of a single Trunk Group in a Group.
@@ -47,7 +49,7 @@ def get_group_trunk_group(
 
         return self._requester.get(endpoint, params=params)
 
-def get_group_trunk_groups(self, service_provider_id: str, group_id: str):
+    def get_group_trunk_groups(self, service_provider_id: str, group_id: str):
         """Fetches list of all trunk groups in a single group.
 
         Args:
@@ -64,7 +66,7 @@ def get_group_trunk_groups(self, service_provider_id: str, group_id: str):
 
         return self._requester.get(endpoint, params=params)
 
-def get_service_provider_trunk_group_call_capacity(self, service_provider_id: str):
+    def get_service_provider_trunk_group_call_capacity(self, service_provider_id: str):
         """Fetches trunk call capacity details of a single Service Provider.
 
         Args:
@@ -80,24 +82,25 @@ def get_service_provider_trunk_group_call_capacity(self, service_provider_id: st
 
         return self._requester.get(endpoint, params=params)
 
-def get_service_provider_trunk_call_capacity_report(self, service_provider_id: str):
+    def get_service_provider_trunk_call_capacity_report(self, service_provider_id: str):
         """Fetches trunk call capacity details of Service Provider/ Enterprise and all Groups in the SP/ ENT.
 
-        Args:
-            servive_provider_id (str): Target Service Provider/ Enterprise ID.
+            Args:
+                servive_provider_id (str): Target Service Provider/ Enterprise ID.
 
-        Returns:
-            Dict: Breakdown of all trunk call capacity details of target Service Provider/ Enterprise and all Groups \
-                in the target SP/ ENT.
-        """
+            Returns:
+                Dict: Breakdown of all trunk call capacity details of target Service Provider/ Enterprise and all Groups \
+                    in the target SP/ ENT.
+            """
 
         endpoint = "/service-providers/trunk-groups/call-capacity/reports"
 
         params = {"serviceProviderId": service_provider_id}
 
         return self._requester.get(endpoint, params=params)
-# POST
-def post_group_trunk_group(
+
+    # POST
+    def post_group_trunk_group(
         self,
         service_provider_id: str,
         group_id: str,
@@ -161,6 +164,7 @@ def post_group_trunk_group(
             payload["sipAuthenticationPassword"] = sip_authentication_password
 
         return self._requester.post(endpoint, data=payload)
-# PUT
 
-# DELETE
+    # PUT
+
+    # DELETE

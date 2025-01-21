@@ -39,7 +39,9 @@ class CallForwardingSelective(BaseEndpoint):
 
         return self._requester.get(endpoint, params=params)
 
-    def get_user_call_forwarding_selective_criteria(self, user_id: str, criteria_name: str):
+    def get_user_call_forwarding_selective_criteria(
+        self, user_id: str, criteria_name: str
+    ):
         """Retrieves the Forwarding Selective status for a specified User, alongside the specified Criteria
 
         Args:
@@ -57,8 +59,8 @@ class CallForwardingSelective(BaseEndpoint):
         return self._requester.get(endpoint, params=params)
 
 
-    # POST
+# POST
 
-    # PUT
+# PUT
 
-    # DELETE
+# DELETE
