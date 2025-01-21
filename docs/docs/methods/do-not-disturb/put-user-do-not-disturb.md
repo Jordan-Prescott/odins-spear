@@ -1,8 +1,4 @@
----
-description: my_api.put.user_do_not_disturb()
----
-
-# 🛑 PUT - User Do Not Disturb
+# PUT - User Do Not Disturb
 
 This method updates the Do Not Disturb (DND) and Ring Splash (RS) status of a single. It takes a single User ID of the target user you would like to retrieve the status of.&#x20;
 
@@ -19,12 +15,12 @@ This method updates the Do Not Disturb (DND) and Ring Splash (RS) status of a si
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.user_do_not_disturb(
+my_api.do_not_disturb.put_user_do_not_disturb(
         user_id='UserID',
         dnd_active= True
         ring_splash_active= True     

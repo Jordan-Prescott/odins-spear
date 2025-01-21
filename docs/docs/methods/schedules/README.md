@@ -1,3 +1,3 @@
-# 📆 Schedules
+# Schedules
 
 All things schedules

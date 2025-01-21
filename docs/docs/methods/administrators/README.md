@@ -1,5 +1,3 @@
----
-description: All methods related to Administrator profiles.
----
+# Administrators
 
-# 🤵 Administrators
+All things administrators.

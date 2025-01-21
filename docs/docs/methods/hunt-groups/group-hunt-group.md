@@ -1,8 +1,4 @@
----
-description: my_api.put.group_hunt_group()
----
-
-# 🍏 PUT - Group Hunt Group
+# PUT - Group Hunt Group
 
 Update a Hunt Groups (HG) settings.
 
@@ -25,9 +21,9 @@ Example - \[{"userId":"9709580001"}, {"userId":"9709580002"}]
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_service_provider_id = "serviceProviderId"
@@ -60,7 +56,7 @@ updates = {
 	]
 }
 
-my_api.put.group_hunt_group(
+my_api.hunt_groups.put_group_hunt_group(
     service_provider_id = my_service_provider_id ,
     group_id = my_group_id,
     hunt_group_user_id = my_hunt_group_user_id,

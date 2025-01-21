@@ -1,8 +1,4 @@
----
-description: my_api.user_call_center_agent_sign_out()
----
-
-# 🛑 PUT - User Call Center Agent Sign Out
+# PUT - User Call Center Agent Sign Out
 
 Sign the user out of their assigned Call Centers (CC).
 
@@ -17,14 +13,14 @@ Sign the user out of their assigned Call Centers (CC).
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_agent_user_id = "user_id@domain.com"
 
-my_api.put.user_call_center_agent_sign_out(
+my_api.call_centers.put_user_call_center_agent_sign_out(
     user_id = my_agent_user_id
 )
 ```

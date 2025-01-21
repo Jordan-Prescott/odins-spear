@@ -1,8 +1,4 @@
----
-description: my_api.put.group_call_center()
----
-
-# 🎧 PUT - Group Call Center
+# PUT - Group Call Center
 
 In this method, you can control the status of your Call Centers (CC) by activating and deactivating them. The method takes in two parameters, they are a list of the CC service user IDs and a status which is a boolean value of True (Active) or False (Deactivate).
 
@@ -21,9 +17,9 @@ The below code will set the AA to deactivated.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_changes = {
@@ -40,7 +36,7 @@ my_changes = {
   "enableVideo": False,
 }
 
-my_api.put.group_call_center(
+my_api.call_centers.put_group_call_center(
     call_center_user_id = "TestCallCenter@domain.com",
     updates=my_changes
 )

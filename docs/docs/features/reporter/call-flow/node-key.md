@@ -1,4 +1,4 @@
-# 🔑 Node Key
+# Node Key
 
 ## Call Flow Nodes
 

@@ -1,8 +1,4 @@
----
-description: my_api.post.auto_attendant()
----
-
-#  ✍️ POST - Auto Attendant
+# POST - Auto Attendant
 
 Builds an Auto Attendant (AA) from the given payload.
 
@@ -23,12 +19,12 @@ Builds an Auto Attendant (AA) from the given payload.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.post.auto_attendant(
+my_api.auto_attendants.post_auto_attendant(
     service_provider_id="my_service_provider_id",
     group_id="my_group_id", 
     service_user_id="test_user101@domain.net", 

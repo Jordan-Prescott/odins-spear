@@ -1,8 +1,4 @@
----
-description: my_api.put.auto_attendant_submenu()
----
-
-# 📖 PUT - Auto Attendant Submenu
+# PUT - Auto Attendant Submenu
 
 This method allows you to update the configuration of the submenus for your AAs. This method only allows you to update one submenu at a time but can be placed in a look to update all submenus you may have.&#x20;
 
@@ -19,7 +15,9 @@ This method allows you to update the configuration of the submenus for your AAs.
 ### How To Use:
 
 <pre class="language-python"><code class="lang-python">
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+from odins_spear import API
+
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_changes = {
@@ -30,7 +28,7 @@ my_changes = {
                 ]
 <strong>            }
 </strong>
-my_api.put.auto_attendant_submenu(
+my_api.auto_attendants.put_auto_attendant_submenu(
     auto_attendant_user_ids= "test@domain.com",
     submenu_id= "Test1"
     updates= my_changes

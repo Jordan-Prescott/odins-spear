@@ -1,8 +1,4 @@
----
-description: my_api.get.users_stats()
----
-
-# 🧾 GET - User Call Stats
+# GET - User Call Stats
 
 Pulls a single users call statistics for a specified period of time. 
 
@@ -20,8 +16,6 @@ If you do not need to filter by time and want the whole day leave this parameter
 Time zone must follow format 'GMT', 'EST', 'PST'. Defaults to "Z" (UTC Time Zone).
 
 
-
-
 ### Returns
 
 * Dict: Users call record statistics for specified time period.
@@ -30,12 +24,12 @@ Time zone must follow format 'GMT', 'EST', 'PST'. Defaults to "Z" (UTC Time Zone
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.users_stats{
+my_api.call_records.get_users_stats{
     "userIds",
     "startTime",
     "endTime"

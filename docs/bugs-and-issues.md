@@ -1,4 +1,4 @@
-# 🐛 Bugs and Issues
+# Bugs and Issues
 
 We strive to make our application as reliable and user-friendly as possible. If you encounter any bugs or issues, we appreciate your feedback. Here’s how you can report them and stay updated on their status.
 

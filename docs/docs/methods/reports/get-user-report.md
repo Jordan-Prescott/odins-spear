@@ -1,8 +1,4 @@
----
-description: my_api.get.user_report()
----
-
-# 📈 GET - User Report
+# GET - User Report
 
 Retrieves a detailed report of the specified user including services and service packs assigned.
 
@@ -20,12 +16,12 @@ The following code snippet demonstrates how to fetch a list of all Service Provi
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.user_report("USER12345@domain")
+my_api.reports.get_user_report("USER12345@domain")
 ```
 {% endcode %}
 

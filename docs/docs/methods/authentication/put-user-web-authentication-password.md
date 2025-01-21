@@ -1,8 +1,4 @@
----
-description: my_api.put.user_web_authentication_password()
----
-
-# 🔏 PUT - User Web Authentication Password
+# PUT - User Web Authentication Password
 
 Set new Web Authentication password for a single user.
 
@@ -21,12 +17,12 @@ The below code will set the AA to deactivated.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.user_web_authentication_password(
+my_api.authentication.put_user_web_authentication_password(
     "userID@domain.com",
     "newPassword"
 )

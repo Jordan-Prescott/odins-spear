@@ -1,8 +1,4 @@
----
-description: my_api.group_call_center_dnis_instance()
----
-
-# 📞 PUT - Group Call Center DNIS Instance
+# PUT - Group Call Center DNIS Instance
 
 Update a DNIS instance of a single Call Center (CC).
 
@@ -18,9 +14,9 @@ Update a DNIS instance of a single Call Center (CC).
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_call_center = "call_center_user_id@domain.com"
@@ -36,7 +32,7 @@ my_updates= {
 	"newDNISName":"mock.dnis.2"
 }
 
-my_api.put.group_call_center_dnis_instance(
+my_api.call_centers.put_group_call_center_dnis_instance(
     call_center_user_id = my_call_center,
     updates = my_updates
 )

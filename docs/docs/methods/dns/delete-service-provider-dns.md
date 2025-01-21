@@ -1,8 +1,4 @@
----
-description: my_api.delete.service_provider_dns()
----
-
-# 2️⃣ DELETE - Service Provider DNs
+# DELETE - Service Provider DNs
 
 Removes range of numbers from a Service Proiver or Enterprise.
 
@@ -24,12 +20,12 @@ format of number must follow: "+{country code}-{number}"
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.delete.service_provider_dns(
+my_api.dns.delete_service_provider_dns(
     "serviceProviderId",
     start_of_range_number= "+1-1234567891", 
     end_of_range_number= "+1-1234567895"

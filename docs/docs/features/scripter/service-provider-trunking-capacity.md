@@ -1,8 +1,4 @@
----
-description: my_api.scripter.service_provider_trunking_capacity()
----
-
-# 📜 Service Provider Trunking Capacity
+# Service Provider Trunking Capacity
 
 Returns a JSON breakdown of the Trunking Call Capacity of a Service Provider/ Enterprise (SP/ENT). This will show the totals at each level from SP/ ENT to Group to Trunk Groups located in Groups. At each level Max Active Calls and Bursting Max Active calls are detailed and then differences at calculated.
 
@@ -15,11 +11,11 @@ This does not return data on Enterprise Trunks.
 The script makes use of the following methods:
 
 ```python
-api.get.service_provider_trunk_group_call_capacity()
-api.get.groups()
-api.get.group_trunk_groups_call_capacity()
-api.get.group_trunk_groups()
-api.get.group_trunk_group()
+api.trunk_groups.get_service_provider_trunk_group_call_capacity()
+api.groups.get_groups()
+api.trunk_groups.get_group_trunk_groups_call_capacity()
+api.trunk_groups.get_group_trunk_groups()
+api.trunk_groups.get_group_trunk_group()
 ```
 
 ### Parameters&#x20;
@@ -33,9 +29,9 @@ api.get.group_trunk_group()
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_api.scripter.service_provider_trunking_capacity("ServiceProviderID")

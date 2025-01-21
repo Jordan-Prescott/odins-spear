@@ -1,17 +1,21 @@
-# 🤖 Scripter
+# Scripter
 
-The Scripter object gives you access to pre-written scripts for common tasks and features not built in Odin's web portal such as locating an alias.
+The Scripter object gives you access to pre-written scripts for common tasks and features not built in Odin's web portal such as locating an alias, building webex users, pulling useful data together.
 
-Each API object creates its own Scripter object on instantiation, the Scripter object can then be accessed through the API object.
+To use the Scripter object you will need to import along side the API object.
+
+Once imported and instantiated pass in your API object. 
 
 {% code overflow="wrap" %}
 ```python
-from odin_api import api
+from odins_spear import API, Scripter
 
-my_api = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.scripter.{script}
+assistant = Scripter(my_api)
+
+assistant.{script}
 ```
 {% endcode %}
 

@@ -1,4 +1,4 @@
-# 📝 User Registration Report
+# User Registration Report
 
 Generates an Excel Xlsx file which contains the User Id, Device Name, and Registration status of all Users within the specified group.
 
@@ -20,7 +20,6 @@ This feature can be run without the output of an Excel sheet: api.scripter.user_
 The script makes use of the following methods:
 
 ```python
-api.get.bulk_user_registration()
 api.scripter.user_registration()
 ```
 
@@ -28,9 +27,9 @@ api.scripter.user_registration()
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear.api import Api
+from odins_spear import API
 
-my_api = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_api.reporter.user_registration_report(

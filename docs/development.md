@@ -1,4 +1,4 @@
-# 👨‍💻 Development
+# Development
 
 Welcome to the Development page! Here you can learn about our development process, track progress, and stay informed about upcoming features and updates.
 

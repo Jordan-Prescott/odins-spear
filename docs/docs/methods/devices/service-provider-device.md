@@ -1,8 +1,4 @@
----
-description: my_api.put.service_provider_device()
----
-
-# 📞 PUT - Service Provider Device
+# PUT - Service Provider Device
 
 Update a single device in a Service Provider or Enterprise.
 
@@ -19,9 +15,9 @@ Update a single device in a Service Provider or Enterprise.
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 updates = {
@@ -43,7 +39,7 @@ updates = {
 }
 
 
-my_api.put.service_provider_device(
+my_api.devices.put_service_provider_device(
     "service_provider_id",
     "group_id",
     updates=updates

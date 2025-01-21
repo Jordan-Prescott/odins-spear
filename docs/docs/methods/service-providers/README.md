@@ -1,5 +1,3 @@
----
-description: All things Service Providers
----
+# Service Provider
 
-# 🏢️ Service Provider
+All things Service Provider

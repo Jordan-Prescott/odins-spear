@@ -1,8 +1,4 @@
----
-description: my_api.put.group_device_type_file()
----
-
-# 📂 PUT - Group Device Type File
+# PUT - Group Device Type File
 
 Set config file for all devices of a spceific type at the group level.
 
@@ -20,9 +16,9 @@ Set config file for all devices of a spceific type at the group level.
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 updates = {
@@ -33,7 +29,7 @@ updates = {
 }
 
 
-my_api.put.group_device_type_file(
+my_api.devices.put_group_device_type_file(
     "service Provider ID",
     "group Id",
     "Device Type",

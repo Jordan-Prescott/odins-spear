@@ -1,8 +1,4 @@
----
-description: my_api.put.group_device_tags_profile()
----
-
-# 🏷️ PUT - Group Device Tags Profile
+# PUT - Group Device Tags Profile
 
 Update a config file for a single device at the Group level.
 
@@ -20,9 +16,9 @@ Update a config file for a single device at the Group level.
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 tags = [
@@ -46,7 +42,7 @@ tags = [
 ]
 
 
-my_api.put.group_device_tags_profile(
+my_api.devices.put_group_device_tags_profile(
     "servivce_provider_id",
     "group_id",
     "device_name",

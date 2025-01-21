@@ -1,8 +1,4 @@
----
-description: my_api.scripter.move_numbers()
----
-
-# 🔢 Move Numbers
+# Move Numbers
 
 Moves a list of numbers from existing group to another group on the same broadworks instance. This can move numbers between Service Provider/ Enterprise and groups in the same Service Provider/ Enterprise.
 
@@ -12,15 +8,13 @@ Numbers need to be strings and follow this format: +{country code}-{number}.
 ```
 {% endhint %}
 
-
-
 The script makes use of the following methods:
 
 ```python
-api.delete.group_dns()
-api.delete.service_provider_dns()
-api.post.group_dns_assign_bulk()
-api.post.group_dns()
+api.dns.delete_group_dns()
+api.dns.delete_service_provider_dns()
+api.dns.post_group_dns_assign_bulk()
+api.dns.post_group_dns()
 ```
 
 ### Parameters&#x20;
@@ -39,9 +33,9 @@ api.post.group_dns()
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 # Moving the range 234567891-3 from GroupID-A to GroupID-B

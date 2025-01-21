@@ -1,8 +1,4 @@
----
-description: my_api.post.auto_attendant_remove_user()
----
-
-#  👋 POST - Auto Attendant Remove User
+# POST - Auto Attendant Remove User
 
 Returns a list of the available Auto Attendants (AAs) built in the same group as the specified user. NOTE: This does not remove the user from the group.
 
@@ -20,12 +16,12 @@ Returns a list of the available Auto Attendants (AAs) built in the same group as
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.post.auto_attendant_remove_user(
+my_api.auto_attendants.post_auto_attendant_remove_user(
     service_provider_id="my_service_provider_id",
     group_id="my_group_id", 
     user_id="test_user@domain.net"

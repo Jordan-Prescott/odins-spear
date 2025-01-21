@@ -1,8 +1,4 @@
----
-description: my_api.get.system_dn_utilization()
----
-
-# 8️⃣ GET - System DN Utilisation
+# GET - System DN Utilisation
 
 Returns DN statistics for each Service Provider/ Enterprise such as total DNs assigned.
 
@@ -14,12 +10,12 @@ Returns DN statistics for each Service Provider/ Enterprise such as total DNs as
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.system_dn_utilization()
+my_api.dns.get_system_dn_utilization()
 ```
 {% endcode %}
 

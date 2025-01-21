@@ -1,8 +1,4 @@
----
-description: my_api.user_call_center()
----
-
-# 🟢 PUT - User Call Center
+# PUT - User Call Center
 
 ### Parameters&#x20;
 
@@ -16,9 +12,9 @@ description: my_api.user_call_center()
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_user_id = "user_id@domain.com"
@@ -49,7 +45,7 @@ my_updates = {
 	]
 }
 
-my_api.put.user_call_center(
+my_api.call_centers.put_user_call_center(
     user_id = my_user_id,
     updates= my_updates 
 )

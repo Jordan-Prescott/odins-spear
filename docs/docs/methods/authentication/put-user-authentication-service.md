@@ -1,8 +1,4 @@
----
-description: my_api.put.user_authentication_service()
----
-
-# 👮‍♀️ PUT - User Authentication Service
+# PUT - User Authentication Service
 
 Set new SIP Authentication passowrd for a single user. Authentication service must be assigned to the user in order to use this method. 
 
@@ -21,12 +17,12 @@ The below code will update the user's Authentication password.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.user_authentication_service(
+my_api.authentication.put_user_authentication_service(
     "john.smith@testdomain.net",
     "NewPassword123!"
 )

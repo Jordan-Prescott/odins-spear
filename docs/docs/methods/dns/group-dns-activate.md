@@ -1,8 +1,4 @@
----
-description: my_api.put.group_dns_activate()
----
-
-# 1️⃣ PUT - Group DNs Activate
+# PUT - Group DNs Activate
 
 Update activation state of a list of numbers assigned to a group.
 
@@ -25,9 +21,9 @@ format of number must follow: "+{country code}-{number}"
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 numbers = [
@@ -36,7 +32,7 @@ numbers = [
     "+1-1234567893",
 ]
 
-my_api.put.group_dns_activate(
+my_api.dns.put_group_dns_activate(
     "serviceProviderId",
     "groupID",
     activated =True,

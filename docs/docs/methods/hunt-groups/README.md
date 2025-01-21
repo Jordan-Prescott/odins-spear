@@ -1,3 +1,3 @@
-# 🍇 Hunt Groups
+# Hunt Groups
 
 All things updating Hunt Groups.

@@ -1,3 +1,3 @@
-# 🔢 DNs
+# DNs
 
 All things numbers.

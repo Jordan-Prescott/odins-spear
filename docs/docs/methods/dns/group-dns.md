@@ -1,8 +1,4 @@
----
-description: my_api.get.group_dns()
----
-
-# 1️⃣ GET - Group DNs
+# GET - Group DNs
 
 Gets all numbers assigned to group.
 
@@ -19,12 +15,12 @@ Gets all numbers assigned to group.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.group_dns(
+my_api.dns.get_group_dns(
     "serviceProviderId",
     "groupID",
 )

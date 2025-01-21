@@ -1,8 +1,4 @@
----
-description: api.scripter.webex_builder()
----
-
-# 💻 Webex Builder
+# Webex Builder
 
 This script will build a webex device for a user either as a primary device or as a Shared Call Appearance. 
 
@@ -35,9 +31,9 @@ Before running ensure your user has correct licensing for Shared Call Appearance
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_api.scripter.webex_builder(

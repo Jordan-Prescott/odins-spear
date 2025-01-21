@@ -1,4 +1,4 @@
-# 🤙 Call Flow
+# Call Flow
 
 Generates a visual call flow for a dedicated number for example calls to 0.
 
@@ -66,9 +66,9 @@ api.get.group_hunt_group()
 
 {% code overflow="wrap" %}
 ```python
-from odin_api import api
+from odins_spear import API
 
-my_api = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 # Generates a call flow chart for the number 123456789.

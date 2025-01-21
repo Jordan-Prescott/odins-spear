@@ -1,8 +1,4 @@
----
-description: my_api.get.system_dn_summary()
----
-
-# 7️⃣ GET - System DN Summary
+# GET - System DN Summary
 
 Returns all numbers assigned to system.
 
@@ -14,12 +10,12 @@ Returns all numbers assigned to system.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.system_dn_summary()
+my_api.dns.get_system_dn_summary()
 ```
 {% endcode %}
 

@@ -1,8 +1,4 @@
----
-description: api.logger.set_up_file_handler()
----
-
-# 📂 Sending Logs To A File
+# Sending Logs To A File
 
 By default the library will send your logs to the a file name `os.log` in your current working directory . However, if you would like to change the location where your logs are saved you can use this method. The method takes in the `path` argument which is the path to the location the file you would like to store your log file.&#x20;
 
@@ -19,9 +15,9 @@ By default the library will send your logs to the a file name `os.log` in your c
 When creating your API object it will set up the logger automatically and start to send logs of API calls made to `os.logg`. When authenticating your API object this sends a call to the API and will Logger will send this to `os.logg`. Therefore, if you plan to send the logs to a different location specify this before authenticating.
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-may_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+may_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 
 my_api.logger.set_up_file_hander('yourPath')
 

@@ -1,8 +1,4 @@
----
-description: my_api.get.auto_attendant_user()
----
-
-#  💁‍♀️ GET - Auto Attendant User
+# GET - Auto Attendant User
 
 Returns detailed information about all Auto Attendants (AA) built in the same group as the specified user.
 
@@ -19,12 +15,12 @@ Returns detailed information about all Auto Attendants (AA) built in the same gr
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.auto_attendant_user(
+my_api.auto_attendants.get_auto_attendant_user(
     service_provider_id="my_service_provider_id",
     group_id="my_group_id", 
     user_id="test_user101@domain.net"

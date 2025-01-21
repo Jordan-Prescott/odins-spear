@@ -1,32 +1,26 @@
----
-description: my_api.get.bulk_call_forwarding_busy()
----
+# GET - Bulk Call Forward Not Reachable
 
-# 🚗 GET - Bulk Call Forward Busy
-
-Retrieves the Forwarding Busy status for the specified User.
+Retrieves the Forwarding Not Reachable status for all users within a specified group.
 
 ### Parameters&#x20;
-
 
 * service_provider\_id (str): Target Service Provider where group is hosted
 * group\_id (str): Target Group ID
 
-
 ### Returns
 
-* Dict: Forwarding enabled status, and the Number to be Forwarded to.
+* List: Forwarding enabled status, the Number to be Forwarded to, and User information.
 
 ### How To Use:
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.bulk_call_forwarding_busy{
+my_api.call_forwarding_not_reachable.get_bulk_call_forwarding_not_reachable{
     "serviceProviderId",
     "groupId"
 }
@@ -42,7 +36,7 @@ my_api.get.bulk_call_forwarding_busy{
   {
     "service": {
       "assigned": true,
-      "serviceName": "Call Forwarding Busy"
+      "serviceName": "Call Forwarding Not Reachable"
     },
     "user": {
       "userId": "9709580001@domain.com",
@@ -66,7 +60,7 @@ my_api.get.bulk_call_forwarding_busy{
   {
     "service": {
       "assigned": true,
-      "serviceName": "Call Forwarding Busy"
+      "serviceName": "Call Forwarding Not Reachable"
     },
     "user": {
       "userId": "9709580002@domain.com",
@@ -88,5 +82,4 @@ my_api.get.bulk_call_forwarding_busy{
     }
   }
 ]
-
 ```

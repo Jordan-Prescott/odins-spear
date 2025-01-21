@@ -1,4 +1,4 @@
-# 📈 Graphviz Troubleshooting
+# Graphviz Troubleshooting
 
 ## Common Errors
 

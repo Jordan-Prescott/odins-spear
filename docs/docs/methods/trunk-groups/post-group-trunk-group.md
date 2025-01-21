@@ -1,8 +1,4 @@
----
-description: api.post.group_trunk_group()
----
-
-# 🚿 POST - Group Trunk Group
+# POST - Group Trunk Group
 
 Builds a Trunk Group (TG) in the specified group. Please note, several fields are set to have default values. Please see below.
             
@@ -46,12 +42,12 @@ Builds a Trunk Group (TG) in the specified group. Please note, several fields ar
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.put.group_trunk_group(
+my_api.trunk_groups.put_group_trunk_group(
   my_service_provider_id = "ServiceProviderID",
   my_group_id =  "GroupID",
   my_trunk_group_name = "Odin Test Trunk"

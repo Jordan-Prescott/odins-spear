@@ -1,9 +1,4 @@
----
-description: my_api.put.group_hunt_groups_status()
----
-
-
-# 🟢 PUT - Group Hunt Groups Status
+# PUT - Group Hunt Groups Status
 
 Updates a list of Hunt Groups (HG) status to either active or inactive.
 
@@ -19,9 +14,9 @@ Updates a list of Hunt Groups (HG) status to either active or inactive.
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_hunt_group_user_ids= [
@@ -29,7 +24,7 @@ my_hunt_group_user_ids= [
     "hunt_group2@domain.com"
 ]
 
-my_api.put.group_hunt_groups_status(
+my_api.hunt_groups.put_group_hunt_groups_status(
     call_centhunt_group_user_ids = my_hunt_group_user_ids,
     status = True
 )

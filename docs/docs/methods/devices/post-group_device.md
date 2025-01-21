@@ -1,4 +1,4 @@
-# 🗃️ POST - Group Device
+# POST - Group Device
 
 Adds a new device to a group. 
 
@@ -17,9 +17,9 @@ Adds a new device to a group.
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 payload = {
@@ -61,7 +61,7 @@ payload = {
 }
 
 
-my_api.post.group_device(
+my_api.devices.post_group_device(
     "service_provider_id",
     "group_id",
     "device_name", 

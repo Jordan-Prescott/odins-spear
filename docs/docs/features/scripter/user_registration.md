@@ -1,15 +1,11 @@
----
-description: api.scripter.user_registration()
----
-
-# 📝 User Registration
+# User Registration
 
 This script is to pull User Id's, Registered Device Names, and Registration status from every user within a group. This is helpful to diagnose issues, and identify devices that have gone offline.
 
 This script uses the below methods to achieve this:
 
 ```python
-api.get.bulk_user_registration()
+api.registration.get_bulk_user_registration()
 ```
 
 ### Parameters&#x20;
@@ -25,9 +21,9 @@ api.get.bulk_user_registration()
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_api.scripter.user_registration(

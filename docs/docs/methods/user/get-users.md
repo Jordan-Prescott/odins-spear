@@ -1,8 +1,4 @@
----
-description: api.get.users()
----
-
-# 👯 GET - Users
+# GET - Users
 
 Returns list of users depending on filter criteria you set. See supported filters and filter examples on how to use.&#x20;
 
@@ -34,12 +30,12 @@ Returns list of users depending on filter criteria you set. See supported filter
 #### Get all users in Enterprise ent1
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.get.users(
+my_api.users.get_users(
     servive_provider_id= "ent1"
 )
 ```

@@ -1,8 +1,4 @@
----
-description: my_api.put.auto_attendant()
----
-
-# 🍅 PUT - Auto Attendant
+# PUT - Auto Attendant
 
 In this method, you can update your AAs&#x20;
 
@@ -21,9 +17,9 @@ In this method, you can update your AAs&#x20;
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 my_changes = {
@@ -44,7 +40,7 @@ my_changes = {
   "nameDialingScope": "Group",
 }
 
-my_api.put.auto_attendant(
+my_api.auto_attendants.put_auto_attendant(
     service_provider_id="serviceProviderID",
     group_id="groupID"
     auto_attendant_user_id="AAUserID",

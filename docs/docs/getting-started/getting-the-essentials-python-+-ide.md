@@ -1,4 +1,4 @@
-# 🐍 Getting the Essentials (Python + IDE)
+# Getting the Essentials (Python + IDE)
 
 To _run_ Python code you first need to install Python on your machine, I recommend if you are on Windows, install this through the Windows store and get the latest version. Find version 3.12 in the Windows Store and download this.
 

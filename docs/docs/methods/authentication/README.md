@@ -1,3 +1,3 @@
-# 🔑 Authentication
+# Authentication
 
 All things authentication and passwords.

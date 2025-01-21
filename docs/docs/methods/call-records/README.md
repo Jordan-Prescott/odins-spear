@@ -1,3 +1,3 @@
-# 🧾 Call Records
+# Call Records
 
-All things call stats.
+All things Call Records.

@@ -1,8 +1,4 @@
----
-description: my_api.put.user_shared_call_appearance_endpoint()
----
-
-# 🎭 POST - User Shared Call Appearance Endpoint
+# POST - User Shared Call Appearance Endpoint
 
 Creates a new Shared Call Apprance (SCA) on a single user.
 
@@ -19,13 +15,13 @@ Creates a new Shared Call Apprance (SCA) on a single user.
 ### How To Use:
 
 ```python
-from odins_spear import api
+from odins_spear import API
 
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
 # updating a users service pack
-my_api.post.user_shared_call_appearance_endpoint(
+my_api.shared_call_appearance.post_user_shared_call_appearance_endpoint(
     "userId@domain.com",
     "userId_webex_mobile@domain.com",
     "webex mobile user x"

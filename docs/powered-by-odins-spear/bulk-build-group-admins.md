@@ -8,10 +8,10 @@ The policy confifuration is for customers with access to your odin portal but ca
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear.api import Api
+from odins_spear import API
 
-my_api = Api("base_url", "username", "ENV-PASSWORD")
-magic.authenticate()
+my_api = API("base_url", "username", "ENV-PASSWORD")
+my_api.authenticate()
 
 # CHANGE ME
 service_provider_id = 'ServiceProviderID'
@@ -38,27 +38,27 @@ policy = {
     "dialableCallerIDAccess": "Full",}
     
     # create admins
-    for user in users:        
-        gen_password = my_api.get.password_generate(service_provider_id, group_id)["password"]       
-        
-        payload = {        
-            "firstName": user.split('.')[0],         
-            "lastName": user.split('.')[1],        
-            "password": gen_password    
-            }        
-            
-        magic.post.group_admin(        
-            service_provider_id=service_provider_id,        
-            group_id=group_id,        
-            user_id=user+group_domain,        
-            password=gen_password,        
-            payload=payload    
-            )    
+for user in users:        
+    gen_password = my_api.get.password_generate(service_provider_id, group_id)["password"]       
     
-    #apply policy 
-    magic.post.group_admin_policies_bulk(    
-        user_ids=[user+group_domain for user in users],    
-        policy_config=policy
-    )
+    payload = {        
+        "firstName": user.split('.')[0],         
+        "lastName": user.split('.')[1],        
+        "password": gen_password    
+        }        
+        
+    my_api.post.group_admin(        
+        service_provider_id=service_provider_id,        
+        group_id=group_id,        
+        user_id=user+group_domain,        
+        password=gen_password,        
+        payload=payload    
+        )    
+
+#apply policy 
+my_api.post.group_admin_policies_bulk(    
+    user_ids=[user+group_domain for user in users],    
+    policy_config=policy
+)
 ```
 {% endcode %}
