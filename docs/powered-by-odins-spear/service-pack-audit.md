@@ -9,7 +9,7 @@ Scripter - Group Audit shows further details such as users assigned.
 {% endhint %}
 
 {% content-ref url="contact.md" %}
-[Group Audit](docs/features/scripter/group-audit.md)
+[Group Audit](features/scripter/group-audit.md)
 {% endcontent-ref %}
 
 ### How To Use:
