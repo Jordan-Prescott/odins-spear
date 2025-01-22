@@ -1,12 +1,12 @@
 # Create API Object
 
-The API object is the core object of the library, all functionality is accessed through this object. The first step is to create the object and pass it the base URL of the API, your username, and the environment variable.&#x20;
+The API object is the core object of the package, all functionality is accessed through this object. The first step is to create the object and pass it the base URL of the API, your username, and password.&#x20;
 
 {% code overflow="wrap" lineNumbers="true" %}
 ```python
 from odins_spear import API
 
-my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="your_password")
 ```
 {% endcode %}
 

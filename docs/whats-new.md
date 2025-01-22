@@ -24,6 +24,8 @@ We’re thrilled to announce the release of Odin’s Spear v2.0.0! This major up
 
 ### 4. Password Handling
 - Passwords are no longer stored as environment variables. Instead, they are passed directly as the user’s password.
+  - **Old:** `my_api = API(password='ENV_VARIABLE')`
+  - **New:** `my_api = API(password='your_password')`
 - **Security Tip:** We strongly recommend securing your password appropriately when using it with the API.
 
 ### 5. New `api.update_api` Method
