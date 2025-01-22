@@ -26,4 +26,4 @@ More than one object can be built for multiple odin instances.
 
 #### Check out API object details:
 
-[Broken link](broken-reference "mention")
+[API Object](../docs/api-object.md)
