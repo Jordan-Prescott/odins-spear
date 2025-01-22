@@ -28,14 +28,20 @@ api.dns.delete_service_provider_dns()
 
 ### How To Use:
 
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
+
 ```python
 
-from odins_spear import API
+from odins_spear import API, Scripter
 
 my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-api.scripter.move_numbers(
+assistant = Scripter(my_api)
+
+assistant.move_numbers(
     service_provider_id="ServiceProviderID-A",
     group_id="GroupID-A",
     start_of_range_number="+1-234567891",
@@ -43,7 +49,7 @@ api.scripter.move_numbers(
 )
 
 # Removes the range 234567891 from Broadworks instance.
-api.scripter.move_numbers(
+assistant.move_numbers(
     service_provider_id="ServiceProviderID-A",
     group_id="GroupID-A",
     start_of_range_number="+1-234567891"

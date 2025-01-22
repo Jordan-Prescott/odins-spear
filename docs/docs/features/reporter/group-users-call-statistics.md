@@ -42,28 +42,33 @@ api.users.get_user_services()
 ```
 
 ### How To Use:
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
+from odins_spear import API, Reporter
 
 my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
+assistant = Reporter(my_api)
+
 # Whole day in date range
-my_api.reporter.group_users_call_statistics(
-    "serviceProviderID",
-    "groupID",
-    "11-04-2024",
-    "14-06-2024",
+assistant.group_users_call_statistics(
+    service_provider_id="serviceProviderID",
+    group_id="groupID",
+    start_date="11-04-2024",
+    end_date="14-06-2024",
 )
 
 # Specific time during day and in EST timezone
-my_api.reporter.group_users_call_statistics(
-    "serviceProviderID",
-    "groupID",
-    "11-04-2024",
-    "14-06-2024",
+assistant.group_users_call_statistics(
+    service_provider_id="serviceProviderID",
+    group_id="groupID",
+    start_date="11-04-2024",
+    end_date="14-06-2024",
     start_time = "09:00:00",
     end_time: str = "17:00:00",
     time_zone: str = "EST"

@@ -39,15 +39,26 @@ api.users.get_users()
 
 ### How To Use:
 
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
+
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
+from odins_spear import API, Scripter
 
 my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
+assistant = Scripter(my_api)
+
 # find alias method
-print(my_api.scripter.find_alias('Service Provider ID', 'Group ID', alias=12))
+print(assistant.find_alias(
+   service_provider_id='Service Provider ID', 
+   group_id='Group ID', 
+   alias=12
+   )
+)
 ```
 {% endcode %}
 

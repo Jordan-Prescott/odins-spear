@@ -29,14 +29,20 @@ Before running ensure your user has correct licensing for Shared Call Appearance
 
 ### How To Use:
 
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
+
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
+from odins_spear import API, Scripter
 
 my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.scripter.webex_builder(
+assistant = Scripter(my_api)
+
+assistant.webex_builder(
     service_provider_id="serviceProviderId",
     group_id="groupId",
     user_id="userId",

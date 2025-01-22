@@ -19,16 +19,22 @@ api.registration.get_bulk_user_registration()
 
 ### How To Use:
 
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
+
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
+from odins_spear import API, Scripter
 
 my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.scripter.user_registration(
-    "ServiceProviderID", 
-    "GroupID", 
+assistant = Scripter(my_api)
+
+assistant.user_registration(
+    service_provider_id="ServiceProviderID", 
+    group_id="GroupID", 
 )
 ```
 {% endcode %}

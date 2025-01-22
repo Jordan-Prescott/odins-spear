@@ -15,15 +15,21 @@ Locates the lowest value free extension given the provided range of extension nu
 
 ### How To Use:
 
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
+
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
+from odins_spear import API, Scripter
 
 my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
+assistant = Scripter(my_api)
+
 print(
-    my_api.scripter.locate_free_extension(
+    assistant.locate_free_extension(
         service_provider_id="ServiceProviderID",
         group_id="GroupID",
         range_start=2000,

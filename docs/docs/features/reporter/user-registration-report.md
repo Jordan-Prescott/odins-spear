@@ -7,7 +7,6 @@ This feature can be run without the output of an Excel sheet: api.scripter.user_
 {% endhint %}
 
 
-
 ### Parameters&#x20;
 
 * service\_provider\_id (str): Service Provider/ Enterprise where group is hosted.&#x20;
@@ -24,17 +23,23 @@ api.scripter.user_registration()
 ```
 
 ### How To Use:
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
+from odins_spear import API, Reporter
 
 my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.reporter.user_registration_report(
-    "serviceProviderID",
-    "groupID",
+
+assistant = Reporter(my_api)
+
+assistant.user_registration_report(
+    service_provider_id="serviceProviderID",
+    group_id="groupID",
 )
 
 ```

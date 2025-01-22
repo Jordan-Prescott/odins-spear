@@ -32,14 +32,20 @@ api.dns.post_group_dns()
 
 ### How To Use:
 
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
+
 ```python
-from odins_spear import API
+from odins_spear import API, Scripter
 
 my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
+assistant = Scripter(my_api)
+
 # Moving the range 234567891-3 from GroupID-A to GroupID-B
-api.scripter.move_numbers(
+assistant.move_numbers(
     current_service_provider_id="ServiceProviderID-A",
     current_group_id="GroupID-A",
     target_service_provider_id="ServiceProverID-B",
@@ -50,7 +56,7 @@ api.scripter.move_numbers(
 
 
 # Moving the number 234567891 from GroupID-A to GroupID-B
-api.scripter.move_numbers(
+assistant.move_numbers(
     current_service_provider_id="ServiceProviderID-A",
     current_group_id="GroupID-A",
     target_service_provider_id="ServiceProverID-B",

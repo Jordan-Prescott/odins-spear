@@ -35,13 +35,17 @@ api.authentication.put_user_web_authentication_password()
 * dict: Returns dictionary containing user ID and new password set.
 
 ### How To Use:
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
 
 ```python
-from odins_spear import API
+from odins_spear import API, Scripter
 
 my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
+assistant = Scripter(my_api)
 
 users = [
     "testuser1@domain.com",
@@ -50,25 +54,25 @@ users = [
 ]
 
 # changes SIP password for users
-my_api.scripter.bulk_password_reset(
-        "ServiceProviderID",
-        "GroupID",
+assistant.bulk_password_reset(
+        service_provider_id="ServiceProviderID",
+        group_id="GroupID",
         users=users,
         password_type="SIP"   
     )
     
 # changes Voicemail passcode for users
-my_api.scripter.bulk_password_reset(
-        "ServiceProviderID",
-        "GroupID",
+assistant.bulk_password_reset(
+        service_provider_id="ServiceProviderID",
+        group_id="GroupID",
         users=users,
         password_type="VM"   
     )
     
 # changes Web Authentication password for users
-my_api.scripter.bulk_password_reset(
-        "ServiceProviderID",
-        "GroupID",
+assistant.bulk_password_reset(
+        service_provider_id="ServiceProviderID",
+        group_id="GroupID",
         users=users,
         password_type="WEB"   
     )

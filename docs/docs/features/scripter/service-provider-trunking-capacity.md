@@ -28,13 +28,22 @@ api.trunk_groups.get_group_trunk_group()
 
 ### How To Use:
 
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
+
 ```python
-from odins_spear import API
+from odins_spear import API, Scripter
 
 my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-my_api.scripter.service_provider_trunking_capacity("ServiceProviderID")
+assistant = Scripter(my_api)
+
+assistant.service_provider_trunking_capacity(
+    service_provider_id="ServiceProviderID"
+)
+
 ```
 
 ### Example Returned Data of SIP Passwords (Formatted)

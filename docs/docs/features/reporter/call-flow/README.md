@@ -64,20 +64,26 @@ api.get.group_hunt_group()
 
 ### How To Use:
 
+{% hint style="info" %}
+This method requires keyword arguments i.e. group_id="group_id"
+{% endhint %}
+
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
+from odins_spear import API, Reporter
 
 my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
+assistant = Reporter(my_api)
+
 # Generates a call flow chart for the number 123456789.
-my_api.reporter.call_flow(
-    "serviceProviderId",
-    "groupId",
-    "123456789",
-    "dn",
-    "user"
+assistant.call_flow(
+    service_provider_id="serviceProviderId",
+    group_id="groupId",
+    number="123456789",
+    number_type="dn",
+    broadworks_entity_type="user"
 )
 ```
 {% endcode %}
