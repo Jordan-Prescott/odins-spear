@@ -25,7 +25,7 @@ Odin's Spear is the solution. It simplifies your workflow by automating repetiti
 
 ### Prerequisites
 
-- Python 3.10+
+- Python 3.12+
 - An Odin account
 
 ### Installation
@@ -41,14 +41,15 @@ pip install odins-spear
 Here's a simple example to get you started:
 
 ```python
-from odins_spear import API
+from odins_spear import API, Scripter, Reporter
 
 # Initialize the API with your credentials
 my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN-INSTANCE-1")
 my_api.authenticate()
 
 # Locate an alias assignment
-alias_info = my_api.scripter.find_alias('ServiceProviderID', 'GroupID', alias=0)
+my_assistant = Scripter(my_api)
+alias_info = my_assistant.find_alias('ServiceProviderID', 'GroupID', alias=0)
 print(alias_info)
 ```
 
