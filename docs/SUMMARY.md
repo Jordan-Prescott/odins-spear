@@ -201,7 +201,7 @@
       * [Sending Logs To A Syslog Server](docs/features/logger/sending-logs-to-a-syslog-server.md)
   * [Utils](docs/utils/README.md)
     * [Constants](docs/utils/constants.md)
-    * [Constants](docs/utils/parsers.md)
+    * [Parsers](docs/utils/parsers.md)
 * [Powered By Odin's Spear](powered-by-odins-spear/README.md)
   * [AA, CC, HG Audit](powered-by-odins-spear/aa-cc-hg-audit.md)
   * [Bulk Build Group Admins](powered-by-odins-spear/bulk-build-group-admins.md)
