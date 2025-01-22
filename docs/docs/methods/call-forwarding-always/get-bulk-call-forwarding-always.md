@@ -25,7 +25,6 @@ my_api.call_forwarding_always.get_bulk_call_forwarding_always{
     "groupId"
 }
 
-
 ```
 {% endcode %}
 
