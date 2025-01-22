@@ -1,36 +1,46 @@
-# What's New
+# What’s New in Odin’s Spear v2.0.0
+**Date**: 22.01.25
 
-Welcome to the **What's New** page! Stay updated with the latest features, improvements, and changes in our package.
+We’re thrilled to announce the release of Odin’s Spear v2.0.0! This major update introduces significant enhancements, including a restructured codebase, refined features, and an improved import structure. Below, we’ve outlined the key changes and improvements in this release.
 
 ---
 
-## v2.0.0
+## Key Updates
 
-### 🆕 New Features
+### 1. Codebase Restructuring
+- The codebase has been restructured to improve maintainability and modularity.
+- API calls have been reorganised for better readability and usage.
+  - Example: The previous call `api.get.users` is now accessed as `api.users.get_users`.
 
-#### 1. Restructured Entity-Based Methods
-- The code has been restructured from `api.get.method` to `api.entity.method`.
-- For example, instead of `api.get.method`, you can now use `api.user.get_user_by_id`.
-- This change aligns more closely with Odin's API documentation, making it easier for end users to work with.
+### 2. Refined Feature List
+- Certain features, including `aa_cc_hg_audit` and `service_pack_audit`, have been removed from the core library.
+- These features are now documented in detail in our **Docs** for reference.
 
-#### 2. ConfigManager Class
-- Introduced the `ConfigManager` class to manage and pull default configurations for core entities.
-- Users can easily retrieve, update, and use these configurations in their workflows.
+### 3. Improved Import Structure
+- Importing the library has been simplified:
+  - **Old:** `from odins_spear.Api import Api`
+  - **New:** `from odins_spear import API, Scripter, Reporter`
+- **Scripter** and **Reporter** now require the `API` object to be passed in as a parameter.
 
-#### 3. Custom Logger Support
-- The `API` class now includes a `logger` parameter.
-- Users can pass in their preferred logger (e.g., `logging`, `loguru`, or `Sentry`) to customize logging throughout the package.
+### 4. Password Handling
+- Passwords are no longer stored as environment variables. Instead, they are passed directly as the user’s password.
+- **Security Tip:** We strongly recommend securing your password appropriately when using it with the API.
 
-### 📚 Documentation
+### 5. New `api.update_api` Method
+- A new method, `api.update_api`, has been introduced to allow you to dynamically update:
+  - `base_url`
+  - `username`
+  - `password`
+  - `rate_limit`
+- This ensures that all dependent components are updated seamlessly.
 
-- The documentation has been **completely renewed** to reflect all updates in this release.
-- Examples and usage patterns have been updated for consistency with the new structure.
+### 6. Keyword Arguments for Scripter and Reporter
+- **Scripter** and **Reporter** now support keyword-only arguments for improved clarity and flexibility.
 
-### 🛠 Improvements
-
-#### 1. Simplified Import Structure
-- The internal structure has been updated for a better user experience.
-- You can now simply import the API class with:
-    ```python
-    from odins_spear import API, Scripter, Reporter
-    ```
+### 7. Extended Utilities
+- **Constants:** A new `utils.constants` module has been added, containing predefined service packs and services for BWKS.
+- **Configurations:** The `utils/configs` module now includes JSON configurations for common BWKS entities:
+  - `user`
+  - `hunt group`
+  - `call centre`
+- These configurations can be easily read and customised before sending API requests.
