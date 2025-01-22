@@ -1,24 +1,13 @@
 # AA, CC, HG Audit
 
-This script returns the services assigned to Auto Attendants, Call Centres, and Hunt Groups. Only services are applied to these entities and there are scenarios one would need to focus services assigned to these entities.
+This script pulls the services assigned to Auto Attendants, Call Centres, and Hunt Groups. 
 
-The script makes use of the following methods:
-
-```python
-api.auto_attendants.get_auto_attendants()
-api.call_centers.get_group_call_centers()
-api.hunt_groups.get_group_hunt_groups()
-api.services.get_user_services_assigned()
+{% hint style="info" %}
 ```
+Only services are applied to these entities no service packs
+```
+{% endhint %}
 
-### Parameters&#x20;
-
-* service\_provider\_id: Service Provider ID or Enterprise ID containing the Group ID.
-* group\_id: Group ID to generate the report for.
-
-### Return
-
-* dict: A dictionary containting service packs assigned in the group.
 
 ### How To Use:
 
@@ -28,11 +17,27 @@ from odins_spear import API
 my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 my_api.authenticate()
 
-print(my_api.scripter.aa_cc_hg_audit(
-      "serviceProviderId",
-      "groupId"
-   )
-)
+audit = {"auto_attendants": [], "call_centers": [], "hunt_groups": []}
+
+for entity_type, api_method in [
+   ("auto_attendants", api.auto_attendants.get_auto_attendants),
+   ("call_centers", api.call_centers.get_group_call_centers),
+   ("hunt_groups", api.hunt_groups.get_group_hunt_groups),
+]:
+   entities = api_method(service_provider_id, group_id)
+   for entity in tqdm(
+      entities, desc=f"Analysing {entity_type.replace("_", " ").title()}"
+   ):
+      services = api.services.get_user_services_assigned(entity["serviceUserId"])
+      return_data[entity_type].append(
+            {
+               "serviceUserId": entity["serviceUserId"],
+               "type": entity.get("type", "None"),
+               "services": services.get("userServices", []),
+            }
+      )
+
+print(audit)
 ```
 
 ### Example returned data (formatted):
