@@ -1,3 +1,2 @@
 # Schedules
 
-All things schedules
