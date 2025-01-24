@@ -3,7 +3,7 @@
 * [Welcome](README.md)
 * [What's New](whats-new.md)
 * [Getting Started](getting-started/README.md)
-  * [Getting the Essentials (Python + IDE)](getting-started/getting-the-essentials-python-+-ide.md)
+  * [Getting the Essentials (Python + IDE)](getting-started/getting-the-essentials.md)
   * [Create API Object](getting-started/create-api-object.md)
 * [Docs](docs/README.md)
   * [API Object](docs/api-object.md)
