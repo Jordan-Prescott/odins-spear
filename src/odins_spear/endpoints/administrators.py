@@ -8,6 +8,43 @@ class Administrators(BaseEndpoint):
     # GET
 
     # POST
+
+    def post_service_provider_admin(
+        self,
+        service_provider_id: str,
+        user_id: str,
+        password: str,
+        first_name: str,
+        last_name: str,
+        language: str = "English",
+        admin_type: str = "Normal",
+        payload: dict = {},
+    ):
+        """Builds service provider administrator account.
+
+        Args:
+            service_provider_id (str): Target service parovider to build account.
+            user_id (str): User ID of new account i.e. 'firstname.lastname@domain.com'
+            password (str): Web access password user needs to log in.
+            first_name (str): First name.
+            last_name (str): Last name.
+            language (str, optional): Find supported languages on your system. Defaults to "English".
+            admin_type (str, optional): Type of admin, options: 'normal', 'customer', 'password reset only'. Defaults to normal.
+            payload (dict, optional): Payload sent to API. Defaults to empty dict and is formatted for you.
+        """
+
+        endpoint = "/service-providers/admins"
+
+        payload["serviceProviderId"] = service_provider_id
+        payload["language"] = language
+        payload["administratorType"] = admin_type.capitalize()
+        payload["userId"] = user_id
+        payload["password"] = password
+        payload["firstName"] = first_name
+        payload["lastName"] = last_name
+
+        return self._requester.post(endpoint, data=payload)
+
     def post_group_admin(
         self,
         service_provider_id: str,
@@ -57,5 +94,19 @@ class Administrators(BaseEndpoint):
         self._requester.post(endpoint, data=data)
 
     # PUT
+
+    def put_service_provider_admin_policies(self, user_id: str, policy_config: dict):
+        """AI is creating summary for put_service_provider_admin_policies
+
+        Args:
+            user_id (str): User ID of target service provider admin.
+            policy_config (dict): Policy settings to update.
+        """
+
+        endpoint = "/service-providers/admins/policies"
+
+        policy_config["userId"] = user_id
+
+        return self._requester.put(endpoint, data=policy_config)
+
     # DELETE
-    
