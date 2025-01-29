@@ -41,7 +41,7 @@ my_policy = {
 
 my_api.administrators.put_service_provider_admin_policies(
 	user_id="userId", 
-	policy=my_policy)
+	policy_config=my_policy)
 
 
 ```

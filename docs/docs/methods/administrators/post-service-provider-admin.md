@@ -27,7 +27,7 @@ my_api.authenticate()
 
 my_api.administrators.post_service_provider_admin(
 	service_provider_id="serviceProvider", 
-	group_id="user.id", 
+	user_id="user.id", 
 	password="Adn67asdKNO29", 
 	first_name="firstName", 
 	last_name="lastName",
