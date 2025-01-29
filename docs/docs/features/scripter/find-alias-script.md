@@ -10,6 +10,7 @@ The search is conducted in two phases:
 2. If not found, search through the users for the alias.
 
 If the alias is found, the method returns a dict specifying the type of entity and its name or userID. If the alias is not found after checking all entities, an AOAliasNotFound exception is raised.
+If the alias is found, the method returns a dict specifying the type of entity and its name or userID. If the alias is not found after checking all entities, an AOAliasNotFound exception is raised.
 
 The script makes use of the following methods:
 
@@ -62,6 +63,18 @@ print(assistant.find_alias(
 ```
 {% endcode %}
 
+### Formatted Output
+
+```json
+{
+   "type":"HG",
+   "service_user_id":"TESTHG",
+   "name":"Test HG",
+   "aliases":[
+      "12@PROXYADDRESS"
+   ]
+}
+```
 ### Formatted Output
 
 ```json

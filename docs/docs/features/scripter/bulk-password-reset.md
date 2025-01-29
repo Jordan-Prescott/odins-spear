@@ -94,5 +94,17 @@ assistant.bulk_password_reset(
       "userId":"User3@domain.com",
       "newPassword":"4WK#:y"
    }
+   {
+      "userId":"User1@domain.com",
+      "newPassword":"3h1U[-"
+   },
+   {
+      "userId":"User2@domain.com",
+      "newPassword":"e^Bv4c"
+   },
+   {
+      "userId":"User3@domain.com",
+      "newPassword":"4WK#:y"
+   }
 ]
 ```
