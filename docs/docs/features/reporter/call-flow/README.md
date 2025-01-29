@@ -14,18 +14,14 @@ You will need to download Graphviz in order to use this feature. Follow the inst
 
 What is does a red circle with 3001 in it mean and what does 'CFB' stand for? To make sense of the graph you will need to see the Node Key and the Abbreviation Key found below:
 
-{% content-ref url="node-key.md" %}
-[node-key.md](node-key.md)
+{% content-ref url="making-sense-of-the-call-flow.md" %}
+[making-sense-of-the-call-flow.md](making-sense-of-the-call-flow.md)
 {% endcontent-ref %}
 
-{% content-ref url="abbreviation-key.md" %}
-[abbreviation-key.md](abbreviation-key.md)
-{% endcontent-ref %}
+### Parameters
 
-### Parameters&#x20;
-
-* service\_provider\_id (str): Service Provider/ Enterprise where group is hosted.&#x20;
-* group\_id (str): Group ID where target number for call flow is located.&#x20;
+* service\_provider\_id (str): Service Provider/ Enterprise where group is hosted.
+* group\_id (str): Group ID where target number for call flow is located.
 * number (str): Target number for call flow. NOTE: do not include the area code e.g. "123456789"
 * number\_type (str): Type of number, options: "dn": Direct Number, "extension": Extension, "alias": Alias
 * broadworks\_entity\_type (str): Broadworks entity type target number is associated with.\
@@ -65,7 +61,7 @@ api.get.group_hunt_group()
 ### How To Use:
 
 {% hint style="info" %}
-This method requires keyword arguments i.e. group_id="group_id"
+This method requires keyword arguments i.e. group\_id="group\_id"
 {% endhint %}
 
 {% code overflow="wrap" %}
