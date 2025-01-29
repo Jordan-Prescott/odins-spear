@@ -12,9 +12,9 @@ my_api = API(base_url="https://base_url/api/vx", username="john.smith", password
 
 Once you have built the object the next step is to authenticate it, this authorizes the object to interact with the Odin API it is the equivalent of you logging in through the web portal. To authenticate this call the .authenticate() method on the object.
 
-<pre class="language-python" data-overflow="wrap" data-line-numbers><code class="lang-python"><strong>from odins_spear import api
+<pre class="language-python" data-overflow="wrap" data-line-numbers><code class="lang-python"><strong>from odins_spear import API
 </strong>
-<strong>my_api = api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
+<strong>my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
 </strong>my_api.authenticate()
 </code></pre>
 
