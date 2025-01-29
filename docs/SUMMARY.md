@@ -209,6 +209,7 @@
 * [Powered By Odin's Spear](powered-by-odins-spear/README.md)
   * [AA, CC, HG Audit](powered-by-odins-spear/aa-cc-hg-audit.md)
   * [Bulk Build Group Admins](powered-by-odins-spear/bulk-build-group-admins.md)
+  * [Bulk Build Service Provider Admins](powered-by-odins-spear/bulk-build-service-provider-admins.md)
   * [Service Pack Audit](powered-by-odins-spear/service-pack-audit.md)
 * [Development](development.md)
 * [Troubleshooting & FAQ](troubleshooting-and-faq/README.md)
