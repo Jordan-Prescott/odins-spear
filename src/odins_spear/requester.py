@@ -8,12 +8,12 @@ class Requester:
     __instance = None  # Class variable to hold the singleton instance
 
     @staticmethod
-    def get_instance(base_url=None, rate_limit=None, logger=None):
+    def get_instance(base_url=None, rate_limit=None):
         if Requester.__instance is None:
-            Requester(base_url, rate_limit, logger)
+            Requester(base_url, rate_limit)
         return Requester.__instance
 
-    def __init__(self, base_url, rate_limit, logger):
+    def __init__(self, base_url, rate_limit):
         """
         Initialize the Requester with default values.
 
@@ -25,7 +25,6 @@ class Requester:
         else:
             self.base_url = base_url
             self.rate_limit = rate_limit
-            self.logger = logger
             self.headers = {
                 "Authorization": "",
                 "Content-Type": "application/json",
@@ -70,12 +69,6 @@ class Requester:
                 params=(params if params is not None else {}),
             )
 
-            # if logger used log request
-            if self.logger:
-                self.logger._log_request(
-                    endpoint=endpoint, response_code=response.status_code
-                )
-
             # flags errors if any returned from the API
             try:
                 response.raise_for_status()
@@ -95,12 +88,6 @@ class Requester:
             data=json.dumps(data if data is not None else {}),
             params=(params if params is not None else {}),
         )
-
-        # if logger used log request
-        if self.logger:
-            self.logger._log_request(
-                endpoint=endpoint, response_code=response.status_code
-            )
 
         # flags errors if any returned from the API
         try:

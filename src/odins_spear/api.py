@@ -1,3 +1,5 @@
+from typing import Optional
+
 from .requester import Requester
 from .logger import Logger
 from .exceptions import (
@@ -13,7 +15,12 @@ import requests
 
 class API:
     def __init__(
-        self, base_url: str, username: str, password: str, rate_limit: bool = True
+        self,
+        base_url: str,
+        username: str,
+        password: str,
+        rate_limit: bool = True,
+        logger: Optional[Logger] = None,
     ) -> None:
         """ Connection to Odin API, all interactions with the api are here.
 
@@ -22,6 +29,7 @@ class API:
             username (str): Username used when logging into odin account.
             password (str): Password used when logging into odin account stored as virtual environment.
             rate_limit (bool): Enables (True) or Disables (False) rate limiting to 5 calls per second. Defaults to True.
+            logger (logger, optional): Pass in external logger, if not default logger will be assigned. 
             
         Vars: 
             authorised (bool): Boolean value to indicate if api is authorised.\
@@ -36,8 +44,8 @@ class API:
         self.authorised = False
         self.token = ""
 
-        self.logger = Logger.get_instance(self.username)
-        self._requester = Requester(self.base_url, self.rate_limit, self.logger)
+        self._logger = logger or Logger.get_instance(self.username)
+        self._requester = Requester.get_instance(self.base_url, self.rate_limit)
 
         self.administrators = Administrators()
         self.alternate_numbers = AlternateNumbers()
