@@ -1,7 +1,7 @@
+import logging
 from typing import Optional
 
 from .requester import Requester
-from .logger import Logger
 from .exceptions import (
     OSApiAuthenticationFail,
     OSSessionRefreshFail,
@@ -20,7 +20,7 @@ class API:
         username: str,
         password: str,
         rate_limit: bool = True,
-        logger: Optional[Logger] = None,
+        logger: Optional[logging.Logger] = None,
     ) -> None:
         """ Connection to Odin API, all interactions with the api are here.
 
@@ -44,9 +44,13 @@ class API:
         self.authorised = False
         self.token = ""
 
-        self._logger = logger or Logger.get_instance(self.username)
+        self.logger = logger
+        if not self.logger:
+            self._setup_logger()
+
         self._requester = Requester.get_instance(self.base_url, self.rate_limit)
 
+        # endpoints
         self.administrators = Administrators()
         self.alternate_numbers = AlternateNumbers()
         self.authentication = Authentication()
@@ -74,7 +78,7 @@ class API:
         self.regsitration = Registration()
         self.password_generate = PasswordGenerate()
         self.trunk_groups = TrunkGroups()
-        self.users = Users()
+        self.users = Users(logger=self.logger)
 
     def authenticate(self) -> bool:
         """Authenticates session with username and password supplied by user.
@@ -174,6 +178,16 @@ class API:
         self.token = session_response["token"]
         self._requester.headers["Authorization"] = f"Bearer {self.token}"
         self.authorised = True
+
+    def _setup_logger(self):
+        self.logger = logging.getLogger("OS")
+        self.logger.setLevel(logging.INFO)
+        handler = logging.StreamHandler()
+        formatter = logging.Formatter(
+            "time: %(asctime)s, level: %(levelname)s, module: %(module)s, function: %(funcName)s, detail: %(message)s"
+        )
+        handler.setFormatter(formatter)
+        self.logger.addHandler(handler)
 
     def __str__(self) -> str:
         return (

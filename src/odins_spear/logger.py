@@ -20,6 +20,7 @@ class Logger:
         """
         if custom_logger:
             if Logger.validate_logger(custom_logger):
+                custom_logger._user = user
                 return custom_logger
             else:
                 raise ValueError(
@@ -43,29 +44,20 @@ class Logger:
             raise Exception("Singleton cannot be instantiated more than once!")
 
         self._user = user
+        self._logger_obj = logging.getLogger("OS")
+        self._logger_obj.setLevel(logging.INFO)
 
-        # Remove handlers from root logger
-        for handler in logging.root.handlers[:]:
-            if isinstance(handler, logging.StreamHandler):
-                logging.root.removeHandler(handler)
-
-        self._logger_obj = logging.getLogger("os")
-        self._logger_obj.setLevel(logging.DEBUG)
+        handler = logging.StreamHandler()
+        formatter = logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(user)s - %(endpoint)s - %(http_method)s"
+        )
+        handler.setFormatter(formatter)
+        self._logger_obj.addHandler(handler)
 
         Logger.__instance = self
 
-    def _log_request(self, **kwargs):
-        """Takes in the response call and response details from Requester
-        and logs this information with logging level INFO.
-
-        Args:
-            kwargs: Two keyword arguments: endpoint and response_code
-        """
-        self._logger_obj.info(self._user, extra=kwargs)
-
-    # Implement logging interface methods to match standard logging
-    def info(self, msg, *args, **kwargs):
-        self._logger_obj.info(msg, *args, **kwargs)
+    def info(self, msg, **kwargs):
+        self._logger_obj.info(msg, extra={"user": self._user, **kwargs})
 
     def debug(self, msg, *args, **kwargs):
         self._logger_obj.debug(msg, *args, **kwargs)

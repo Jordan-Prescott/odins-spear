@@ -1,7 +1,8 @@
+import logging
+
 from typing import Dict, Any, Optional
 
 from . import scripts
-
 from .api import API
 
 
@@ -91,6 +92,7 @@ class Scripter:
         Returns:
             Dict: Users and their new passwords.
         """
+
         return self._run_script(
             "bulk_password_reset", service_provider_id, group_id, users, password_type
         )
