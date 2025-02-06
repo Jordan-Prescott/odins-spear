@@ -87,7 +87,7 @@ class Users(BaseEndpoint):
 
         params = {"userId": user_id}
 
-        self._logger.info("This is my custom message")
+        self._logger.info(f"params: {params}")
         return self._requester.get(endpoint, params=params)
 
     # POST

@@ -1,5 +1,3 @@
-import logging
-
 from typing import Dict, Any, Optional
 
 from . import scripts
@@ -114,6 +112,9 @@ class Scripter:
             Dict: Returns type and name/ userId of entity where alias located.
 
         """
+        self.api.logger.info(
+            f"service_provider_id: {service_provider_id}, group_id: {group_id}, alias: {alias}"
+        )
         return self._run_script("find_alias", service_provider_id, group_id, alias)
 
     def group_audit(self, *, service_provider_id: str, group_id: str) -> Dict[str, any]:

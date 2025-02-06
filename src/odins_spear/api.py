@@ -48,7 +48,9 @@ class API:
         if not self.logger:
             self._setup_logger()
 
-        self._requester = Requester.get_instance(self.base_url, self.rate_limit)
+        self._requester = Requester.get_instance(
+            self.base_url, self.rate_limit, self.logger
+        )
 
         # endpoints
         self.administrators = Administrators()
@@ -180,13 +182,16 @@ class API:
         self.authorised = True
 
     def _setup_logger(self):
+        from .utils.logging import SensitiveDataFilter
+
         self.logger = logging.getLogger("OS")
         self.logger.setLevel(logging.INFO)
         handler = logging.StreamHandler()
         formatter = logging.Formatter(
-            "time: %(asctime)s, level: %(levelname)s, module: %(module)s, function: %(funcName)s, detail: %(message)s"
+            "time: %(asctime)s, level: %(levelname)s, module: %(module)s, function: %(funcName)s, detail: {%(message)s}"
         )
         handler.setFormatter(formatter)
+        handler.addFilter(SensitiveDataFilter())
         self.logger.addHandler(handler)
 
     def __str__(self) -> str:

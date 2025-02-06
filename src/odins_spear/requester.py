@@ -1,5 +1,7 @@
 import requests
 import json
+from logging import Logger
+
 from ratelimit import limits, sleep_and_retry
 from .exceptions import OSApiResponseError
 
@@ -8,12 +10,12 @@ class Requester:
     __instance = None  # Class variable to hold the singleton instance
 
     @staticmethod
-    def get_instance(base_url=None, rate_limit=None):
+    def get_instance(base_url=None, rate_limit=None, logger=Logger):
         if Requester.__instance is None:
-            Requester(base_url, rate_limit)
+            Requester(base_url, rate_limit, logger)
         return Requester.__instance
 
-    def __init__(self, base_url, rate_limit):
+    def __init__(self, base_url, rate_limit, logger):
         """
         Initialize the Requester with default values.
 
@@ -29,6 +31,7 @@ class Requester:
                 "Authorization": "",
                 "Content-Type": "application/json",
             }
+            self.logger = logger
 
             Requester.__instance = self
 
@@ -73,6 +76,7 @@ class Requester:
             try:
                 response.raise_for_status()
             except requests.exceptions.RequestException:
+                self.logger.error(OSApiResponseError(response))
                 raise OSApiResponseError(response)
             else:
                 return response.json()
@@ -82,6 +86,7 @@ class Requester:
     def _rate_limited_request(self, method, endpoint, data=None, params=None):
         """Handles an API request with rate limiting."""
 
+        self.logger.info(data)
         response = method(
             url=self.base_url + endpoint,
             headers=self.headers,
@@ -93,6 +98,7 @@ class Requester:
         try:
             response.raise_for_status()
         except requests.exceptions.RequestException:
+            self.logger.error(OSApiResponseError(response))
             raise OSApiResponseError(response)
         else:
             return response.json()
