@@ -87,7 +87,6 @@ class Users(BaseEndpoint):
 
         params = {"userId": user_id}
 
-        self._logger.info(f"params: {params if params else {}}")
         return self._requester.get(endpoint, params=params)
 
     # POST
