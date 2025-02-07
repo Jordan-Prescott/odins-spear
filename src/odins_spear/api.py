@@ -10,6 +10,72 @@ from .endpoints import *  # noqa: F403
 
 import requests
 
+class API_SESSION:
+    def __init__(
+        self,
+        Object
+    ) -> None:
+        
+        self.api = Object
+        self.authenticate()
+
+    def authenticate(self) -> bool:
+        """Authenticates session with username and password supplied by user.
+
+        Raises:
+            OSApiAuthenticationFail: Raised if authenticaion fails.
+
+        Returns:
+            Bool: Returns True to indicate authentication was successful.
+        """
+
+        endpoint = "/auth/token"
+
+        payload = {"username": self.api.username, "password": self.api._password}
+
+        try:
+            response = self.api._requester.post(endpoint, data=payload)
+            self.api._update_requester(response)
+            return True
+        except requests.exceptions.HTTPError:
+            raise OSApiAuthenticationFail()
+
+    def refresh_authorisation(self) -> bool:
+        """Re-authenticates the session with the API. Used if API key is to expire.
+
+        Raises:
+            OSSessionRefreshFail: Raised if authentication fails.
+
+        Returns:
+            Bool: Returns True to indicate authentication was successful.
+        """
+
+        endpoint = "/auth/session"
+
+        try:
+            response = self.api._requester.put(endpoint)
+            self.api._update_requester(response)
+            return True
+        except requests.exceptions.HTTPError:
+            raise OSSessionRefreshFail()
+
+    def get_auth_details(self):
+        """Gets current session details.
+
+        Raises:
+            OSFailedToLocateSession: Raised when session details can't be found.
+                Most likely because session has expired.
+
+        Returns:
+            Dict: Current session details.
+        """
+
+        endpoint = "/auth/session"
+
+        try:
+            return self.api._requester.get(endpoint)
+        except requests.exceptions.HTTPError:
+            raise OSFailedToLocateSession()
 
 class API:
     def __init__(
@@ -68,63 +134,7 @@ class API:
         self.trunk_groups = TrunkGroups()
         self.users = Users()
 
-    def authenticate(self) -> bool:
-        """Authenticates session with username and password supplied by user.
-
-        Raises:
-            OSApiAuthenticationFail: Raised if authenticaion fails.
-
-        Returns:
-            Bool: Returns True to indicate authentication was successful.
-        """
-
-        endpoint = "/auth/token"
-
-        payload = {"username": self.username, "password": self._password}
-
-        try:
-            response = self._requester.post(endpoint, data=payload)
-            self._update_requester(response)
-            return True
-        except requests.exceptions.HTTPError:
-            raise OSApiAuthenticationFail()
-
-    def refresh_authorisation(self) -> bool:
-        """Re-authenticates the session with the API. Used if API key is to expire.
-
-        Raises:
-            OSSessionRefreshFail: Raised if authentication fails.
-
-        Returns:
-            Bool: Returns True to indicate authentication was successful.
-        """
-
-        endpoint = "/auth/session"
-
-        try:
-            response = self._requester.put(endpoint)
-            self._update_requester(response)
-            return True
-        except requests.exceptions.HTTPError:
-            raise OSSessionRefreshFail()
-
-    def get_auth_details(self):
-        """Gets current session details.
-
-        Raises:
-            OSFailedToLocateSession: Raised when session details can't be found.
-                Most likely because session has expired.
-
-        Returns:
-            Dict: Current session details.
-        """
-
-        endpoint = "/auth/session"
-
-        try:
-            return self._requester.get(endpoint)
-        except requests.exceptions.HTTPError:
-            raise OSFailedToLocateSession()
+        self.authentication_session = API_SESSION(self)
 
     def update_api(
         self,
