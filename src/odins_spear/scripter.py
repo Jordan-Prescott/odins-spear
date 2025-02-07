@@ -45,23 +45,17 @@ class Scripter:
             Scripter.__instance = self
 
     def _run_script(self, script_name: str, *args, **kwargs) -> Dict[str, Any]:
-        """
-        Dynamically runs the specified script.
-
-        Args:
-            script_name (str): Name of the script to run.
-            *args: Positional arguments for the script.
-            **kwargs: Keyword arguments for the script.
-
-        Returns:
-            Dict[str, Any]: Output of the script.
-
-        Raises:
-            AttributeError: If the script is not found in the `scripts` module.
-        """
+        """Dynamically runs the specified script."""
+        self.api.logger.debug(
+            f"os_user: {self.api.username}, script_name: {script_name}, args: {[args]}, kwargs: {kwargs}"
+        )
         try:
             script_function = getattr(scripts, script_name)
+            self.api.logger.info(f"os_user: {self.api.username}, script: {script_name}")
         except AttributeError:
+            self.api.logger.error(
+                f"os_user: {self.api.username}, error: Script '{script_name}' not found."
+            )
             raise AttributeError(
                 f"Script '{script_name}' not found in 'scripts' module."
             )
@@ -112,9 +106,6 @@ class Scripter:
             Dict: Returns type and name/ userId of entity where alias located.
 
         """
-        self.api.logger.info(
-            f"service_provider_id: {service_provider_id}, group_id: {group_id}, alias: {alias}"
-        )
         return self._run_script("find_alias", service_provider_id, group_id, alias)
 
     def group_audit(self, *, service_provider_id: str, group_id: str) -> Dict[str, any]:

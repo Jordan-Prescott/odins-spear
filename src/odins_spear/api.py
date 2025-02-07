@@ -44,42 +44,45 @@ class API:
         self.authorised = False
         self.token = ""
 
-        self.logger = logger
-        if not self.logger:
-            self._setup_logger()
+        self.logger = logger or self._setup_logger()
+        self.logger.info(
+            f"message: API initialised, user: {self.username}, base_url: {self.base_url}, rate_limit: {self.rate_limit}"
+        )
 
         self._requester = Requester.get_instance(
             self.base_url, self.rate_limit, self.logger
         )
 
-        # endpoints
-        self.administrators = Administrators()
-        self.alternate_numbers = AlternateNumbers()
-        self.authentication = Authentication()
-        self.auto_attendants = AutoAttendants()
-        self.call_centers = CallCenters()
-        self.call_forwarding_always = CallForwardingAlways()
-        self.call_forwarding_busy = CallForwardingBusy()
-        self.call_forwarding_no_answer = CallForwardingNoAnswer()
-        self.call_forwarding_not_reachable = CallForwardingNotReachable()
-        self.call_forwarding_selective = CallForwardingSelective()
-        self.call_pickup = CallPickup()
-        self.call_processing_policies = CallProcessingPolicies()
-        self.call_records = CallRecords()
-        self.devices = Devices()
-        self.dns = DNs()
-        self.groups = Groups()
-        self.emergency_zones = EmergencyZones()
-        self.do_not_disturb = DoNotDisturb()
-        self.hunt_groups = HuntGroups()
-        self.service_providers = ServiceProviders()
-        self.services = Services()
-        self.shared_call_appearance = SharedCallAppearance()
-        self.schedules = Schedules()
-        self.reports = Reports()
-        self.regsitration = Registration()
-        self.password_generate = PasswordGenerate()
-        self.trunk_groups = TrunkGroups()
+        # # endpoints
+        self.administrators = Administrators(logger=self.logger)
+        self.alternate_numbers = AlternateNumbers(logger=self.logger)
+        self.authentication = Authentication(logger=self.logger)
+        self.auto_attendants = AutoAttendants(logger=self.logger)
+        self.call_centers = CallCenters(logger=self.logger)
+        self.call_forwarding_always = CallForwardingAlways(logger=self.logger)
+        self.call_forwarding_busy = CallForwardingBusy(logger=self.logger)
+        self.call_forwarding_no_answer = CallForwardingNoAnswer(logger=self.logger)
+        self.call_forwarding_not_reachable = CallForwardingNotReachable(
+            logger=self.logger
+        )
+        self.call_forwarding_selective = CallForwardingSelective(logger=self.logger)
+        self.call_pickup = CallPickup(logger=self.logger)
+        self.call_processing_policies = CallProcessingPolicies(logger=self.logger)
+        self.call_records = CallRecords(logger=self.logger)
+        self.devices = Devices(logger=self.logger)
+        self.dns = DNs(logger=self.logger)
+        self.groups = Groups(logger=self.logger)
+        self.emergency_zones = EmergencyZones(logger=self.logger)
+        self.do_not_disturb = DoNotDisturb(logger=self.logger)
+        self.hunt_groups = HuntGroups(logger=self.logger)
+        self.service_providers = ServiceProviders(logger=self.logger)
+        self.services = Services(logger=self.logger)
+        self.shared_call_appearance = SharedCallAppearance(logger=self.logger)
+        self.schedules = Schedules(logger=self.logger)
+        self.reports = Reports(logger=self.logger)
+        self.regsitration = Registration(logger=self.logger)
+        self.password_generate = PasswordGenerate(logger=self.logger)
+        self.trunk_groups = TrunkGroups(logger=self.logger)
         self.users = Users(logger=self.logger)
 
     def authenticate(self) -> bool:
@@ -157,15 +160,24 @@ class API:
         """
 
         if base_url:
+            self.logger.info(
+                f"message: API base_url updated, old: {self.base_url}, new: {base_url}"
+            )
             self.base_url = base_url
             self._requester.base_url = base_url
         if username:
+            self.logger.info(
+                f"message: API username updated, old: {self.username}, new: {username}"
+            )
             self.username = username
-            self.logger = Logger.get_instance(self.username)
             self._requester.logger = self.logger
         if password:
+            self.logger.info("message: API password updated")
             self._password = password
         if rate_limit:
+            self.logger.info(
+                f"message: API rate_limit updated, old: {self.rate_limit}, new: {rate_limit}"
+            )
             self.rate_limit = rate_limit
             self._requester.rate_limit = rate_limit
 
@@ -180,19 +192,18 @@ class API:
         self.token = session_response["token"]
         self._requester.headers["Authorization"] = f"Bearer {self.token}"
         self.authorised = True
+        self.logger.info("message: API session updated with new token")
 
     def _setup_logger(self):
-        from .utils.logging import SensitiveDataFilter
-
-        self.logger = logging.getLogger("OS")
-        self.logger.setLevel(logging.INFO)
+        logger = logging.getLogger("OS")
+        logger.setLevel(logging.ERROR)
         handler = logging.StreamHandler()
         formatter = logging.Formatter(
-            "time: %(asctime)s, level: %(levelname)s, module: %(module)s, function: %(funcName)s, detail: {%(message)s}"
+            "time: %(asctime)s, level: %(levelname)s, module: %(module)s, function: %(funcName)s, extras: {%(message)s}"
         )
         handler.setFormatter(formatter)
-        handler.addFilter(SensitiveDataFilter())
-        self.logger.addHandler(handler)
+        logger.addHandler(handler)
+        return logger
 
     def __str__(self) -> str:
         return (

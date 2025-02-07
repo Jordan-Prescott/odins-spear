@@ -2,8 +2,8 @@ from .base_endpoint import BaseEndpoint
 
 
 class CallForwardingNotReachable(BaseEndpoint):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     # GET
 
@@ -42,6 +42,7 @@ class CallForwardingNotReachable(BaseEndpoint):
         params = {"serviceProviderId": service_provider_id, "groupId": group_id}
 
         return self._requester.get(endpoint, params=params)
+
 
 # POST
 

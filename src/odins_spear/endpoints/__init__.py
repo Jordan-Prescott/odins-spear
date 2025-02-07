@@ -57,3 +57,15 @@ __all__ = [
     "TrunkGroups",
     "Users",
 ]
+
+
+# import importlib
+# import pkgutil
+
+# # Get the package name dynamically
+# package_name = __name__
+
+# # Iterate over all modules in the `endpoints` directory
+# for _, module_name, _ in pkgutil.iter_modules(__path__):
+#     if module_name != "base_endpoint":  # Exclude base_endpoint.py
+#         importlib.import_module(f"{package_name}.{module_name}")
