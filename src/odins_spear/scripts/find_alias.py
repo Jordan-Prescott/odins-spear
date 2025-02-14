@@ -6,7 +6,9 @@ from ..exceptions import OSAliasNotFound
 
 def locate_alias(alias, aliases: list):
     for a in aliases:
-        if re.search(rf"\b{alias}\b", a):
+        if re.fullmatch(
+            r"^[A-Za-z0-9\-_.!~*()']+$", alias
+        ):  # As per Odin Spec: User alias cannot contain any characters except A-Z, a-z, 0-9, -_.!~*() or single quotes.
             return True
 
 
