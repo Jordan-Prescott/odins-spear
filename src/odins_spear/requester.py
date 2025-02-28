@@ -53,7 +53,7 @@ class Requester:
         """Handles an API request with or without rate limiting."""
 
         self.logger.info(
-            f"message: Initiating API request, method: {method.__name__.upper()}, endpoint={endpoint}"
+            f"message: Initiating API request, method: {method.__name__.upper()}, endpoint: {endpoint}"
         )
 
         if self.rate_limit:

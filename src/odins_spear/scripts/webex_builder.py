@@ -9,7 +9,8 @@ def main(
     webex_feature_pack_name,
     enable_integarated_imp,
 ):
-    print("Start.\n")
+    logger = api.logger
+
     # Update the email & alt user id
     email_alt_userid = {
         "emailAddress": email,
@@ -20,9 +21,11 @@ def main(
         api.users.put_user(
             service_provider_id, group_id, user_id, updates=email_alt_userid
         )
-        print("Updated email and alt user ID.")
+        logger.info("message: updated email and alt user ID.")
     except Exception as e:
-        print(f"\tERROR: Failed to update users email and alt user ID. Detail: {e}")
+        logger.error(
+            f"message: failed to update users email and alt user ID, detail: {e}"
+        )
 
     # Assign feature pack
     try:
@@ -30,10 +33,10 @@ def main(
             api.services.put_user_services(
                 user_id=user_id, service_packs=[webex_feature_pack_name]
             )
-        print(f"Added feature: {webex_feature_pack_name}")
+        logger.info(f"message: added feature {webex_feature_pack_name}")
     except Exception as e:
-        print(
-            f"\tERROR: Failed to add feature - {webex_feature_pack_name}. Detail: {e}"
+        logger.error(
+            f"message: failed to add feature {webex_feature_pack_name}, detail: {e}"
         )
 
     # enable IMP in service settings
@@ -41,9 +44,9 @@ def main(
         enable_IMP = {"Integrated IMP": {"isActive": True}}
         try:
             api.services.put_user_service_settings(user_id=user_id, settings=enable_IMP)
-            print("Enabled integrated IMP.")
+            logger.info("message: enabled integrated IMP")
         except Exception as e:
-            print(f"\tERROR: Failed to enable Integrated IMP. Detail: {e}")
+            logger.info(f"message: failed to enable Integrated IMP, detail: {e}")
 
     # build device
     device_name = f"{user_id.split('@')[0]}_WBX"
@@ -68,9 +71,9 @@ def main(
             device_type=device_type,
             payload=device_payload,
         )
-        print("Built device.")
+        logger.info("message: built device")
     except Exception as e:
-        print(f"\tERROR: Failed to build device. Detail: {e}")
+        logger.error(f"message: failed to build device, detail: {e}")
 
     # Add device to user based on primary flag - JP
     if primary_device:
@@ -91,17 +94,19 @@ def main(
             api.users.put_user(
                 service_provider_id, group_id, user_id, primary_device_configuration
             )
-            print("Added device to user as primary.")
+            logger.info("message: added device to user as primary.")
         except Exception as e:
-            print(f"\tERROR: Failed to add device as primary. Detail: {e}")
+            logger.error(f"message: failed to add device as primary, detail: {e}")
     else:
         try:
             api.shared_call_appearance.post_user_shared_call_appearance_endpoint(
                 user_id, user_id.replace("@", "_WBX@"), device_name
             )
-            print("Added device as shared call appearance.")
+            logger.info("message: added device as shared call appearance.")
         except Exception as e:
-            print(f"\tERROR: Failed to add devie as shared call appearance. Detail {e}")
+            logger.error(
+                f"message: failed to add devie as shared call appearance, detail: {e}"
+            )
 
     # Get webex password
     try:
@@ -109,9 +114,9 @@ def main(
             service_provider_id, group_id
         )["password"]
         api.authentication.put_user_web_authentication_password(user_id, password)
-        print("Set webex password.")
+        logger.info("message: set webex password")
     except Exception as e:
-        print(f"\tERROR: Failed to set webex password. Detail {e}")
+        logger.error(f"message: failed to set webex password. Detail {e}")
 
     # Return formatted data
     webex_user_details = {
@@ -121,5 +126,4 @@ def main(
         "device_type": device_type,
     }
 
-    print("\nEnd.")
     return webex_user_details
