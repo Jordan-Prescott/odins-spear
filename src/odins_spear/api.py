@@ -44,7 +44,7 @@ class API:
         self.authorised = False
         self.token = ""
 
-        self.logger = logger or self._setup_logger()
+        self.logger = logger if logger else self._setup_logger()
         self.logger.info(
             f"message: API initialised, user: {self.username}, base_url: {self.base_url}, rate_limit: {self.rate_limit}"
         )
