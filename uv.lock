@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.12"
 
 [[package]]
@@ -130,8 +131,8 @@ wheels = [
 
 [[package]]
 name = "odins-spear"
-version = "2.0.0"
-source = { virtual = "." }
+version = "2.1.1"
+source = { editable = "." }
 dependencies = [
     { name = "graphviz" },
     { name = "openpyxl" },
