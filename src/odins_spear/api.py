@@ -41,6 +41,7 @@ class API:
 
         self.administrators = Administrators()
         self.alternate_numbers = AlternateNumbers()
+        self.announcements = Announcements()
         self.authentication = Authentication()
         self.auto_attendants = AutoAttendants()
         self.call_centers = CallCenters()
