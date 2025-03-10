@@ -199,7 +199,7 @@ class API:
         logger.setLevel(logging.ERROR)
         handler = logging.StreamHandler()
         formatter = logging.Formatter(
-            "time: %(asctime)s, level: %(levelname)s, module: %(module)s, function: %(funcName)s, extras: {%(message)s}"
+            "timestamp: %(asctime)s, level: %(levelname)s, module: %(module)s, function: %(funcName)s, message: %(message)s"
         )
         handler.setFormatter(formatter)
         logger.addHandler(handler)

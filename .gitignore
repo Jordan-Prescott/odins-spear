@@ -165,3 +165,6 @@ os.log
 *.DS_Store
 os_reports/
 call_flow_data-temp/
+
+# temp
+ESLogger.py

@@ -80,7 +80,7 @@ class Requester:
         """Handles an API request with rate limiting."""
 
         self.logger.warning(
-            f"message: Rate limit active. Request may be delayed, method: {method.__name__.upper()}, endpoint={endpoint}"
+            f"message: Rate limit active. Request may be delayed, method: {method.__name__.upper()}, endpoint: {endpoint}"
         )
 
         request_payload = json.dumps(data) if data is not None else None
