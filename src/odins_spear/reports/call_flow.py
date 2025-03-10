@@ -208,12 +208,19 @@ def main(
                 if call_center.forced_forwarding_enabled
                 else None
             )
+            logger.info(
+                f"message: fetched call center {cc['serviceUserId']} forced forwarding details"
+            )
         except Exception:
+            logger.error(
+                f"message: call center {cc['serviceUserId']} has no forced forwarding action"
+            )
             call_center.forced_forwarding_enabled = False
             call_center.forced_forwarding_forward_to_phone_number = None
 
         data_store.call_centers.append(call_center)
 
+    logger.info("message: fetching hunt groups")
     hunt_groups = api.hunt_groups.get_group_hunt_groups(service_provider_id, group_id)
     for hg in tqdm(hunt_groups, desc="Fetching all Hunt Groups."):
         hunt_group = bre.HuntGroup.from_dict(
@@ -226,16 +233,17 @@ def main(
         number, number_type.lower(), getattr(data_store, broadworks_entity_type + "s")
     )
     call_flow_start_node._start_node = True
+    logger.info("message: call flow start node found")
 
     # Nodes used in the graph
-    print("Gathering nodes in flow.")
+    logger.info("message: parsing nodes for call flow")
     bre_nodes = call_flow_module(call_flow_start_node, data_store)
 
-    print("Generating report.")
+    logger.info("message: generating report")
     # build, generate, save graph
     graph = GraphvizModule("./os_reports/")
     graph.generate_call_flow_graph(bre_nodes, number)
-    print("Saving report.")
     graph._save_graph(f"Calls To {number}")
-    print("\nEnd.")
+    logger.info("message: report saved")
+
     return True
