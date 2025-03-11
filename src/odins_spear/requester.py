@@ -1,8 +1,11 @@
 import requests
 import json
 from logging import Logger
+
 from ratelimit import limits, sleep_and_retry
+
 from .exceptions import OSApiResponseError
+from .utils.formatters import sanitise_data
 
 
 class Requester:
@@ -53,7 +56,7 @@ class Requester:
         """Handles an API request with or without rate limiting."""
 
         self.logger.info(
-            f"message: Initiating API request, method: {method.__name__.upper()}, endpoint: {endpoint}"
+            f"Initiating API request, method: {method.__name__.upper()}, endpoint: {endpoint}"
         )
 
         if self.rate_limit:
@@ -62,7 +65,8 @@ class Requester:
         # Logging request details
         request_payload = json.dumps(data) if data is not None else None
         self.logger.debug(
-            f"message: Sending request, method: {method.__name__.upper()}, endpoint: {self.base_url + endpoint}, params: {params}, data: {request_payload}"
+            f"Sending request, method: {method.__name__.upper()},"
+            f"endpoint: {self.base_url + endpoint}, params: {params}, data: {sanitise_data(data) if data else 'None'}"
         )
 
         response = method(
@@ -80,12 +84,13 @@ class Requester:
         """Handles an API request with rate limiting."""
 
         self.logger.warning(
-            f"message: Rate limit active. Request may be delayed, method: {method.__name__.upper()}, endpoint: {endpoint}"
+            f"Rate limit active. Request may be delayed, method: {method.__name__.upper()}, endpoint: {endpoint}"
         )
 
         request_payload = json.dumps(data) if data is not None else None
         self.logger.debug(
-            f"message: Sending rate-limited request, method: {method.__name__.upper()}, endpoint: {self.base_url + endpoint}, params: {params}, data: {request_payload}"
+            f"Sending rate-limited request, method: {method.__name__.upper()},"
+            f"endpoint: {self.base_url + endpoint}, params: {params}, data: {sanitise_data(data) if data else 'None'}"
         )
 
         response = method(
@@ -103,14 +108,15 @@ class Requester:
         # Log response status
         if response.status_code >= 200 and response.status_code < 300:
             self.logger.info(
-                f"message: API Call Success, method: {method_name.upper()}, endpoint: {endpoint}, status_code: {response.status_code}"
+                f"API Call Success, method: {method_name.upper()}, endpoint: {endpoint}, status_code: {response.status_code}"
             )
-            self.logger.debug(f"response_data: {response.json()}")
+            self.logger.debug(f"response_data: {sanitise_data(response.json())}")
+
             return response.json()
 
         # Log API errors
         else:
             self.logger.error(
-                f"message: API Error, method: {method_name.upper()}, endpoint: {endpoint}, status_code: {response.status_code}, response_text: {response.text}"
+                f"API Error, method: {method_name.upper()}, endpoint: {endpoint}, status_code: {response.status_code}, response_text: {response.text}"
             )
             raise OSApiResponseError(response)
