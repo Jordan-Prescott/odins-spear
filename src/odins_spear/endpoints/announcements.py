@@ -1,4 +1,5 @@
 from .base_endpoint import BaseEndpoint
+from ..exceptions import OSFileNotFound
 import base64
 
 
@@ -19,9 +20,9 @@ class Announcements(BaseEndpoint):
 
         endpoint = "/users/announcements"
 
-        data = {"userId": user_id}
+        params = {"userId": user_id}
 
-        return self._requester.get(endpoint, data=data)
+        return self._requester.get(endpoint, params=params)
 
     def get_group_announcements(self, group_id: str, service_provider_id: str):
         """Retrieves announcements from the given Group, including Anouncement Type and file size limits.
@@ -36,9 +37,9 @@ class Announcements(BaseEndpoint):
 
         endpoint = "/groups/announcements"
 
-        data = {"groupId": group_id, "serviceProviderId": service_provider_id}
+        params = {"groupId": group_id, "serviceProviderId": service_provider_id}
 
-        return self._requester.get(endpoint, data=data)
+        return self._requester.get(endpoint, params=params)
 
     # POST
 
@@ -65,12 +66,17 @@ class Announcements(BaseEndpoint):
 
         endpoint = "/users/announcements"
 
-        with open(file_path, "rb") as audio_file:  # Converts input audio file into b64
-            audio_bytes = audio_file.read()
-            b64_audio_bytes = base64.b64encode(audio_bytes)
-            content = b64_audio_bytes.decode("ascii")
+        try:
+            with open(
+                file_path, "rb"
+            ) as audio_file:  # Converts input audio file into b64
+                audio_bytes = audio_file.read()
+                b64_audio_bytes = base64.b64encode(audio_bytes)
+                content = b64_audio_bytes.decode("ascii")
+        except FileNotFoundError:
+            raise OSFileNotFound
 
-        data = {
+        payload = {
             "userId": user_id,
             "name": name,
             "mediaType": media_type,
@@ -78,7 +84,7 @@ class Announcements(BaseEndpoint):
             "content": content,
         }
 
-        return self._requester.post(endpoint, data=data)
+        return self._requester.post(endpoint, data=payload)
 
     def post_group_announcement(
         self,
@@ -105,12 +111,17 @@ class Announcements(BaseEndpoint):
 
         endpoint = "/groups/announcements"
 
-        with open(file_path, "rb") as audio_file:  # Converts input audio file into b64
-            audio_bytes = audio_file.read()
-            b64_audio_bytes = base64.b64encode(audio_bytes)
-            content = b64_audio_bytes.decode("ascii")
+        try:
+            with open(
+                file_path, "rb"
+            ) as audio_file:  # Converts input audio file into b64
+                audio_bytes = audio_file.read()
+                b64_audio_bytes = base64.b64encode(audio_bytes)
+                content = b64_audio_bytes.decode("ascii")
+        except FileNotFoundError:
+            raise OSFileNotFound
 
-        data = {
+        payload = {
             "groupId": group_id,
             "serviceProviderId": service_provider_id,
             "name": name,
@@ -119,7 +130,7 @@ class Announcements(BaseEndpoint):
             "content": content,
         }
 
-        return self._requester.post(endpoint, data=data)
+        return self._requester.post(endpoint, data=payload)
 
     # PUT
 
@@ -141,14 +152,14 @@ class Announcements(BaseEndpoint):
 
         endpoint = "/users/announcements"
 
-        data = {
+        updates = {
             "userId": user_id,
             "name": name,
             "mediaType": media_type,
             "newName": new_name,
         }
 
-        return self._requester.put(endpoint, data=data)
+        return self._requester.put(endpoint, data=updates)
 
     def put_group_announcement(
         self,
@@ -174,7 +185,7 @@ class Announcements(BaseEndpoint):
 
         endpoint = "/groups/announcements"
 
-        data = {
+        updates = {
             "groupId": group_id,
             "serviceProviderId": service_provider_id,
             "name": name,
@@ -182,7 +193,7 @@ class Announcements(BaseEndpoint):
             "newName": new_name,
         }
 
-        return self._requester.put(endpoint, data=data)
+        return self._requester.put(endpoint, data=updates)
 
     # DELETE
 
