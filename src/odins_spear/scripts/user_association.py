@@ -28,7 +28,7 @@ def main(api, service_provider_id: str, group_id: str, user_id: str):
     }
 
     # fetch user, returns error if not found
-    logger.info(f"message: fetching user {user_id}")
+    logger.info(f"Fetching user {user_id}")
     user = api.reports.get_user_report(user_id)
 
     USER_DATA["firstName"] = user["firstName"]
@@ -39,7 +39,7 @@ def main(api, service_provider_id: str, group_id: str, user_id: str):
     USER_DATA["featurePacks"] = user["servicePacks"]
     USER_DATA["aliases"] = user["aliases"]
 
-    logger.info("message: fetching users pick up group")
+    logger.info("Fetching users pick up group")
     pick_up_group = api.call_pickup.get_call_pickup_group_user(
         service_provider_id, group_id, user_id
     )
@@ -47,10 +47,10 @@ def main(api, service_provider_id: str, group_id: str, user_id: str):
     try:
         USER_DATA["pickUpGroup"] = pick_up_group[0]["name"]
     except IndexError:
-        logger.error("message: user has no pickup group")
+        logger.error("User has no pickup group")
         USER_DATA["pickUpGroup"] = None
 
-    logger.info("message: fetching users hunt groups")
+    logger.info("Fetching hunt groups")
     hunt_groups = api.hunt_groups.get_group_hunt_group_user(
         service_provider_id, group_id, user_id
     )
@@ -59,12 +59,12 @@ def main(api, service_provider_id: str, group_id: str, user_id: str):
 
     # if the user does not have a license for CC this call errors
     try:
-        logger.info("message: fetching users call centers")
+        logger.info("Fetching users call centers")
         call_centers = api.call_centers.get_user_call_center(user_id)
         for cc in call_centers["callCenters"]:
             USER_DATA["callCenters"].append(cc["serviceUserId"])
     except Exception:
-        logger.error("message: user is not assigned to any call centers")
+        logger.error("user is not assigned to any call centers")
         USER_DATA["callCenters"] = None
 
     return USER_DATA

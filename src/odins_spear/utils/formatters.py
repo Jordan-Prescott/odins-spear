@@ -59,7 +59,7 @@ def sanitise_data(data: Dict):
     """Cleans data of any sensitive information that should not be leaked.
 
     Args:
-        data (Dict): [description]
+        data (Dict): Request or response dict from API call
     """
 
     # data that hits this should only be of type dict

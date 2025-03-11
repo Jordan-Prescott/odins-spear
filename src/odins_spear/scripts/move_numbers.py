@@ -11,7 +11,7 @@ def main(
 
     logger = api.logger
 
-    logger.info(f"message: removing numbers from {current_group_id}.")
+    logger.info(f"Removing numbers from {current_group_id}")
     # delete number from group
     api.dns.delete_group_dns(
         current_service_provider_id,
@@ -22,7 +22,7 @@ def main(
 
     # check if sp/ent are the same if not number needs to be removed to sys level
     if not current_service_provider_id == target_service_provider_id:
-        logger.info(f"message: removing numbers from {current_service_provider_id}.")
+        logger.info(f"Removing numbers from {current_service_provider_id}")
         # remove from sp/ent
         api.dns.delete_service_provider_dns(
             current_service_provider_id,
@@ -31,7 +31,7 @@ def main(
         )
 
         logger.info(
-            f"message: adding number to SP/ Ent: {target_service_provider_id} Group: {target_group_id}."
+            f"Adding number to SP/ Ent: {target_service_provider_id} Group: {target_group_id}"
         )
         # assign to new group
         api.dns.post_group_dns_assign_bulk(
@@ -43,7 +43,7 @@ def main(
     else:
         # only when group is in the same sp/ent
 
-        logger.info(f"message: adding number to {target_group_id}.")
+        logger.info(f"Adding number to {target_group_id}")
         # assign to new group
         api.dns.post_group_dns(
             target_service_provider_id,

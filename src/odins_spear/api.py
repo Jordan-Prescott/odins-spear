@@ -46,7 +46,7 @@ class API:
 
         self.logger = logger if logger else self._setup_logger()
         self.logger.info(
-            f"message: API initialised, user: {self.username}, base_url: {self.base_url}, rate_limit: {self.rate_limit}"
+            f"API initialised, user: {self.username}, base_url: {self.base_url}, rate_limit: {self.rate_limit}"
         )
 
         self._requester = Requester.get_instance(
@@ -161,22 +161,22 @@ class API:
 
         if base_url:
             self.logger.info(
-                f"message: API base_url updated, old: {self.base_url}, new: {base_url}"
+                f"API base_url updated, old: {self.base_url}, new: {base_url}"
             )
             self.base_url = base_url
             self._requester.base_url = base_url
         if username:
             self.logger.info(
-                f"message: API username updated, old: {self.username}, new: {username}"
+                f"API username updated, old: {self.username}, new: {username}"
             )
             self.username = username
             self._requester.logger = self.logger
         if password:
-            self.logger.info("message: API password updated")
+            self.logger.info("API password updated")
             self._password = password
         if rate_limit:
             self.logger.info(
-                f"message: API rate_limit updated, old: {self.rate_limit}, new: {rate_limit}"
+                f"API rate_limit updated, old: {self.rate_limit}, new: {rate_limit}"
             )
             self.rate_limit = rate_limit
             self._requester.rate_limit = rate_limit
@@ -192,14 +192,14 @@ class API:
         self.token = session_response["token"]
         self._requester.headers["Authorization"] = f"Bearer {self.token}"
         self.authorised = True
-        self.logger.info("message: API session updated with new token")
+        self.logger.info("API session updated with new token")
 
     def _setup_logger(self):
         logger = logging.getLogger("OS")
         logger.setLevel(logging.ERROR)
         handler = logging.StreamHandler()
         formatter = logging.Formatter(
-            "timestamp: %(asctime)s, level: %(levelname)s, module: %(module)s, function: %(funcName)s, message: %(message)s"
+            "timestamp: %(asctime)s, level: %(levelname)s, module: %(module)s, function: %(funcName)s,  message: %(message)s"
         )
         handler.setFormatter(formatter)
         logger.addHandler(handler)

@@ -13,14 +13,14 @@ def main(api, service_provider_id: str, group_id: str):
     logger = api.logger
 
     # all Services
-    logger.info("message: fetching all group services")
+    logger.info("Fetching all group services")
     service_report = api.services.get_group_services(group_id, service_provider_id)
 
     assigned_user_services = []
     assigned_group_services = []
     assigned_service_pack_services = []
 
-    logger.info("message: analysing user services")
+    logger.info("Analysing user services")
     for us in service_report["userServices"]:
         if us["usage"] > 0:
             del us["authorized"]
@@ -34,7 +34,7 @@ def main(api, service_provider_id: str, group_id: str):
             del us["tags"]
             del us["alias"]
 
-            logger.info(f"message: fetching users assigned {us}")
+            logger.info(f"Fetching users assigned {us}")
             users = api.services.get_group_services_user_assigned(
                 group_id, service_provider_id, us["serviceName"], "serviceName"
             )
@@ -43,7 +43,7 @@ def main(api, service_provider_id: str, group_id: str):
 
             assigned_user_services.append(us)
 
-    logger.info("message: analysing group services")
+    logger.info("Analysing group services")
     for gs in service_report["groupServices"]:
         if gs["usage"] > 0:
             del gs["authorized"]
@@ -56,7 +56,7 @@ def main(api, service_provider_id: str, group_id: str):
             del gs["alias"]
             assigned_group_services.append(gs)
 
-    logger.info("message: analysing service packs")
+    logger.info("Analysing service packs")
     for sps in service_report["servicePackServices"]:
         if sps["usage"] > 0:
             del sps["authorized"]
@@ -67,7 +67,7 @@ def main(api, service_provider_id: str, group_id: str):
             del sps["quantity"]
             del sps["alias"]
 
-            logger.info(f"message: fetching users assigned {us}")
+            logger.info(f"Fetching users assigned {us}")
             users = api.services.get_group_services_user_assigned(
                 group_id, service_provider_id, sps["servicePackName"], "servicePackName"
             )
@@ -77,14 +77,14 @@ def main(api, service_provider_id: str, group_id: str):
             assigned_service_pack_services.append(sps)
 
     # Group DNs
-    logger.info("message: fetching group dns")
+    logger.info("Fetching group dns")
     dn_report = api.dns.get_group_dns(service_provider_id, group_id)
     all_dns = {
         "assigned": {"activated": [], "deactivated": []},
         "unassigned": {"activated": [], "deactivated": []},
     }
 
-    logger.info("message: analysing group dns")
+    logger.info("Analysing group dns")
     for dn in dn_report["dns"]:
         if dn["assigned"] and dn["activated"]:
             all_dns["assigned"]["activated"] += dn["list"]
@@ -118,7 +118,7 @@ def main(api, service_provider_id: str, group_id: str):
     group_detail = api.groups.get_group(service_provider_id, group_id)
 
     # Trunking detail
-    logger.info("message: fetching trunking capacity")
+    logger.info("Fetching trunking capacity")
     try:
         trunk_detail = api.trunk_groups.get_group_trunk_groups_call_capacity(
             service_provider_id, group_id

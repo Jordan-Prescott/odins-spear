@@ -47,14 +47,14 @@ class Scripter:
     def _run_script(self, script_name: str, *args, **kwargs) -> Dict[str, Any]:
         """Dynamically runs the specified script."""
         self.api.logger.debug(
-            f"os_user: {self.api.username}, script_name: {script_name}, args: {[args]}, kwargs: {kwargs}"
+            f"Script {script_name} executed, args: {[args]}, kwargs: {kwargs}"
         )
         try:
             script_function = getattr(scripts, script_name)
-            self.api.logger.info(f"os_user: {self.api.username}, script: {script_name}")
+            self.api.logger.info(f"Script {script_name} executed")
         except AttributeError:
             self.api.logger.error(
-                f"os_user: {self.api.username}, error: Script '{script_name}' not found."
+                f"Script failed to execute, error: Script '{script_name}' not found."
             )
             raise AttributeError(
                 f"Script '{script_name}' not found in 'scripts' module."

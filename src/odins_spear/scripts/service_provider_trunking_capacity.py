@@ -12,7 +12,7 @@ def main(api: object, service_provider_id: str) -> dict:
 
     return_data = {}
 
-    logger.info(f"message: fetching {service_provider_id} call capacity.")
+    logger.info(f"Fetching {service_provider_id} call capacity")
 
     # OSServiceNotAssigned is returned if the Trunk Group service is not assigend to SP/ ENT
     try:
@@ -22,7 +22,7 @@ def main(api: object, service_provider_id: str) -> dict:
             )
         )
     except Exception:
-        logger.error(f"message: {OSServiceNotAssigned}")
+        logger.error(f"{OSServiceNotAssigned}")
         raise OSServiceNotAssigned
 
     return_data["serviceProviderId"] = service_provider_capacity["serviceProviderId"]
@@ -34,18 +34,18 @@ def main(api: object, service_provider_id: str) -> dict:
     return_data["groupsBurstingCallCapacityTotal"] = 0
     return_data["groups"] = []
 
-    logger.info(f"message: fetching complete list of groups in {service_provider_id}.")
+    logger.info(f"Fetching complete list of groups in {service_provider_id}")
     groups_in_service_provider = api.groups.get_groups(service_provider_id)
 
     # getting groups and group call capacities
-    logger.info("message: fetching groups trunking capacities")
+    logger.info("Fetching groups trunking capacities")
     for group in groups_in_service_provider:
         formatted_group = {}
         formatted_group["groupId"] = group["groupId"]
         formatted_group["groupName"] = group["groupName"]
 
         try:
-            logger.info(f"message: fetching group {group} trunking capacity")
+            logger.info(f"Fetching group {group} trunking capacity")
             group_capacity = api.trunk_groups.get_group_trunk_groups_call_capacity(
                 service_provider_id, group["groupId"]
             )
@@ -67,7 +67,7 @@ def main(api: object, service_provider_id: str) -> dict:
 
         # group has no trunks and therefore fails
         except Exception:
-            logger.error(f"message: group {group} has no trunks")
+            logger.error(f"Group {group} has no trunks")
             formatted_group["maxActiveCalls"] = 0
             formatted_group["burstingMaxAvailableActiveCalls"] = 0
             formatted_group["burstingMaxActiveCalls"] = 0
@@ -80,7 +80,7 @@ def main(api: object, service_provider_id: str) -> dict:
         return_data["groups"].append(formatted_group)
 
     # getting trunk group capacities
-    logger.info("message: fetching trunk groups call capacities")
+    logger.info("Fetching trunk groups call capacities")
     for group in return_data["groups"]:
         group["trunkGroupsCallCapacityTotal"] = 0
         group["trunkGroupsBurstingCallCapacityTotal"] = 0
@@ -120,7 +120,7 @@ def main(api: object, service_provider_id: str) -> dict:
 
         # if no trunks exist in group api call fails
         except Exception:
-            logger.error(f"message: no trunk groups in group {group} found")
+            logger.error(f"No trunk groups in group {group} found")
             group["trunkGroupsCallCapacityTotal"] = 0
             group["trunkGroupsBurstingCallCapacityTotal"] = 0
             group["callCapacityDifference"] = 0

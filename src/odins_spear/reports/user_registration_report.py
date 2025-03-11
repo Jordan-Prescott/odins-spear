@@ -43,14 +43,15 @@ def main(api, service_provider_id: str, group_id: str):
 
     logger = api.logger
 
-    logger.info("message: calling scripter.user_registration to pull details")
+    logger.info("Calling scripter.user_registration to fetch data")
     scripter = Scripter.get_instance(api)
     data = scripter.user_registration(
         service_provider_id=service_provider_id, group_id=group_id
     )
+    logger.info("Scripter successfully fetched data")
 
-    logger.info("message: writing report")
+    logger.info("Writing report")
     export_to_xlsx(data, group_id)
-    logger.info("message: saved report")
+    logger.info(f"Report 'Registration_report_for_{group_id}' saved /os_reports")
 
     return True

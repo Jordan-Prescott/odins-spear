@@ -37,15 +37,15 @@ def main(
     # List of report_entities.call_records_statistics
     group_users_statistics = []
 
-    logger.info(f"message: fetching list of users in {group_id}.")
+    logger.info(f"Fetching list of users in {group_id}")
 
     # Fetches complete list of users in group
-    logger.info("message: fetching groups users")
+    logger.info("fetching groups users")
     users = api.users.get_users(service_provider_id, group_id)
     failed_users = []
 
     # Pulls stats for each user, instantiates call_records_statistics, and append to group_users_statistics
-    logger.info("message: fetching users call statistics")
+    logger.info("Fetching users call statistics")
     for user in users:
         try:
             user_statistics = api.call_records.get_users_stats(
@@ -55,7 +55,7 @@ def main(
             user_services = api.services.get_user_services(user_id=user["userId"])
 
         except Exception:
-            logger.error(f"message: failed to fetch {user} statistics - attempt 1/2")
+            logger.error(f"Failed to fetch {user} statistics - attempt 1/2")
             # attempt 2 in case of connection time out
             try:
                 user_statistics = api.call_records.get_users_stats(
@@ -70,7 +70,7 @@ def main(
                 user_services = api.services.get_user_services(user_id=user["userId"])
 
             except Exception:
-                logger.error("message: failed to fetch {user} statistics - attempt 2/2")
+                logger.error(f"Failed to fetch {user} statistics - attempt 2/2")
                 failed_users.append(user)
                 continue
 
@@ -108,14 +108,14 @@ def main(
         output_directory,
         f"{group_id} User Call Statistics - {start_date} to {end_date}.csv",
     )
-    logger.info(f"message: filename {file_name}")
+    logger.debug(f"Filename {file_name}")
 
     # Ensure the directory exists
     os.makedirs(output_directory, exist_ok=True)
-    logger.info("message: directory exists")
+    logger.debug("Directory exists")
 
     # Write statistics to csv
-    logger.info("message: writing report")
+    logger.info("Writing report")
     with open(file_name, mode="w", newline="") as file:
         fieldnames = [
             field.name
@@ -139,6 +139,6 @@ def main(
     copy_single_file_to_target_directory(
         "./odins_spear/assets/images/", "./os_reports/", "made_with_os.png"
     )
-    logger.info("copied files to output directory")
+    logger.info(f"Report {file_name} saved to /os_reports")
 
     return True

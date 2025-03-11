@@ -36,9 +36,9 @@ def main(api, service_provider_id: str, group_id: str, alias: str):
     for cc in call_centers:
         broadwork_entities_user_ids.append(["CC", cc["serviceUserId"]])
 
-    logger.info("message: fetching aa, hg, and cc")
+    logger.info("Fetching aa, hg, and cc")
     for broadwork_entity in broadwork_entities_user_ids:
-        logger.info(f"message: fetching '{broadwork_entity[1]}'")
+        logger.info(f"Fetching '{broadwork_entity[1]}'")
         formatted = {
             "type": broadwork_entity[0],
             "service_user_id": broadwork_entity[1],
@@ -66,14 +66,14 @@ def main(api, service_provider_id: str, group_id: str, alias: str):
         except Exception:
             # add a retry count and add this entity to retry queue
             logger.error(
-                f"message: failed to fetch bre '{broadwork_entity[1]}' added to retry queue."
+                f"Failed to fetch bre '{broadwork_entity[1]}' added to retry queue"
             )
             broadwork_entity.append(0)
             RETRY_QUEUE.append(broadwork_entity)
 
     # objects failed in first instance
     if RETRY_QUEUE:
-        logger.info("message: going through retry queue")
+        logger.info("Going through retry queue")
     while RETRY_QUEUE:
         entity_type, service_user_id, retry_count = RETRY_QUEUE.pop(
             0
@@ -103,23 +103,23 @@ def main(api, service_provider_id: str, group_id: str, alias: str):
                 )  # Increment retry count and re-add to the queue
             else:
                 logger.error(
-                    f"message: failed to process {entity_type} - {service_user_id} after {MAX_RETRIES} retries. Skipping."
+                    f"Failed to process {entity_type} - {service_user_id} after {MAX_RETRIES} retries - skipping"
                 )
 
-    logger.info("message: searching through aa, hg, and cc")
+    logger.info("Searching through aa, hg, and cc")
     for broadwork_entity in OBJECT_WITH_ALIAS:
-        logger.info(f"message: checking bre '{broadwork_entity['name']}'")
+        logger.info(f"Checking bre '{broadwork_entity['name']}'")
         if locate_alias(alias, broadwork_entity["aliases"]):
             return broadwork_entity
-    logger.info(f"message: alias '{alias}' not found in aa, hg, cc")
+    logger.info(f"Alias '{alias}' not found in aa, hg, cc")
 
-    logger.info("message: fetching users")
+    logger.info("Fetching users")
     users = api.users.get_users(service_provider_id, group_id, extended=True)
-    logger.info("message: users successfully fetched")
+    logger.info("Users successfully fetched")
 
-    logger.info("message: searching users")
+    logger.info("Searching users")
     for user in users:
-        logger.info(f"message: checking {user['userId']}")
+        logger.info(f"Checking {user['userId']}")
         if locate_alias(alias, user["aliases"]):
             return {"type": "user", "user_id": user["userId"], "alias": alias}
 
