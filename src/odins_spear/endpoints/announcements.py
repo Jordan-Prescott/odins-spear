@@ -212,13 +212,13 @@ class Announcements(BaseEndpoint):
 
         endpoint = "/users/announcements"
 
-        data = {
+        params = {
             "userId": user_id,
             "name": name,
             "mediaType": media_type,
         }
 
-        return self._requester.delete(endpoint, data=data)
+        return self._requester.delete(endpoint, params=params)
 
     def delete_group_announcement(
         self,
@@ -241,11 +241,11 @@ class Announcements(BaseEndpoint):
 
         endpoint = "/groups/announcements"
 
-        data = {
+        params = {
             "groupId": group_id,
             "serviceProviderId": service_provider_id,
             "name": name,
             "mediaType": media_type,
         }
 
-        return self._requester.delete(endpoint, data=data)
+        return self._requester.delete(endpoint, params=params)
