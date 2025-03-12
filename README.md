@@ -91,4 +91,3 @@ If you encounter any issues or have questions, feel free to open an issue on Git
 
 Special thanks to the developers at Rev.io for creating the Odin API and to the engineers who provided invaluable feedback and feature suggestions.
 
-![Odin's Spear Logo](https://github.com/Jordan-Prescott/odins_spear/blob/main/assets/images/slogan.svg)
