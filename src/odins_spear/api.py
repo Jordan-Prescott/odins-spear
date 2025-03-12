@@ -51,35 +51,35 @@ class API:
         )
 
         # endpoints
-        self.administrators = Administrators()
-        self.alternate_numbers = AlternateNumbers()
-        self.authentication = Authentication()
-        self.auto_attendants = AutoAttendants()
-        self.call_centers = CallCenters()
-        self.call_forwarding_always = CallForwardingAlways()
-        self.call_forwarding_busy = CallForwardingBusy()
-        self.call_forwarding_no_answer = CallForwardingNoAnswer()
-        self.call_forwarding_not_reachable = CallForwardingNotReachable()
-        self.call_forwarding_selective = CallForwardingSelective()
-        self.call_pickup = CallPickup()
-        self.call_processing_policies = CallProcessingPolicies()
-        self.call_records = CallRecords()
-        self.devices = Devices()
-        self.dns = DNs()
-        self.groups = Groups()
-        self.emergency_zones = EmergencyZones()
-        self.do_not_disturb = DoNotDisturb()
-        self.hunt_groups = HuntGroups()
-        self.service_providers = ServiceProviders()
-        self.services = Services()
-        self.session = Session()
-        self.shared_call_appearance = SharedCallAppearance()
-        self.schedules = Schedules()
-        self.reports = Reports()
-        self.regsitration = Registration()
-        self.password_generate = PasswordGenerate()
-        self.trunk_groups = TrunkGroups()
-        self.users = Users()
+        self.administrators = Administrators()  # noqa: F405
+        self.alternate_numbers = AlternateNumbers()  # noqa: F405
+        self.authentication = Authentication()  # noqa: F405
+        self.auto_attendants = AutoAttendants()  # noqa: F405
+        self.call_centers = CallCenters()  # noqa: F405
+        self.call_forwarding_always = CallForwardingAlways()  # noqa: F405
+        self.call_forwarding_busy = CallForwardingBusy()  # noqa: F405
+        self.call_forwarding_no_answer = CallForwardingNoAnswer()  # noqa: F405
+        self.call_forwarding_not_reachable = CallForwardingNotReachable()  # noqa: F405
+        self.call_forwarding_selective = CallForwardingSelective()  # noqa: F405
+        self.call_pickup = CallPickup()  # noqa: F405
+        self.call_processing_policies = CallProcessingPolicies()  # noqa: F405
+        self.call_records = CallRecords()  # noqa: F405
+        self.devices = Devices()  # noqa: F405
+        self.dns = DNs()  # noqa: F405
+        self.groups = Groups()  # noqa: F405
+        self.emergency_zones = EmergencyZones()  # noqa: F405
+        self.do_not_disturb = DoNotDisturb()  # noqa: F405
+        self.hunt_groups = HuntGroups()  # noqa: F405
+        self.service_providers = ServiceProviders()  # noqa: F405
+        self.services = Services()  # noqa: F405
+        self.session = Session()  # noqa: F405
+        self.shared_call_appearance = SharedCallAppearance()  # noqa: F405
+        self.schedules = Schedules()  # noqa: F405
+        self.reports = Reports()  # noqa: F405
+        self.regsitration = Registration()  # noqa: F405
+        self.password_generate = PasswordGenerate()  # noqa: F405
+        self.trunk_groups = TrunkGroups()  # noqa: F405
+        self.users = Users()  # noqa: F405
 
         # authenticate newly instantiated object
         self._authenticate()

@@ -29,7 +29,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
         if isinstance(entity, bre.User):
             # Checks to see if the number is external first and creates external number object for parsing later
             if (
-                data_store.number_mapping.get(entity.call_forwarding_always) == None
+                data_store.number_mapping.get(entity.call_forwarding_always) is None
                 and len(str(entity.call_forwarding_always)) >= 3
                 and str(entity.call_forwarding_always)[2].isdigit()
             ):
@@ -49,7 +49,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
                     )
 
             if (
-                data_store.number_mapping.get(entity.call_forwarding_busy) == None
+                data_store.number_mapping.get(entity.call_forwarding_busy) is None
                 and len(str(entity.call_forwarding_busy)) >= 3
                 and str(entity.call_forwarding_busy)[2].isdigit()
             ):
@@ -69,7 +69,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
                     )
 
             if (
-                data_store.number_mapping.get(entity.call_forwarding_no_answer) == None
+                data_store.number_mapping.get(entity.call_forwarding_no_answer) is None
                 and len(str(entity.call_forwarding_no_answer)) >= 3
                 and str(entity.call_forwarding_no_answer)[2].isdigit()
             ):
@@ -90,7 +90,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
 
             if (
                 data_store.number_mapping.get(entity.call_forwarding_not_reachable)
-                == None
+                is None
                 and len(str(entity.call_forwarding_not_reachable)) >= 3
                 and str(entity.call_forwarding_not_reachable)[2].isdigit()
             ):
@@ -116,7 +116,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
                     data_store.number_mapping.get(
                         str(entity.bounced_calls_transfer_to_phone_number)
                     )
-                    == None
+                    is None
                     and len(str(entity.bounced_calls_transfer_to_phone_number)) >= 3
                     and str(entity.bounced_calls_transfer_to_phone_number)[2].isdigit()
                 ):
@@ -144,7 +144,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
                     data_store.number_mapping.get(
                         str(entity.overflow_calls_transfer_to_phone_number)
                     )
-                    == None
+                    is None
                     and len(str(entity.overflow_calls_transfer_to_phone_number)) >= 3
                     and str(entity.overflow_calls_transfer_to_phone_number)[2].isdigit()
                 ):
@@ -173,7 +173,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
                     data_store.number_mapping.get(
                         str(entity.stranded_calls_transfer_to_phone_number)
                     )
-                    == None
+                    is None
                     and len(str(entity.stranded_calls_transfer_to_phone_number)) >= 3
                     and str(entity.stranded_calls_transfer_to_phone_number)[2].isdigit()
                 ):
@@ -202,7 +202,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
                     data_store.number_mapping.get(
                         str(entity.stranded_call_unavailable_transfer_to_phone_number)
                     )
-                    == None
+                    is None
                     and len(
                         str(entity.stranded_call_unavailable_transfer_to_phone_number)
                     )
@@ -263,7 +263,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
                     data_store.number_mapping.get(
                         str(entity.call_forward_not_reachable_transfer_to_phone_number)
                     )
-                    == None
+                    is None
                     and len(
                         str(entity.call_forward_not_reachable_transfer_to_phone_number)
                     )
@@ -294,7 +294,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
             for key in entity.business_hours_menu.keys:
                 if "Transfer" in key.action:
                     if (
-                        data_store.number_mapping.get(str(key.phone_number)) == None
+                        data_store.number_mapping.get(str(key.phone_number)) is None
                         and len(str(key.phone_number)) >= 3
                         and str(key.phone_number)[2].isdigit()
                     ):
@@ -311,7 +311,7 @@ def _traverse_connecting_entities(entity: object, data_store: object, visited=No
             for key in entity.after_hours_menu.keys:
                 if "Transfer" in key.action:
                     if (
-                        data_store.number_mapping.get(str(key.phone_number)) == None
+                        data_store.number_mapping.get(str(key.phone_number)) is None
                         and len(str(key.phone_number)) >= 3
                         and str(key.phone_number)[2].isdigit()
                     ):

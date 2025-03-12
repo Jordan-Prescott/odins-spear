@@ -2,7 +2,7 @@ import csv
 import os
 
 
-from .report_utils.file_manager import copy_single_file_to_target_directory
+from ..utils.filers import copy_single_file_to_target_directory
 from .report_utils.report_entities import call_records_statistics
 
 

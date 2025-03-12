@@ -1,7 +1,7 @@
 from tqdm import tqdm
 
 from .report_utils.graphviz_module import GraphvizModule
-from .report_utils.helpers import find_entity_with_number_type
+from ..utils.helpers import find_entity_with_number_type
 from .report_utils.parsing import call_flow_module
 
 
