@@ -19,6 +19,7 @@ from .do_not_disturb import DoNotDisturb
 from .hunt_groups import HuntGroups
 from .service_providers import ServiceProviders
 from .services import Services
+from .session import Session
 from .shared_call_appearance import SharedCallAppearance
 from .schedules import Schedules
 from .reports import Reports
@@ -49,6 +50,7 @@ __all__ = [
     "HuntGroups",
     "ServiceProviders",
     "Services",
+    "Session",
     "SharedCallAppearance",
     "Schedules",
     "Reports",

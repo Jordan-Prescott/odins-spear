@@ -1,5 +1,6 @@
 from .requester import Requester
 from .logger import Logger
+
 from .exceptions import (
     OSApiAuthenticationFail,
     OSSessionRefreshFail,
@@ -7,8 +8,6 @@ from .exceptions import (
 )
 
 from .endpoints import *  # noqa: F403
-
-import requests
 
 
 class API:
@@ -32,9 +31,7 @@ class API:
         self.username = username
         self._password = password
         self.rate_limit = rate_limit
-
         self.authorised = False
-        self.token = ""
 
         self.logger = Logger.get_instance(self.username)
         self._requester = Requester(self.base_url, self.rate_limit, self.logger)
@@ -60,6 +57,7 @@ class API:
         self.hunt_groups = HuntGroups()
         self.service_providers = ServiceProviders()
         self.services = Services()
+        self.session = Session()
         self.shared_call_appearance = SharedCallAppearance()
         self.schedules = Schedules()
         self.reports = Reports()
@@ -68,29 +66,11 @@ class API:
         self.trunk_groups = TrunkGroups()
         self.users = Users()
 
-    def authenticate(self) -> bool:
-        """Authenticates session with username and password supplied by user.
-
-        Raises:
-            OSApiAuthenticationFail: Raised if authenticaion fails.
-
-        Returns:
-            Bool: Returns True to indicate authentication was successful.
-        """
-
-        endpoint = "/auth/token"
-
-        payload = {"username": self.username, "password": self._password}
-
-        try:
-            response = self._requester.post(endpoint, data=payload)
-            self._update_requester(response)
-            return True
-        except requests.exceptions.HTTPError:
-            raise OSApiAuthenticationFail()
+        # authenticate newly instantiated object
+        self._authenticate()
 
     def refresh_authorisation(self) -> bool:
-        """Re-authenticates the session with the API. Used if API key is to expire.
+        """Re-authenticates the session with the API. Can used if API key is due to expire.
 
         Raises:
             OSSessionRefreshFail: Raised if authentication fails.
@@ -99,13 +79,11 @@ class API:
             Bool: Returns True to indicate authentication was successful.
         """
 
-        endpoint = "/auth/session"
-
         try:
-            response = self._requester.put(endpoint)
+            response = self.session.put_session()
             self._update_requester(response)
             return True
-        except requests.exceptions.HTTPError:
+        except Exception:
             raise OSSessionRefreshFail()
 
     def get_auth_details(self):
@@ -119,11 +97,9 @@ class API:
             Dict: Current session details.
         """
 
-        endpoint = "/auth/session"
-
         try:
-            return self._requester.get(endpoint)
-        except requests.exceptions.HTTPError:
+            return self.session.get_session()
+        except Exception:
             raise OSFailedToLocateSession()
 
     def update_api(
@@ -155,16 +131,32 @@ class API:
             self.rate_limit = rate_limit
             self._requester.rate_limit = rate_limit
 
-    def _update_requester(self, session_response: requests.models.Response):
+    def _authenticate(self) -> bool:
+        """Authenticates session with username and password supplied by user.
+
+        Raises:
+            OSApiAuthenticationFail: Raised if authenticaion fails.
+
+        Returns:
+            Bool: Returns True to indicate authentication was successful.
+        """
+
+        try:
+            response = self.session.post_session(self.username, self._password)
+            self._update_requester(response)
+            return True
+        except Exception:
+            raise OSApiAuthenticationFail()
+
+    def _update_requester(self, session_response: dict):
         """When authenticating or re-auth update requester with token so it can make
         api calls
 
         Args:
-            session_response (request): Requests mod response.
+            session_response (dict): Resposne from call.
         """
 
-        self.token = session_response["token"]
-        self._requester.headers["Authorization"] = f"Bearer {self.token}"
+        self._requester.headers["Authorization"] = f"Bearer {session_response['token']}"
         self.authorised = True
 
     def __str__(self) -> str:
