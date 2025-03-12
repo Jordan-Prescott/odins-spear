@@ -110,6 +110,9 @@ def main(api, service_provider_id: str, group_id: str, alias: str):
     for broadwork_entity in OBJECT_WITH_ALIAS:
         logger.info(f"Checking bre '{broadwork_entity['name']}'")
         if locate_alias(alias, broadwork_entity["aliases"]):
+            logger.info(
+                f"Alias found, type: user, service_user_id: {broadwork_entity['name']}, alias: {alias}"
+            )
             return broadwork_entity
     logger.info(f"Alias '{alias}' not found in aa, hg, cc")
 
@@ -121,6 +124,9 @@ def main(api, service_provider_id: str, group_id: str, alias: str):
     for user in users:
         logger.info(f"Checking {user['userId']}")
         if locate_alias(alias, user["aliases"]):
+            logger.info(
+                f"Alias found, type: user, user_id: {user['userId']}, alias: {alias}"
+            )
             return {"type": "user", "user_id": user["userId"], "alias": alias}
 
     return OSAliasNotFound

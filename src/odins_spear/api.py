@@ -54,36 +54,34 @@ class API:
         )
 
         # # endpoints
-        self.administrators = Administrators(logger=self.logger)
-        self.alternate_numbers = AlternateNumbers(logger=self.logger)
-        self.authentication = Authentication(logger=self.logger)
-        self.auto_attendants = AutoAttendants(logger=self.logger)
-        self.call_centers = CallCenters(logger=self.logger)
-        self.call_forwarding_always = CallForwardingAlways(logger=self.logger)
-        self.call_forwarding_busy = CallForwardingBusy(logger=self.logger)
-        self.call_forwarding_no_answer = CallForwardingNoAnswer(logger=self.logger)
-        self.call_forwarding_not_reachable = CallForwardingNotReachable(
-            logger=self.logger
-        )
-        self.call_forwarding_selective = CallForwardingSelective(logger=self.logger)
-        self.call_pickup = CallPickup(logger=self.logger)
-        self.call_processing_policies = CallProcessingPolicies(logger=self.logger)
-        self.call_records = CallRecords(logger=self.logger)
-        self.devices = Devices(logger=self.logger)
-        self.dns = DNs(logger=self.logger)
-        self.groups = Groups(logger=self.logger)
-        self.emergency_zones = EmergencyZones(logger=self.logger)
-        self.do_not_disturb = DoNotDisturb(logger=self.logger)
-        self.hunt_groups = HuntGroups(logger=self.logger)
-        self.service_providers = ServiceProviders(logger=self.logger)
-        self.services = Services(logger=self.logger)
-        self.shared_call_appearance = SharedCallAppearance(logger=self.logger)
-        self.schedules = Schedules(logger=self.logger)
-        self.reports = Reports(logger=self.logger)
-        self.regsitration = Registration(logger=self.logger)
-        self.password_generate = PasswordGenerate(logger=self.logger)
-        self.trunk_groups = TrunkGroups(logger=self.logger)
-        self.users = Users(logger=self.logger)
+        self.administrators = Administrators()
+        self.alternate_numbers = AlternateNumbers()
+        self.authentication = Authentication()
+        self.auto_attendants = AutoAttendants()
+        self.call_centers = CallCenters()
+        self.call_forwarding_always = CallForwardingAlways()
+        self.call_forwarding_busy = CallForwardingBusy()
+        self.call_forwarding_no_answer = CallForwardingNoAnswer()
+        self.call_forwarding_not_reachable = CallForwardingNotReachable()
+        self.call_forwarding_selective = CallForwardingSelective()
+        self.call_pickup = CallPickup()
+        self.call_processing_policies = CallProcessingPolicies()
+        self.call_records = CallRecords()
+        self.devices = Devices()
+        self.dns = DNs()
+        self.groups = Groups()
+        self.emergency_zones = EmergencyZones()
+        self.do_not_disturb = DoNotDisturb()
+        self.hunt_groups = HuntGroups()
+        self.service_providers = ServiceProviders()
+        self.services = Services()
+        self.shared_call_appearance = SharedCallAppearance()
+        self.schedules = Schedules()
+        self.reports = Reports()
+        self.regsitration = Registration()
+        self.password_generate = PasswordGenerate()
+        self.trunk_groups = TrunkGroups()
+        self.users = Users()
 
     def authenticate(self) -> bool:
         """Authenticates session with username and password supplied by user.
@@ -149,6 +147,7 @@ class API:
         username: str = None,
         password: str = None,
         rate_limit: bool = None,
+        logger: object = None,
     ):
         """Updates the API with new details.
 
@@ -170,7 +169,6 @@ class API:
                 f"API username updated, old: {self.username}, new: {username}"
             )
             self.username = username
-            self._requester.logger = self.logger
         if password:
             self.logger.info("API password updated")
             self._password = password
@@ -180,6 +178,10 @@ class API:
             )
             self.rate_limit = rate_limit
             self._requester.rate_limit = rate_limit
+        if logger:
+            self.logger = logger
+            self._requester.logger = logger
+            self.logger.info("Logger updated")
 
     def _update_requester(self, session_response: requests.models.Response):
         """When authenticating or re-auth update requester with token so it can make

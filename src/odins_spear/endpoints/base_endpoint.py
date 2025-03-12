@@ -2,6 +2,5 @@ from ..requester import Requester
 
 
 class BaseEndpoint:
-    def __init__(self, logger=None):
+    def __init__(self):
         self._requester = Requester.get_instance()
-        self._logger = logger

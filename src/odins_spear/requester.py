@@ -1,6 +1,5 @@
 import requests
 import json
-from logging import Logger
 
 from ratelimit import limits, sleep_and_retry
 
@@ -12,7 +11,7 @@ class Requester:
     __instance = None  # Class variable to hold the singleton instance
 
     @staticmethod
-    def get_instance(base_url=None, rate_limit=None, logger=Logger):
+    def get_instance(base_url=None, rate_limit=None, logger=None):
         if Requester.__instance is None:
             Requester(base_url, rate_limit, logger)
         return Requester.__instance
