@@ -25,9 +25,16 @@ class Reporter:
 
     def _run_report(self, report_name: str, *args, **kwargs):
         """Run a report function from the reports module."""
+        self.api.logger.debug(
+            f"Report {report_name} executed, args: {[args]}, kwargs: {kwargs}"
+        )
         try:
             report_function = getattr(reports, report_name)
+            self.api.logger.info(f"Report {report_name} executed")
         except AttributeError:
+            self.api.logger.error(
+                f"Report failed to execute, error: Report '{report_name}' not found."
+            )
             raise AttributeError(
                 f"Report '{report_name}' not found in 'reports' module."
             )

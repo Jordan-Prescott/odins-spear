@@ -3,7 +3,7 @@ import json
 
 import shutil
 
-from ...exceptions import OSFileNotFound
+from ..exceptions import OSFileNotFound
 
 
 def check_directory_or_file_exists(directory_file_path: str) -> bool:

@@ -3,8 +3,8 @@ from ..utils.formatters import format_filter_value
 
 
 class Users(BaseEndpoint):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     # GET
     def get_users(

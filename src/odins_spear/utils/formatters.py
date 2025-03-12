@@ -53,3 +53,34 @@ def format_service_instance_profile(data: Dict) -> Dict[str, Any]:
     """
 
     return data.setdefault("serviceInstanceProfile", {})
+
+
+def sanitise_data(data: Dict):
+    """Cleans data of any sensitive information that should not be leaked.
+
+    Args:
+        data (Dict): Request or response dict from API call
+    """
+
+    # data that hits this should only be of type dict
+    if not isinstance(data, dict):
+        return f"Unsupported data type {type(data)}"
+
+    sanitised_data = data.copy()
+
+    # removing sensitive data from log
+    sensitive_keys = [
+        "token",
+        "access_token",
+        "refresh_token",
+        "api_key",
+        "password",
+    ]
+
+    for key in sensitive_keys:
+        if key in sanitised_data:
+            sanitised_data[key] = (
+                f"{sanitised_data[key][:2]}...{sanitised_data[key][-2:]}"
+            )
+
+    return sanitised_data

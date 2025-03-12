@@ -1,6 +1,3 @@
-from tqdm import tqdm
-
-
 def main(api, service_provider_id: str, group_id: str):
     """Audits a group for chargeable services this will return all feature packs
     assigned and count for all broadwork entities such as users, call centers, hunt groups etc.
@@ -12,14 +9,19 @@ def main(api, service_provider_id: str, group_id: str):
     :return r:
     """
 
+    # save logger from api
+    logger = api.logger
+
     # all Services
+    logger.info("Fetching all group services")
     service_report = api.services.get_group_services(group_id, service_provider_id)
 
     assigned_user_services = []
     assigned_group_services = []
     assigned_service_pack_services = []
 
-    for us in tqdm(service_report["userServices"], desc="Analysing User Services..."):
+    logger.info("Analysing user services")
+    for us in service_report["userServices"]:
         if us["usage"] > 0:
             del us["authorized"]
             del us["assigned"]
@@ -32,6 +34,7 @@ def main(api, service_provider_id: str, group_id: str):
             del us["tags"]
             del us["alias"]
 
+            logger.info(f"Fetching users assigned {us}")
             users = api.services.get_group_services_user_assigned(
                 group_id, service_provider_id, us["serviceName"], "serviceName"
             )
@@ -40,7 +43,8 @@ def main(api, service_provider_id: str, group_id: str):
 
             assigned_user_services.append(us)
 
-    for gs in tqdm(service_report["groupServices"], desc="Analysing Group Services..."):
+    logger.info("Analysing group services")
+    for gs in service_report["groupServices"]:
         if gs["usage"] > 0:
             del gs["authorized"]
             del gs["assigned"]
@@ -52,9 +56,8 @@ def main(api, service_provider_id: str, group_id: str):
             del gs["alias"]
             assigned_group_services.append(gs)
 
-    for sps in tqdm(
-        service_report["servicePackServices"], desc="Analysing Service Packs..."
-    ):
+    logger.info("Analysing service packs")
+    for sps in service_report["servicePackServices"]:
         if sps["usage"] > 0:
             del sps["authorized"]
             del sps["assigned"]
@@ -64,6 +67,7 @@ def main(api, service_provider_id: str, group_id: str):
             del sps["quantity"]
             del sps["alias"]
 
+            logger.info(f"Fetching users assigned {us}")
             users = api.services.get_group_services_user_assigned(
                 group_id, service_provider_id, sps["servicePackName"], "servicePackName"
             )
@@ -73,13 +77,15 @@ def main(api, service_provider_id: str, group_id: str):
             assigned_service_pack_services.append(sps)
 
     # Group DNs
+    logger.info("Fetching group dns")
     dn_report = api.dns.get_group_dns(service_provider_id, group_id)
     all_dns = {
         "assigned": {"activated": [], "deactivated": []},
         "unassigned": {"activated": [], "deactivated": []},
     }
 
-    for dn in tqdm(dn_report["dns"], desc="Analysing Group DNs..."):
+    logger.info("Analysing group dns")
+    for dn in dn_report["dns"]:
         if dn["assigned"] and dn["activated"]:
             all_dns["assigned"]["activated"] += dn["list"]
         elif dn["assigned"] and not dn["activated"]:
@@ -112,13 +118,14 @@ def main(api, service_provider_id: str, group_id: str):
     group_detail = api.groups.get_group(service_provider_id, group_id)
 
     # Trunking detail
+    logger.info("Fetching trunking capacity")
     try:
         trunk_detail = api.trunk_groups.get_group_trunk_groups_call_capacity(
             service_provider_id, group_id
         )
         del trunk_detail["serviceProviderId"]
         del trunk_detail["groupId"]
-    except:
+    except Exception:
         trunk_detail = []
 
     group_audit = {

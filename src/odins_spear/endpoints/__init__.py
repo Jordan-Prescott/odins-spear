@@ -20,6 +20,7 @@ from .do_not_disturb import DoNotDisturb
 from .hunt_groups import HuntGroups
 from .service_providers import ServiceProviders
 from .services import Services
+from .session import Session
 from .shared_call_appearance import SharedCallAppearance
 from .schedules import Schedules
 from .reports import Reports
@@ -51,6 +52,7 @@ __all__ = [
     "HuntGroups",
     "ServiceProviders",
     "Services",
+    "Session",
     "SharedCallAppearance",
     "Schedules",
     "Reports",
@@ -59,3 +61,15 @@ __all__ = [
     "TrunkGroups",
     "Users",
 ]
+
+
+# import importlib
+# import pkgutil
+
+# # Get the package name dynamically
+# package_name = __name__
+
+# # Iterate over all modules in the `endpoints` directory
+# for _, module_name, _ in pkgutil.iter_modules(__path__):
+#     if module_name != "base_endpoint":  # Exclude base_endpoint.py
+#         importlib.import_module(f"{package_name}.{module_name}")

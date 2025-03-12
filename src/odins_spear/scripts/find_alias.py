@@ -1,5 +1,4 @@
 import re
-from tqdm import tqdm
 
 from ..exceptions import OSAliasNotFound
 
@@ -27,6 +26,9 @@ def main(api, service_provider_id: str, group_id: str, alias: str):
 
     broadwork_entities_user_ids = []
 
+    # save logger from api
+    logger = api.logger
+
     for aa in auto_attendants:
         broadwork_entities_user_ids.append(["AA", aa["serviceUserId"]])
 
@@ -36,11 +38,9 @@ def main(api, service_provider_id: str, group_id: str, alias: str):
     for cc in call_centers:
         broadwork_entities_user_ids.append(["CC", cc["serviceUserId"]])
 
-    for broadwork_entity in tqdm(
-        broadwork_entities_user_ids, desc="Fetching AA, HG, and CC details"
-    ):
-        # add some buffer time for odins api
-
+    logger.info("Fetching aa, hg, and cc")
+    for broadwork_entity in broadwork_entities_user_ids:
+        logger.info(f"Fetching '{broadwork_entity[1]}'")
         formatted = {
             "type": broadwork_entity[0],
             "service_user_id": broadwork_entity[1],
@@ -67,12 +67,15 @@ def main(api, service_provider_id: str, group_id: str, alias: str):
 
         except Exception:
             # add a retry count and add this entity to retry queue
+            logger.error(
+                f"Failed to fetch bre '{broadwork_entity[1]}' added to retry queue"
+            )
             broadwork_entity.append(0)
             RETRY_QUEUE.append(broadwork_entity)
 
     # objects failed in first instance
     if RETRY_QUEUE:
-        print("Retrying failed instances.")
+        logger.info("Going through retry queue")
     while RETRY_QUEUE:
         entity_type, service_user_id, retry_count = RETRY_QUEUE.pop(
             0
@@ -101,21 +104,31 @@ def main(api, service_provider_id: str, group_id: str, alias: str):
                     (entity_type, service_user_id, retry_count + 1)
                 )  # Increment retry count and re-add to the queue
             else:
-                print(
-                    f"Failed to process {entity_type} - {service_user_id} after {MAX_RETRIES} retries. Skipping."
+                logger.error(
+                    f"Failed to process {entity_type} - {service_user_id} after {MAX_RETRIES} retries - skipping"
                 )
 
-    for broadwork_entity in tqdm(
-        OBJECT_WITH_ALIAS, desc=f"Searching AA, HG, and CC for alias {alias}"
-    ):
+    logger.info("Searching through aa, hg, and cc")
+    for broadwork_entity in OBJECT_WITH_ALIAS:
+        logger.info(f"Checking bre '{broadwork_entity['name']}'")
         if locate_alias(alias, broadwork_entity["aliases"]):
+            logger.info(
+                f"Alias found, type: user, service_user_id: {broadwork_entity['name']}, alias: {alias}"
+            )
             return broadwork_entity
+    logger.info(f"Alias '{alias}' not found in aa, hg, cc")
 
+    logger.info("Fetching users")
     users = api.users.get_users(service_provider_id, group_id, extended=True)
-    print("Fetched users.")
+    logger.info("Users successfully fetched")
 
-    for user in tqdm(users, desc=f"Searching Users for alias: {alias}"):
+    logger.info("Searching users")
+    for user in users:
+        logger.info(f"Checking {user['userId']}")
         if locate_alias(alias, user["aliases"]):
+            logger.info(
+                f"Alias found, type: user, user_id: {user['userId']}, alias: {alias}"
+            )
             return {"type": "user", "user_id": user["userId"], "alias": alias}
 
     return OSAliasNotFound

@@ -7,8 +7,6 @@ from ..scripter import Scripter
 
 def export_to_xlsx(data: dict, group_id: str):
     rows = []
-    print("Start.\n")
-    print("Generating report.\n")
 
     for user_id, user_data in data.items():
         registration = user_data.get("registration", {})
@@ -30,7 +28,6 @@ def export_to_xlsx(data: dict, group_id: str):
         f"./os_reports/Registration_report_for_{group_id}.xlsx",
         index=False,
     )
-    print("End.\n")
 
 
 def main(api, service_provider_id: str, group_id: str):
@@ -44,10 +41,17 @@ def main(api, service_provider_id: str, group_id: str):
             Xlsx File into .os_reports/ named "Registration_report_for_(GroupID)"
     """
 
+    logger = api.logger
+
+    logger.info("Calling scripter.user_registration to fetch data")
     scripter = Scripter.get_instance(api)
     data = scripter.user_registration(
         service_provider_id=service_provider_id, group_id=group_id
     )
+    logger.info("Scripter successfully fetched data")
 
+    logger.info("Writing report")
     export_to_xlsx(data, group_id)
+    logger.info(f"Report 'Registration_report_for_{group_id}' saved /os_reports")
+
     return True

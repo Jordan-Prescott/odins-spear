@@ -7,7 +7,9 @@ def main(
 ) -> bool:
     """Removes a singular or a range of numbers from a Broadworks instance."""
 
-    print(f"Removing numbers from {current_group_id}.")
+    logger = api.logger
+
+    logger.info(f"Removing numbers from {current_group_id}")
     # delete number from group
     api.dns.delete_group_dns(
         current_service_provider_id,
@@ -16,7 +18,7 @@ def main(
         end_of_range_number=end_of_range_number,
     )
 
-    print(f"Removing numbers from {current_service_provider_id}.")
+    logger.info(f"Removing numbers from {current_service_provider_id}")
     # remove from sp/ent
     api.dns.delete_service_provider_dns(
         current_service_provider_id,

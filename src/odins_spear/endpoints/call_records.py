@@ -2,8 +2,8 @@ from .base_endpoint import BaseEndpoint
 
 
 class CallRecords(BaseEndpoint):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     # GET
     def get_users_stats(

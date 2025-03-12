@@ -1,7 +1,7 @@
 from tqdm import tqdm
 
 from .report_utils.graphviz_module import GraphvizModule
-from .report_utils.helpers import find_entity_with_number_type
+from ..utils.helpers import find_entity_with_number_type
 from .report_utils.parsing import call_flow_module
 
 
@@ -17,11 +17,11 @@ def main(
     number_type: str,
     broadworks_entity_type: str,
 ):
+    logger = api.logger
     # Creates data store for use later
     data_store = DataStore()
 
-    print("Start.\n")
-    print("Fetching Service Provider & Group details.")
+    logger.info("Fetching Service Provider & Group details")
     # Gather entities
     service_provider = bre.ServiceProvider.from_dict(
         data=api.service_providers.get_service_provider(service_provider_id)
@@ -33,20 +33,22 @@ def main(
 
     data_store.store_objects(service_provider, group)
 
+    logger.info("Fetching group auto attendants")
     auto_attendants = api.auto_attendants.get_auto_attendants(
         service_provider_id, group_id
     )
-    for aa in tqdm(auto_attendants, desc="Fetching all Auto Attendants."):
+    for aa in auto_attendants:
         auto_attendant = bre.AutoAttendant.from_dict(
             group=group,
             data=api.auto_attendants.get_auto_attendant(aa["serviceUserId"]),
         )
         data_store.auto_attendants.append(auto_attendant)
 
-    print("Fetching all users this may take a couple of minutes, please wait.")
+    logger.info("Fetching all users this may take a couple of minutes")
     users = api.users.get_users(service_provider_id, group_id, extended=True)
 
     # Captures users with the forward fucntionality
+    logger.info("Fetching call forward always users")
     call_forward_always_users = [
         item["user"]["userId"]
         for item in api.call_forwarding_always.get_bulk_call_forwarding_always(
@@ -55,6 +57,7 @@ def main(
         if item["service"]["assigned"] and item["data"]["isActive"]
     ]
 
+    logger.info("Fetching call forward busy users")
     call_forward_busy_users = [
         item["user"]["userId"]
         for item in api.call_forwarding_busy.get_bulk_call_forwarding_busy(
@@ -63,6 +66,7 @@ def main(
         if item["service"]["assigned"] and item["data"]["isActive"]
     ]
 
+    logger.info("Fetching call forward no answer users")
     call_forward_no_answer_users = [
         item["user"]["userId"]
         for item in api.call_forwarding_no_answer.get_bulk_call_forwarding_no_answer(
@@ -71,6 +75,7 @@ def main(
         if item["service"]["assigned"] and item["data"]["isActive"]
     ]
 
+    logger.info("Fetching call forward not reachable users")
     call_forward_not_reachable = [
         item["user"]["userId"]
         for item in api.call_forwarding_not_reachable.get_bulk_call_forwarding_not_reachable(
@@ -79,7 +84,8 @@ def main(
         if item["service"]["assigned"] and item["data"]["isActive"]
     ]
 
-    for u in tqdm(users, desc="Parsing all Users."):
+    logger.info("Analysing all users pulling call forwarding numbers")
+    for u in users:
         user = bre.User.from_dict(group=group, data=u)
 
         if user.id in call_forward_always_users:
@@ -109,10 +115,13 @@ def main(
 
         data_store.users.append(user)
 
+    logger.info("Fetching call centers")
     call_centers = api.call_centers.get_group_call_centers(
         service_provider_id, group_id
     )
-    for cc in tqdm(call_centers, desc="Fetching all Call Centers."):
+
+    logger.info("Analysing call centers")
+    for cc in call_centers:
         call_center = api.call_centers.get_group_call_center(cc["serviceUserId"])
         call_center["agents"] = api.call_centers.get_group_call_center_agents(
             cc["serviceUserId"]
@@ -130,7 +139,9 @@ def main(
                 if call_center.overflow_calls_action == "Transfer"
                 else None
             )
+            logger.info(f"Fetched call center {cc['serviceUserId']} overflow details")
         except Exception:
+            logger.error(f"Call center {cc['serviceUserId']} has no overflow")
             call_center.overflow_calls_action = None
             call_center.overflow_calls_transfer_to_phone_number = None
 
@@ -146,7 +157,13 @@ def main(
                 if call_center.stranded_calls_action == "Transfer"
                 else None
             )
+            logger.info(
+                f"Fetched call center {cc['serviceUserId']} stranded call details"
+            )
         except Exception:
+            logger.error(
+                f"Call center {cc['serviceUserId']} has no stranded calls action"
+            )
             call_center.stranded_calls_action = None
             call_center.stranded_calls_transfer_to_phone_number = None
 
@@ -165,7 +182,13 @@ def main(
                 if call_center.stranded_call_unavailable_action == "Transfer"
                 else None
             )
+            logger.info(
+                f"Fetched call center {cc['serviceUserId']} stranded calls unavailable details"
+            )
         except Exception:
+            logger.error(
+                f"Call center {cc['serviceUserId']} has no stranded calls unavailable action"
+            )
             call_center.stranded_call_unavailable_action = None
             call_center.stranded_call_unavailable_transfer_to_phone_number = None
 
@@ -183,12 +206,19 @@ def main(
                 if call_center.forced_forwarding_enabled
                 else None
             )
+            logger.info(
+                f"Fetched call center {cc['serviceUserId']} forced forwarding details"
+            )
         except Exception:
+            logger.error(
+                f"Call center {cc['serviceUserId']} has no forced forwarding action"
+            )
             call_center.forced_forwarding_enabled = False
             call_center.forced_forwarding_forward_to_phone_number = None
 
         data_store.call_centers.append(call_center)
 
+    logger.info("Fetching hunt groups")
     hunt_groups = api.hunt_groups.get_group_hunt_groups(service_provider_id, group_id)
     for hg in tqdm(hunt_groups, desc="Fetching all Hunt Groups."):
         hunt_group = bre.HuntGroup.from_dict(
@@ -201,16 +231,17 @@ def main(
         number, number_type.lower(), getattr(data_store, broadworks_entity_type + "s")
     )
     call_flow_start_node._start_node = True
+    logger.info("Call flow start node found")
 
     # Nodes used in the graph
-    print("Gathering nodes in flow.")
+    logger.info("Parsing nodes for call flow")
     bre_nodes = call_flow_module(call_flow_start_node, data_store)
 
-    print("Generating report.")
+    logger.info("Generating report")
     # build, generate, save graph
     graph = GraphvizModule("./os_reports/")
     graph.generate_call_flow_graph(bre_nodes, number)
-    print("Saving report.")
     graph._save_graph(f"Calls To {number}")
-    print("\nEnd.")
+    logger.info("Report saved")
+
     return True

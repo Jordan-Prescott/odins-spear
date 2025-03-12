@@ -1,7 +1,10 @@
 import requests
 import json
+
 from ratelimit import limits, sleep_and_retry
+
 from .exceptions import OSApiResponseError
+from .utils.formatters import sanitise_data
 
 
 class Requester:
@@ -17,23 +20,25 @@ class Requester:
         """
         Initialize the Requester with default values.
 
-        NOTE: This object is a singleton and can't be instatiated more than once.
+        NOTE: This object is a singleton and can't be instantiated more than once.
         """
-
         if Requester.__instance is not None:
             raise Exception("Singleton cannot be instantiated more than once!")
         else:
             self.base_url = base_url
             self.rate_limit = rate_limit
-            self.logger = logger
             self.headers = {
                 "Authorization": "",
                 "Content-Type": "application/json",
             }
+            self.logger = logger
+
+            self.logger.info(
+                f"Requester initialized with base_url: {self.base_url}, rate_limit: {self.rate_limit}"
+            )
 
             Requester.__instance = self
 
-    # get, post, put, delete methods takes in data and params and returns method type to _request
     def get(self, endpoint, data=None, params=None):
         return self._request(requests.get, endpoint, data, params)
 
@@ -47,65 +52,70 @@ class Requester:
         return self._request(requests.delete, endpoint, data, params)
 
     def _request(self, method, endpoint, data=None, params=None):
-        """Handles an API request with or without rate limiting.
+        """Handles an API request with or without rate limiting."""
 
-        Args:
-            method (request obj): Request module method type either GET, POST, PUT, DELETE
-            endpoint (str): Specific API endpoint for functionality
-            data (dict, optional): Python dict used in payload data if needed. Defaults to None.
-            params (dict, optional): Parameters used in endpoint if needed. Defaults to None.
+        self.logger.info(
+            f"Initiating API request, method: {method.__name__.upper()}, endpoint: {endpoint}"
+        )
 
-        Returns:
-            API data: Data returned from API on completion of API call.
-        """
-
-        # if rate limiting is enabled uses _rate_limited_request where limiting is in place.
         if self.rate_limit:
             return self._rate_limited_request(method, endpoint, data, params)
-        else:
-            response = method(
-                url=self.base_url + endpoint,
-                headers=self.headers,
-                data=json.dumps(data if data is not None else {}),
-                params=(params if params is not None else {}),
-            )
 
-            # if logger used log request
-            if self.logger:
-                self.logger._log_request(
-                    endpoint=endpoint, response_code=response.status_code
-                )
+        # Logging request details
+        request_payload = json.dumps(data) if data is not None else None
+        self.logger.debug(
+            f"Sending request, method: {method.__name__.upper()},"
+            f"endpoint: {self.base_url + endpoint}, params: {params}, data: {sanitise_data(data) if data else 'None'}"
+        )
 
-            # flags errors if any returned from the API
-            try:
-                response.raise_for_status()
-            except requests.exceptions.RequestException:
-                raise OSApiResponseError(response)
-            else:
-                return response.json()
+        response = method(
+            url=self.base_url + endpoint,
+            headers=self.headers,
+            data=request_payload,
+            params=params or {},
+        )
+
+        return self._handle_response(response, method.__name__, endpoint)
 
     @sleep_and_retry
     @limits(calls=5, period=1)
     def _rate_limited_request(self, method, endpoint, data=None, params=None):
         """Handles an API request with rate limiting."""
 
+        self.logger.warning(
+            f"Rate limit active. Request may be delayed, method: {method.__name__.upper()}, endpoint: {endpoint}"
+        )
+
+        request_payload = json.dumps(data) if data is not None else None
+        self.logger.debug(
+            f"Sending rate-limited request, method: {method.__name__.upper()},"
+            f"endpoint: {self.base_url + endpoint}, params: {params}, data: {sanitise_data(data) if data else 'None'}"
+        )
+
         response = method(
             url=self.base_url + endpoint,
             headers=self.headers,
-            data=json.dumps(data if data is not None else {}),
-            params=(params if params is not None else {}),
+            data=request_payload,
+            params=params or {},
         )
 
-        # if logger used log request
-        if self.logger:
-            self.logger._log_request(
-                endpoint=endpoint, response_code=response.status_code
-            )
+        return self._handle_response(response, method.__name__, endpoint)
 
-        # flags errors if any returned from the API
-        try:
-            response.raise_for_status()
-        except requests.exceptions.RequestException:
-            raise OSApiResponseError(response)
-        else:
+    def _handle_response(self, response, method_name, endpoint):
+        """Handles response logging and error handling."""
+
+        # Log response status
+        if response.status_code >= 200 and response.status_code < 300:
+            self.logger.info(
+                f"API Call Success, method: {method_name.upper()}, endpoint: {endpoint}, status_code: {response.status_code}"
+            )
+            self.logger.debug(f"response_data: {sanitise_data(response.json())}")
+
             return response.json()
+
+        # Log API errors
+        else:
+            self.logger.error(
+                f"API Error, method: {method_name.upper()}, endpoint: {endpoint}, status_code: {response.status_code}, response_text: {response.text}"
+            )
+            raise OSApiResponseError(response)

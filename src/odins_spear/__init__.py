@@ -1,3 +1,3 @@
-from .api import API
-from .scripter import Scripter
-from .reporter import Reporter
+from .api import API as API
+from .scripter import Scripter as Scripter
+from .reporter import Reporter as Reporter

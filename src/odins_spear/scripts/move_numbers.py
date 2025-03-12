@@ -9,7 +9,9 @@ def main(
 ) -> bool:
     """Moves singular or a range of numbers from one group to another located on the same Broadwork instance."""
 
-    print(f"Removing numbers from {current_group_id}.")
+    logger = api.logger
+
+    logger.info(f"Removing numbers from {current_group_id}")
     # delete number from group
     api.dns.delete_group_dns(
         current_service_provider_id,
@@ -20,7 +22,7 @@ def main(
 
     # check if sp/ent are the same if not number needs to be removed to sys level
     if not current_service_provider_id == target_service_provider_id:
-        print(f"Removing numbers from {current_service_provider_id}.")
+        logger.info(f"Removing numbers from {current_service_provider_id}")
         # remove from sp/ent
         api.dns.delete_service_provider_dns(
             current_service_provider_id,
@@ -28,8 +30,8 @@ def main(
             end_of_range_number=end_of_range_number,
         )
 
-        print(
-            f"Adding number to SP/ Ent: {target_service_provider_id} Group: {target_group_id}."
+        logger.info(
+            f"Adding number to SP/ Ent: {target_service_provider_id} Group: {target_group_id}"
         )
         # assign to new group
         api.dns.post_group_dns_assign_bulk(
@@ -41,7 +43,7 @@ def main(
     else:
         # only when group is in the same sp/ent
 
-        print(f"Adding number to {target_group_id}.")
+        logger.info(f"Adding number to {target_group_id}")
         # assign to new group
         api.dns.post_group_dns(
             target_service_provider_id,

@@ -1,7 +1,6 @@
 from typing import Dict, Any, Optional
 
 from . import scripts
-
 from .api import API
 
 
@@ -46,23 +45,17 @@ class Scripter:
             Scripter.__instance = self
 
     def _run_script(self, script_name: str, *args, **kwargs) -> Dict[str, Any]:
-        """
-        Dynamically runs the specified script.
-
-        Args:
-            script_name (str): Name of the script to run.
-            *args: Positional arguments for the script.
-            **kwargs: Keyword arguments for the script.
-
-        Returns:
-            Dict[str, Any]: Output of the script.
-
-        Raises:
-            AttributeError: If the script is not found in the `scripts` module.
-        """
+        """Dynamically runs the specified script."""
+        self.api.logger.debug(
+            f"Script {script_name} executed, args: {[args]}, kwargs: {kwargs}"
+        )
         try:
             script_function = getattr(scripts, script_name)
+            self.api.logger.info(f"Script {script_name} executed")
         except AttributeError:
+            self.api.logger.error(
+                f"Script failed to execute, error: Script '{script_name}' not found."
+            )
             raise AttributeError(
                 f"Script '{script_name}' not found in 'scripts' module."
             )
@@ -91,6 +84,7 @@ class Scripter:
         Returns:
             Dict: Users and their new passwords.
         """
+
         return self._run_script(
             "bulk_password_reset", service_provider_id, group_id, users, password_type
         )

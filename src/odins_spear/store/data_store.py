@@ -119,6 +119,9 @@ class DataStore:
 
         return json.dumps(export_data, indent=2)
 
+    def join_entities(entities):
+        return "\n".join(str(entity) for entity in entities)
+
     def __str__(self) -> str:
         """returns complete list of entities in store."""
         entities = (
@@ -131,6 +134,4 @@ class DataStore:
             + self.users
         )
 
-        # loops entities and joins into string
-        string = lambda e: "\n".join(map(str, e))
-        return string(entities)
+        return self.join_entities(entities)
