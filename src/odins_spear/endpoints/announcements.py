@@ -49,17 +49,15 @@ class Announcements(BaseEndpoint):
         name: str,
         description: str,
         file_path: str,
-        media_type: str = "WAV",
     ):
-        """Adds an announcement to the given user.
+        """Adds an announcement to the given user. Must be a WAV File!
 
         Args:
             user_id (str): User ID of the target user you would like to add the Announcement to.
             name (str): Desired name of the Announcement
             description (str): Description assigned to the Announcement.
             file_path (str): File path to the Announcement Audio File. (Raw String)
-            media_type (str): Audio file format
-
+            media_type (str): Only supported type is WAV
         Returns:
             None: This method does not return any specific value.
         """
@@ -79,7 +77,7 @@ class Announcements(BaseEndpoint):
         payload = {
             "userId": user_id,
             "name": name,
-            "mediaType": media_type,
+            "mediaType": "WAV",
             "description": description,
             "content": content,
         }
@@ -93,9 +91,8 @@ class Announcements(BaseEndpoint):
         name: str,
         description: str,
         file_path: str,
-        media_type: str = "WAV",
     ):
-        """Adds an announcement to the given user.
+        """Adds an announcement to the given user. Must be a WAV file!
 
         Args:
             group_id (str): Group ID of the target Group you would like to add the Announcement to.
@@ -103,7 +100,7 @@ class Announcements(BaseEndpoint):
             name (str): Desired name of the Announcement
             description (str): Description assigned to the Announcement.
             file_path (str): File path to the Announcement Audio File. (Raw String)
-            media_type (str): Audio file format
+            media_type (str): Only supported type is WAV
 
         Returns:
             None: This method does not return any specific value.
@@ -125,7 +122,7 @@ class Announcements(BaseEndpoint):
             "groupId": group_id,
             "serviceProviderId": service_provider_id,
             "name": name,
-            "mediaType": media_type,
+            "mediaType": "WAV",
             "description": description,
             "content": content,
         }
@@ -134,15 +131,13 @@ class Announcements(BaseEndpoint):
 
     # PUT
 
-    def put_user_announcement(
-        self, user_id: str, name: str, media_type: str, new_name: str
-    ):
+    def put_user_announcement(self, user_id: str, name: str, new_name: str):
         """Updates the name of the given user Announcement
 
         Args:
             user_id (str): User ID of the user the announcement resides
             name (str): Current name of the Announcement
-            media_type (str): Audio file format
+            media_type (str): Only supported type is WAV
             new_name (str): Desired name of the Announcement
 
 
@@ -155,7 +150,7 @@ class Announcements(BaseEndpoint):
         updates = {
             "userId": user_id,
             "name": name,
-            "mediaType": media_type,
+            "mediaType": "WAV",
             "newName": new_name,
         }
 
@@ -167,7 +162,6 @@ class Announcements(BaseEndpoint):
         service_provider_id: str,
         name: str,
         new_name: str,
-        media_type: str = "WAV",
     ):
         """Updates the name of the given Group Announcement
 
@@ -176,7 +170,7 @@ class Announcements(BaseEndpoint):
             service_provider_id (str): Service Provider ID of where the group resides
             name (str): Current name of the Announcement
             new_name (str): Desired name of the Announcement
-            media_type (str): Audio file format
+            media_type (str): Only supported type is WAV
 
 
         Returns:
@@ -189,7 +183,7 @@ class Announcements(BaseEndpoint):
             "groupId": group_id,
             "serviceProviderId": service_provider_id,
             "name": name,
-            "mediaType": media_type,
+            "mediaType": "WAV",
             "newName": new_name,
         }
 
@@ -197,13 +191,13 @@ class Announcements(BaseEndpoint):
 
     # DELETE
 
-    def delete_user_announcement(self, user_id: str, name: str, media_type: str):
+    def delete_user_announcement(self, user_id: str, name: str):
         """Removes the given user Announcement
 
         Args:
             user_id (str): User ID of the user the announcement resides
             name (str): Current name of the Announcement
-            media_type (str): Audio file format
+            media_type (str): Only supported type is WAV
 
 
         Returns:
@@ -215,7 +209,7 @@ class Announcements(BaseEndpoint):
         params = {
             "userId": user_id,
             "name": name,
-            "mediaType": media_type,
+            "mediaType": "WAV",
         }
 
         return self._requester.delete(endpoint, params=params)
@@ -225,14 +219,13 @@ class Announcements(BaseEndpoint):
         group_id: str,
         service_provider_id: str,
         name: str,
-        media_type: str = "WAV",
     ):
         """Removes the given Group Announcement
 
         Args:
             group_id (str): Group ID of the target Group you would like to remove
             service_provider_id (str): Service Provider ID of where the group resides
-            media_type (str): Audio file format
+            media_type (str): Only supported type is WAV
 
 
         Returns:
@@ -245,7 +238,7 @@ class Announcements(BaseEndpoint):
             "groupId": group_id,
             "serviceProviderId": service_provider_id,
             "name": name,
-            "mediaType": media_type,
+            "mediaType": "WAV",
         }
 
         return self._requester.delete(endpoint, params=params)
