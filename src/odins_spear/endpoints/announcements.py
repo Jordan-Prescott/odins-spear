@@ -68,9 +68,7 @@ class Announcements(BaseEndpoint):
             with open(
                 file_path, "rb"
             ) as audio_file:  # Converts input audio file into b64
-                audio_bytes = audio_file.read()
-                b64_audio_bytes = base64.b64encode(audio_bytes)
-                content = b64_audio_bytes.decode("ascii")
+                content = base64.b64encode(audio_file.read()).decode("ascii")
         except FileNotFoundError:
             raise OSFileNotFound
 
@@ -112,9 +110,7 @@ class Announcements(BaseEndpoint):
             with open(
                 file_path, "rb"
             ) as audio_file:  # Converts input audio file into b64
-                audio_bytes = audio_file.read()
-                b64_audio_bytes = base64.b64encode(audio_bytes)
-                content = b64_audio_bytes.decode("ascii")
+                content = base64.b64encode(audio_file.read()).decode("ascii")
         except FileNotFoundError:
             raise OSFileNotFound
 
