@@ -6,7 +6,7 @@ from pprint import pprint as pp
 
 
 class ConfigManager:
-    config_dir = "src/odins_spear/utils/configs/"
+    config_dir = "odins_spear/utils/configs/"
     available_configs = [
         "auto_attendant",
         "call_center",
