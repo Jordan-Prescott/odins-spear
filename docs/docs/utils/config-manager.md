@@ -4,10 +4,6 @@
 
 The `ConfigManager` class is designed to load and cache template configurations for popular Broadworks entities. These configuration templates are stored as JSON files in a specified directory. The class enables users to retrieve, view, update, and copy these templates in a flexible and intuitive manner. The primary goal is to provide users with a base configuration that they can modify as needed before using it to make API calls (e.g., to create or update users).
 
-
-The `ConfigManager` is configured to load JSON files from the relative path:  
-`src/odins_spear/utils/configs/`
-
 ## Available Configurations
 
 The following templates are supported and should be referenced using their corresponding names:
