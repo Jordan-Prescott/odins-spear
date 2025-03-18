@@ -167,4 +167,85 @@ class TrunkGroups(BaseEndpoint):
 
     # PUT
 
+    def put_group_trunk_groups_call_capacity(
+        self,
+        service_provider_id: str,
+        group_id: str,
+        max_active_calls: int,
+        bursting_max_active_calls: int = None,
+    ):
+        """Updates the trunking call capacity in the specified group.
+
+        NOTE: The max available active calls cannot be changed here. Please see service_providers_trunk_group_call_capacity to update this.
+
+        Args:
+            service_provider_id (str): Service provider ID where the target group is built
+            group_id (str): Group ID whose trunk group call capacity needs updating
+            max_active_calls (int): The max active calls for the group
+            bursting_max_active_calls (int, optional): The bursting max active calls for the group. Defaults to None.
+        """
+
+        endpoint = "/groups/trunk-groups/call-capacity"
+
+        updates = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "maxActiveCalls": max_active_calls,
+        }
+
+        if bursting_max_active_calls is not None:
+            updates["burstingMaxActiveCalls"] = bursting_max_active_calls
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_trunk_group(
+        self,
+        service_provider_id: str,
+        group_id: str,
+        trunk_group_name: str,
+        updates: dict,
+    ):
+        """Updates trunk group (TG) configuration.
+
+        Args:
+            service_provider_id (str): Service provider ID where the target group is built.
+            group_id (str): Group ID whose trunk group call capacity needs updating.
+            trunk_group_name (str): The name of the trunk group that is being updated.
+            updates (dict, optional): Updates to be applied to the TG.
+        """
+
+        endpoint = "/groups/trunk-groups"
+
+        updates["serviceProviderId"] = service_provider_id
+        updates["groupId"] = group_id
+        updates["name"] = trunk_group_name
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_service_providers_trunk_group_call_capacity(
+        self,
+        service_provider_id: str,
+        max_active_calls: int,
+        bursting_max_active_calls: int = None,
+    ):
+        """Updates the max active calls and the bursting max active calls for the given service provider.
+
+        Args:
+            service_provider_id (str): Service provider ID for which the max active calls needs to be updated
+            max_active_calls (int): The updates to be applied to the service provider's trunking call capacity
+            bursting_max_active_calls (int, optional): Number of bursting calls. Defaults to none, do not include if only changing max active calls.
+        """
+
+        endpoint = "/service-providers/trunk-groups/call-capacity"
+
+        updates = {
+            "serviceProviderId": service_provider_id,
+            "maxActiveCalls": max_active_calls,
+        }
+
+        if bursting_max_active_calls is not None:
+            updates["burstingMaxActiveCalls"] = bursting_max_active_calls
+
+        return self._requester.put(endpoint, data=updates)
+
     # DELETE
