@@ -1,0 +1,1381 @@
+- [ ] **Session**
+    - [x] GET - Session
+    - [ ] POST - Session
+    - [ ] POST - Session Copy
+    - [ ] POST - Session Logout
+    - [ ] PUT - Session
+    - [ ] PUT - Change Password
+    - [ ] PUT - Password
+    - [ ] PUT - My Password
+- [ ] **Account Authorization Codes**
+    - [ ] GET - Group Account Authorization Codes
+    - [ ] GET - Group Account Authorization Codes Available Users
+    - [ ] GET - Group Account Authorization Codes Details
+    - [ ] POST - Group Account Authorization Codes
+    - [ ] PUT - Group Account Authorization Codes
+    - [ ] DELETE - Group Account Authorization Codes
+- [ ] **Administatrators**
+    - [ ] GET - Service Provider Admins
+    - [x] POST - Service Provider Admin
+    - [ ] GET - Service Provider Admin
+    - [x] PUT - Service Provider Admin
+    - [ ] DELETE - Service Provider Admin
+    - [ ] GET - Service Provider Admin Policies
+    - [ ] PUT - Service Provider Admin Policies
+    - [ ] GET - Group Admins
+    - [x] POST - Group Admin
+    - [ ] GET - Group Admin
+    - [ ] PUT - Group Admin
+    - [ ] DELETE - Group Admin
+    - [x] PUT - Group Admin Policies Bulk
+    - [ ] GET - Group Admin Policies
+    - [ ] PUT - Group Admin Policies
+    - [ ] GET - Reseller Admins
+    - [ ] POST - Reseller Admin
+    - [ ] GET - Reseller Admin
+    - [ ] PUT - Reseller Admin
+    - [ ] DELETE - Reseller Admin
+- [ ] **Advice Of Charge**
+    - [ ] GET - System Advice Of Charge Cost Information Source
+    - [ ] POST - System Advice Of Charge Cost Information Source
+    - [ ] PUT - System Advice Of Charge Cost Information Source
+    - [ ] DELETE - System Advice Of Charge Cost Information Source
+    - [ ] GET - System Advice Of Charge
+    - [ ] PUT - System Advice Of Charge
+    - [ ] GET - Service Provider Advice Of Charge
+    - [ ] PUT - Service Provider Advice Of Charge
+    - [ ] GET - Group Advice Of Charge
+    - [ ] PUT - Group Advice Of Charge
+    - [ ] GET - User Advice Of Charge
+    - [ ] PUT - User Advice Of Charge
+- [ ] **Alternate Numbers**
+    - [x] GET - User Alternate Numbers
+    - [ ] PUT - User Alternate Numbers
+- [ ] **Alternate User Id**
+    - [ ] GET - User Alternate User Id
+    - [ ] PUT - User Alternate User Id
+- [ ] **Announcements**
+    - [ ] GET - User Announcements Available
+    - [ ] GET - User Announcements
+    - [ ] POST - User Announcement
+    - [ ] GET - User Announcement
+    - [ ] GET - User Announcement Download - test file
+    - [ ] PUT - User Announcement
+    - [ ] DELETE - User Announcement
+    - [ ] GET - Group Announcements
+    - [ ] GET - Group Announcements Available
+    - [ ] POST - Group Announcement
+    - [ ] GET - Group Announcement
+    - [ ] GET - Group Announcement Download
+    - [ ] PUT - Group Announcement
+    - [ ] DELETE - Group Announcement
+- [ ] **Anonymous Call Rejection**
+    - [ ] GET - System Anonymous Call Rejection
+    - [ ] PUT - System Anonymous Call Rejection
+    - [ ] GET - User Anonymous Call Rejection
+    - [ ] PUT - User Anonymous Call Rejection
+    - [ ] GET - Bulk Anonymous Call Rejection
+- [ ] **Attendant Console**
+    - [ ] GET - System Attendant Console
+    - [x] PUT - System Attendant Console
+    - [ ] GET - User Attendant Console
+    - [ ] GET - User Attendant Console Available Users
+    - [x] PUT - User Attendant Console
+- [ ] **Authentication**
+    - [ ] GET - User Authentication Service
+    - [ ] PUT - User Authentication Service
+    - [ ] PUT - User Authentication Service User
+- [x] **Auto Attendants**
+    - [x] GET - Auto Attendants
+    - [x] PUT - Auto Attendants
+    - [x] POST - Auto Attendant
+    - [x] GET - Auto Attendant
+    - [x] PUT - Auto Attendant
+    - [x] DELETE - Auto Attendant
+    - [x] GET - Auto Attendant Submenus
+    - [x] POST - Auto Attendant Submenu
+    - [x] GET - Auto Attendant Submenu Usage
+    - [x] PUT - Auto Attendant Submenu
+    - [x] DELETE - Auto Attendant Submenu
+- [ ] **Automatic Callback**
+    - [ ] GET - System Automatic Callback
+    - [ ] PUT - System Automatic Callback
+    - [ ] GET - User Automatic Callback
+    - [ ] PUT - User Automatic Callback
+    - [ ] GET - Bulk Automatic Callback
+    - [ ] GET - System Automatic Callback Release Cause
+    - [ ] POST - System Automatic Callback Release Cause
+    - [ ] DELETE - System Automatic Callback Release Cause
+- [ ] **Automatic Hold Retrieve**
+    - [ ] GET - User Automatic Hold Retrieve
+    - [ ] PUT - User Automatic Hold Retrieve
+    - [ ] GET - Bulk Automatic Hold Retrieve
+- [ ] **Barge In Exempt**
+    - [ ] GET - User Barge In Exempt
+    - [ ] PUT - User Barge In Exempt
+- [ ] **Basic Call Logs**
+    - [ ] GET - User Basic Call Logs
+- [ ] **BroadWorks Anywhere**
+    - [ ] GET - User BroadWorks Anywhere
+    - [ ] PUT - User BroadWorks Anywhere
+    - [ ] PUT - User BroadWorks Anywhere Clone
+    - [ ] GET - User BroadWorks Anywhere Phone Number
+    - [ ] POST - User BroadWorks Anywhere Phone Number
+    - [ ] PUT - User BroadWorks Anywhere Phone Number
+    - [ ] DELETE - User BroadWorks Anywhere Phone Number
+    - [ ] GET - User BroadWorks Anywhere Phone Number Copy
+    - [ ] POST - User BroadWorks Anywhere Criteria
+    - [ ] GET - User BroadWorks Anywhere Criteria
+    - [ ] PUT - User BroadWorks Anywhere Criteria
+    - [ ] DELETE - User BroadWorks Anywhere Criteria
+- [ ] **BroadWorks Mobility**
+    - [ ] GET - User BroadWorks Mobility
+    - [ ] PUT - User BroadWorks Mobility
+- [ ] **BroadWorks Receptionist Small Business**
+    - [ ] GET - User BroadWorks Receptionist Small Business
+    - [ ] GET - User BroadWorks Receptionist Small Business Available Users
+    - [ ] PUT - User BroadWorks Receptionist Small Business
+- [ ] **Busy Lamp Field**
+    - [ ] GET - User Busy Lamp Field
+    - [ ] PUT - User Busy Lamp Field
+    - [ ] PUT - User Busy Lamp Field Copy
+    - [ ] GET - Busy Lamp Field Available Monitors
+- [ ] **Call Capacity**
+    - [ ] GET - Group Call Capacity Management Groups
+    - [ ] GET - Group Call Capacity Management Group
+    - [ ] POST - Group Call Capacity Management Group
+    - [ ] PUT - Group Call Capacity Management Group
+    - [ ] GET - Group Call Capacity Management Available Users
+    - [ ] DELETE - Group Call Capacity Management Group
+    - [ ] POST - Group Call Capacity Management Group Users
+    - [ ] DELETE - Group Call Capacity Management Group Users
+- [ ] **Call Center**
+    - [ ] GET - Enterprise Call Center
+    - [ ] PUT - Enterprise Call Center
+    - [ ] GET - Enterprise Call Center Agent Unavailable Codes
+    - [ ] POST - Enterprise Call Center Agent Unavailable Codes
+    - [ ] PUT - Enterprise Call Center Agent Unavailable Codes
+    - [ ] DELETE - Enterprise Call Center Agent Unavailable Codes
+    - [ ] GET - Enterprise Call Center Agent Unavailable Codes Settings
+    - [ ] PUT - Enterprise Call Center Agent Unavailable Codes Settings
+    - [ ] GET - Enterprise Call Center Enhanced Reporting
+    - [ ] PUT - Enterprise Call Center Enhanced Reporting
+    - [ ] GET - Enterprise Call Center Threshold Profile
+    - [ ] GET - Enterprise Call Center Threshold Profiles
+    - [x] GET - Group Call Centers
+    - [ ] PUT - Group Call Centers
+    - [ ] GET - Group Call Centers Available Agents
+    - [ ] GET - Group Call Centers Available Supervisors
+    - [ ] GET - Group Call Centers Threshold Profiles
+    - [ ] POST - Group Call Center
+    - [x] GET - Group Call Center
+    - [x] PUT - Group Call Center
+    - [ ] DELETE - Group Call Center
+    - [ ] GET - Group Call Center Agents
+    - [ ] POST - Group Call Center Agents
+    - [ ] DELETE - Group Call Center Agents
+    - [x] PUT - Group Call Center Agents
+    - [ ] GET - Group Call Center Agents Unlicensed
+    - [ ] GET - Group Call Center Announcements
+    - [ ] PUT - Group Call Center Announcements
+    - [x] GET - Group Call Center Bounced Calls
+    - [x] PUT - Group Call Center Bounced Calls
+    - [ ] GET - Group Call Center Comfort Message Bypass
+    - [ ] PUT - Group Call Center Comfort Message Bypass
+    - [ ] GET - Group Call Center Distinctive Ringing
+    - [x] PUT - Group Call Center Distinctive Ringing
+    - [ ] GET - Group Call Center DNIS Instances
+    - [ ] POST - Group Call Center DNIS Instance
+    - [ ] GET - Group Call Center DNIS Instance
+    - [ ] PUT - Group Call Center DNIS Instance
+    - [ ] DELETE - Group Call Center DNIS Instance
+    - [ ] GET - Group Call Center DNIS Instance Announcements
+    - [ ] PUT - Group Call Center DNIS Instance Announcements
+    - [ ] GET - Group Call Center DNIS Settings
+    - [ ] PUT - Group Call Center DNIS Settings
+    - [x] GET - Group Call Center Forced Forwarding
+    - [x] PUT - Group Call Center Forced Forwarding
+    - [ ] GET - Group Call Center Holiday Service
+    - [ ] PUT - Group Call Center Holiday Service
+    - [ ] GET - Group Call Center Night Service
+    - [ ] PUT - Group Call Center Night Service
+    - [x] GET - Group Call Center Overflow
+    - [x] PUT - Group Call Center Overflow
+    - [ ] GET - Group Call Center Queue Disposition Codes Settings
+    - [ ] PUT - Group Call Center Queue Disposition Codes Settings
+    - [ ] GET - Group Call Center Queue Disposition Codes
+    - [ ] POST - Group Call Center Queue Disposition Code
+    - [ ] GET - Group Call Center Queue Disposition Code
+    - [ ] PUT - Group Call Center Queue Disposition Code
+    - [ ] DELETE - Group Call Center Queue Disposition Code
+    - [ ] GET - Group Call Center Queue Status
+    - [ ] GET - Group Call Center Queue Status Notifications
+    - [x] PUT - Group Call Center Queue Status Notifications
+    - [ ] GET - Group Call Center Enhanced Reporting
+    - [ ] PUT - Group Call Center Enhanced Reporting
+    - [ ] GET - Group Call Center Reporting
+    - [ ] PUT - Group Call Center Reporting
+    - [ ] GET - Group Call Center Statistics
+    - [x] GET - Group Call Center Stranded Calls
+    - [x] PUT - Group Call Center Stranded Calls
+    - [x] GET - Group Call Center Stranded Calls Unavailable
+    - [x] PUT - Group Call Center Stranded Calls Unavailable
+    - [ ] GET - Group Call Center Supervisors
+    - [ ] POST - Group Call Center Supervisors
+    - [ ] PUT - Group Call Center Supervisors
+    - [ ] DELETE - Group Call Center Supervisors
+    - [ ] GET - User Call Center Supervisor Agents
+    - [ ] GET - Group Call Center Thresholds
+    - [ ] PUT - Group Call Center Thresholds
+    - [x] GET - User Call Center
+    - [x] PUT - User Call Center
+    - [ ] GET - User Call Center DNIS
+    - [ ] GET - User Call Center Monitoring
+    - [ ] PUT - User Call Center Monitoring
+    - [ ] POST - User Call Center Supervisor Agents
+    - [x] PUT - User Call Center Supervisor Agents
+    - [ ] DELETE - User Call Center Supervisor Agents
+    - [ ] GET - User Call Center Supervisors
+    - [ ] GET - User Call Center Supervisor Call Centers
+    - [ ] GET - Enterprise Call Center Threshold Default Profile
+- [ ] **Call Control**
+    - [ ] GET - User Call Control Applications
+    - [ ] PUT - User Call Control Applications
+- [ ] **Call Forwarding Always**
+    - [x] GET - User Call Forwarding Always
+    - [ ] PUT - User Call Forwarding Always
+    - [x] GET - Bulk Call Forwarding Always
+    - [ ] PUT - Bulk Call Forwarding Always
+    - [ ] PUT - Bulk Call Forwarding Always Test
+- [ ] **Call Forwarding Always Secondary**
+    - [ ] GET - User Call Forwarding Always Secondary
+    - [ ] PUT - User Call Forwarding Always Secondary
+- [ ] **Call Forwarding Busy**
+    - [x] GET - User Call Forwarding Busy
+    - [ ] PUT - User Call Forwarding Busy
+    - [x] GET - Bulk Call Forwarding Busy
+    - [ ] PUT - Bulk Call Forwarding Busy
+- [ ] **Call Forwarding No Answer**
+    - [x] GET - User Call Forwarding No Answer
+    - [ ] PUT - User Call Forwarding No Answer
+    - [x] GET - Bulk Call Forwarding No Answer
+    - [ ] PUT - Bulk Call Forwarding No Answer
+- [ ] **Call Forwarding Not Reachable**
+    - [x] GET - Call Forwarding Not Reachable
+    - [ ] PUT - Call Forwarding Not Reachable
+    - [x] GET - Bulk Call Forwarding Not Reachable
+    - [ ] PUT - Bulk Call Forwarding Not Reachable
+- [ ] **Call Forwarding Selective**
+    - [x] GET - User Call Forwarding Selective
+    - [ ] PUT - User Call Forwarding Selective
+    - [x] GET - User Call Forwarding Selective Criterias
+    - [x] GET - User Call Forwarding Selective Criteria
+    - [ ] POST - User Call Forwarding Selective Criteria
+    - [ ] PUT - User Call Forwarding Selective Criteria
+    - [ ] DELETE - User Call Forwarding Selective Criteria
+- [ ] **Call Notify**
+    - [ ] GET - User Call Notify
+    - [ ] PUT - User Call Notify
+    - [ ] GET - User Call Notify Criteria
+    - [ ] GET - User Call Notify Criterias
+    - [ ] POST - User Call Notify Criteria
+    - [ ] PUT - User Call Notify Criteria
+    - [ ] DELETE - User Call Notify Criteria
+- [ ] **Call Park**
+    - [ ] GET - Call Park Settings
+    - [ ] PUT - Call Park Settings
+    - [ ] GET - Call Park Available Recall Users
+    - [ ] GET - Call Park Groups
+    - [ ] POST - Call Park Group
+    - [ ] GET - Call Park Group
+    - [ ] GET - Call Park Group Users
+    - [ ] PUT - Call Park Group
+    - [ ] DELETE - Call Park Group
+- [ ] **Call Pickup**
+    - [ ] GET - Call Pickup Groups
+    - [ ] POST - Call Pickup Group
+    - [ ] GET - Call Pickup Group
+    - [x] GET - Call Pickup Available Users
+    - [ ] PUT - Call Pickup Group
+    - [ ] DELETE - Call Pickup Group
+- [ ] **Call Policies**
+    - [ ] GET - User Call Policies
+    - [x] PUT - User Call Policies
+- [ ] **Call Processing Policies**
+    - [ ] GET - Group Call Processing Policy
+    - [ ] PUT - Group Call Processing Policy
+    - [ ] GET - User Call Processing Policy
+    - [ ] PUT - User Call Processing Policy
+    - [ ] GET - Service Provider Call Processing Policy
+    - [ ] PUT - Service Provider Call Processing Policy
+- [ ] **Call Recording**
+    - [ ] GET - User Call Recording
+    - [ ] PUT - User Call Recording
+    - [ ] GET - Bulk Call Recording
+    - [ ] PUT - Bulk Call Recording
+- [ ] **Call Records**
+    - [ ] GET - Group Detail
+    - [ ] GET - Group Related
+    - [ ] GET - Group Stats
+    - [ ] GET - Users Hourly
+    - [ ] GET - Users Daily
+    - [ ] GET - Users Detail
+    - [ ] GET - Users Details
+    - [x] GET - Users Stats
+    - [ ] GET - Users Summary
+    - [ ] POST - Users Summary
+    - [ ] GET - User Related
+- [ ] **Call Transfer**
+    - [ ] GET - User Call Transfer
+    - [ ] PUT - User Call Transfer
+- [ ] **Call Waiting**
+    - [ ] GET - User Call Waiting
+    - [ ] PUT - User Call Waiting
+- [ ] **Calling Line ID Blocking Override**
+    - [ ] GET - User Calling Line ID Delivery Blocking
+    - [ ] PUT - User Calling Line ID Delivery Blocking
+- [ ] **Calling Line ID Delivery Blocking**
+    - [ ] GET - User Calling Line ID Delivery Blocking
+    - [ ] PUT - User Calling Line ID Delivery Blocking
+    - [ ] GET - Bulk Calling Line ID Delivery Blocking
+    - [ ] PUT - Bulk Calling Line ID Delivery Blocking
+- [ ] **Calling Name Delivery**
+    - [ ] GET - Calling Name Delivery
+    - [ ] PUT - Calling Name Delivery
+- [ ] **Calling Name Retrieval**
+    - [ ] GET - User Calling Name Retrieval
+    - [ ] PUT - User Calling Name Retrieval
+- [ ] **Calling Number Delivery**
+    - [ ] GET - User Calling Number Delivery
+    - [ ] PUT - User Calling Number Delivery
+- [ ] **Calling Party Category**
+    - [ ] GET - User Calling Party Category
+    - [ ] PUT - User Calling Party Category
+- [ ] **Calling Plans**
+    - [ ] GET - User Incoming Calling Plan
+    - [ ] PUT - User Incoming Calling Plan
+    - [ ] GET - Users Outgoing Calling Plan Originating
+    - [ ] PUT - Users Outgoing Calling Plan Originating
+    - [ ] GET - Users Outgoing Calling Plan Redirecting
+    - [ ] PUT - Users Outgoing Calling Plan Redirecting
+    - [ ] GET - Users Outgoing Calling Plan Redirected
+    - [ ] PUT - Users Outgoing Calling Plan Redirected
+    - [ ] GET - Users Outgoing Calling Plan Call Me Now
+    - [ ] PUT - Users Outgoing Calling Plan Call Me Now
+    - [ ] GET - User Outgoing Calling Plan Originating
+    - [ ] PUT - User Outgoing Calling Plan Originating
+    - [ ] GET - User Outgoing Calling Plan Redirecting
+    - [ ] PUT - User Outgoing Calling Plan Redirecting
+    - [ ] GET - User Outgoing Calling Plan Redirected
+    - [ ] PUT - User Outgoing Calling Plan Redirected
+    - [ ] GET - User Outgoing Calling Plan Call Me Now
+    - [ ] PUT - User Outgoing Calling Plan Call Me Now
+    - [ ] GET - User Outgoing Calling Plan Authorization Code Settings
+    - [ ] PUT - User Outgoing Calling Plan Authorization Code Settings
+    - [ ] GET - User Outgoing Calling Plan Authorization Codes
+    - [ ] POST - User Outgoing Calling Plan Authorization Codes
+    - [ ] DELETE - User Outgoing Calling Plan Authorization Codes
+    - [ ] GET - User Outgoing Calling Plan Digit Plan Originating
+    - [ ] PUT - User Outgoing Calling Plan Digit Plan Originating
+    - [ ] GET - User Outgoing Calling Plan Digit Plan Redirecting
+    - [ ] PUT - User Outgoing Calling Plan Digit Plan Redirecting
+    - [ ] GET - User Outgoing Calling Plan Digit Plan Call Me Now
+    - [ ] PUT - User Outgoing Calling Plan Digit Plan Call Me Now 
+    - [ ] GET - User Outgoing Calling Plan Pinhole Digit Plan Originating
+    - [ ] PUT - User Outgoing Calling Plan Pinhole Digit Plan  Originating
+    - [ ] GET - User Outgoing Calling Plan Pinhole Digit Plan Redirecting
+    - [ ] PUT - User Outgoing Calling Plan Pinhole Digit Plan Redirecting
+    - [ ] GET - User Outgoing Calling Plan Pinhole Digit Plan Call Me Now
+    - [ ] PUT - User Outgoing Calling Plan Pinhole Digit Plan Call Me Now
+    - [ ] GET - User Outgoing Calling Plan Transfer Numbers
+    - [ ] PUT - User Outgoing Calling Plan Transfer Numbers
+    - [ ] GET - Group Incoming Calling Plan
+    - [ ] PUT - Group Incoming Calling Plan
+    - [ ] GET - Group Outgoing Calling Plan Originating
+    - [ ] PUT - Group Outgoing Calling Plan Originating
+    - [ ] GET - Group Outgoing Calling Plan Redirecting
+    - [ ] PUT - Group Outgoing Calling Plan Redirecting
+    - [ ] GET - Group Outgoing Calling Plan Redirected
+    - [ ] PUT - Group Outgoing Calling Plan Redirected
+    - [ ] GET - Group Outgoing Calling Plan Call Me Now
+    - [ ] PUT - Group Outgoing Calling Plan Call Me Now
+    - [ ] GET - Group Outgoing Calling Plan Authorization Codes
+    - [ ] POST - Group Outgoing Calling Plan Authorization Codes
+    - [ ] DELETE - Group Outgoing Calling Plans Authorization Codes
+    - [ ] GET - Group Outgoing Calling Plan Digit Plan Originating
+    - [ ] PUT - Group Outgoing Calling Plan Digit Plan Originating
+    - [ ] GET - Group Outgoing Calling Plan Digit Plan Redirecting
+    - [ ] PUT - Group Outgoing Calling Plan Digit Plan Redirecting
+    - [ ] GET - Group Outgoing Calling Plan Digit Plan Call Me Now
+    - [ ] PUT - Group Outgoing Calling Plan Digit Plan Call Me Now
+    - [ ] GET - Group Outgoing Calling Plan Pinhole Digit Plan Originating
+    - [ ] PUT - Group Outgoing Calling Plan Pinhole Digit Plan Originating
+    - [ ] GET - Group Outgoing Calling Plan Pinhole Digit Plan Redirecting
+    - [ ] PUT - Group Outgoing Calling Plan Pinhole Digit Plan Redirecting
+    - [ ] GET - Group Outgoing Calling Plan Pinhole Digit Plan Call Me Now
+    - [ ] PUT - Group Outgoing Calling Plan Pinhole Digit Plan Call Me Now
+    - [ ] GET - Group Calling Plan Digit Patterns
+    - [ ] POST - Group Calling Plan Digit Pattern
+    - [ ] PUT - Group Calling Plan Digit Pattern
+    - [ ] DELETE - Group Calling Plan Digit Pattern
+    - [ ] GET - Group Outgoing Calling Plan Pinhole Digit Patterns
+    - [ ] POST - Group Outgoing Calling Plan Pinhole Digit Pattern
+    - [ ] PUT - Group Outgoing Calling Plan Pinhole Digit Pattern
+    - [ ] DELETE - Group Outgoing Calling Plan Pinhole Digit Pattern
+    - [ ] GET - Group Outgoing Calling Plan Transfer Numbers
+    - [ ] PUT - Group Outgoing Calling Plan Transfer Numbers
+- [ ] **ChargeNumber**
+    - [ ] GET - User Charge Number
+    - [ ] PUT - User Charge Number Copy
+- [ ] **Classmark**
+    - [ ] GET - User Classmark
+    - [ ] PUT - User Classmark
+- [ ] **Clone**
+    - [ ] PUT - Clone Group Services
+    - [ ] PUT - Clone Group Auto Attendant
+    - [ ] PUT - Clone Group
+    - [ ] PUT - Clone Service Provider
+    - [ ] PUT - Clone Service Provider Feature Access Code
+    - [ ] PUT - Clone Service Provider Group Policy
+    - [ ] PUT - Clone Service Provider Schedule
+- [ ] **Collaborate**
+    - [ ] GET - User Collaborate Bridge
+    - [ ] GET - User Collaborate Instant Room
+    - [ ] PUT - User Collaborate Instant Room
+    - [ ] GET - User Collaborate My Room
+    - [ ] PUT - User Collaborate My Room
+    - [ ] GET - User Collaborate Project Rooms
+    - [ ] POST - User Collaborate Project Room
+    - [ ] GET - User Collaborate Project Room
+    - [ ] PUT - User Collaborate Project Room
+    - [ ] DELETE - User Collaborate Project Room
+    - [ ] PUT - User Collaborate Regenerate Room ID
+    - [ ] GET - Group Collaborate Bridges
+    - [ ] GET - Group Collaborate Bridges Details
+    - [ ] POST - Group Collaborate Bridge
+    - [ ] GET - Group Collaborate Bridge
+    - [ ] PUT - Group Collaborate Bridge
+    - [ ] GET - Group Collaborate Bridge Available Users
+    - [ ] DELETE - Group Collaborate Bridge
+    - [ ] GET - System Collaborate
+    - [ ] PUT - System Collaborate
+- [ ] **Comm Pilot Call Manager**
+    - [ ] GET - User Comm Pilot Call Manager
+    - [ ] PUT - User Comm Pilot Call Manager
+- [ ] **Comm Pilot Express**
+    - [ ] GET - User Comm Pilot Express
+    - [ ] PUT - User Comm Pilot Express
+- [ ] **Common Phone List**
+    - [ ] GET - Group Common Phone List Entries
+    - [ ] POST - Group Common Phone List Entries
+    - [ ] DELETE - Group Common Phone List Entries
+    - [ ] PUT - Group Common Phone List Entry
+- [ ] **Communication Barring**
+    - [ ] GET - System Communication Barring Profiles
+    - [ ] GET - Group Communication Barring
+    - [ ] PUT - Group Communication Barring
+    - [ ] GET - Group Communication Barring Profiles
+    - [ ] PUT - Group Communication Barring Profiles
+    - [ ] GET - Group Communication Barring Authorization Codes
+    - [ ] POST - Group Communication Barring Authorization Codes
+    - [ ] DELETE - Group Communication Barring Authorization Codes
+    - [ ] GET - User Communication Barring Authorization Codes
+    - [ ] POST - User Communication Barring Authorization Codes
+    - [ ] DELETE - User Communication Barring Authorization Codes
+    - [ ] PUT - User Communication Barring
+    - [ ] GET - User Communication Barring
+- [ ] **Communication Barring User**
+    - [ ] GET - User Communication Barring User
+    - [ ] PUT - User Communication Barring User
+- [ ] **Connected Line Identification**
+    - [ ] GET - System Connected Line Identification Presentation
+    - [ ] POST - System Connected Line Identification Presentation
+    - [ ] GET - User Connected Line Identification Restriction
+    - [ ] PUT - User Connected Line Identification Restriction
+- [ ] **Custom Contact Directory**
+    - [ ] GET - Group Custom Contact Directories
+    - [ ] GET - Group Custom Contact Directories Available Users
+    - [ ] POST - Group Custom Contact Directory
+    - [ ] GET - Group Custom Contact Directory
+    - [ ] PUT - Group Custom Contact Directory
+    - [ ] DELETE - Group Custom Contact Directory
+- [ ] **Departments**
+    - [ ] GET - Departments
+    - [ ] POST - Department
+    - [ ] GET - Department
+    - [ ] PUT - Department
+    - [ ] DELETE - Department
+    - [ ] GET - Department Admins
+    - [ ] POST - Department Admin
+    - [ ] GET - Department Admin
+    - [ ] PUT - Department Admin
+    - [ ] DELETE - Department Admin
+- [ ] **Device Policies**
+    - [ ] GET - User Device Policies
+    - [ ] PUT - User Device Policies
+- [ ] **Devices**
+    - [ ] GET - Group Devices
+    - [ ] GET - Group Device
+    - [ ] GET - Group Devices Available
+    - [ ] GET - Group Device Users (WIP)
+    - [x] POST - Group Device
+    - [x] PUT - Group Device
+    - [ ] DELETE - Group Device
+    - [ ] GET - Service Provider Devices
+    - [ ] GET - Service Provider Device
+    - [ ] GET - Service Provider Device User (WIP)
+    - [x] PUT - Service Provider Device
+    - [ ] POST - Service Provider Device
+    - [ ] DELETE - Service Provider Device
+    - [ ] GET - System Device Types
+    - [ ] GET - System Devices
+    - [ ] GET - System Device
+    - [ ] GET - System Device User (WIP)
+    - [ ] POST - System Device
+    - [x] PUT - System Device
+    - [ ] DELETE - System Device
+    - [ ] POST - Group Device Reset
+    - [ ] POST - Group Device Rebuild
+    - [ ] POST - Service Provider Device Reset
+    - [ ] POST - Service Provider Device Rebuild
+    - [ ] POST - System Device Reset
+    - [ ] POST - Systen Device Rebuild
+    - [ ] GET - Group Device Files
+    - [ ] GET - Group Device File
+    - [x] PUT - System Device File
+    - [ ] GET - Service Provider Device Files
+    - [ ] GET - Service Provider Device File
+    - [x] PUT - Service Provider Device File
+    - [ ] GET - System Device Files
+    - [ ] GET - System Device File
+    - [x] PUT - Group Device File
+    - [x] GET - Group Device Tags
+    - [ ] GET - Group Device Tags Bulk
+    - [ ] POST - Group Device Tag
+    - [ ] PUT - Group Device Tag
+    - [ ] DELETE - Group Device Tag
+    - [ ] DELETE - Group Device Multiple Tag
+    - [ ] GET - Sevice Provider Device Tags
+    - [ ] POST - Service Provider Device Tag
+    - [x] PUT - Service Provider Device Tag
+    - [ ] DELETE - Service Provider Device Tag
+    - [ ] DELETE - Service Provider Device Tag Multiple
+    - [ ] GET - System Device Tags
+    - [ ] POST - System Device Tag
+    - [x] PUT - System Device Tag
+    - [ ] DELETE - System Device Tag
+    - [ ] DELETE - System Device Tag Multiple
+    - [ ] GET - Group Device Types
+    - [ ] GET - Group Device Type
+    - [ ] POST - Group Device Type Rebuild
+    - [ ] POST - Group Device Type Reset
+    - [ ] GET - Group Device Type Files
+    - [ ] GET - Group Device Type File
+    - [x] PUT - Group Device Type File
+    - [ ] GET - Group Device Type Tags
+    - [ ] POST - Group Device Type Tag
+    - [x] PUT - Group Device Type Tag
+    - [ ] DELETE - Group Device Type Tag
+    - [ ] GET - Service Provider Device Type Tags
+    - [x] PUT - Service Provider Device Type Tag
+    - [ ] DELETE - Service Provider Device Type Tag
+    - [ ] POST - Service Provider Device Type Tag
+- [ ] **Directed Call Pickup With Barge In**
+    - [ ] GET - User Directed Call Pickup With Barge In
+    - [ ] PUT - User Directed Call Pickup With Barge In
+- [ ] **DirectRoute**
+    - [ ] GET - User Direct Route
+    - [ ] PUT - User Direct Route
+- [x] **Dn**
+    - [x] GET - User DNs
+    - [x] GET - Group Dns
+    - [x] GET - Group Dn Search
+    - [x] GET - Group Dn Details
+    - [x] DELETE - Group Dns
+    - [x] POST - Group Dns
+    - [x] POST - Group Dns Assign Bulk
+    - [x] POST - Group Dns un-assign Bulk
+    - [x] PUT - Group Dns
+    - [x] GET - System Dn Search
+    - [x] GET - System Dn
+    - [x] GET - System Dn Summary
+    - [x] GET - System Dn Utilization
+    - [x] GET - Service Provider Dn Search
+    - [x] GET - Service Provider Dns
+    - [x] POST - Service Provider Dns
+    - [x] DELETE - Service Provider Dns
+- [x] **Do Not Disturb**
+    - [x] GET - User Do Not Disturb
+    - [x] PUT - User Do Not Disturb
+- [ ] **Domains**
+    - [ ] GET - System Domains
+    - [ ] POST - System Domains
+    - [ ] PUT - System Domains
+    - [ ] DELETE - System Domains
+    - [ ] GET - Service Provider Domains
+    - [ ] POST - Service Provider Domains
+    - [ ] PUT - Service Provider Domains
+    - [ ] DELETE - Service Provider Domains
+    - [ ] GET - Group Domains
+    - [ ] POST - Group Domains
+    - [ ] PUT - Group Domains
+    - [ ] DELETE - Group Domains
+- [ ] **Emergency Notifications**
+    - [ ] GET - Group Emergency Call Notifications
+    - [ ] PUT - Group Emergency Call Notifications
+    - [ ] GET - Service Provider Emergency Call Notifications
+    - [ ] PUT - Service Provider Emergency Call Notifications
+    - [ ] GET - Reseller Emergency Call Notifications
+    - [ ] PUT - Reseller Emergency Call Notificationsa
+    - [ ] GET - System Emergency Call Notifications
+    - [ ] PUT - System Emergency Call Notificationsa
+- [ ] **Emergency Zones**
+    - [ ] GET - Emergency Zones
+    - [x] POST - Group Emergency Zones
+    - [x] PUT - Group Emergency Zones
+    - [ ] DELETE - Group Emergency Zones
+    - [ ] GET - Reseller Emergency Zones
+    - [ ] PUT - Reseller Emergency Zones
+    - [ ] GET - System Emergency Zones
+    - [ ] PUT - System Emergency Zones
+- [ ] **Enterprise Trunks**
+    - [ ] GET - Enterprise Enterprise Trunks Available Trunk Groups
+    - [ ] GET - Enterprise Enterprise Trunks Available Users
+    - [ ] GET - Enterprise Enterprise Trunks
+    - [ ] POST - Enterprise Enterprise Trunk
+    - [ ] GET - Enterprise Enterprise Trunk
+    - [ ] PUT - Enterprise Enterprise Trunk
+    - [ ] GET - Enterprise Enterprise Trunk Users
+    - [ ] POST - Enterprise Enterprise Trunk Users
+    - [ ] PUT - Enterprise Enterprise Trunk Users
+    - [ ] DELETE - Enterprise Enterprise Trunk Users
+    - [ ] DELETE - Enterprise Enterprise Trunk
+    - [ ] GET - Group Enterprise Trunks Available Users
+    - [ ] GET - Group Enterprise Trunks Available Trunk Groups
+    - [ ] GET - Group Enterprise Trunks
+    - [ ] POST - Group Enterprise Trunk
+    - [ ] GET - Group Enterprise Trunk
+    - [ ] PUT - Group Enterprise Trunk
+    - [ ] DELETE - Group Enterprise Trunk
+    - [ ] GET - Group Enterprise Trunk Users
+    - [ ] POST - Group Enterprise Trunk Users
+    - [ ] PUT - Group Enterprise Trunk Users
+    - [ ] DELETE - Group Enterprise Trunk Users
+- [ ] **Executive**
+    - [ ] GET - User Executive Assistants
+    - [ ] PUT - User Executive Assistants
+    - [ ] GET - User Executive Filtering
+    - [ ] PUT - User Executive Filtering
+    - [ ] GET - User Executive Filtering Criteria
+    - [ ] POST - User Executive Filtering Criteria
+    - [ ] PUT - User Executive Filtering Criteria
+    - [ ] DELETE - User Executive Filtering Criteria
+    - [ ] GET - User Executive Screening Alerting
+    - [ ] PUT - User Executive Screening Alerting
+- [ ] **Executive Assistant**
+    - [ ] GET - User Executive Assistant
+    - [ ] PUT - User Executive Assistant
+- [ ] **Extensions**
+    - [ ] GET - Group Extensions
+    - [ ] PUT - Group Extensions
+- [ ] **External Calling Line ID Delivery**
+    - [ ] GET - User External Calling Line ID Delivery
+    - [ ] PUT - User External Calling Line ID Delivery
+- [ ] **External Custom Ringback**
+    - [ ] GET - User External Custom Ringback
+    - [ ] PUT - User External Custom Ringback
+- [ ] **Fax Messaging**
+    - [ ] GET - User Fax Messaging
+    - [ ] PUT - User Fax Messaging
+- [ ] **Feature Access Codes**
+    - [ ] GET - System Feature Access Codes
+    - [ ] PUT - System Feature Access Codes
+    - [ ] GET - Group Feature Access Codes
+    - [ ] PUT - Group Feature Access Codes
+    - [ ] GET - User Feature Access Codes
+    - [ ] GET - User Feature Access Codes  Details
+    - [ ] PUT - User Feature Access Codes  Details
+- [ ] **Flexible Seating**
+    - [ ] GET - Group Flexible Seating Access Devices
+    - [ ] GET - Group Flexible Seating Hosts
+    - [ ] GET - Group Flexible Seating Host
+    - [ ] POST - Group Flexible Seating Host
+    - [ ] PUT - Group Flexible Seating Host
+    - [ ] DELETE - Group Flexible Seating Host
+    - [ ] PUT - Group Flexible Seating Host Status
+    - [ ] GET - Group Flexible Seating Host Guest Association
+    - [ ] PUT - Group Flexible Seating Host Guest Association
+    - [ ] GET - Group Flexible Seating Host Routing Policies
+    - [ ] PUT - Group Flexible Seating Host Routing Policies
+    - [ ] GET - Users Flexible Seating Guest Bulk
+    - [ ] GET - User Flexible Seating Guest
+    - [ ] PUT - User Flexible Seating Guest
+    - [ ] GET - User Flexible Seating Guest Hosts
+- [ ] **Group Paging**
+    - [ ] GET - Group Paging Groups
+    - [ ] GET - Group Paging Groups Available Originators
+    - [ ] PUT - Group Paging Groups Status
+    - [ ] POST - Group Paging Group
+    - [ ] GET - Group Paging Group
+    - [ ] PUT - Group Paging Group
+    - [ ] PUT - Group Paging Group Originators
+    - [ ] GET - Group Paging Group Originators
+    - [ ] GET - Group Paging Group Available Targets
+    - [ ] GET - Group Paging Group Targets
+    - [ ] PUT - Group Paging Group Targets
+    - [ ] GET - Group Paging Group Targets Capacity
+    - [ ] PUT - Group Paging Group Targets Capacity
+    - [ ] DELETE - Group Paging Group
+- [ ] **Groups**
+    - [x] GET - Groups
+    - [ ] POST - Group
+    - [x] GET - Group
+    - [ ] PUT - Group
+    - [ ] DELETE - Group
+- [ ] **Hoteling Guest**
+    - [ ] GET - User Hoteling Guest
+    - [ ] PUT - User Hoteling Guest
+    - [ ] GET - User Hoteling Guest Available Users
+    - [ ] GET - Bulk Hoteling Guest
+    - [ ] PUT - Bulk Hoteling Guest
+- [ ] **Hoteling Host**
+    - [ ] GET - User Hoteling Host
+    - [ ] PUT - User Hoteling Host
+    - [ ] GET - Bulk Hoteling Host
+    - [ ] PUT - Bulk Hoteling Host
+- [x] **Hunt Groups**
+    - [x] GET - Group Hunt Groups Available Users
+    - [x] GET - Group Hunt Groups
+    - [x] POST - Group Hunt Group
+    - [x] GET - Group Hunt Group
+    - [x] PUT - Group Hunt Group
+    - [x] PUT - Group Hunt Groups Status
+    - [x] DELETE - Group Hunt Group
+    - [x] PUT - Group Hunt Group Weighted Call Distribution
+- [ ] **In Call Service Activation**
+    - [ ] GET - User In Call Service Activation
+    - [ ] PUT - User In Call Service Activation
+- [ ] **Integrated IMP**
+    - [ ] GET - Service Provider Integrated IMP
+    - [ ] PUT - Service Provider Integrated IMP
+    - [ ] GET - User Integrated IMP
+    - [ ] PUT - User Integrated IMP
+    - [ ] PUT - User Integrated IMP Password
+- [ ] **Intercept**
+    - [ ] GET - Intercept Group
+    - [ ] PUT - Intercept Group
+    - [ ] GET - Intercept User
+    - [ ] PUT - Intercept User
+- [ ] **Internal Calling Line ID Delivery**
+    - [ ] GET - User Internal Calling Line ID Delivery
+    - [ ] PUT - User Internal Calling Line ID Delivery
+- [ ] **Languages**
+    - [ ] GET - System Languages
+    - [ ] GET - Service Provider Languages
+- [ ] **Legacy Automatic Callback**
+    - [ ] GET - User Legacy Automatic Callback
+    - [ ] PUT - User Legacy Automatic Callback
+- [ ] **Malicious Call Trace**
+    - [ ] GET - User Malicious Call Trace
+    - [ ] PUT - User Malicious Call Trace
+- [ ] **Media**
+    - [ ] GET - System Media
+    - [ ] POST - System Media
+    - [ ] PUT - System Media Copy
+    - [ ] DELETE - System Media
+    - [ ] GET - System Media Sets
+    - [ ] GET - System Media Set
+    - [ ] POST - System Media Set
+    - [ ] PUT - System Media Set
+    - [ ] DELETE - System Media Set
+- [ ] **Meet-Me Conferencing**
+    - [ ] GET - Service Providers Meet-Me Conferencing Ports
+    - [ ] PUT - Service Providers Meet-Me Conferencing Ports
+    - [ ] GET - Group Meet-Me Conferencing Ports
+    - [ ] PUT - Group Meet-Me Conferencing Ports
+    - [ ] GET - Group Meet-Me Conferencing Available Users
+    - [ ] GET - Group Meet-Me Conferencing Bridges
+    - [ ] POST - Group MeetMe Conferencing Bridge
+    - [ ] GET - Group MeetMe Conferencing Bridge
+    - [ ] PUT - Group MeetMe Conferencing Bridge
+    - [ ] DELETE - Group MeetMe Conferencing Bridge
+    - [ ] GET - User Meet-Me Bridges
+    - [ ] GET - User Meet-Me Conferences
+    - [ ] POST - User Meet-Me Conference
+    - [ ] GET - User Meet-Me Conference
+    - [ ] PUT - User Meet-Me Conference
+    - [ ] DELETE - User Meet-Me Conference
+    - [ ] GET - User Meet-Me Delegates
+    - [ ] GET - User Meet-Me Delegates Available Users
+    - [ ] PUT - User Meet-Me Delegates
+- [ ] **Music On Hold**
+    - [ ] GET - User Music On Hold
+    - [ ] PUT - User Music On Hold
+    - [ ] GET - Group Music On Hold Departments
+    - [ ] POST - Group Music On Hold Department
+    - [ ] GET - Group Music On Hold Instance
+    - [ ] PUT - Group Music On Hold Instance
+    - [ ] DELETE - Group Music On Hold Department
+- [ ] **MWI Delivery To Mobile Endpoint**
+    - [ ] GET - User MWI Delivery To Mobile Endpoint
+    - [ ] PUT - User MWI Delivery To Mobile Endpoint
+- [ ] **Network Class of Service**
+    - [ ] GET - Service Provider Network Class of Services
+    - [ ] POST - Service Provider Network Class of Service Select
+    - [ ] PUT - Service Provider Network Class of Service
+    - [ ] GET - Group Network Class of Services
+    - [ ] POST - Group Network Class of Service Select
+    - [ ] PUT - Group Network Class of Service
+    - [ ] GET - System Network Class of Services
+    - [ ] POST - System Network Class of Service
+    - [ ] GET - System Network Class of Service
+    - [ ] PUT - System Network Class of Service
+    - [ ] DELETE - System Network Class of Service
+    - [ ] GET - System Network Class of Service Usage
+- [ ] **Night Forwarding**
+    - [ ] GET - Group Night Forwarding
+    - [ ] PUT - Group Night Forwarding
+    - [ ] GET - User Night Forwarding
+    - [ ] PUT - User Night Forwarding
+- [ ] **Number Portability Announcement**
+    - [ ] GET - User Number Portability Announcement
+    - [ ] PUT - User Number Portability Announcement
+- [ ] **Numbers**
+    - [ ] GET - System Number Activation
+- [ ] **Outlook Integration**
+    - [ ] GET - User Outlook Integration
+    - [ ] PUT - User Outlook Integration
+- [ ] **Passcode Rules**
+    - [ ] GET - System Passcode Rules
+    - [ ] PUT - System Passcode Rules
+    - [ ] GET - Service Provider Passcode Rules
+    - [ ] PUT - Service Provider Passcode Rules
+    - [ ] GET - Group Passcode Rules
+    - [ ] PUT - Group Passcode Rules
+- [x] **Password Generate**
+    - [x] GET - Password Generate
+    - [x] GET - Passwords Generate
+    - [x] GET - Passcode Generate
+    - [x] GET - Passcodes Generate
+    - [x] GET - Sip Password Generate
+    - [x] GET - Sip Passwords Generate
+- [ ] **Password Rules**
+    - [ ] GET - System Password Rules
+    - [ ] PUT - System Password Rules
+    - [ ] GET - Service Provider Password Rules
+    - [ ] PUT - Service Provider Password Rules
+    - [ ] GET - Group Password Rules
+    - [ ] PUT - Group Password Rules
+- [ ] **Personal Phone List**
+    - [ ] GET - User Personal Phone Entries
+    - [ ] POST - User Personal Phone Entries
+    - [ ] PUT - User Personal Phone Entry
+    - [ ] DELETE - User Personal Phone Entries
+- [ ] **Phone Directory**
+    - [ ] GET - Enterprise Phone Directory
+    - [ ] GET - Service Provider Phone Directory
+    - [ ] GET - Group Phone Directory
+    - [ ] GET - User Phone Directory
+- [ ] **Physical Location**
+    - [ ] GET - User Physical Location
+    - [ ] PUT - User Physical Location
+- [ ] **Polycom Phone Services**
+    - [ ] GET - User Polycom Phone Services
+    - [ ] PUT - User Polycom Phone Services
+- [ ] **Pre Alerting**
+    - [ ] GET - User Pre Alerting
+    - [ ] PUT - User Pre Alerting
+    - [ ] GET - User Pre Alerting Criteria
+    - [ ] POST - User Pre Alerting Criteria
+    - [ ] PUT - User Pre Alerting Criteria
+    - [ ] DELETE - User Pre Alerting Criteria
+    - [ ] PUT - User Pre Alerting -test
+- [ ] **PreferredCarrier**
+    - [ ] GET - User Preferred Carrier
+    - [ ] PUT - User Preferred Carrier
+- [ ] **Prepaid**
+    - [ ] GET - User Prepaid
+    - [ ] PUT - User Prepaid
+- [ ] **Primary Endpoint Advanced Setting**
+    - [ ] GET - User Primary Endpoint Advanced Setting
+    - [ ] PUT - User Primary Endpoint Advanced Setting
+- [ ] **Priority Alert**
+    - [ ] GET - User Priority Alerts with Details
+    - [ ] GET - User Priority Alerts
+    - [ ] PUT - User Priority Alert - Activate
+    - [ ] GET - User Priority Alert Criterias
+    - [ ] GET - User Priority Alert Criteria
+    - [ ] PUT - User Priority Alert Criteria
+    - [ ] POST - User Priority Alert Criteria
+    - [ ] DELETE - User Priority Alert Criteria
+- [ ] **Privacy**
+    - [ ] GET - User Privacy Available Monitors
+    - [ ] GET - User Privacy
+    - [ ] PUT - User Privacy
+    - [ ] GET - Group Service Instance Privacy
+    - [ ] PUT - Group Service Instance Privacy
+    - [ ] PUT - User Privacy Copy
+- [ ] **Push Registration**
+    - [ ] GET - User Push Registration
+    - [ ] GET - Bulk User Push Registration
+- [ ] **Push To Talk**
+    - [ ] GET - User Push To Talk
+    - [ ] PUT - User Push To Talk
+    - [ ] GET - User Push To Talk Available Users
+- [ ] **Registration**
+    - [x] GET - User Registration
+    - [x] GET - Bulk User Registration
+- [ ] **Remote Office**
+    - [ ] GET - User Remote Office
+    - [ ] PUT - User Remote Office
+- [ ] **Reports**
+    - [ ] GET - Service Provider Users Report
+    - [ ] GET - Group Users Report
+    - [x] GET - User Report
+- [ ] **Resellers**
+    - [ ] GET - Resellers
+    - [ ] GET - Reseller
+    - [ ] POST - Reseller
+    - [ ] PUT - Reseller
+    - [ ] DELETE - Reseller
+- [ ] **Route List**
+    - [ ] GET - User Route List
+    - [ ] PUT - User Route List
+- [ ] **Routing Profile**
+    - [ ] GET - System Routing Profile
+    - [ ] GET - Service Provider Routing Profile
+    - [ ] PUT - Service Provider Routing Profile
+    - [ ] GET - Group Routing Profile
+    - [ ] PUT - Group Routing Profile
+- [ ] **Schedules**
+    - [ ] GET - Service Provider Schedules
+    - [ ] POST - Service Provider Schedule
+    - [ ] GET - Service Provider Schedule
+    - [ ] PUT - Service Provider Schedule
+    - [ ] DELETE - Service Provider Schedule
+    - [ ] GET - Service Provider Events
+    - [ ] POST - Service Provider Event
+    - [ ] GET - Service Provider Event
+    - [ ] PUT - Service Provider Event
+    - [ ] DELETE - Service Provider Event
+    - [x] GET - Group Schedules
+    - [ ] POST - Group Schedule
+    - [ ] GET - Group Schedule
+    - [ ] PUT - Group Schedule
+    - [ ] DELETE - Group Schedule
+    - [x] GET - Group Events
+    - [ ] POST - Group Event
+    - [ ] GET - Group Event
+    - [ ] PUT - Group Event
+    - [ ] DELETE - Group Event
+    - [ ] GET - User Schedules
+    - [ ] POST - User Schedule
+    - [ ] GET - User Schedule
+    - [ ] PUT - User Schedule
+    - [ ] DELETE - User Schedule
+    - [ ] GET - User Events
+    - [ ] POST - User Event
+    - [ ] GET - User Event
+    - [ ] PUT - User Event
+    - [ ] DELETE - User Event
+- [ ] **Security Classification**
+    - [ ] GET - User Security Classification
+    - [ ] PUT - User Security Classification
+- [ ] **Selective Call Acceptance**
+    - [ ] GET - User Selective Call Acceptance Criterias
+    - [ ] POST - User Selective Call Acceptance Criteria
+    - [ ] POST - User Selective Call Acceptance Criteria Activation
+    - [ ] GET - User Selective Call Acceptance Criteria
+    - [ ] PUT - User Selective Call Acceptance Criteria
+    - [ ] DELETE - User Selective Call Acceptance Criteria
+    - [ ] GET - User Selective Call Rejection Criteria Details
+- [ ] **Selective Call Rejection**
+    - [ ] GET - User Selective Call Rejection Criteria Details
+    - [ ] GET - User Selective Call Rejection Criterias
+    - [ ] POST - User Selective Call Rejection Criteria
+    - [ ] POST - User Selective Call Rejection Criteria Activation
+    - [ ] GET - User Selective Call Rejection Criteria
+    - [ ] PUT - User Selective Call Rejection Criteria
+    - [ ] DELETE - User Selective Call Rejection Criteria
+- [ ] **Sequential Ring**
+    - [ ] GET - User Sequential Ring
+    - [ ] PUT - User Sequential Ring
+    - [ ] POST - User Sequential Ring Criteria
+    - [ ] GET - User Sequential Ring Criteria
+    - [ ] PUT - User Sequential Ring Criteria
+    - [ ] DELETE - User Sequential Ring Criteria
+- [ ] **Series Completion**
+    - [ ] GET - Group Series Completions
+    - [ ] GET - Group Series Completion
+    - [ ] GET - Group Series Completion Available Users
+    - [ ] POST - Group Series Competion
+    - [ ] PUT - Group Series Competion
+    - [ ] DELETE - Group Series Completion
+- [ ] **Service Packs**
+    - [ ] GET - Service Providers Service Packs
+    - [ ] POST - Service Providers Service Pack
+    - [ ] GET - Service Providers Service Pack
+    - [ ] PUT - Service Providers Service Pack
+    - [ ] DELETE - Service Providers Service Pack
+    - [ ] GET - Service Providers Service Pack Usage
+- [ ] **Service Providers**
+    - [x] GET - Service Providers
+    - [ ] POST - Service Provider
+    - [x] GET - Service Provider
+    - [ ] PUT - Service Provider
+    - [ ] DELETE - Service Provider
+    - [ ] GET - System Service Packs
+- [ ] **Services**
+    - [ ] GET - System Services
+    - [ ] GET - Service Provider Services
+    - [ ] GET - Service Provider Services Assignable
+    - [ ] GET - Service Provider Services Authorized
+    - [ ] PUT - Services Provider Services
+    - [x] GET - Group Services
+    - [ ] GET - Group Services Authorized
+    - [x] GET - Group Services Assigned List
+    - [ ] GET - Group Services Available
+    - [ ] GET - Group Services User Assigned
+    - [x] PUT - Group Services
+    - [x] GET - User Services
+    - [ ] PUT - User Services
+    - [x] GET - User Service Settings
+    - [x] PUT - User Service Settings
+    - [x] GET - User Services Assigned
+    - [ ] GET - User Services Viewable
+    - [ ] GET - User Service Search
+- [ ] **Shared Call Appearance**
+    - [ ] GET - User Shared Call Appearance
+    - [ ] PUT - User Shared Call Appearance
+    - [ ] GET - User Shared Call Appearance Bulk
+    - [x] POST - User Shared Call Appearance Endpoint
+    - [ ] GET - User Shared Call Appearance Endpoint
+    - [ ] DELETE - User Shared Call Appearance Endpoint
+    - [ ] PUT - User Shared Call Appearance Endpoint
+- [ ] **Silent Alerting**
+    - [ ] GET - User Silent Alerting
+    - [ ] PUT - User Silent Alerting
+- [ ] **Simultaneous Ring Personal**
+    - [ ] GET - User Simultaneous Ring Personal
+    - [ ] PUT - User Simultaneous Ring Personal
+    - [ ] POST - User Simultaneous Ring Personal Criteria
+    - [ ] GET - User Simultaneous Ring Personal Criteria
+    - [ ] PUT - User Simultaneous Ring Personal Criteria
+    - [ ] DELETE - User Simultaneous Ring Personal Criteria
+- [ ] **Speed Dial 100**
+    - [ ] GET - Group Speed Dial 100
+    - [ ] PUT - Group Speed Dial 100
+    - [ ] GET - User Speed Dial 100
+    - [ ] POST - User Speed Dial 100
+    - [ ] PUT - User Speed Dial 100
+    - [ ] DELETE - User Speed Dial 100
+- [ ] **Speed Dial 8**
+    - [ ] GET - User Speed Dial 8
+    - [ ] PUT - User Speed Dial 8
+    - [ ] GET - Bulk User Speed Dial 8
+    - [ ] PUT - Bulk User Speed Dial 8
+- [ ] **States and Provinces**
+    - [ ] GET - System States Provinces
+- [ ] **System**
+    - [ ] GET - System Licensing
+    - [ ] GET - Software Version
+    - [ ] GET - System File
+    - [ ] GET - System Service Packs Reports
+- [ ] **Terminating Alternate Trunk Identity**
+    - [ ] GET - User Terminating Alternate Trunk Identity
+    - [ ] PUT - User Terminating Alternate Trunk Identity
+- [ ] **Third Party Voice Mail Support**
+    - [ ] GET - User Third Party Voice Mail Support
+    - [ ] PUT - User Third Party Voice Mail Support
+- [ ] **Time Zones**
+    - [ ] GET - System Time Zones
+- [ ] **Trunk Groups**
+    - [x] GET - Group Trunk Groups Call Capacity
+    - [x] PUT - Group Trunk Groups Call Capacity
+    - [x] GET - Group Trunk Groups
+    - [x] POST - Group Trunk Group
+    - [x] GET - Group Trunk Group
+    - [x] PUT - Group Trunk Group
+    - [ ] DELETE - Group Trunk Group
+    - [ ] GET - Group Trunk Group Users
+    - [ ] GET - Group Trunk Group Available Hosted Users
+    - [x] GET - Service Providers Trunk Group Call Capacity
+    - [x] PUT - Service Providers Trunk Group Call Capacity
+    - [x] GET - Service Providers Trunk Call Capacity Report
+    - [ ] GET - Service Providers Trunk Call Capacity Report Show
+- [ ] **Two Stage Dialing**
+    - [ ] GET - User Two Stage Dialing
+    - [ ] PUT - User Two Stage Dialing
+- [ ] **Users**
+    - [x] PUT - Users Bulk
+    - [x] GET - Users
+    - [x] GET - User
+    - [x] GET - User by UserId
+    - [x] POST - User
+    - [x] PUT - User
+    - [ ] PUT - User Sip Contact
+    - [ ] DELETE - User
+    - [ ] GET - User Audit
+    - [x] PUT - User ID
+    - [x] PUT - User Group Id Update
+    - [x] GET - User Login Info
+    - [x] GET - User Portal Passcode
+    - [x] PUT - User Portal Passcode
+    - [ ] GET - Group User Audit
+- [ ] **Video Add On**
+    - [ ] GET - User Video Add On
+    - [ ] PUT - User Video Add On
+- [ ] **Virtual On-Net Enterprise Extensions**
+    - [ ] GET - System Virtual On-Net Enterprise Extensions
+    - [ ] GET - Group Virtual On-Net Enterprise Extensions Users Copy
+    - [ ] POST - Group Virtual On-Net Enterprise Extensions User
+    - [ ] PUT - Group Virtual On-Net Enterprise Extensions User
+    - [ ] GET - Group Virtual On-Net Enterprise Extensions User
+    - [ ] DELETE - Group Virtual On-Net Enterprise Extensions User
+- [ ] **Voice Messaging**
+    - [ ] GET - Group Voice Messaging
+    - [ ] PUT - Group Voice Messaging
+    - [ ] GET - Group Voice Messaging Voice Portal
+    - [ ] PUT - Group Voice Messaging Voice Portal
+    - [ ] GET - User Voice Messaging
+    - [ ] PUT - User Voice Messaging
+    - [ ] GET - User Voice Messaging Messages
+    - [ ] GET - User Voice Messaging Message Details
+    - [ ] GET - User Voice Messaging Message Download
+    - [ ] PUT - User Voice Messaging Messages Read
+    - [ ] PUT - User Voice Messaging Messages Unread
+    - [ ] DELETE - User Voice Messaging Messages Delete
+    - [ ] GET - User Voice Messaging Voice Portal
+    - [ ] PUT - User Voice Messaging Voice Portal
+    - [ ] GET - User Voice Messaging Greetings
+    - [ ] PUT - User Voice Messaging Greetings
+    - [ ] GET - User Voice Messaging Advanced
+    - [ ] PUT - User Voice Messaging Advanced
+    - [ ] GET - User Voice Messaging Bulk
+    - [ ] PUT - User Voice Messaging Bulk
+- [ ] **Voice Portal Calling**
+    - [ ] GET - User Voice Portal
+    - [ ] PUT - User Voice Portal
+- [ ] **Zone Calling Restrictions**
+    - [ ] GET - User Zone Calling Restrictions
+    - [ ] PUT - User Zone Calling Restrictions
+- [ ] **Odin Branding**
+    - [ ] GET - Branding Hostname
+    - [ ] GET - Branding Hostnames
+    - [ ] POST - Branding Hostname
+    - [ ] PUT - Branding Hostname
+    - [ ] DELETE - Branding Hostname
+    - [ ] POST - Branding Hostname Clone
+    - [ ] GET - Branding Applications
+    - [ ] POST - Branding Application
+    - [ ] GET - Branding Application
+    - [ ] PUT - Branding Application
+    - [ ] DELETE - Branding Application
+    - [ ] GET - Branding Settings
+    - [ ] PUT - Branding Settings
+    - [ ] GET - Branding Templates
+    - [ ] PUT - Branding Templates
+    - [ ] GET - Branding Module
+    - [ ] PUT - Branding Module
+    - [ ] GET - Branding Emails
+    - [ ] PUT - Branding Emails enable forgot passowrd
+    - [ ] GET - Branding Security
+    - [ ] PUT - Branding Security
+    - [ ] GET - Branding General Settings
+    - [ ] PUT - Branding General Settings
+    - [ ] POST - Branding General Settings
+    - [ ] DELETE - Branding General Settings
+- [ ] **Odin Callbacks**
+    - [ ] GET - Callback Templates
+    - [ ] GET - Callback Template
+    - [ ] GET - Callbacks
+    - [ ] POST - Callback
+    - [ ] GET - Callback
+    - [ ] PUT - Callback
+    - [ ] DELETE - Callback
+- [ ] **Odin Connectors**
+    - [ ] GET - Connector
+    - [ ] GET - Connectors
+    - [ ] PUT - Connector
+    - [ ] GET - Connector Is Active
+    - [ ] GET - Connectors Is Active
+    - [ ] POST - Webex Verify (Post back)
+- [ ] **Odin Email**
+    - [ ] POST - Email Test
+    - [ ] POST - Email Test Copy
+    - [ ] GET - Email
+- [ ] **Odin Events**
+    - [ ] GET - Event Types
+    - [ ] GET - Events
+    - [ ] GET - Events Users
+    - [ ] GET - Events Login
+    - [ ] GET - Event
+- [ ] **Odin Reports**
+    - [ ] POST - Call Center Agents
+    - [ ] GET - Reports
+    - [ ] GET - Report
+- [ ] **Odin Settings**
+    - [ ] GET - Settings
+    - [ ] PUT - Setting
+    - [ ] PUT - Setting E911
+    - [ ] PUT - Setting Surgemail
+    - [ ] GET - Setting
+    - [ ] GET - Settings User
+    - [ ] DELETE - Setting
+- [ ] **Odin Status**
+    - [ ] GET - Ping
+    - [ ] GET - Availability
+    - [ ] GET - Status
+- [ ] **Odin Tasks**
+    - [ ] **Webex**
+        - [ ] POST - Task Webex Verify User Email TEST
+    - [ ] GET - Tasks
+    - [ ] GET - Task
+    - [ ] GET - Tasks by Status-Type
+    - [ ] POST - Task Group Dns Assign
+    - [ ] POST - Task Group Bulk Clone
+    - [ ] POST - Task Group Device Tag Modify
+    - [ ] POST - Task Group Device Create
+    - [ ] POST - Task Group Device Type Tag Upsert
+    - [ ] POST - Task Group Device Upsert
+    - [ ] POST - Task Group Dns Unassign
+    - [ ] POST - Task Group  Services Assign
+    - [ ] POST - Task Group  Services Assign Copy
+    - [ ] POST - Task Group Trunk Group Bulk
+    - [ ] POST - Task Group Trunk Group Create
+    - [ ] POST - Task Group Trunk Group Create Copy
+    - [ ] POST - Task Group Trunk Group Update
+    - [ ] POST - Task Service Provider Bulk Clone
+    - [ ] POST - Task Trunk Call Capacity
+    - [ ] POST - Task Trunk Call Capacity Copy
+    - [ ] POST - Task User Audit
+    - [ ] POST - Task User Authentication Modify
+    - [ ] POST - Task User Copy
+    - [ ] POST - Task User Create
+    - [ ] POST - Task User Create Copy
+    - [ ] POST - Task User Update
+    - [ ] POST - Task User Modify Group Id TEST
+    - [ ] POST - Task User Integrated IMP
+    - [ ] POST - Task User Call Forwarding Always TEST
+    - [ ] POST - Task User Load
+    - [ ] POST - Task User Move TEST
+    - [ ] POST - Task User Password Modify
+    - [ ] POST - Task User Passwords Modify
+    - [ ] POST - Task User Portal Passcode Modify
+    - [ ] POST - Task User Services Assign
+    - [ ] POST - Task User Shared Call Appearance
+    - [ ] POST - Task User Services Assign Copy
+    - [ ] POST - Task User Services Update
+    - [ ] POST - Task User Speed Dial 100
+    - [ ] POST - Task User Service Clone
+    - [ ] POST - Task User Voice Messaging
+    - [ ] POST - TEST Task User Clone TEST
+- [ ] **Odin UI**
+    - [ ] GET - Stylesheet
+    - [ ] GET - Image
+    - [ ] GET - Modules
+    - [ ] GET - Connecors
+    - [ ] GET - Applications
+    - [ ] GET - Templates
+    - [ ] GET - Settings
+    - [ ] GET - General Settings
+    - [ ] GET - Security
+    - [ ] GET - Security
+- [ ] **Odin Viewable Packs**
+    - [ ] GET - User Viewable Pack
+    - [ ] PUT - User Viewable Pack
+    - [ ] GET - Group Viewable Packs Bulk
+    - [ ] PUT - Group Viewable Packs Bulk
+    - [ ] GET - Group Viewable Packs Services
+    - [ ] GET - Group Viewable Packs
+    - [ ] POST - Group Viewable Pack
+    - [ ] GET - Group Viewable Pack
+    - [ ] PUT - Group Viewable Pack
+    - [ ] DELETE - Group Viewable Pack
+- [ ] **Odin Webhooks**
+    - [ ] GET - Webhooks
+    - [ ] GET - Webhook
+- [ ] **Odin Audit**
+    - [ ] POST - Audit User Test
+    - [ ] POST - Audit User Copy
+    - [ ] POST - Audit Group
+    - [ ] POST - Transfer Group TEST
+    - [ ] POST - Audit Service Provider
+    - [ ] POST - Audit Group Users
+    - [ ] POST - Audit Service Instances
+    - [ ] GET - Audits
+    - [ ] GET - Audits Detail
+    - [ ] GET - Audit
+    - [ ] GET - Audit Types
+    - [ ] GET - Audit Service Provider
+- [ ] **Odin Imports**
+    - [ ] POST - Import
+    - [ ] GET - Imports
+- [ ] **Odin Inventory**
+    - [ ] POST - Inventory All
+    - [ ] POST - Inventory Service Provider Ids
+    - [ ] POST - Inventory Service Provider Ids TEST
+- [ ] **Odin Exports**
+    - [ ] POST - Export
+    - [ ] GET - Exports
+- [ ] **XSI**
+    - [ ] GET - User Profile
+    - [ ] GET - User Devices
+- [ ] **SIP Authentication**
+    - [ ] GET - System SIP  Authentication Password Rules
+    - [ ] GET - Service Provider SIP Authentication Password Rules
+- [ ] **Policy**
+    - [ ] PUT - Group Policy
+    - [ ] GET - GET Group Policy
+- [ ] **Password Reset**
+    - [ ] POST - Send Reset Password Link
+    - [ ] POST - Reset Password From Link
+    - [ ] POST - Validate Reset Password Token
+- [ ] **Partners**
+    - [ ] POST - OAuth2 Token
+    - [ ] POST - OAuth2 Token Raw
+    - [ ] POST - {{url}}/api/v2/oauth2/token
+- [ ] **User Utilities**
+    - [ ] GET - User Call To Numbers
+- [ ] **Odin Tasks Copy**
+    - [ ] **Webex**
+        - [ ] POST - Task Webex Verify User Email TEST
+    - [ ] GET - Tasks
+    - [ ] GET - Task
+    - [ ] POST - Task Group Bulk Clone
+    - [ ] POST - Task Group Device Tag Modify
+    - [ ] POST - Task Group Device Create
+    - [ ] POST - Task Group Device Type Tag Upsert
+    - [ ] POST - Task Group Device Upsert
+    - [ ] POST - Task Group Dns Unassign
+    - [ ] POST - Task Group  Services Assign
+    - [ ] POST - Task Group  Services Assign Copy
+    - [ ] POST - Task Group Trunk Group Bulk
+    - [ ] POST - Task Group Trunk Group Create
+    - [ ] POST - Task Group Trunk Group Create Copy
+    - [ ] POST - Task Group Trunk Group Update
+    - [ ] POST - Task Service Provider Bulk Clone
+    - [ ] POST - Task Trunk Call Capacity
+    - [ ] POST - Task Trunk Call Capacity Copy
+    - [ ] POST - Task User Audit
+    - [ ] POST - Task User Authentication Modify
+    - [ ] POST - Task User Copy
+    - [ ] POST - Task User Create
+    - [ ] POST - Task User Create Copy
+    - [ ] POST - Task User Update
+    - [ ] POST - Task User Integrated IMP
+    - [ ] POST - Task User Load
+    - [ ] POST - Task User Move TEST
+    - [ ] POST - Task User Password Modify
+    - [ ] POST - Task User Passwords Modify
+    - [ ] POST - Task User Portal Passcode Modify
+    - [ ] POST - Task User Services Assign
+    - [ ] POST - Task User Services Assign Copy
+    - [ ] POST - Task User Services Update
+    - [ ] POST - Task User Speed Dial 100
+    - [ ] POST - Task User Service Clone
+    - [ ] POST - Task User Voice Messaging
+    - [ ] POST - TEST Task User Clone TEST
+- [ ] **Odin Connectors**
+    - [ ] **E911**
+        - [ ] GET - Tn Url

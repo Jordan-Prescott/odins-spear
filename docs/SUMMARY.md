@@ -5,6 +5,7 @@
 * [Getting Started](getting-started/README.md)
   * [Getting the Essentials](getting-started/getting-the-essentials.md)
   * [Create API Object](getting-started/create-api-object.md)
+* [API Coverage](api-coverage.md)
 * [Docs](docs/README.md)
   * [API Object](docs/api-object.md)
   * [Standard Methods](docs/methods/README.md)
