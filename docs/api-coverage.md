@@ -1,12 +1,12 @@
-- [ ] **Session**
+- [x] **Session**
     - [x] GET - Session
-    - [ ] POST - Session
-    - [ ] POST - Session Copy
-    - [ ] POST - Session Logout
-    - [ ] PUT - Session
-    - [ ] PUT - Change Password
-    - [ ] PUT - Password
-    - [ ] PUT - My Password
+    - [x] POST - Session
+    - [x] POST - Session Copy
+    - [x] POST - Session Logout
+    - [x] PUT - Session
+    - [x] PUT - Change Password
+    - [x] PUT - Password
+    - [x] PUT - My Password
 - [ ] **Account Authorization Codes**
     - [ ] GET - Group Account Authorization Codes
     - [ ] GET - Group Account Authorization Codes Available Users
