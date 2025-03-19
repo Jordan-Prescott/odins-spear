@@ -17,11 +17,6 @@ The below code will set the AA to deactivated.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 call_centers = [
     "basic_cc@domain.com"
 ]

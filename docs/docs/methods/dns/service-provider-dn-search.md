@@ -16,11 +16,6 @@ Searches for numbers assigned to Service Provider/ Enterprise and allows search 
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.dns.get_service_provider_dn_search(
     "serviceProviderId",
     dn= "01942",

@@ -16,11 +16,6 @@ Update a single tag assigned to a device at the Service Provider or Enterprise l
 ### How To Use:
 
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.devices.put_service_provider_device_tag(
     "servivce_provider_id",
     "group_id",

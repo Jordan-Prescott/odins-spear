@@ -16,11 +16,6 @@ This method updates a Broadwork entity's services and service packs if applicabl
 ### How To Use:
 
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 # updating a users service pack
 my_api.services.put_user_services(
     "userId@domain.com",

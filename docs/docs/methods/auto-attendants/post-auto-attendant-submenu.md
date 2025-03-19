@@ -17,11 +17,6 @@ Posts a new submenu to the specified Auto Attendant (AA).
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.auto_attendants.post_auto_attendant_submenu(
     service_user_id= "test_aa@domain.net", 
     submenu_id="Menu 1"

@@ -13,12 +13,6 @@ Fetch all userServices, groupServices and servicePackServices assigned to a grou
 ### How To Use:
 
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
-# Pulling down group service
 my_api.services.get_group_services(
     "groupId",
     "serviceProviderId"

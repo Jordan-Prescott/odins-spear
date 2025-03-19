@@ -16,11 +16,6 @@ Retrieves Pickup Group information for the specified user.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.call_pickup.put_call_pickup_group_user(
     "my_service_provider_id", 
     "my_group_id", 

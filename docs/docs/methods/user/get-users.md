@@ -30,11 +30,6 @@ Returns list of users depending on filter criteria you set. See supported filter
 #### Get all users in Enterprise ent1
 
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.users.get_users(
     servive_provider_id= "ent1"
 )

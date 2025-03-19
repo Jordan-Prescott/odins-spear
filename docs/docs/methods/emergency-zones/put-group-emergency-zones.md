@@ -18,11 +18,6 @@ Updates the Emergency Zone configuration in the group.
 ### How To Use:
 
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.emergency_zones.put_group_emergency_zones(
     service_provider_id = "my_service_proviider_id", 
     group_id = "my_group_id", 

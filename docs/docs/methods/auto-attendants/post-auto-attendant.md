@@ -19,11 +19,6 @@ Builds an Auto Attendant (AA) from the given payload.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.auto_attendants.post_auto_attendant(
     service_provider_id="my_service_provider_id",
     group_id="my_group_id", 

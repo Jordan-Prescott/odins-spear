@@ -16,12 +16,6 @@ Fetch all services assigned to a broadwrok entity, this can be a user, AA, CC, o
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
-# Get a users service pack
 my_api.services.get_user_services_assigned(
     "userId@domain.com"
 )

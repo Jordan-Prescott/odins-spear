@@ -17,11 +17,6 @@ Retrieves the Business Schedule's Events for the specified group.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.schedules.get_group_events(
     "serviceProviderID",
     "groupID",

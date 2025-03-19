@@ -14,11 +14,6 @@ Removes an Auto Attendant (AA) from a group.
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.auto_attendants.delete_auto_attendant(
     service_user_id="test_aa@domain.net"
 )

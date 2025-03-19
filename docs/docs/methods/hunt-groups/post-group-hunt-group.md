@@ -23,11 +23,6 @@ Builds a hunt group (HG) in the specified group.
 ### How To Use:
 
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 hunt_group_agents= [
     "hunt_group_user1@microv-works.com",
     "hunt_group_user2@microv-works.com"

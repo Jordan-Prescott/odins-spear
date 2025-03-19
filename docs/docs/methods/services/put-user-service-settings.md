@@ -30,17 +30,10 @@ You can either follow the link above for examples, or see the exmaple responses 
 ### How To Use:
 
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 # Enabling Call Forward Always to ext 1509
-
 settings = {"Call Forwarding Always": {"isActive": false, "forwardToPhoneNumber": 1509}}
 
 # Enabling Call Forward Not Reachable to 1509 after 20 rings
-
 settings = {'Call Forwarding No Answer': {'isActive': True, 'numberOfRings': 20, 'forwardToPhoneNumber': 1509}}
 
 my_api.services.put_user_service_settings(

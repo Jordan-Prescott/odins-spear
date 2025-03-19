@@ -14,11 +14,6 @@ Update the Call Centers (CC) a user is assigned to.
 ### How To Use:
 
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_agent_user_id = "user_id@domain.com"
 my_call_centers = ["userid_1@domain.com", "userid_2@domain.com", "userid_3@domain.com"]
 

@@ -1,3 +1,0 @@
-# Groups
-
-All things groups.

@@ -16,12 +16,6 @@ Get details of the user/service instances where a particular service is assigned
 ### How To Use:
 
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
-# Get details of the user/service instances where a particular service is assigned.
 my_api.services.get_group_services_assigned(
     "groupId",
     "serviceProviderId",

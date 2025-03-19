@@ -15,11 +15,6 @@ Returns the type of the specified Auto Attendant (AA) submenu. NOTE: This method
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.auto_attendants.get_auto_attendant_submenus(
     service_user_id="test_aa@domain.net", 
     submenu_id="Submenu 1"

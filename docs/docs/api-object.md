@@ -56,11 +56,11 @@ api = API(
 
 ## Methods
 
-### 1. `authenticate`
+### 1. `_authenticate`
 ```python
-authenticate() -> bool
+_authenticate() -> bool
 ```
-Authenticates the session with the provided `username` and `password`.
+Private method that authenticates the session with the provided `username` and `password`.
 
 #### Raises:
 - `OSApiAuthenticationFail`: If authentication fails.
@@ -104,7 +104,8 @@ update_api(
     base_url: str = None, 
     username: str = None, 
     password: str = None, 
-    rate_limit: bool = None
+    rate_limit: bool = None,
+    logger: object = None
 )
 ```
 Updates the API instance with new configuration details.
@@ -114,6 +115,7 @@ Updates the API instance with new configuration details.
 - `username` (`str`, optional): The new username.
 - `password` (`str`, optional): The new password.
 - `rate_limit` (`bool`, optional): The new rate limit setting.
+- `rate_limit` (`object`, optional): The new logger object.
 
 ---
 
@@ -123,11 +125,14 @@ Updates the API instance with new configuration details.
 ```python
 from odins_spear import API
 
+# create your own logger 
+
 api = API(
     base_url="https://api.odin.com",
     username="my_user",
     password="my_pass",
-    rate_limit=True
+    rate_limit=True,
+    logger=logger
 )
 ```
 

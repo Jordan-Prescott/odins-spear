@@ -14,11 +14,6 @@ Returns extensive details of a single user including alias, enpoint device, and 
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.users.get_user_by_id(
     "user_ID"
 )

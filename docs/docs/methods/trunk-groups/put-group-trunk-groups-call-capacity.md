@@ -19,11 +19,6 @@ NOTE: The max available active calls cannot be changed here. Please see service_
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.trunk_groups.put_group_trunk_groups_call_capacity(
   my_service_provider_id = "ServiceProviderID",
   my_group_id = "GroupID",

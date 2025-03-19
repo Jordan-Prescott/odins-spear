@@ -15,11 +15,6 @@ Gets all numbers assigned to Group in detail. This will show where the number is
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.dns.get_group_dn_details(
     "serviceProviderId",
     "groupID",

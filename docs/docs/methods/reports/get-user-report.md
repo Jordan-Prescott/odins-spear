@@ -16,11 +16,6 @@ The following code snippet demonstrates how to fetch a list of all Service Provi
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API
-
-my_api= API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 my_api.reports.get_user_report("USER12345@domain")
 ```
 {% endcode %}
