@@ -1,48 +1,36 @@
-# What’s New in Odin’s Spear v2.0.0
-**Date**: 22.01.25
+# What’s New in Odin’s Spear
+**Date**: 19.03.25
 
-We’re thrilled to announce the release of Odin’s Spear v2.0.0! This major update introduces significant enhancements, including a restructured codebase, refined features, and an improved import structure. Below, we’ve outlined the key changes and improvements in this release.
+# What's New in v2.2.0  
+
+Welcome to the latest release of our tool. This update brings enhanced logging, streamlined authentication, new announcement endpoint capabilities, and a powerful ConfigManager. Read on to explore what’s new.  
 
 ---
 
-## Key Updates
+## New Features & Improvements  
 
-### 1. Codebase Restructuring
-- The codebase has been restructured to improve maintainability and modularity.
-- API calls have been reorganised for better readability and usage.
-  - Example: The previous call `api.get.users` is now accessed as `api.users.get_users`.
+### Enhanced Logging  
+- The tool now includes detailed logging to improve debugging and monitoring.  
+- By default, it will use its own built-in logger.  
+- Users can now supply their own logger as a parameter to the `API` object.  
 
-### 2. Refined Feature List
-- Certain features, including `aa_cc_hg_audit` and `service_pack_audit`, have been removed from the core library.
-- These features are now documented in detail in our **Docs** for reference.
+### Streamlined Authentication  
+- The `.authenticate()` method is no longer required after instantiating the `API` class.  
+- Authentication is now handled internally, making integration simpler and more efficient.  
 
-### 3. Improved Import Structure
-- Importing the library has been simplified:
-  - **Old:** `from odins_spear.Api import Api`
-  - **New:** `from odins_spear import API, Scripter, Reporter`
-- **Scripter** and **Reporter** now require the `API` object to be passed in as a parameter.
+### Announcement Endpoint Added  
+- Users can now upload, delete, and modify announcements via the new announcement endpoint.  
+- Supported actions include:  
+  - Uploading WAV files  
+  - Updating or changing existing announcements  
+  - Deleting outdated announcements  
 
-### 4. Password Handling
-- Passwords are no longer stored as environment variables. Instead, they are passed directly as the user’s password.
-  - **Old:** `my_api = API(password='ENV_VARIABLE')`
-  - **New:** `my_api = API(password='your_password')`
-- **Security Tip:** We strongly recommend securing your password appropriately when using it with the API.
+### New ConfigManager for API Templates  
+- Introducing ConfigManager, a new feature that provides template configurations for API calls.  
+- Users can now:  
+  - Retrieve sections or entire configs for common BroadWorks entities like:  
+    - User  
+    - Call Center  
+    - Hunt Groups  
+- This simplifies configuration management and improves workflow efficiency.  
 
-### 5. New `api.update_api` Method
-- A new method, `api.update_api`, has been introduced to allow you to dynamically update:
-  - `base_url`
-  - `username`
-  - `password`
-  - `rate_limit`
-- This ensures that all dependent components are updated seamlessly.
-
-### 6. Keyword Arguments for Scripter and Reporter
-- **Scripter** and **Reporter** now support keyword-only arguments for improved clarity and flexibility.
-
-### 7. Extended Utilities
-- **Constants:** A new `utils.constants` module has been added, containing predefined service packs and services for BWKS.
-- **Configurations:** The `utils/configs` module now includes JSON configurations for common BWKS entities:
-  - `user`
-  - `hunt group`
-  - `call centre`
-- These configurations can be easily read and customised before sending API requests.

@@ -13,7 +13,6 @@ To make use of the features that generate graphs and charts such as Call Flow yo
 from odins_spear import API, Reporter
 
 my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
 
 assistant = Reporter(my_api)
 

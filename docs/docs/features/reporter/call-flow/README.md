@@ -66,11 +66,6 @@ This method requires keyword arguments i.e. group\_id="group\_id"
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API, Reporter
-
-my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 assistant = Reporter(my_api)
 
 # Generates a call flow chart for the number 123456789.

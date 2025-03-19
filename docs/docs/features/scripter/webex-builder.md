@@ -35,11 +35,6 @@ This method requires keyword arguments i.e. group_id="group_id"
 
 {% code overflow="wrap" %}
 ```python
-from odins_spear import API, Scripter
-
-my_api = API(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
-
 assistant = Scripter(my_api)
 
 assistant.webex_builder(

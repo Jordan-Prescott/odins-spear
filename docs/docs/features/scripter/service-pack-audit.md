@@ -23,13 +23,10 @@ The script makes use of the following methods:
 ### How To Use:
 
 ```python
-from odins_spear import api
-
-my_api= api.Api(base_url="https://base_url/api/vx", username="john.smith", password="ODIN_INSTANCE_1")
-my_api.authenticate()
+assistant = Scripter(my_api)
 
 print(
-    my_api.scripter.service_pack_audit(
+    assistant.service_pack_audit(
         "ServiceProviderId",
         "GroupId"
     )
