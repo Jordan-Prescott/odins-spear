@@ -18,7 +18,6 @@ Scripter - Group Audit shows further details such as users assigned.
 from odins_spear import API
 
 my_api = API("base_url", "username", "ENV-PASSWORD")
-my_api.authenticate()
 
 #CHANGE ME
 service_provider_id = 'ServiceProviderId'

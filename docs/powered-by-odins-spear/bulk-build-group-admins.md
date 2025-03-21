@@ -11,7 +11,6 @@ The policy confifuration is for customers with access to your odin portal but ca
 from odins_spear import API
 
 my_api = API("base_url", "username", "ENV-PASSWORD")
-my_api.authenticate()
 
 # CHANGE ME
 service_provider_id = 'ServiceProviderID'
@@ -39,7 +38,7 @@ policy = {
     
     # create admins
 for user in users:        
-    gen_password = my_api.get.password_generate(service_provider_id, group_id)["password"]       
+    gen_password = my_api.password_generate.get_password_generate(service_provider_id, group_id)["password"]       
     
     payload = {        
         "firstName": user.split('.')[0],         
@@ -47,7 +46,7 @@ for user in users:
         "password": gen_password    
         }        
         
-    my_api.post.group_admin(        
+    my_api.administrators.post_group_admin(        
         service_provider_id=service_provider_id,        
         group_id=group_id,        
         user_id=user+group_domain,        
@@ -56,7 +55,7 @@ for user in users:
         )    
 
 #apply policy 
-my_api.post.group_admin_policies_bulk(    
+my_api.administrators.post_group_admin_policies_bulk(    
     user_ids=[user+group_domain for user in users],    
     policy_config=policy
 )

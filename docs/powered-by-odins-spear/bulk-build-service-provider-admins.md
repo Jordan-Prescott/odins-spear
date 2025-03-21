@@ -11,7 +11,6 @@ The policy confifuration is for customers with access to your odin portal but ca
 from odins_spear import API
 
 my_api = API("base_url", "username", "ENV-PASSWORD")
-my_api.authenticate()
 
 # CHANGE ME
 service_provider_id = ""
