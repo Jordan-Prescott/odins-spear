@@ -20,7 +20,7 @@ def main(api, service_provider_id: str, group_id: str, new_password: str):
             new_password
         )
 
-    logger.info(f"Successfully Set Group User Portal Passcodes")
+    logger.info("Successfully Set Group User Portal Passcodes")
         
     
 
