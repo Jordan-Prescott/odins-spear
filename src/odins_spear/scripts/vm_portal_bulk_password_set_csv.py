@@ -41,7 +41,7 @@ def main(api, user_password_sheet_path: str):
             row["newPasscode"]
         )
 
-    logger.info(f"Successfully Set User Portal Passcodes")
+    logger.info(f"Successfully Set User Portal Passcodes\n")
     
     
         
