@@ -1132,27 +1132,27 @@
     - [ ] PUT - Group Virtual On-Net Enterprise Extensions User
     - [ ] GET - Group Virtual On-Net Enterprise Extensions User
     - [ ] DELETE - Group Virtual On-Net Enterprise Extensions User
-- [ ] **Voice Messaging**
-    - [ ] GET - Group Voice Messaging
-    - [ ] PUT - Group Voice Messaging
-    - [ ] GET - Group Voice Messaging Voice Portal
-    - [ ] PUT - Group Voice Messaging Voice Portal
-    - [ ] GET - User Voice Messaging
-    - [ ] PUT - User Voice Messaging
-    - [ ] GET - User Voice Messaging Messages
-    - [ ] GET - User Voice Messaging Message Details
-    - [ ] GET - User Voice Messaging Message Download
-    - [ ] PUT - User Voice Messaging Messages Read
-    - [ ] PUT - User Voice Messaging Messages Unread
-    - [ ] DELETE - User Voice Messaging Messages Delete
-    - [ ] GET - User Voice Messaging Voice Portal
-    - [ ] PUT - User Voice Messaging Voice Portal
-    - [ ] GET - User Voice Messaging Greetings
-    - [ ] PUT - User Voice Messaging Greetings
-    - [ ] GET - User Voice Messaging Advanced
-    - [ ] PUT - User Voice Messaging Advanced
-    - [ ] GET - User Voice Messaging Bulk
-    - [ ] PUT - User Voice Messaging Bulk
+- [x] **Voice Messaging**
+    - [x] GET - Group Voice Messaging
+    - [x] PUT - Group Voice Messaging
+    - [x] GET - Group Voice Messaging Voice Portal
+    - [x] PUT - Group Voice Messaging Voice Portal
+    - [x] GET - User Voice Messaging
+    - [x] PUT - User Voice Messaging
+    - [x] GET - User Voice Messaging Messages
+    - [x] GET - User Voice Messaging Message Details
+    - [x] GET - User Voice Messaging Message Download
+    - [x] PUT - User Voice Messaging Messages Read
+    - [x] PUT - User Voice Messaging Messages Unread
+    - [x] DELETE - User Voice Messaging Messages Delete
+    - [x] GET - User Voice Messaging Voice Portal
+    - [x] PUT - User Voice Messaging Voice Portal
+    - [x] GET - User Voice Messaging Greetings
+    - [x] PUT - User Voice Messaging Greetings
+    - [x] GET - User Voice Messaging Advanced
+    - [x] PUT - User Voice Messaging Advanced
+    - [x] GET - User Voice Messaging Bulk
+    - [x] PUT - User Voice Messaging Bulk
 - [ ] **Voice Portal Calling**
     - [ ] GET - User Voice Portal
     - [ ] PUT - User Voice Portal
