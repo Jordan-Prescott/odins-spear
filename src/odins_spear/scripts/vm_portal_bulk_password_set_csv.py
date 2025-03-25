@@ -4,7 +4,7 @@ def main(api, user_password_sheet_path: str):
 
     logger = api.logger
     
-    logger.info(f"Initialising User/Passcode CSV Passcode Set Routine")
+    logger.info("Initialising User/Passcode CSV Passcode Set Routine")
     data: pandas.DataFrame = None
 
     try:
@@ -41,7 +41,7 @@ def main(api, user_password_sheet_path: str):
             row["newPasscode"]
         )
 
-    logger.info(f"Successfully Set User Portal Passcodes\n")
+    logger.info("Successfully Set User Portal Passcodes\n")
     
     
         
