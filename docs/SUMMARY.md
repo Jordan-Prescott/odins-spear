@@ -181,6 +181,8 @@
       * [GET - User Portal Passcode](docs/methods/user/get-user-portal-passcode.md)
       * [PUT - User Portal Passcode](docs/methods/user/put-user-portal-passcode.md)
       * [POST - User Reset](docs/methods/user/post-user-reset.md)
+    * [Voice Messaging](docs/methods/voice-messaging/README.md)
+      * [GET - Group Voice Messaging](docs/methods/voice-messaging/get-group-voice-messaging.md)
   * [Advanced Features](docs/features/README.md)
     * [Scripter](docs/features/scripter/README.md)
       * [Find Alias](docs/features/scripter/find-alias-script.md)
