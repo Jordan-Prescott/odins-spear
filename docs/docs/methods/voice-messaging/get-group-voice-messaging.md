@@ -4,8 +4,8 @@ Retrieves The Groups Advanced Voice Messaging Service Settings
 
 ### Parameters&#x20;
 
-* service\_provider\_id (str): Service Provider/ Enterprise ID where Group is located.&#x20;
-* group\_id (str): Group ID where the target Trunk Group is located.&#x20;
+* service\_provider\_id (str): Service Provider/Enterprise ID where Group is located.&#x20;
+* group\_id (str): Group ID where the target Group is located.&#x20;
 
 ### Returns
 
