@@ -19,7 +19,7 @@ def main(api, service_provider_id: str, group_id: str):
             logger.error(f"Failed To Query Voice Messaging Portal For User -> {user["userId"]}")
             continue
 
-        if user_voice_messaging_portal["voicePortalAutoLogin"] == False:
+        if not user_voice_messaging_portal["voicePortalAutoLogin"]:
             logger.info(f"Enabling Automatic Voice Portal Login For User -> {user["userId"]}")
 
             user_voice_messaging_portal["voicePortalAutoLogin"] = True # Flip Boolean Flag And Put Full Dict To Ensure No Data Corruption
