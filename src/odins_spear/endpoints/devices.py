@@ -837,7 +837,33 @@ class Devices(BaseEndpoint):
 
         params = {
             "serviceProviderId": service_provider_id,
-            "groupId": group_id,
+            "tagName": tag_name,
+            "tagValue": tag_value,
+            "deviceName": device_name
+        }
+        
+        return self._requester.post(endpoint, data=params)
+
+    def post_system_device_tag(
+            self,
+            tag_name: str,
+            tag_value: str,
+            device_name: str
+        ):
+
+        """Rebuild the device type files group wide.
+
+            Args:
+                tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
+                tag_value (str): Value of tag, this can be anything.
+                device_name (str): Name of Device.
+
+            Returns:
+                Dict: 
+            """
+        endpoint = "/system/devices/tags"
+
+        params = {
             "tagName": tag_name,
             "tagValue": tag_value,
             "deviceName": device_name
@@ -893,6 +919,68 @@ class Devices(BaseEndpoint):
                 "serviceProviderId": service_provider_id,
                 "groupId": group_id,
                 "deviceType": device_type
+            }
+
+            return self._requester.post(endpoint, data=params)
+    
+
+    def post_group_device_type_tag(
+                self,
+                service_provider_id: str,
+                group_id: str,
+                device_type: str,
+                tag_name: str,
+                tag_value: str
+        ):
+            """
+
+            Args:
+                service_provider_id (str): Service provider ID where the device should be reset.
+                group_id (str): Group ID where the device should be reset.
+                device_type (str): Name of the device type.
+                tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
+                tag_value (str): Value of tag, this can be anything.                
+
+            Returns:
+                Dict: 
+            """
+            endpoint = "/groups/device-types/tags"
+
+            params = {
+                "serviceProviderId": service_provider_id,
+                "groupId": group_id,
+                "deviceType": device_type,
+                "tagName": tag_name,
+                "tagValue": tag_value
+            }
+
+            return self._requester.post(endpoint, data=params)
+    
+    def post_service_provider_device_type_tag(
+                self,
+                service_provider_id: str,
+                device_type: str,
+                tag_name: str,
+                tag_value: str
+        ):
+            """
+
+            Args:
+                service_provider_id (str): Service provider ID where the device should be reset.
+                device_type (str): Name of the device type.
+                tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
+                tag_value (str): Value of tag, this can be anything.                
+
+            Returns:
+                Dict: 
+            """
+            endpoint = "/service-providers/device-types/tags"
+
+            params = {
+                "serviceProviderId": service_provider_id,
+                "deviceType": device_type,
+                "tagName": tag_name,
+                "tagValue": tag_value
             }
 
             return self._requester.post(endpoint, data=params)
