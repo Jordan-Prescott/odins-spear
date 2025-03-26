@@ -589,3 +589,310 @@ class Devices(BaseEndpoint):
         )
 
         return self._requester.post(endpoint, data=payload)
+
+    def post_service_provider_device(
+        self,
+        service_provider_id: str,
+        device_name: str,
+        device_type: str,
+        device_level: str,
+        payload: dict
+    ):
+        """
+        """
+
+        endpoint: str = "/service-providers/devices"
+
+        payload["serviceProviderId"] = (
+            service_provider_id
+            if not payload.get("serviceProviderId")
+            else payload["serviceProviderId"]
+        )
+
+        payload["deviceName"] = (
+            device_name
+            if not payload.get("deviceName")
+            else payload["deviceName"]
+        )
+
+        payload["deviceType"] = (
+            device_type
+            if not payload.get("deviceType")
+            else payload["deviceType"]
+        )
+
+        payload["deviceLevel"] = (
+            device_level
+            if not payload.get("deviceLevel")
+            else payload["deviceLevel"]
+        )
+
+        return self._requester.post(endpoint, data=payload)
+    
+    def post_system_device(
+            self,
+            service_provider_id: str,
+            device_name: str
+    ):
+        endpoint = "/groups/devices/reset"
+            
+        params = {
+            "deviceName": device_name,
+            "serviceProviderId": service_provider_id
+        }
+
+        return self._requester.post(endpoint, data=params)
+
+    def post_group_device_reset(
+            self,
+            service_provider_id: str,
+            group_id: str,
+            device_name: str
+    ):
+        """Rest device. This is for a single device **Not Group Wide**
+
+        Args:
+            service_provider_id (str): Service provider ID where the device should be reset.
+            group_id (str): Group ID where the device should be reset.
+            device_name (str): Name of the device.
+
+        Returns:
+            Dict: 
+        """
+        endpoint = "/groups/devices/reset"
+
+        params = {
+            "deviceName": device_name,
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id
+        }
+
+        return self._requester.post(endpoint, data=params)
+    
+    def post_group_device_rebuild(
+            self,
+            service_provider_id: str,
+            group_id: str,
+            device_name: str
+    ):
+        """Rebuild the device files. This is for a single device **Not Group Wide**
+
+        Args:
+            service_provider_id (str): Service provider ID where the device should be rebuilt.
+            group_id (str): Group ID where the device should be rebuilt.
+            device_name (str): Name of the device.
+
+        Returns:
+            Dict: 
+        """
+        endpoint = "/groups/devices/rebuild"
+
+        params = {
+            "deviceName": device_name,
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id
+        }
+
+        return self._requester.post(endpoint, data=params)
+
+    def post_service_provider_device_reset(
+            self,
+            service_provider_id: str,
+            device_name: str
+    ):
+        """Reset the device files. This is **Group Wide*
+
+        Args:
+            service_provider_id (str): Service provider ID where the device should be reset.
+            device_name (str): Name of the device.
+
+        Returns:
+            Dict: 
+        """
+        endpoint = "/service-providers/devices/reset"
+
+        params = {
+            "deviceName": device_name,
+            "serviceProviderId": service_provider_id
+        }
+
+        return self._requester.post(endpoint, data=params)
+    
+    def post_service_provider_device_rebuild(
+            self,
+            service_provider_id: str,
+            device_name: str
+    ):
+        """Rebuild the device files. This is **Group Wide*
+
+        Args:
+            service_provider_id (str): Service provider ID where the device should be rebuilt.
+            device_name (str): Name of the device.
+
+        Returns:
+            Dict: 
+        """
+        endpoint = "/service-providers/devices/rebuild"
+
+        params = {
+            "deviceName": device_name,
+            "serviceProviderId": service_provider_id
+        }
+
+        return self._requester.post(endpoint, data=params)
+    
+    def post_system_device_rebuild(
+            self,
+            device_name: str
+    ):
+        """Rebuild the device at system level.
+
+        Args:
+            device_name (str): Name of the device to have files rebuilt.
+
+        Returns:
+            Dict: 
+        """
+        endpoint = "/system/devices/rebuild"
+
+        params = {
+            "deviceName": device_name
+        }
+
+        return self._requester.post(endpoint, data=params)
+ 
+    def post_system_device_reset(
+            self,
+            device_name: str
+    ):
+        """Reset the device at system level.
+
+        Args:
+            device_name (str): Name of the device to be reset.
+
+        Returns:
+            Dict: 
+        """
+        endpoint = "/system/devices/reset"
+
+        params = {
+            "deviceName": device_name
+        }
+
+        return self._requester.post(endpoint, data=params)
+
+    def post_group_device_tag(
+            self,
+            service_provider_id: str,
+            group_id: str,
+            tag_name: str,
+            tag_value: str,
+            device_name: str
+        ):
+
+        """Rebuild the device type files group wide.
+
+            Args:
+                service_provider_id (str): Service provider ID where the device should be rebuilt.
+                group_id (str): Group ID where the device should be rebuilt.
+                tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
+                tag_value (str): Value of tag, this can be anything.
+                device_name (str): Name of Device.
+
+            Returns:
+                Dict: 
+            """
+        endpoint = "/groups/devices/tags"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "tagName": tag_name,
+            "tagValue": tag_value,
+            "deviceName": device_name
+        }
+        
+        return self._requester.post(endpoint, data=params)
+    
+    def post_service_provider_device_tag(
+            self,
+            service_provider_id: str,
+            tag_name: str,
+            tag_value: str,
+            device_name: str
+        ):
+
+        """Rebuild the device type files group wide.
+
+            Args:
+                service_provider_id (str): Service provider ID where the device should be rebuilt.
+                tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
+                tag_value (str): Value of tag, this can be anything.
+                device_name (str): Name of Device.
+
+            Returns:
+                Dict: 
+            """
+        endpoint = "/service-providers/devices/tags"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "tagName": tag_name,
+            "tagValue": tag_value,
+            "deviceName": device_name
+        }
+        
+        return self._requester.post(endpoint, data=params)
+
+    def post_group_device_type_rebuild(
+                self,
+                service_provider_id: str,
+                group_id: str,
+                device_type: str
+        ):
+            """Rebuild the device type files group wide.
+
+            Args:
+                service_provider_id (str): Service provider ID where the device should be rebuilt.
+                group_id (str): Group ID where the device should be rebuilt.
+                device_type (str): Name of the device type.
+
+            Returns:
+                Dict: 
+            """
+            endpoint = "/groups/device-types/rebuild"
+
+            params = {
+                "serviceProviderId": service_provider_id,
+                "groupId": group_id,
+                "deviceType": device_type
+            }
+
+            return self._requester.post(endpoint, data=params)
+
+    def post_group_device_type_reset(
+                self,
+                service_provider_id: str,
+                group_id: str,
+                device_type: str
+        ):
+            """Reset the device group side.
+
+            Args:
+                service_provider_id (str): Service provider ID where the device should be reset.
+                group_id (str): Group ID where the device should be reset.
+                device_type (str): Name of the device type.
+
+            Returns:
+                Dict: 
+            """
+            endpoint = "/groups/device-types/reset"
+
+            params = {
+                "serviceProviderId": service_provider_id,
+                "groupId": group_id,
+                "deviceType": device_type
+            }
+
+            return self._requester.post(endpoint, data=params)
