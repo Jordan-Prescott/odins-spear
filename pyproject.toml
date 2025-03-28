@@ -5,6 +5,9 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.package-data]
+odins_spear = ["utils/configs/*.json"]
+
 [tool.setuptools]
 license-files = []
 

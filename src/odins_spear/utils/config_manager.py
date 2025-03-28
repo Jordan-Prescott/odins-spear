@@ -6,18 +6,6 @@ from pprint import pprint as pp
 
 
 class ConfigManager:
-    config_dir = "odins_spear/utils/configs/"
-    available_configs = [
-        "auto_attendant",
-        "call_center",
-        "device",
-        "group",
-        "hunt_group",
-        "service_provider",
-        "trunk_group",
-        "user",
-    ]
-
     def __init__(self):
         """
         ConfigManager loads and caches template configs for popular Broadworks entities.
@@ -35,8 +23,19 @@ class ConfigManager:
         - trunk_group
         - user
         """
+        self.config_dir = os.path.join(os.path.dirname(__file__), "configs")
         self._configs = {}
         self._load_configs()
+        self.available_configs = [
+            "auto_attendant",
+            "call_center",
+            "device",
+            "group",
+            "hunt_group",
+            "service_provider",
+            "trunk_group",
+            "user",
+        ]
 
     def _load_configs(self):
         """Load all JSON configuration files from the given directory."""
