@@ -4,11 +4,15 @@ from ..exceptions import OSAliasNotFound
 
 
 def locate_alias(alias, aliases: list):
+    if not re.fullmatch(
+        r"^[A-Za-z0-9\-_.!~*()']+$", alias
+    ):  # As per Odin Spec: User alias cannot contain any characters except A-Z, a-z, 0-9, -_.!~*() or single quotes.
+        return False
+
     for a in aliases:
-        if re.fullmatch(
-            r"^[A-Za-z0-9\-_.!~*()']+$", alias
-        ):  # As per Odin Spec: User alias cannot contain any characters except A-Z, a-z, 0-9, -_.!~*() or single quotes.
+        if alias == a.split("@")[0]:  # split the string from its alias and domain
             return True
+    return False
 
 
 def main(api, service_provider_id: str, group_id: str, alias: str):
