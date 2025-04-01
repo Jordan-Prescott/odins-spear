@@ -1,9 +1,10 @@
 import os
 import json
+import pandas
 
 import shutil
 
-from ..exceptions import OSFileNotFound
+from ..exceptions import OSFileNotFound, OSFileHandleAlreadyOpen
 
 
 def check_directory_or_file_exists(directory_file_path: str) -> bool:

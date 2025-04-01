@@ -106,6 +106,12 @@ class OSFileNotFound(OSError):
 
     def __str__(self) -> str:
         return "File can not be found, please check path and file name."
+    
+class OSFileHandleAlreadyOpen(OSError):
+    """Raised when attempting to interact with a file which is already being read/written to by another application."""
+
+    def __str__(self) -> str:
+        return "File already has a valid external handle please close any app or workspace modifying this file."
 
 
 # FORMATTING
