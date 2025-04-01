@@ -304,15 +304,10 @@ class Scripter:
         """This takes an Enterprise, Group and passcode as input.
         Will iterate through all the users in the group to set to the passcode to whatever was specified (usually 4-6 digits).
 
-        This has the option of using CSV as input, or executing on an entire group.
-        If the entire group, it takes the Ent/Grp and VM password as input, iterate through all users and set the VM pass. 
-        If reading CSV (or specified users - doesn't have to be CSV) then it will iterate through all the UserIDs and set the VM password specified in the CSV against the user.
-
         Args:
             service_provider_id (str): Service Provider ID where group is hosted.
             group_id (str): Group ID where target user list is hosted.
             new_password (str): Voice Messaging passcode for user assignment
-            user_password_sheet_path (str): Filepath to dedicated CSV/Spreadsheet containing user/password pairs for setting
 
         Returns:
             None: This routine has no specified return type
@@ -326,29 +321,6 @@ class Scripter:
             service_provider_id,
             group_id,
             new_password
-        )
-    
-    def vm_portal_bulk_password_set_csv(
-        self,
-        user_password_sheet_path: str
-    ) -> None:
-        """This has the option of using CSV as input, or executing on an entire group.
-        If the entire group, it takes the Ent/Grp and VM password as input, iterate through all users and set the VM pass. 
-        If reading CSV (or specified users - doesn't have to be CSV) then it will iterate through all the UserIDs and set the VM password specified in the CSV against the user.
-
-        Args:
-            user_password_sheet_path (str): Filepath to dedicated CSV/Spreadsheet containing user/password pairs for setting
-
-        Returns:
-            None: This routine has no specified return type
-
-        Raises:
-            OSError: Raised when attempting to load invalid file
-        """
-
-        return self._run_script(
-            "vm_portal_bulk_password_set_csv",
-            user_password_sheet_path
         )
 
     def webex_builder(
