@@ -3,13 +3,16 @@ from typing import List, Dict, Any
 from .checkers import check_type_filter
 
 
-def format_filter_value(filter_type: str, filter_value: str) -> str:
+def format_filter_value(
+    filter_criteria: str, filter_type: str, filter_value: str
+) -> str:
     """Takes in a filter type and the value to filter for. Depenining on the type
     the value is formatted with the correct wild card e.g. 'contains' will add a
     wildcard to the start and end of value *value*
 
     Args:
-        type (str): Either 'equal to', 'contains', 'starts with'
+        filter_criteria (str): One of supported filters.
+        type (str): Either 'equals', 'contains', 'startsWith', 'endsWidth'
         value (str): value to filter for
 
     Raises:
@@ -19,12 +22,17 @@ def format_filter_value(filter_type: str, filter_value: str) -> str:
     """
 
     filter_type = filter_type.lower()
-    check_type_filter(filter_type, filter_value)
+    check_type_filter(
+        filter_by=filter_criteria,
+        filter_type=filter_type,
+    )
 
-    if filter_type == "equal to":
+    if filter_type == "equals":
         return f"{filter_value}"
-    elif filter_type == "starts with":
+    elif filter_type == "startsWith":
         return f"{filter_value}*"
+    elif filter_type == "endsWith":
+        return f"*{filter_value}"
     elif filter_type == "contains":
         return f"*{filter_value}*"
 
