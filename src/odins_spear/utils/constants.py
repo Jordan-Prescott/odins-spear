@@ -11,7 +11,7 @@ supported_filters = [
 supported_filter_types = [
     "contains",
     "startsWith",
-    "endsWith",
+    # "endsWith", Not Supported by OS
     "equals",
 ]
 

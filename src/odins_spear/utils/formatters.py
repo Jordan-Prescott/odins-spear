@@ -4,7 +4,7 @@ from .checkers import check_type_filter
 
 
 def format_filter_value(
-    filter_criteria: str, filter_type: str, filter_value: str
+    filter_type: str, filter_value: str, filter_criteria: str = None
 ) -> str:
     """Takes in a filter type and the value to filter for. Depenining on the type
     the value is formatted with the correct wild card e.g. 'contains' will add a
@@ -21,18 +21,18 @@ def format_filter_value(
     Returns: Formatted filter with the value and correct filter wildcards.
     """
 
-    filter_type = filter_type.lower()
     check_type_filter(
         filter_by=filter_criteria,
         filter_type=filter_type,
     )
+    filter_type = filter_type.lower()
 
     if filter_type == "equals":
         return f"{filter_value}"
-    elif filter_type == "startsWith":
+    elif filter_type == "startswith":
         return f"{filter_value}*"
-    elif filter_type == "endsWith":
-        return f"*{filter_value}"
+    # elif filter_type == "endswith": NOT supported by Odin
+    #     return f"*{filter_value}"
     elif filter_type == "contains":
         return f"*{filter_value}*"
 

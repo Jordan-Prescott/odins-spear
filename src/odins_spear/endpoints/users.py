@@ -25,7 +25,7 @@ class Users(BaseEndpoint):
             top level object. Defaults to None.
             group_id (str, optional): Group ID where user is hosted. Defaults to None.
             filter (str, optional): Filter criteria, supported filters below. Defaults to None.
-            filter_type (str, optional): Options: equals, startsWith, endsWith, or contains. Defaults to None.
+            filter_type (str, optional): Options: equals, startsWith, endsWith, contains or endsWith. Defaults to None.
             filter_value (str, optional): Value filtering on e.g. firstName. Defaults to None.
             limit (int, optional): Limits the amount of values API returns. Defaults to None.
 

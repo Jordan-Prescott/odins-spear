@@ -38,7 +38,7 @@ class DNs(BaseEndpoint):
             service_provider_id (str): Service Provider or Enterprise ID where group is hosted.
             group_id (str): Group ID of target group where numbers are located.
             dn (int): Number/ part of number to search for.
-            filter_type (str, optional): Options: equal to, starts with, or contains. Defaults to None.
+            filter_type (str, optional): Options: equals, startsWith, contains, or endsWith. Defaults to None.
             limit (int, optional): Limits the amount of values API returns. Defaults to None.
 
         Returns:
