@@ -984,3 +984,20 @@ class Devices(BaseEndpoint):
             }
 
             return self._requester.post(endpoint, data=params)
+
+    def post_system_device_search(
+                self
+        ):
+            """
+
+            Args:               
+
+            Returns:
+                Dict: 
+            """
+            endpoint = "/system/devices"
+
+            params = {
+            }
+
+            return self._requester.post(endpoint, data=params)
