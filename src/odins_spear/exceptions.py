@@ -99,15 +99,11 @@ class OSUnsupportedFilterType(OSError):
 
 
 # FILES
-
-
 class OSFileNotFound(OSError):
     """Raised when a file can not be found."""
 
     def __str__(self) -> str:
         return "File can not be found, please check path and file name."
-
-
 # FORMATTING
 
 

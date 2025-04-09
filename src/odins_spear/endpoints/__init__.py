@@ -28,6 +28,7 @@ from .registration import Registration
 from .password_generate import PasswordGenerate
 from .trunk_groups import TrunkGroups
 from .users import Users
+from .voice_messaging import VoiceMessaging
 
 __all__ = [
     "Administrators",
@@ -60,6 +61,7 @@ __all__ = [
     "PasswordGenerate",
     "TrunkGroups",
     "Users",
+    "VoiceMessaging",
 ]
 
 
