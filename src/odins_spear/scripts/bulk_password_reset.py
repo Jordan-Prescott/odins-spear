@@ -2,7 +2,7 @@ from ..exceptions import OSInvalidPasswordType
 
 
 def main(
-    api, service_provider_id: str, group_id: str, users: list, password_type: str
+    api, service_provider_id: str, group_id: str, users: list, password_type: str, static_password: str
 ) -> list:
     # save logger from api
     logger = api.logger
@@ -10,7 +10,7 @@ def main(
     # SIP auth password
     if password_type.lower() == "sip":
         logger.info("Generating new SIP passwords")
-        new_passwords = api.password_generate.get_sip_passwords_generate(len(users))[
+        new_passwords = static_password if static_password else api.password_generate.get_sip_passwords_generate(len(users))[
             "passwords"
         ]
         users_and_new_passwords = list(zip(users, new_passwords))
@@ -28,7 +28,7 @@ def main(
     # intigration password
     elif password_type.lower() == "web":
         logger.info("Generating new SIP passwords")
-        new_passwords = api.password_generate.get_passwords_generate(
+        new_passwords = static_password if static_password else api.password_generate.get_passwords_generate(
             service_provider_id, group_id, len(users)
         )["passwords"]
         users_and_new_passwords = list(zip(users, new_passwords))
@@ -46,7 +46,7 @@ def main(
     # voicemail/ portal
     elif password_type.lower() == "vm":
         logger.info("Generating new voicemail passcodes")
-        new_passcodes = api.password_generate.get_passcodes_generate(
+        new_passcodes = static_password if static_password else api.password_generate.get_passcodes_generate(
             service_provider_id, group_id, len(users)
         )["passcodes"]
         users_and_new_passcodes = list(zip(users, new_passcodes))

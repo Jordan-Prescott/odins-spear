@@ -68,6 +68,7 @@ class Scripter:
         group_id: str,
         users: list,
         password_type: str,
+        static_password: Optional[str] = None
     ) -> Dict[str, any]:
         """Resets a list of users SIP passwords or Voicemail passcodes. Specify in password_type with the options of
         'SIP' or 'Voicemail' and the script will perform the necessary actions.
@@ -86,7 +87,11 @@ class Scripter:
         """
 
         return self._run_script(
-            "bulk_password_reset", service_provider_id, group_id, users, password_type
+            "bulk_password_reset",
+            service_provider_id, 
+            group_id, users, 
+            password_type,
+            static_password
         )
 
     def find_alias(
@@ -298,34 +303,6 @@ class Scripter:
             service_pack_id
         )
     
-    def vm_portal_bulk_password_set(
-        self,
-        service_provider_id: str,
-        group_id: str, 
-        new_password: Optional[str] = None
-    ) -> None:
-        """This takes an Enterprise, Group and passcode as input.
-        Will iterate through all the users in the group to set to the passcode to whatever was specified (usually 4-6 digits).
-
-        Args:
-            service_provider_id (str): Service Provider ID where group is hosted.
-            group_id (str): Group ID where target user list is hosted.
-            new_password (str): Voice Messaging passcode for user assignment
-
-        Returns:
-            None: This routine has no specified return type
-
-        Raises:
-            OSError: Raised when attempting to load invalid file
-        """
-
-        return self._run_script(
-            "vm_portal_bulk_password_set",
-            service_provider_id,
-            group_id,
-            new_password
-        )
-
     def webex_builder(
         self,
         *,
