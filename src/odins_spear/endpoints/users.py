@@ -64,7 +64,11 @@ class Users(BaseEndpoint):
             if group_id:
                 params["groupId"] = group_id
         if filter:
-            params[filter] = format_filter_value(filter, filter_type, filter_value)
+            params[filter] = format_filter_value(
+                filter_criteria=filter,
+                filter_type=filter_type,
+                filter_value=filter_value,
+            )
         if limit:
             params["limit"] = limit
         if extended:
