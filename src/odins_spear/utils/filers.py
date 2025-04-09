@@ -4,7 +4,7 @@ import pandas
 
 import shutil
 
-from ..exceptions import OSFileNotFound, OSFileHandleAlreadyOpen
+from ..exceptions import OSFileNotFound
 
 
 def check_directory_or_file_exists(directory_file_path: str) -> bool:

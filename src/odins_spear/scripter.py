@@ -276,7 +276,7 @@ class Scripter:
         service_provider_id: str,
         group_id: str,
         service_pack_id: str = None
-    ) -> None:
+    ) -> list | bool:
         """Takes an Enterprise and Group as input and will iterate through all the users in the group and enable Voice Portal Auto Login.
 
         Args:
@@ -302,7 +302,7 @@ class Scripter:
         self,
         service_provider_id: str,
         group_id: str, 
-        new_password: str
+        new_password: Optional[str] = None
     ) -> None:
         """This takes an Enterprise, Group and passcode as input.
         Will iterate through all the users in the group to set to the passcode to whatever was specified (usually 4-6 digits).
