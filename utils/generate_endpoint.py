@@ -31,6 +31,16 @@ def extract_endpoint_details(item):
     url_raw = request.get("url", {}).get("raw", "")
     # Remove the environment variable base (e.g. "{{url}}")
     endpoint = url_raw.replace("{{url}}/api/v2", "").strip()
+    try:
+        params = (
+            url_raw.replace("{{url}}/api/v2", "")
+            .strip()
+            .split("?")[1]
+            .replace("=", ":")
+            .strip("&")
+        )
+    except IndexError:
+        params = "NO PARAMS USED IN THIS METHOD"
     description = request.get("description", "").strip()
     body = request.get("body", {}).get("raw", "").strip()
 
@@ -38,6 +48,7 @@ def extract_endpoint_details(item):
         "name": item.get("name", "unnamed"),
         "method": method.upper(),
         "endpoint": endpoint,
+        "params": params,
         "description": description,
         "body": body,
     }
@@ -67,24 +78,53 @@ def generate_method_code(details):
     if details["description"]:
         doc_lines.append(details["description"])
     else:
-        doc_lines.append(
-            "Auto-generated method based on the Postman collection endpoint."
-        )
+        doc_lines.append("{{Description of what the endpoint does}}")
+
+    doc_lines.append("")
+    doc_lines.append("Args:")
+    if http_method == "get" or http_method == "delete":
+        doc_lines.append("      {{Adjust for params you add}}")
+    elif http_method == "put":
+        doc_lines.append("      payload (dict): Updates to apply.")
+    elif http_method == "post":
+        doc_lines.append("      payload (dict): New configuration.")
+
     doc_lines.append("")
     doc_lines.append("Returns:")
-    doc_lines.append("    Response: API response object")
+    doc_lines.append("    {{data type}}: {{small detail of what is returned}}")
     docstring = "\n        ".join(doc_lines)
 
+    if details["params"]:
+        params_stringified = "{"
+        for p in details["params"]:
+            string_split = p.split(":")
+            key = string_split[0]
+            value = string_split[1]
+            params_stringified += f"'{key}':'{value}',"
+        params_stringified += "}"
+
+        details["params"] = params_stringified
     # Build the method code. Here we assume that you will supply any needed parameters
     # via a generic `payload` dictionary. In your example, you had several explicit parameters.
     # Extending this function to parse the expected JSON schema could allow more detailed signatures.
-    method_code = (
-        f"    def {method_name}(self, payload: dict = {{}}):\n"
-        f'        """{docstring}\n\n'
-        f'        """\n'
-        f'        endpoint = "{details["endpoint"]}"\n\n'
-        f"        return self._requester.{http_method}(endpoint, data=payload)\n\n"
-    )
+    if http_method == "get" or http_method == "delete":
+        method_code = (
+            f"    def {method_name}(self, 'ADD YOUR PARAMS HERE'):\n"
+            f'        """{docstring}\n\n'
+            f'        """\n'
+            f'        endpoint = "{details["endpoint"]}"\n\n'
+            f'        params = "{details["params"]}"\n\n'
+            f"        return self._requester.{http_method}(endpoint, data=payload)\n\n"
+        )
+    else:
+        method_code = (
+            f"    def {method_name}(self, payload: dict = {{}}):\n"
+            f'        """{docstring}\n\n'
+            f'        """\n'
+            f'        endpoint = "{details["endpoint"]}"\n\n'
+            f'        params = "{details["params"]}"\n\n'
+            f"        return self._requester.{http_method}(endpoint, data=payload)\n\n"
+        )
     return method_code
 
 
