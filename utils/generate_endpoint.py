@@ -1,6 +1,5 @@
 import json
 import re
-import argparse
 
 
 def parse_postman_collection(file_path, target_section_name):
@@ -30,14 +29,13 @@ def extract_endpoint_details(item):
     # The URL is often stored in a sub-dict under "url" with a "raw" key.
     url_raw = request.get("url", {}).get("raw", "")
     # Remove the environment variable base (e.g. "{{url}}")
-    endpoint = url_raw.replace("{{url}}/api/v2", "").strip()
+    endpoint = url_raw.replace("{{url}}/api/v2", "").strip().split("?")[0]
     try:
         params = (
             url_raw.replace("{{url}}/api/v2", "")
             .strip()
             .split("?")[1]
             .replace("=", ":")
-            .strip("&")
         )
     except IndexError:
         params = "NO PARAMS USED IN THIS METHOD"
@@ -94,10 +92,17 @@ def generate_method_code(details):
     doc_lines.append("    {{data type}}: {{small detail of what is returned}}")
     docstring = "\n        ".join(doc_lines)
 
-    if details["params"]:
+    if "NO PARAMS" not in details["params"]:
         params_stringified = "{"
-        for p in details["params"]:
-            string_split = p.split(":")
+        if "&" in details["params"]:
+            params_list = details["params"].split("&")
+            for p in params_list:
+                string_split = p.split(":")
+                key = string_split[0]
+                value = string_split[1]
+                params_stringified += f"'{key}':'{value}',"
+        else:
+            string_split = details["params"].split(":")
             key = string_split[0]
             value = string_split[1]
             params_stringified += f"'{key}':'{value}',"
@@ -113,8 +118,8 @@ def generate_method_code(details):
             f'        """{docstring}\n\n'
             f'        """\n'
             f'        endpoint = "{details["endpoint"]}"\n\n'
-            f'        params = "{details["params"]}"\n\n'
-            f"        return self._requester.{http_method}(endpoint, data=payload)\n\n"
+            f"        params = {details['params']}\n\n"
+            f"        return self._requester.{http_method}(endpoint, params=params)\n\n"
         )
     else:
         method_code = (
@@ -123,7 +128,7 @@ def generate_method_code(details):
             f'        """\n'
             f'        endpoint = "{details["endpoint"]}"\n\n'
             f'        params = "{details["params"]}"\n\n'
-            f"        return self._requester.{http_method}(endpoint, data=payload)\n\n"
+            f"        return self._requester.{http_method}(endpoint, params=params, data=payload)\n\n"
         )
     return method_code
 
@@ -137,39 +142,59 @@ def generate_class_code(section, class_name):
     class_lines = [
         "from .base_endpoint import BaseEndpoint",
         "",
-        "#TODO: Reorganise methods to they are grouped by method type: GET, POST, PUT, DELETE",
-        "#TODO: Add in method type section comments: GET, POST, PUT, DELETE",
-        "#TODO: Add in method type section comments: GET, POST, PUT, DELETE",
-        "",
         f"class {class_name}(BaseEndpoint):",
         "    def __init__(self, *args, **kwargs):",
         "        super().__init__(*args, **kwargs)",
         "",
     ]
 
+    method_type_lines = {
+        "get": ["    #GET", ""],
+        "post": ["    #POST", ""],
+        "put": ["    #PUT", ""],
+        "delete": ["    #DELETE", ""],
+    }
+
     # Each endpoint in the section's "item" is processed.
     for item in section.get("item", []):
         details = extract_endpoint_details(item)
         method_code = generate_method_code(details)
-        class_lines.append(method_code)
+        if "def get" in method_code:
+            method_type_lines["get"].append(method_code)
+        elif "def post" in method_code:
+            method_type_lines["post"].append(method_code)
+        elif "def put" in method_code:
+            method_type_lines["put"].append(method_code)
+        elif "def delete" in method_code:
+            method_type_lines["delete"].append(method_code)
+
+    for v in method_type_lines.values():
+        for line in v:
+            class_lines.append(line)
 
     return "\n".join(class_lines)
 
 
-def main():
-    parser = argparse.ArgumentParser(
-        description="Generate API endpoint class from a Postman JSON collection"
-    )
-    parser.add_argument(
-        "--section", help="Name of the section to generate endpoints for"
-    )
-    parser.add_argument(
-        "--class-name",
-        help="Name for the generated class",
-        default="GeneratedEndpoints",
-    )
-    args = parser.parse_args()
+class testingArgs:
+    section = "Administatrators"
+    class_name = "Administrators"
 
+
+def main():
+    # parser = argparse.ArgumentParser(
+    #     description="Generate API endpoint class from a Postman JSON collection"
+    # )
+    # parser.add_argument(
+    #     "--section", help="Name of the section to generate endpoints for"
+    # )
+    # parser.add_argument(
+    #     "--class-name",
+    #     help="Name for the generated class",
+    #     default="GeneratedEndpoints",
+    # )
+    # args = parser.parse_args()
+
+    args = testingArgs()
     try:
         section = parse_postman_collection(
             "./assets/Odin API.postman_collection.json", args.section
@@ -181,6 +206,10 @@ def main():
     class_code = generate_class_code(section, args.class_name)
     # Output to stdout or write to a file
     print(class_code)
+    file_name = safe_snake_case(args.class_name)
+    with open(f"./{file_name}.py", "w") as file:
+        for line in class_code:
+            file.write(line)
 
 
 if __name__ == "__main__":
