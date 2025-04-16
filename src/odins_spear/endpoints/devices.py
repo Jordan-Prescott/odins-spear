@@ -985,8 +985,9 @@ class Devices(BaseEndpoint):
 
             return self._requester.post(endpoint, data=params)
 
-    def post_system_device_search(
-                self
+    def get_system_device_search(
+                self,
+                payload
         ):
             """
 
@@ -997,7 +998,158 @@ class Devices(BaseEndpoint):
             """
             endpoint = "/system/devices"
 
-            params = {
-            }
+            params = payload
+            
 
-            return self._requester.post(endpoint, data=params)
+            return self._requester.get(endpoint, data=params)
+
+#PUT
+    def put_group_device(
+                self,
+                service_provider_id: str,
+                group_id: str,
+                device_type: str,
+                updates: dict
+        ):
+            """
+
+            Args:
+                service_provider_id (str): Service provider ID where the device should be reset.
+                group_id (str): Group ID where the device type is put.
+                device_type (str): Name of the device type.            
+                updates (dict): updates payload
+            Returns:
+                Dict: 
+            """
+            endpoint = "/groups/devices"
+
+            updates["serviceProviderId"] = service_provider_id
+            updates["groupId"] = group_id
+            updates["deviceType"] = device_type
+
+            return self._requester.put(endpoint, data=updates)
+    
+    def put_service_provider_device(
+                self,
+                service_provider_id: str,
+                device_type: str,
+                updates: dict
+        ):
+            """
+
+            Args:
+                service_provider_id (str): Service provider ID where the device should be reset.
+                device_type (str): Name of the device type.            
+                updates (dict): updates payload
+            Returns:
+                Dict: 
+            """
+            endpoint = "/service-providers/devices"
+
+            updates["serviceProviderId"] = service_provider_id
+            updates["deviceType"] = device_type
+
+            return self._requester.put(endpoint, data=updates)
+
+    def put_system_device(
+                self,
+                device_type: str,
+                updates: dict
+        ):
+            """
+
+            Args:
+                device_type (str): Name of the device type.            
+                updates (dict): updates payload
+            Returns:
+                Dict: 
+            """
+            endpoint = "/system/devices"
+
+            updates["deviceType"] = device_type
+
+            return self._requester.put(endpoint, data=updates)
+
+    def put_system_device_file(
+                self,
+                file_source: str,
+                file_format: str,
+                device_name: str,
+                updates: dict
+        ):
+            """
+
+            Args:
+                file_Source (str): Source of the file.
+                file_Format (str): Format of the file. Example "user%BWMACADDRESS%.cfg".  
+                device_Name (str): Name of the device.     
+                updates (dict): updates payload
+            Returns:
+                Dict: 
+            """
+            endpoint = "/system/devices"
+
+            updates["fileSource"] = file_source
+            updates["fileFormat"] = file_format
+            updates["deviceName"] = device_name
+
+            return self._requester.put(endpoint, data=updates)
+    
+    def put_service_provider_device_file(
+                self,
+                file_source: str,
+                file_format: str,
+                device_name: str,
+                service_provider_id: str,
+                updates: dict
+        ):
+            """
+
+            Args:
+                file_Source (str): Source of the file.
+                file_Format (str): Format of the file. Example "user%BWMACADDRESS%.cfg".  
+                device_Name (str): Name of the device.
+                service_provider_id (str): Service Provider Id.
+                updates (dict): updates payload
+            Returns:
+                Dict: 
+            """
+            endpoint = "/service-providers/devices/files"
+
+            updates["fileSource"] = file_source
+            updates["fileFormat"] = file_format
+            updates["deviceName"] = device_name
+            updates["serviceProviderId"] = service_provider_id
+
+            return self._requester.put(endpoint, data=updates)
+    
+    def put_group_device_file(
+                self,
+                file_source: str,
+                file_format: str,
+                device_name: str,
+                service_provider_id: str,
+                group_id: str,
+                updates: dict
+        ):
+            """
+
+            Args:
+                file_Source (str): Source of the file.
+                file_Format (str): Format of the file. Example "user%BWMACADDRESS%.cfg".  
+                device_Name (str): Name of the device.
+                service_provider_id (str): Service Provider Id.
+                group_id (str): Group Id. 
+                updates (dict): updates payload
+            Returns:
+                Dict: 
+            """
+            endpoint = "/groups/devices/files"
+
+            updates["fileSource"] = file_source
+            updates["fileFormat"] = file_format
+            updates["deviceName"] = device_name
+            updates["serviceProviderId"] = service_provider_id
+            updates["groupId"] = group_id
+
+            return self._requester.put(endpoint, data=updates)
