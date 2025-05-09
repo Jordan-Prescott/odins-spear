@@ -542,7 +542,25 @@ class Devices(BaseEndpoint):
         }
 
         return self._requester.get(endpoint, params=params)
-    
+
+    def get_system_device_search(
+                self,
+                payload
+        ):
+            """
+
+            Args:               
+
+            Returns:
+                Dict: 
+            """
+            endpoint = "/system/devices"
+
+            params = payload
+            
+
+            return self._requester.get(endpoint, data=params)
+
     # POST
     def post_group_device(
         self,
@@ -985,23 +1003,6 @@ class Devices(BaseEndpoint):
 
             return self._requester.post(endpoint, data=params)
 
-    def get_system_device_search(
-                self,
-                payload
-        ):
-            """
-
-            Args:               
-
-            Returns:
-                Dict: 
-            """
-            endpoint = "/system/devices"
-
-            params = payload
-            
-
-            return self._requester.get(endpoint, data=params)
 
 #PUT
     def put_group_device(
