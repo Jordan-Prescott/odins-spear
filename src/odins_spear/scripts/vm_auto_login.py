@@ -1,22 +1,16 @@
-def main(api, service_provider_id: str, group_id: str, service_pack_id: str = None):
+def main(api, service_provider_id: str, group_id: str):
 
     logger = api.logger
 
     user_list: list = []
 
     try:
-        if service_pack_id:
-            user_list = api.services.get_group_services_user_assigned(
-                group_id,
-                service_provider_id,
-                service_pack_id,
-                "servicePackName"
-            )["users"]
-        else:
-            user_list = api.users.get_users(
-                service_provider_id,
-                group_id
-            )
+
+        user_list = api.users.get_users(
+            service_provider_id,
+            group_id
+        )
+
     except KeyError as ke:
         logger.error(f"Received Key Error Accessing Invalid Dictionary Entry -> {ke}")
         return
