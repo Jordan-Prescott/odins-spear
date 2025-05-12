@@ -80,6 +80,7 @@ class API:
         self.password_generate = PasswordGenerate()  # noqa: F405
         self.trunk_groups = TrunkGroups()  # noqa: F405
         self.users = Users()  # noqa: F405
+        self.voice_messaging = VoiceMessaging() # noqa: F405
 
         # authenticate newly instantiated object
         self._authenticate()
