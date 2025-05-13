@@ -16,16 +16,11 @@ class Devices(BaseEndpoint):
         filter_value: str = None,
         limit: int = None,
     ):
-        """
-        
-        """
+        """ """
 
         endpoint: str = "/groups/devices?"
 
-        params: dict = {
-            "serviceProviderId": service_provider_id,
-            "groupId": group_id
-        }
+        params: dict = {"serviceProviderId": service_provider_id, "groupId": group_id}
 
         if filter:
             params[filter] = format_filter_value(filter_type, filter_value)
@@ -33,7 +28,7 @@ class Devices(BaseEndpoint):
             params["limit"] = limit
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_group_device(
         self,
         service_provider_id: str,
@@ -44,16 +39,14 @@ class Devices(BaseEndpoint):
         filter_value: str = None,
         limit: int = None,
     ):
-        """
-        
-        """
-        
+        """ """
+
         endpoint: str = "/groups/devices?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
-            "deviceName": device_name
+            "deviceName": device_name,
         }
 
         if filter:
@@ -62,16 +55,15 @@ class Devices(BaseEndpoint):
             params["limit"] = limit
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_group_device_available_ports(
         self,
         service_provider_id: str,
         group_id: str,
         device_name: str,
-        device_level: str = "Group"
+        device_level: str = "Group",
     ):
-        """
-        """
+        """ """
 
         endpoint: str = "/groups/devices/available-ports?"
 
@@ -79,182 +71,139 @@ class Devices(BaseEndpoint):
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
             "deviceName": device_name,
-            "deviceLevel": device_level
+            "deviceLevel": device_level,
         }
 
         return self._requester.get(endpoint, params=params)
-    
-    def get_group_devices_available(
-        self,
-        service_provider_id: str,
-        group_id: str
-    ):
-        """
-        """
+
+    def get_group_devices_available(self, service_provider_id: str, group_id: str):
+        """ """
 
         endpoint: str = "/groups/devices?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
-            "q": "available"
+            "q": "available",
         }
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_group_device_users(
-        self,
-        service_provider_id: str,
-        group_id: str,
-        device_name: str
+        self, service_provider_id: str, group_id: str, device_name: str
     ):
-        """
-        """
+        """ """
 
         endpoint: str = "/groups/devices/users?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
-            "deviceName": device_name
+            "deviceName": device_name,
         }
 
         return self._requester.get(endpoint, params=params)
-    
-    def get_service_provider_devices(
-        self,
-        service_provider_id: str
-    ):
-        """
-        """
+
+    def get_service_provider_devices(self, service_provider_id: str):
+        """ """
 
         endpoint: str = "/service-providers/devices?"
 
-        params: dict = {
-            "serviceProviderId": service_provider_id
-        }
+        params: dict = {"serviceProviderId": service_provider_id}
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_service_provider_device(
         self,
         service_provider_id: str,
         device_name: str,
         q: str = "available",
-        group_id: str = None
+        group_id: str = None,
     ):
-        """
-        """
+        """ """
 
         endpoint: str = "/service-providers/devices?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
             "deviceName": device_name,
-            "q": q
+            "q": q,
         }
 
         if group_id:
             params["groupId"] = group_id
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_service_provider_device_user(
-        self,
-        service_provider_id: str,
-        device_name: str
+        self, service_provider_id: str, device_name: str
     ):
-        """
-        """
+        """ """
 
         endpoint: str = "/service-providers/devices/users?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
-            "deviceName": device_name
+            "deviceName": device_name,
         }
 
         return self._requester.get(endpoint, params=params)
-    
-    def get_system_device_types(
-        self
-    ):
-        """
-        """
+
+    def get_system_device_types(self):
+        """ """
 
         endpoint: str = "/system/device-types"
 
         return self._requester.get(endpoint)
 
-    def get_system_devices(
-        self
-    ):
-        """
-        """
+    def get_system_devices(self):
+        """ """
 
         endpoint: str = "/system/devices"
 
         return self._requester.get(endpoint)
-    
-    def get_system_device(
-        self,
-        device_name: str
-    ):
-        """
-        """
+
+    def get_system_device(self, device_name: str):
+        """ """
 
         endpoint: str = "/system/devices?"
 
-        params: dict = {
-            "deviceName": device_name
-        }
+        params: dict = {"deviceName": device_name}
 
         return self._requester.get(endpoint, params=params)
 
-    def get_system_device_user(
-        self,
-        device_name: str
-    ):
-        """
-        """
+    def get_system_device_user(self, device_name: str):
+        """ """
 
         endpoint: str = "/system/devices/users?"
 
-        params: dict = {
-            "deviceName": device_name
-        }
+        params: dict = {"deviceName": device_name}
 
-        return self._requester.get(endpoint, params=params)  
+        return self._requester.get(endpoint, params=params)
 
     def get_group_device_files(
-        self,
-        service_provider_id: str,
-        group_id: str,
-        device_name: str
+        self, service_provider_id: str, group_id: str, device_name: str
     ):
-        """
-        """
+        """ """
 
         endpoint: str = "/groups/devices/files?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
-            "deviceName": device_name
+            "deviceName": device_name,
         }
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_group_device_file(
         self,
         service_provider_id: str,
         group_id: str,
         device_name: str,
-        file_format: str
+        file_format: str,
     ):
-        """
-        
-        """
+        """ """
 
         endpoint: str = "/groups/devices/files?"
 
@@ -262,97 +211,69 @@ class Devices(BaseEndpoint):
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
             "deviceName": device_name,
-            "fileFormat": file_format
+            "fileFormat": file_format,
         }
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_service_provider_device_files(
-        self,
-        service_provider_id: str,
-        device_name: str
+        self, service_provider_id: str, device_name: str
     ):
-        """
-        """
+        """ """
 
         endpoint: str = "/service-providers/devices/files?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
-            "deviceName": device_name
+            "deviceName": device_name,
         }
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_service_provider_device_file(
-        self,
-        service_provider_id: str,
-        device_name: str,
-        file_format: str
+        self, service_provider_id: str, device_name: str, file_format: str
     ):
-        """
-        
-        """
+        """ """
 
         endpoint: str = "/service-providers/devices/files?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
             "deviceName": device_name,
-            "fileFormat": file_format
+            "fileFormat": file_format,
         }
 
         return self._requester.get(endpoint, params=params)
 
-    def get_system_device_files(
-        self,
-        device_name: str
-    ):
-        """
-        """
+    def get_system_device_files(self, device_name: str):
+        """ """
 
         endpoint: str = "/system/devices/files?"
 
-        params: dict = {
-            "deviceName": device_name
-        }
+        params: dict = {"deviceName": device_name}
 
         return self._requester.get(endpoint, params=params)
-    
-    def get_system_device_file(
-        self,
-        device_name: str,
-        file_format: str
-    ):
-        """
-        
-        """
+
+    def get_system_device_file(self, device_name: str, file_format: str):
+        """ """
 
         endpoint: str = "/system/devices/files?"
 
-        params: dict = {
-            "deviceName": device_name,
-            "fileFormat": file_format
-        }
+        params: dict = {"deviceName": device_name, "fileFormat": file_format}
 
         return self._requester.get(endpoint, params=params)
 
     def get_group_device_tags(
-        self,
-        service_provider_id: str,
-        group_id: str,
-        device_name: str
+        self, service_provider_id: str, group_id: str, device_name: str
     ):
-        """
-        
-        """
+        """ """
 
         endpoint: str = "/groups/devices/tags?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
-            "deviceName": device_name
+            "deviceName": device_name,
         }
 
         return self._requester.get(endpoint, params=params)
@@ -362,11 +283,9 @@ class Devices(BaseEndpoint):
         service_provider_id: str,
         group_id: str,
         device_type: str,
-        device_name: str
+        device_name: str,
     ):
-        """
-        
-        """
+        """ """
 
         endpoint: str = "/groups/devices/profile?"
 
@@ -374,127 +293,71 @@ class Devices(BaseEndpoint):
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
             "deviceType": device_type,
-            "deviceName": device_name
+            "deviceName": device_name,
         }
 
         return self._requester.get(endpoint, params=params)
 
-    def get_group_device_tags_bulk(
-        self,
-        service_provider_id: str,
-        group_id: str
-    ):
-        """
-        
-        """
+    def get_group_device_tags_bulk(self, service_provider_id: str, group_id: str):
+        """ """
 
         endpoint: str = "/groups/devices/tags?"
 
-        params: dict = {
-            "serviceProviderId": service_provider_id,
-            "groupId": group_id
-        }
+        params: dict = {"serviceProviderId": service_provider_id, "groupId": group_id}
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_service_provider_device_tags(
-        self,
-        service_provider_id: str,
-        device_name: str
+        self, service_provider_id: str, device_name: str
     ):
-        """
-        
-        """
+        """ """
 
         endpoint: str = "/service-providers/devices/tags?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
-            "deviceName": device_name
+            "deviceName": device_name,
         }
 
         return self._requester.get(endpoint, params=params)
-    
-    def get_system_device_tags(
-        self,
-        device_name: str
-    ):
-        """
-        
-        """
+
+    def get_system_device_tags(self, device_name: str):
+        """ """
 
         endpoint: str = "/system/devices/tags?"
 
-        params: dict = {
-            "deviceName": device_name
-        }
+        params: dict = {"deviceName": device_name}
 
         return self._requester.get(endpoint, params=params)
-    
-    def get_group_device_types(
-        self,
-        service_provider_id: str,
-        group_id: str
-    ):
-        """
-        """
+
+    def get_group_device_types(self, service_provider_id: str, group_id: str):
+        """ """
 
         endpoint: str = "/groups/device-types?"
 
-        params: dict = {
-            "serviceProviderId": service_provider_id,
-            "groupId": group_id
-        }
+        params: dict = {"serviceProviderId": service_provider_id, "groupId": group_id}
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_group_device_type(
-        self,
-        service_provider_id: str,
-        group_id: str,
-        device_type: str
+        self, service_provider_id: str, group_id: str, device_type: str
     ):
-        """
-        """
+        """ """
 
         endpoint: str = "/groups/device-types?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
-            "deviceType": device_type
+            "deviceType": device_type,
         }
 
         return self._requester.get(endpoint, params=params)
-    
+
     def get_group_device_type_files(
-        self,
-        service_provider_id: str,
-        group_id: str,
-        device_type: str
+        self, service_provider_id: str, group_id: str, device_type: str
     ):
-        """
-        """
-
-        endpoint: str = "/groups/device-types/files?"
-
-        params: dict = {
-            "serviceProviderId": service_provider_id,
-            "groupId": group_id,
-            "deviceType": device_type
-        }
-
-        return self._requester.get(endpoint, params=params)
-    
-    def get_group_device_type_files(
-        self,
-        service_provider_id: str,
-        group_id: str,
-        device_type: str,
-        file_format: str
-    ):
-        """
-        """
+        """ """
 
         endpoint: str = "/groups/device-types/files?"
 
@@ -502,64 +365,70 @@ class Devices(BaseEndpoint):
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
             "deviceType": device_type,
-            "fileFormat": file_format
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_device_type_files(
+        self,
+        service_provider_id: str,
+        group_id: str,
+        device_type: str,
+        file_format: str,
+    ):
+        """ """
+
+        endpoint: str = "/groups/device-types/files?"
+
+        params: dict = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "deviceType": device_type,
+            "fileFormat": file_format,
         }
 
         return self._requester.get(endpoint, params=params)
 
     def get_group_device_type_tags(
-        self,
-        service_provider_id: str,
-        group_id: str,
-        device_type: str
+        self, service_provider_id: str, group_id: str, device_type: str
     ):
-        """
-        """
+        """ """
 
         endpoint: str = "/groups/device-types/tags?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
-            "deviceType": device_type
+            "deviceType": device_type,
         }
 
         return self._requester.get(endpoint, params=params)
-    
-    def get_group_device_type_tags(
-        self,
-        service_provider_id: str,
-        device_type: str
-    ):
-        """
-        """
+
+    def get_group_device_type_tags(self, service_provider_id: str, device_type: str):
+        """ """
 
         endpoint: str = "/service-providers/device-types/tags?"
 
         params: dict = {
             "serviceProviderId": service_provider_id,
-            "deviceType": device_type
+            "deviceType": device_type,
         }
 
         return self._requester.get(endpoint, params=params)
 
-    def get_system_device_search(
-                self,
-                payload
-        ):
-            """
+    def get_system_device_search(self, payload):
+        """
 
-            Args:               
+        Args:
 
-            Returns:
-                Dict: 
-            """
-            endpoint = "/system/devices"
+        Returns:
+            Dict:
+        """
+        endpoint = "/system/devices"
 
-            params = payload
-            
+        params = payload
 
-            return self._requester.get(endpoint, data=params)
+        return self._requester.get(endpoint, data=params)
 
     # POST
     def post_group_device(
@@ -569,10 +438,9 @@ class Devices(BaseEndpoint):
         device_name: str,
         device_type: str,
         device_level: str,
-        payload: dict
+        payload: dict,
     ):
-        """
-        """
+        """ """
 
         endpoint: str = "/groups/devices"
 
@@ -583,27 +451,19 @@ class Devices(BaseEndpoint):
         )
 
         payload["groupId"] = (
-            group_id
-            if not payload.get("groupId")
-            else payload["groupId"]
+            group_id if not payload.get("groupId") else payload["groupId"]
         )
 
         payload["deviceName"] = (
-            device_name
-            if not payload.get("deviceName")
-            else payload["deviceName"]
+            device_name if not payload.get("deviceName") else payload["deviceName"]
         )
 
         payload["deviceType"] = (
-            device_type
-            if not payload.get("deviceType")
-            else payload["deviceType"]
+            device_type if not payload.get("deviceType") else payload["deviceType"]
         )
 
         payload["deviceLevel"] = (
-            device_level
-            if not payload.get("deviceLevel")
-            else payload["deviceLevel"]
+            device_level if not payload.get("deviceLevel") else payload["deviceLevel"]
         )
 
         return self._requester.post(endpoint, data=payload)
@@ -614,10 +474,9 @@ class Devices(BaseEndpoint):
         device_name: str,
         device_type: str,
         device_level: str,
-        payload: dict
+        payload: dict,
     ):
-        """
-        """
+        """ """
 
         endpoint: str = "/service-providers/devices"
 
@@ -628,44 +487,28 @@ class Devices(BaseEndpoint):
         )
 
         payload["deviceName"] = (
-            device_name
-            if not payload.get("deviceName")
-            else payload["deviceName"]
+            device_name if not payload.get("deviceName") else payload["deviceName"]
         )
 
         payload["deviceType"] = (
-            device_type
-            if not payload.get("deviceType")
-            else payload["deviceType"]
+            device_type if not payload.get("deviceType") else payload["deviceType"]
         )
 
         payload["deviceLevel"] = (
-            device_level
-            if not payload.get("deviceLevel")
-            else payload["deviceLevel"]
+            device_level if not payload.get("deviceLevel") else payload["deviceLevel"]
         )
 
         return self._requester.post(endpoint, data=payload)
-    
-    def post_system_device(
-            self,
-            service_provider_id: str,
-            device_name: str
-    ):
+
+    def post_system_device(self, service_provider_id: str, device_name: str):
         endpoint = "/groups/devices/reset"
-            
-        params = {
-            "deviceName": device_name,
-            "serviceProviderId": service_provider_id
-        }
+
+        params = {"deviceName": device_name, "serviceProviderId": service_provider_id}
 
         return self._requester.post(endpoint, data=params)
 
     def post_group_device_reset(
-            self,
-            service_provider_id: str,
-            group_id: str,
-            device_name: str
+        self, service_provider_id: str, group_id: str, device_name: str
     ):
         """Rest device. This is for a single device **Not Group Wide**
 
@@ -675,23 +518,20 @@ class Devices(BaseEndpoint):
             device_name (str): Name of the device.
 
         Returns:
-            Dict: 
+            Dict:
         """
         endpoint = "/groups/devices/reset"
 
         params = {
             "deviceName": device_name,
             "serviceProviderId": service_provider_id,
-            "groupId": group_id
+            "groupId": group_id,
         }
 
         return self._requester.post(endpoint, data=params)
-    
+
     def post_group_device_rebuild(
-            self,
-            service_provider_id: str,
-            group_id: str,
-            device_name: str
+        self, service_provider_id: str, group_id: str, device_name: str
     ):
         """Rebuild the device files. This is for a single device **Not Group Wide**
 
@@ -701,22 +541,20 @@ class Devices(BaseEndpoint):
             device_name (str): Name of the device.
 
         Returns:
-            Dict: 
+            Dict:
         """
         endpoint = "/groups/devices/rebuild"
 
         params = {
             "deviceName": device_name,
             "serviceProviderId": service_provider_id,
-            "groupId": group_id
+            "groupId": group_id,
         }
 
         return self._requester.post(endpoint, data=params)
 
     def post_service_provider_device_reset(
-            self,
-            service_provider_id: str,
-            device_name: str
+        self, service_provider_id: str, device_name: str
     ):
         """Reset the device files. This is **Group Wide*
 
@@ -725,21 +563,16 @@ class Devices(BaseEndpoint):
             device_name (str): Name of the device.
 
         Returns:
-            Dict: 
+            Dict:
         """
         endpoint = "/service-providers/devices/reset"
 
-        params = {
-            "deviceName": device_name,
-            "serviceProviderId": service_provider_id
-        }
+        params = {"deviceName": device_name, "serviceProviderId": service_provider_id}
 
         return self._requester.post(endpoint, data=params)
-    
+
     def post_service_provider_device_rebuild(
-            self,
-            service_provider_id: str,
-            device_name: str
+        self, service_provider_id: str, device_name: str
     ):
         """Rebuild the device files. This is **Group Wide*
 
@@ -748,78 +581,64 @@ class Devices(BaseEndpoint):
             device_name (str): Name of the device.
 
         Returns:
-            Dict: 
+            Dict:
         """
         endpoint = "/service-providers/devices/rebuild"
 
-        params = {
-            "deviceName": device_name,
-            "serviceProviderId": service_provider_id
-        }
+        params = {"deviceName": device_name, "serviceProviderId": service_provider_id}
 
         return self._requester.post(endpoint, data=params)
-    
-    def post_system_device_rebuild(
-            self,
-            device_name: str
-    ):
+
+    def post_system_device_rebuild(self, device_name: str):
         """Rebuild the device at system level.
 
         Args:
             device_name (str): Name of the device to have files rebuilt.
 
         Returns:
-            Dict: 
+            Dict:
         """
         endpoint = "/system/devices/rebuild"
 
-        params = {
-            "deviceName": device_name
-        }
+        params = {"deviceName": device_name}
 
         return self._requester.post(endpoint, data=params)
- 
-    def post_system_device_reset(
-            self,
-            device_name: str
-    ):
+
+    def post_system_device_reset(self, device_name: str):
         """Reset the device at system level.
 
         Args:
             device_name (str): Name of the device to be reset.
 
         Returns:
-            Dict: 
+            Dict:
         """
         endpoint = "/system/devices/reset"
 
-        params = {
-            "deviceName": device_name
-        }
+        params = {"deviceName": device_name}
 
         return self._requester.post(endpoint, data=params)
 
     def post_group_device_tag(
-            self,
-            service_provider_id: str,
-            group_id: str,
-            tag_name: str,
-            tag_value: str,
-            device_name: str
-        ):
-
+        self,
+        service_provider_id: str,
+        group_id: str,
+        tag_name: str,
+        tag_value: str,
+        device_name: str,
+    ):
         """Rebuild the device type files group wide.
 
-            Args:
-                service_provider_id (str): Service provider ID where the device should be rebuilt.
-                group_id (str): Group ID where the device should be rebuilt.
-                tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
-                tag_value (str): Value of tag, this can be anything.
-                device_name (str): Name of Device.
+        Args:
+            service_provider_id (str): Service provider ID where the device should be rebuilt.
+            group_id (str): Group ID where the device should be rebuilt.
+            tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
+            tag_value (str): Value of tag, this can be anything.
+            device_name (str): Name of Device.
 
-            Returns:
-                Dict: 
-            """
+        Returns:
+            Dict:
+        """
         endpoint = "/groups/devices/tags"
 
         params = {
@@ -827,330 +646,309 @@ class Devices(BaseEndpoint):
             "groupId": group_id,
             "tagName": tag_name,
             "tagValue": tag_value,
-            "deviceName": device_name
+            "deviceName": device_name,
         }
-        
-        return self._requester.post(endpoint, data=params)
-    
-    def post_service_provider_device_tag(
-            self,
-            service_provider_id: str,
-            tag_name: str,
-            tag_value: str,
-            device_name: str
-        ):
 
+        return self._requester.post(endpoint, data=params)
+
+    def post_service_provider_device_tag(
+        self, service_provider_id: str, tag_name: str, tag_value: str, device_name: str
+    ):
         """Rebuild the device type files group wide.
 
-            Args:
-                service_provider_id (str): Service provider ID where the device should be rebuilt.
-                tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
-                tag_value (str): Value of tag, this can be anything.
-                device_name (str): Name of Device.
+        Args:
+            service_provider_id (str): Service provider ID where the device should be rebuilt.
+            tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
+            tag_value (str): Value of tag, this can be anything.
+            device_name (str): Name of Device.
 
-            Returns:
-                Dict: 
-            """
+        Returns:
+            Dict:
+        """
         endpoint = "/service-providers/devices/tags"
 
         params = {
             "serviceProviderId": service_provider_id,
             "tagName": tag_name,
             "tagValue": tag_value,
-            "deviceName": device_name
+            "deviceName": device_name,
         }
-        
+
         return self._requester.post(endpoint, data=params)
 
-    def post_system_device_tag(
-            self,
-            tag_name: str,
-            tag_value: str,
-            device_name: str
-        ):
-
+    def post_system_device_tag(self, tag_name: str, tag_value: str, device_name: str):
         """Rebuild the device type files group wide.
 
-            Args:
-                tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
-                tag_value (str): Value of tag, this can be anything.
-                device_name (str): Name of Device.
+        Args:
+            tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
+            tag_value (str): Value of tag, this can be anything.
+            device_name (str): Name of Device.
 
-            Returns:
-                Dict: 
-            """
+        Returns:
+            Dict:
+        """
         endpoint = "/system/devices/tags"
 
-        params = {
-            "tagName": tag_name,
-            "tagValue": tag_value,
-            "deviceName": device_name
-        }
-        
+        params = {"tagName": tag_name, "tagValue": tag_value, "deviceName": device_name}
+
         return self._requester.post(endpoint, data=params)
 
     def post_group_device_type_rebuild(
-                self,
-                service_provider_id: str,
-                group_id: str,
-                device_type: str
-        ):
-            """Rebuild the device type files group wide.
+        self, service_provider_id: str, group_id: str, device_type: str
+    ):
+        """Rebuild the device type files group wide.
 
-            Args:
-                service_provider_id (str): Service provider ID where the device should be rebuilt.
-                group_id (str): Group ID where the device should be rebuilt.
-                device_type (str): Name of the device type.
+        Args:
+            service_provider_id (str): Service provider ID where the device should be rebuilt.
+            group_id (str): Group ID where the device should be rebuilt.
+            device_type (str): Name of the device type.
 
-            Returns:
-                Dict: 
-            """
-            endpoint = "/groups/device-types/rebuild"
+        Returns:
+            Dict:
+        """
+        endpoint = "/groups/device-types/rebuild"
 
-            params = {
-                "serviceProviderId": service_provider_id,
-                "groupId": group_id,
-                "deviceType": device_type
-            }
+        params = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "deviceType": device_type,
+        }
 
-            return self._requester.post(endpoint, data=params)
+        return self._requester.post(endpoint, data=params)
 
     def post_group_device_type_reset(
-                self,
-                service_provider_id: str,
-                group_id: str,
-                device_type: str
-        ):
-            """Reset the device group side.
+        self, service_provider_id: str, group_id: str, device_type: str
+    ):
+        """Reset the device group side.
 
-            Args:
-                service_provider_id (str): Service provider ID where the device should be reset.
-                group_id (str): Group ID where the device should be reset.
-                device_type (str): Name of the device type.
+        Args:
+            service_provider_id (str): Service provider ID where the device should be reset.
+            group_id (str): Group ID where the device should be reset.
+            device_type (str): Name of the device type.
 
-            Returns:
-                Dict: 
-            """
-            endpoint = "/groups/device-types/reset"
+        Returns:
+            Dict:
+        """
+        endpoint = "/groups/device-types/reset"
 
-            params = {
-                "serviceProviderId": service_provider_id,
-                "groupId": group_id,
-                "deviceType": device_type
-            }
+        params = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "deviceType": device_type,
+        }
 
-            return self._requester.post(endpoint, data=params)
-    
+        return self._requester.post(endpoint, data=params)
 
     def post_group_device_type_tag(
-                self,
-                service_provider_id: str,
-                group_id: str,
-                device_type: str,
-                tag_name: str,
-                tag_value: str
-        ):
-            """
+        self,
+        service_provider_id: str,
+        group_id: str,
+        device_type: str,
+        tag_name: str,
+        tag_value: str,
+    ):
+        """
 
-            Args:
-                service_provider_id (str): Service provider ID where the device should be reset.
-                group_id (str): Group ID where the device should be reset.
-                device_type (str): Name of the device type.
-                tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
-                tag_value (str): Value of tag, this can be anything.                
+        Args:
+            service_provider_id (str): Service provider ID where the device should be reset.
+            group_id (str): Group ID where the device should be reset.
+            device_type (str): Name of the device type.
+            tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
+            tag_value (str): Value of tag, this can be anything.
 
-            Returns:
-                Dict: 
-            """
-            endpoint = "/groups/device-types/tags"
+        Returns:
+            Dict:
+        """
+        endpoint = "/groups/device-types/tags"
 
-            params = {
-                "serviceProviderId": service_provider_id,
-                "groupId": group_id,
-                "deviceType": device_type,
-                "tagName": tag_name,
-                "tagValue": tag_value
-            }
+        params = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "deviceType": device_type,
+            "tagName": tag_name,
+            "tagValue": tag_value,
+        }
 
-            return self._requester.post(endpoint, data=params)
-    
+        return self._requester.post(endpoint, data=params)
+
     def post_service_provider_device_type_tag(
-                self,
-                service_provider_id: str,
-                device_type: str,
-                tag_name: str,
-                tag_value: str
-        ):
-            """
+        self, service_provider_id: str, device_type: str, tag_name: str, tag_value: str
+    ):
+        """
 
-            Args:
-                service_provider_id (str): Service provider ID where the device should be reset.
-                device_type (str): Name of the device type.
-                tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
-                tag_value (str): Value of tag, this can be anything.                
+        Args:
+            service_provider_id (str): Service provider ID where the device should be reset.
+            device_type (str): Name of the device type.
+            tag_name (str): Name of tag has to start and end with %, example - %MyTagName%.
+            tag_value (str): Value of tag, this can be anything.
 
-            Returns:
-                Dict: 
-            """
-            endpoint = "/service-providers/device-types/tags"
+        Returns:
+            Dict:
+        """
+        endpoint = "/service-providers/device-types/tags"
 
-            params = {
-                "serviceProviderId": service_provider_id,
-                "deviceType": device_type,
-                "tagName": tag_name,
-                "tagValue": tag_value
-            }
+        params = {
+            "serviceProviderId": service_provider_id,
+            "deviceType": device_type,
+            "tagName": tag_name,
+            "tagValue": tag_value,
+        }
 
-            return self._requester.post(endpoint, data=params)
+        return self._requester.post(endpoint, data=params)
 
-
-#PUT
+    # PUT
     def put_group_device(
-                self,
-                service_provider_id: str,
-                group_id: str,
-                device_type: str,
-                updates: dict
-        ):
-            """
+        self, service_provider_id: str, group_id: str, device_type: str, updates: dict
+    ):
+        """
 
-            Args:
-                service_provider_id (str): Service provider ID where the device should be reset.
-                group_id (str): Group ID where the device type is put.
-                device_type (str): Name of the device type.            
-                updates (dict): updates payload
-            Returns:
-                Dict: 
-            """
-            endpoint = "/groups/devices"
+        Args:
+            service_provider_id (str): Service provider ID where the device should be reset.
+            group_id (str): Group ID where the device type is put.
+            device_type (str): Name of the device type.
+            updates (dict): updates payload
+        Returns:
+            Dict:
+        """
+        endpoint = "/groups/devices"
 
-            updates["serviceProviderId"] = service_provider_id
-            updates["groupId"] = group_id
-            updates["deviceType"] = device_type
+        updates["serviceProviderId"] = service_provider_id
+        updates["groupId"] = group_id
+        updates["deviceType"] = device_type
 
-            return self._requester.put(endpoint, data=updates)
-    
+        return self._requester.put(endpoint, data=updates)
+
     def put_service_provider_device(
-                self,
-                service_provider_id: str,
-                device_type: str,
-                updates: dict
-        ):
-            """
+        self, service_provider_id: str, device_type: str, updates: dict
+    ):
+        """
 
-            Args:
-                service_provider_id (str): Service provider ID where the device should be reset.
-                device_type (str): Name of the device type.            
-                updates (dict): updates payload
-            Returns:
-                Dict: 
-            """
-            endpoint = "/service-providers/devices"
+        Args:
+            service_provider_id (str): Service provider ID where the device should be reset.
+            device_type (str): Name of the device type.
+            updates (dict): updates payload
+        Returns:
+            Dict:
+        """
+        endpoint = "/service-providers/devices"
 
-            updates["serviceProviderId"] = service_provider_id
-            updates["deviceType"] = device_type
+        updates["serviceProviderId"] = service_provider_id
+        updates["deviceType"] = device_type
 
-            return self._requester.put(endpoint, data=updates)
+        return self._requester.put(endpoint, data=updates)
 
-    def put_system_device(
-                self,
-                device_type: str,
-                updates: dict
-        ):
-            """
+    def put_system_device(self, device_type: str, updates: dict):
+        """
 
-            Args:
-                device_type (str): Name of the device type.            
-                updates (dict): updates payload
-            Returns:
-                Dict: 
-            """
-            endpoint = "/system/devices"
+        Args:
+            device_type (str): Name of the device type.
+            updates (dict): updates payload
+        Returns:
+            Dict:
+        """
+        endpoint = "/system/devices"
 
-            updates["deviceType"] = device_type
+        updates["deviceType"] = device_type
 
-            return self._requester.put(endpoint, data=updates)
+        return self._requester.put(endpoint, data=updates)
 
     def put_system_device_file(
-                self,
-                file_source: str,
-                file_format: str,
-                device_name: str,
-                updates: dict
-        ):
-            """
+        self, file_source: str, file_format: str, device_name: str, updates: dict
+    ):
+        """
 
-            Args:
-                file_Source (str): Source of the file.
-                file_Format (str): Format of the file. Example "user%BWMACADDRESS%.cfg".  
-                device_Name (str): Name of the device.     
-                updates (dict): updates payload
-            Returns:
-                Dict: 
-            """
-            endpoint = "/system/devices"
+        Args:
+            file_Source (str): Source of the file.
+            file_Format (str): Format of the file. Example "user%BWMACADDRESS%.cfg".
+            device_Name (str): Name of the device.
+            updates (dict): updates payload
+        Returns:
+            Dict:
+        """
+        endpoint = "/system/devices"
 
-            updates["fileSource"] = file_source
-            updates["fileFormat"] = file_format
-            updates["deviceName"] = device_name
+        updates["fileSource"] = file_source
+        updates["fileFormat"] = file_format
+        updates["deviceName"] = device_name
 
-            return self._requester.put(endpoint, data=updates)
-    
+        return self._requester.put(endpoint, data=updates)
+
     def put_service_provider_device_file(
-                self,
-                file_source: str,
-                file_format: str,
-                device_name: str,
-                service_provider_id: str,
-                updates: dict
-        ):
-            """
+        self,
+        file_source: str,
+        file_format: str,
+        device_name: str,
+        service_provider_id: str,
+        updates: dict,
+    ):
+        """
 
-            Args:
-                file_Source (str): Source of the file.
-                file_Format (str): Format of the file. Example "user%BWMACADDRESS%.cfg".  
-                device_Name (str): Name of the device.
-                service_provider_id (str): Service Provider Id.
-                updates (dict): updates payload
-            Returns:
-                Dict: 
-            """
-            endpoint = "/service-providers/devices/files"
+        Args:
+            file_Source (str): Source of the file.
+            file_Format (str): Format of the file. Example "user%BWMACADDRESS%.cfg".
+            device_Name (str): Name of the device.
+            service_provider_id (str): Service Provider Id.
+            updates (dict): updates payload
+        Returns:
+            Dict:
+        """
+        endpoint = "/service-providers/devices/files"
 
-            updates["fileSource"] = file_source
-            updates["fileFormat"] = file_format
-            updates["deviceName"] = device_name
-            updates["serviceProviderId"] = service_provider_id
+        updates["fileSource"] = file_source
+        updates["fileFormat"] = file_format
+        updates["deviceName"] = device_name
+        updates["serviceProviderId"] = service_provider_id
 
-            return self._requester.put(endpoint, data=updates)
-    
+        return self._requester.put(endpoint, data=updates)
+
     def put_group_device_file(
-                self,
-                file_source: str,
-                file_format: str,
-                device_name: str,
-                service_provider_id: str,
-                group_id: str,
-                updates: dict
-        ):
-            """
+        self,
+        file_source: str,
+        file_format: str,
+        device_name: str,
+        service_provider_id: str,
+        group_id: str,
+        updates: dict,
+    ):
+        """
 
-            Args:
-                file_Source (str): Source of the file.
-                file_Format (str): Format of the file. Example "user%BWMACADDRESS%.cfg".  
-                device_Name (str): Name of the device.
-                service_provider_id (str): Service Provider Id.
-                group_id (str): Group Id. 
-                updates (dict): updates payload
-            Returns:
-                Dict: 
-            """
-            endpoint = "/groups/devices/files"
+        Args:
+            file_Source (str): Source of the file.
+            file_Format (str): Format of the file. Example "user%BWMACADDRESS%.cfg".
+            device_Name (str): Name of the device.
+            service_provider_id (str): Service Provider Id.
+            group_id (str): Group Id.
+            updates (dict): updates payload
+        Returns:
+            Dict:
+        """
+        endpoint = "/groups/devices/files"
 
-            updates["fileSource"] = file_source
-            updates["fileFormat"] = file_format
-            updates["deviceName"] = device_name
-            updates["serviceProviderId"] = service_provider_id
-            updates["groupId"] = group_id
+        updates["fileSource"] = file_source
+        updates["fileFormat"] = file_format
+        updates["deviceName"] = device_name
+        updates["serviceProviderId"] = service_provider_id
+        updates["groupId"] = group_id
 
-            return self._requester.put(endpoint, data=updates)
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_device_tags_profile(
+        self,
+        service_provider_id: str,
+        group_id: str,
+        device_name: str,
+        tags: dict,
+    ):
+        """
+
+        Args:
+            service_provider_id (str): Service Provider Id.
+            group_id (str): Group Id.
+            device_Name (str): Name of the device.
+            tags (dict): updates payload.
+        Returns:
+            Dict:
+        """
+        endpoint = "/service-providers/devices/profile"
+
+        return self._requester.put(endpoint, data=updates)
