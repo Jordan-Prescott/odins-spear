@@ -932,7 +932,7 @@ class Devices(BaseEndpoint):
 
         return self._requester.put(endpoint, data=updates)
 
-    def put_group_device_tags_profile(
+    def put_group_device_tag_profile(
         self,
         service_provider_id: str,
         group_id: str,
@@ -957,7 +957,7 @@ class Devices(BaseEndpoint):
 
         return self._requester.put(endpoint, data=updates)
 
-    def put_group_device_tags(
+    def put_group_device_tag(
         self,
         tag_name: str,
         tag_value: str,
@@ -984,6 +984,34 @@ class Devices(BaseEndpoint):
         updates["deviceName"] = device_name
         updates["serviceProviderId"] = service_provider_id
         updates["groupId"] = group_id
+        updates["deviceName"] = device_name
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_service_provider_device_tag(
+        self,
+        tag_name: str,
+        tag_value: str,
+        service_provider_id: str,
+        device_name: str,
+        updates: dict = {},
+    ):
+        """
+
+        Args:
+            tag_name (str): Device tag, Must start and end with %, Example %ENABLE_ACD%.
+            tag_value (str): Value for device tag above.
+            service_provider_id (str): Service Provider Id.
+            device_Name (str): Name of the device.
+        Returns:
+            Dict:
+        """
+        endpoint = "/service-providers/devices/tags"
+
+        updates["tagName"] = tag_name
+        updates["tagValue"] = tag_value
+        updates["deviceName"] = device_name
+        updates["serviceProviderId"] = service_provider_id
         updates["deviceName"] = device_name
 
         return self._requester.put(endpoint, data=updates)
