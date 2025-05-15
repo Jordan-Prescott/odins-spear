@@ -278,7 +278,7 @@ class Devices(BaseEndpoint):
 
         return self._requester.get(endpoint, params=params)
 
-    def get_group_device_tags(
+    def get_group_device_tags_profile(
         self,
         service_provider_id: str,
         group_id: str,
@@ -937,7 +937,7 @@ class Devices(BaseEndpoint):
         service_provider_id: str,
         group_id: str,
         device_name: str,
-        tags: dict,
+        updates: dict,
     ):
         """
 
@@ -950,5 +950,39 @@ class Devices(BaseEndpoint):
             Dict:
         """
         endpoint = "/service-providers/devices/profile"
+
+        updates["serviceProviderId"] = service_provider_id
+        updates["groupId"] = group_id
+        updates["deviceName"] = device_name
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_device_tags(
+        self,
+        tag_name: str,
+        tag_value: str,
+        service_provider_id: str,
+        group_id: str,
+        device_name: str,
+        updates: str,
+    ):
+        """
+
+        Args:
+            service_provider_id (str): Service Provider Id.
+            group_id (str): Group Id.
+            device_Name (str): Name of the device.
+            tags (dict): updates payload.
+        Returns:
+            Dict:
+        """
+        endpoint = "/service-providers/devices/tags"
+
+        updates["tagName"] = tag_name
+        updates["tagValue"] = tag_value
+        updates["deviceName"] = device_name
+        updates["serviceProviderId"] = service_provider_id
+        updates["groupId"] = group_id
+        updates["deviceName"] = device_name
 
         return self._requester.put(endpoint, data=updates)
