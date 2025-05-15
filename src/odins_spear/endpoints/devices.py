@@ -945,7 +945,7 @@ class Devices(BaseEndpoint):
             service_provider_id (str): Service Provider Id.
             group_id (str): Group Id.
             device_Name (str): Name of the device.
-            tags (dict): updates payload.
+            Updates (dict): updates payload.
         Returns:
             Dict:
         """
@@ -964,19 +964,20 @@ class Devices(BaseEndpoint):
         service_provider_id: str,
         group_id: str,
         device_name: str,
-        updates: str,
+        updates: dict = {},
     ):
         """
 
         Args:
+            tag_name (str): Device tag, Must start and end with %, Example %ENABLE_ACD%.
+            tag_value (str): Value for device tag above.
             service_provider_id (str): Service Provider Id.
             group_id (str): Group Id.
             device_Name (str): Name of the device.
-            tags (dict): updates payload.
         Returns:
             Dict:
         """
-        endpoint = "/service-providers/devices/tags"
+        endpoint = "/groups/devices/tags"
 
         updates["tagName"] = tag_name
         updates["tagValue"] = tag_value
