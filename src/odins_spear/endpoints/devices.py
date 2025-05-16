@@ -981,7 +981,6 @@ class Devices(BaseEndpoint):
 
         updates["tagName"] = tag_name
         updates["tagValue"] = tag_value
-        updates["deviceName"] = device_name
         updates["serviceProviderId"] = service_provider_id
         updates["groupId"] = group_id
         updates["deviceName"] = device_name
@@ -1010,8 +1009,119 @@ class Devices(BaseEndpoint):
 
         updates["tagName"] = tag_name
         updates["tagValue"] = tag_value
-        updates["deviceName"] = device_name
         updates["serviceProviderId"] = service_provider_id
         updates["deviceName"] = device_name
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_system_device_tag(
+        self,
+        tag_name: str,
+        tag_value: str,
+        device_name: str,
+        updates: dict = {},
+    ):
+        """
+
+        Args:
+            tag_name (str): Device tag, Must start and end with %, Example %ENABLE_ACD%.
+            tag_value (str): Value for device tag above.
+            device_Name (str): Name of the device.
+        Returns:
+            Dict:
+        """
+        endpoint = "/system/devices/tags"
+
+        updates["tagName"] = tag_name
+        updates["tagValue"] = tag_value
+        updates["deviceName"] = device_name
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_device_type_file(
+        self,
+        file_source: str,
+        file_format: str,
+        device_type: str,
+        service_provider_id: str,
+        group_id: str,
+        updates: dict = {},
+    ):
+        """
+
+        Args:
+            file_Source (str): Source of the file.
+            file_Format (str): Format of the file. Example "user%BWMACADDRESS%.cfg".
+            device_Name (str): Name of the device.
+            service_provider_id (str): Service Provider Id.
+            group_id (str): Group Id.
+            updates (dict): updates payload
+        Returns:
+            Dict:
+        """
+        endpoint = "/groups/device-types/files"
+
+        updates["fileSource"] = file_source
+        updates["fileFormat"] = file_format
+        updates["deviceType"] = device_type
+        updates["serviceProviderId"] = service_provider_id
+        updates["groupId"] = group_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_device_type_tag(
+        self,
+        tag_name: str,
+        tag_value: str,
+        service_provider_id: str,
+        group_id: str,
+        device_type: str,
+        updates: dict = {},
+    ):
+        """
+
+        Args:
+            tag_name (str): Device tag, Must start and end with %, Example %ENABLE_ACD%.
+            tag_value (str): Value for device tag above.
+            service_provider_id (str): Service Provider Id.
+            group_id (str): Group Id.
+            device_Type (str): Device Type, example "Yealin_T42U".
+        Returns:
+            Dict:
+        """
+        endpoint = "/groups/device-types/tags"
+
+        updates["tagName"] = tag_name
+        updates["tagValue"] = tag_value
+        updates["serviceProviderId"] = service_provider_id
+        updates["groupId"] = group_id
+        updates["deviceType"] = device_type
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_service_provider_device_type_tag(
+        self,
+        tag_name: str,
+        tag_value: str,
+        service_provider_id: str,
+        device_type: str,
+        updates: dict = {},
+    ):
+        """
+
+        Args:
+            tag_name (str): Device tag, Must start and end with %, Example %ENABLE_ACD%.
+            tag_value (str): Value for device tag above.
+            service_provider_id (str): Service Provider Id.
+            device_Type (str): Device Type, example "Yealin_T42U".
+        Returns:
+            Dict:
+        """
+        endpoint = "/service-providers/device-types/tags"
+
+        updates["tagName"] = tag_name
+        updates["tagValue"] = tag_value
+        updates["serviceProviderId"] = service_provider_id
+        updates["deviceType"] = device_type
 
         return self._requester.put(endpoint, data=updates)
