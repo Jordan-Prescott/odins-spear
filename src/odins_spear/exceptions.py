@@ -177,6 +177,13 @@ class OSRangeFault(OSError):
         return "Range fault raised. Please verify integrity of passed range values"
 
 
+class OSValueExceeded(OSError):
+    """Raised when value given exceeds max value needed."""
+
+    def __str__(self):
+        return "Value exceeds max check lenght/ count of values given is correct"
+
+
 # PARSING
 
 
