@@ -1106,22 +1106,22 @@
 - [ ] **Two Stage Dialing**
     - [ ] GET - User Two Stage Dialing
     - [ ] PUT - User Two Stage Dialing
-- [ ] **Users**
+- [x] **Users**
     - [x] PUT - Users Bulk
     - [x] GET - Users
     - [x] GET - User
     - [x] GET - User by UserId
     - [x] POST - User
     - [x] PUT - User
-    - [ ] PUT - User Sip Contact
-    - [ ] DELETE - User
-    - [ ] GET - User Audit
+    - [x] PUT - User Sip Contact
+    - [x] DELETE - User
+    - [x] GET - User Audit
     - [x] PUT - User ID
     - [x] PUT - User Group Id Update
     - [x] GET - User Login Info
     - [x] GET - User Portal Passcode
     - [x] PUT - User Portal Passcode
-    - [ ] GET - Group User Audit
+    - [x] GET - Group User Audit
 - [ ] **Video Add On**
     - [ ] GET - User Video Add On
     - [ ] PUT - User Video Add On
