@@ -12,20 +12,12 @@ Removes the specified user from the platform entirely.
 
 ### Returns
 
-* Nothing
+* None
 
 ### How To Use:
 
-{% code overflow="wrap" %}
 ```python
 my_api.users.delete_user(
     "user_ID"
 )
-```
-{% endcode %}
-
-### Example Data Returned (Formatted)
-
-```json
-[]
 ```

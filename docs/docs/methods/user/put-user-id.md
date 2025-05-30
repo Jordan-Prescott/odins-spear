@@ -12,20 +12,13 @@ Updates the specified user's UserID, including domain.
 
 ### Returns
 
-* Nothing
+* None
 
 ### How To Use:
 
-{% code overflow="wrap" %}
 ```python
 my_api.users.put_user_id(
-    "user_ID"
+    "current_user_id",
+    "new_user_id"
 )
-```
-{% endcode %}
-
-### Example Data Returned (Formatted)
-
-```json
-[]
 ```
