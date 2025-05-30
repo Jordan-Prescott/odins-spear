@@ -162,11 +162,11 @@ class Users(BaseEndpoint):
         """AI is creating summary for get_group_user_audit
 
         Args:
-            service_provider_id (str): [description]
-            group_id (str): [description]
+            service_provider_id (str): Target Service Provider ID
+            group_id (str): Target Group ID with users
 
         Returns:
-            [type]: [description]
+            Dict: Audit of users in specified group
         """
         # NOTE: docs needed
 
@@ -339,7 +339,7 @@ class Users(BaseEndpoint):
         if sip_contacts.len() > 5:
             from ..exceptions import OSValueExceeded
 
-            raise OSValueExceeded()
+            raise OSValueExceeded
         # NOTE: docs needed
         endpoint = "/users"
 
