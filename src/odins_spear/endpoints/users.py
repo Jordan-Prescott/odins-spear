@@ -85,7 +85,6 @@ class Users(BaseEndpoint):
         Returns:
             dict: Details of user
         """
-        # NOTE: docs needed
 
         endpoint = "/users/password"
 
@@ -119,7 +118,7 @@ class Users(BaseEndpoint):
         Returns:
             Dict: Audit details of user
         """
-        # NOTE: docs needed
+
         endpoint = "/users/audit"
 
         params = {"userId": user_id}
@@ -135,7 +134,7 @@ class Users(BaseEndpoint):
         Returns:
             Dict: Login details of target user
         """
-        # NOTE: docs needed
+
         endpoint = "/users/login-info"
 
         params = {"userId": user_id}
@@ -151,7 +150,7 @@ class Users(BaseEndpoint):
         Returns:
             Dict: Portal passcode details of target user
         """
-        # NOTE: docs needed
+
         endpoint = "/users/portal-passcode"
 
         params = {"userId": user_id}
@@ -168,7 +167,6 @@ class Users(BaseEndpoint):
         Returns:
             Dict: Audit of users in specified group
         """
-        # NOTE: docs needed
 
         endpoint = "/groups/users/audit"
 
@@ -228,22 +226,43 @@ class Users(BaseEndpoint):
 
         return self._requester.post(endpoint, data=payload)
 
-    def post_user_reset(self, user_id: str, payload: dict = {}):
+    def post_user_reset(
+        self,
+        user_id: str,
+        remove_from_group_services: bool,
+        remove_call_records: bool,
+        remove_alternate_user_ids: bool,
+        remove_webex_person: bool,
+        cycle_service_packs: bool,
+        reset_password_passcode: bool,
+    ):
         """Resets/ removes user across areas such as resetting password and cycling feature pack
 
         Note: Not fully understood, use with caution
 
         Args:
-            user_id (str): [description]
-            payload (dict):
-
+            user_id (str): Users Original Identifier
+            remove_from_group_services (bool): Remove From Group Services
+            remove_call_records (bool): Remove Call Record Instances
+            remove_alternate_user_ids (bool): Remove Alternate User Identifiers
+            remove_webex_person (bool): Remove Webex Entry
+            cycle_service_packs (bool): Shift Service Packs
+            reset_password_passcode (bool): Reset Password Forcing A New Login And Password
         Returns:
             None: This function doesn't return any details
         """
-        # NOTE: docs needed
+
         endpoint = "/users/reset"
 
-        payload["userId"] = user_id
+        payload = {
+            "userId": user_id,
+            "removeFromGroupServices": remove_from_group_services,
+            "removeCallRecords": remove_call_records,
+            "removeAlternateUserIds": remove_alternate_user_ids,
+            "removeWebexPerson": remove_webex_person,
+            "cycleServicePacks": cycle_service_packs,
+            "resetPasswordPasscode": reset_password_passcode,
+        }
 
         return self._requester.post(endpoint, data=payload)
 
@@ -322,7 +341,7 @@ class Users(BaseEndpoint):
     def put_user_sip_contacts(
         self, service_provider_id: str, group_id: str, user_id: str, sip_contacts: list
     ):
-        """AI is creating summary for put_user_sip_contacts
+        """Adds a list of SIP Contacts to a specified user. If adding only 1 still include in a list.
 
         Note: 5 is the max amount of sip contats a user can have
 
@@ -340,7 +359,7 @@ class Users(BaseEndpoint):
             from ..exceptions import OSValueExceeded
 
             raise OSValueExceeded
-        # NOTE: docs needed
+
         endpoint = "/users"
 
         data = {
@@ -362,7 +381,7 @@ class Users(BaseEndpoint):
         Returns:
             None: This function doesn't return any details
         """
-        # NOTE: docs needed
+
         endpoint = "/users/user-id"
 
         data = {"userId": current_user_id, "newUserId": new_user_id}
@@ -382,7 +401,7 @@ class Users(BaseEndpoint):
         Returns:
             None
         """
-        # NOTE: docs needed
+
         endpoint = "/users/group-id"
 
         data = {
@@ -396,7 +415,7 @@ class Users(BaseEndpoint):
     # DELETE
 
     def delete_user(self, user_id: str):
-        """AI is creating summary for delete_user
+        """Removes a single user form the platform
 
         Args:
             user_id (str): Target user ID
@@ -404,7 +423,7 @@ class Users(BaseEndpoint):
         Returns:
             None
         """
-        # NOTE: docs needed
+
         endpoint = "/users"
 
         params = {"userId": user_id}
