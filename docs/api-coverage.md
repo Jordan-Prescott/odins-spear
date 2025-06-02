@@ -81,10 +81,10 @@
     - [ ] GET - User Attendant Console
     - [ ] GET - User Attendant Console Available Users
     - [x] PUT - User Attendant Console
-- [ ] **Authentication**
-    - [ ] GET - User Authentication Service
-    - [ ] PUT - User Authentication Service
-    - [ ] PUT - User Authentication Service User
+- [x] **Authentication**
+    - [x] GET - User Authentication Service
+    - [x] PUT - User Authentication Service
+    - [x] PUT - User Authentication Service User
 - [x] **Auto Attendants**
     - [x] GET - Auto Attendants
     - [x] PUT - Auto Attendants

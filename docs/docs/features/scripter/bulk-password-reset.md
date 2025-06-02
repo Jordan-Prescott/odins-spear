@@ -16,7 +16,7 @@ api.authentication.put_user_authentication_service()
 api.password_generate.get_passcodes_generate()
 api.authentication.put_user_portal_passcode()
 api.password_generate.get_passwords_generate()
-api.authentication.put_user_web_authentication_password()
+api.session.put_user_web_authentication_password()
 ```
 
 ### Parameters
