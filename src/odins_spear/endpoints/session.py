@@ -62,11 +62,14 @@ class Session(BaseEndpoint):
         return self._requester.put(endpoint)
 
     def put_change_password(self, user_id: str, new_password: str):
-        """Change the password of a user
+        """Set new Web Authentication password for a single user.
 
         Args:
-            user_id (str): Tagrte user id of user to reset password
-            new_password (str): New password
+            user_id (str): Target user ID to reset the web authentication password.
+            new_password (str): New web authentication password to apply to new user.
+
+        Returns:
+            None: This method does not return any specific value.
         """
 
         endpoint = "/users/passwords"

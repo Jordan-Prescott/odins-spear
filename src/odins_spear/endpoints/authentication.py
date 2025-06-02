@@ -7,6 +7,22 @@ class Authentication(BaseEndpoint):
 
     # GET
 
+    def get_authentication_service(self, user_id: str):
+        """Returns authentication details of authorised users.
+
+        Args:
+            user_id (str): Target user ID.
+
+        Returns:
+            Dict: Autnentication details of target user
+        """
+
+        endpoint = "/users/authentication"
+
+        params = {"userId": user_id}
+
+        return self._requester.get(endpoint, params=params)
+
     # POST
 
     # PUT
@@ -28,21 +44,29 @@ class Authentication(BaseEndpoint):
 
         return self._requester.put(endpoint, data=data)
 
-    def put_user_web_authentication_password(self, user_id: str, new_password: str):
-        """Set new Web Authentication password for a single user.
+    def put_user_authentication_user(
+        self, username: str, user_id: str, old_password: str, new_password: str
+    ):
+        """Changes the authentication password of a single user
 
         Args:
-            user_id (str): Target user ID to reset the web authentication password.
-            new_password (str): New web authentication password to apply to new user.
+            username (str): Username of target user
+            user_id (str): User ID of target user
+            old_password (str): Old password (current)
+            new_password (str): Password to change to
 
         Returns:
             None: This method does not return any specific value.
         """
 
-        endpoint = "/users/passwords"
+        endpoint = "/users/authentication"
 
-        data = {"userId": user_id, "newPassword": new_password}
+        params = {
+            "userName": username,
+            "userId": user_id,
+            "password": {"old": old_password, "new": new_password},
+        }
 
-        return self._requester.put(endpoint, data=data)
+        return self._requester.put(endpoint, params=params)
 
     # DELETE

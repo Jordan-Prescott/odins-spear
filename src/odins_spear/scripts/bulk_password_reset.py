@@ -35,7 +35,7 @@ def main(
 
         logger.info("Setting new SIP passwords")
         for user in users_and_new_passwords:
-            api.authentication.put_user_web_authentication_password(user[0], user[1])
+            api.session.put_user_web_authentication_password(user[0], user[1])
 
         logger.info("Setting new SIP passwords complete")
         return [
