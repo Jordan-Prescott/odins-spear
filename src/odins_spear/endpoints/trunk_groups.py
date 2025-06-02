@@ -99,6 +99,52 @@ class TrunkGroups(BaseEndpoint):
 
         return self._requester.get(endpoint, params=params)
 
+    def get_group_trunk_group_users(
+        self, service_provider_id: str, group_id: str, trunk_name: str
+    ):
+        """Fetches a list of users assigned to a specific trunk.
+
+        Args:
+            service_provider_id (str): Target service provider id
+            group_id (str): Target group id where trunk group is hosted
+            name (str): Target trunk group
+
+        Returns:
+            Dict: Trunk group and list of users assigned
+        """
+        endpoint = "/groups/trunk-groups/users"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "name": trunk_name,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_trunk_available_hosted_users(
+        self, service_provider_id: str, group_id: str, trunk_name: str
+    ):
+        """Fetches a list of users available to assign to the trunk group
+
+        Args:
+            service_provider_id (str): [description]
+            group_id (str): [description]
+            trunk_name (str): [description]
+
+        Returns:
+            [type]: [description]
+        """
+        endpoint = "/groups/trunk-groups/users/hosted"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "name": trunk_name,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
     # POST
     def post_group_trunk_group(
         self,
@@ -249,3 +295,26 @@ class TrunkGroups(BaseEndpoint):
         return self._requester.put(endpoint, data=updates)
 
     # DELETE
+
+    def delete_trunk_group(
+        self, service_provider_id: str, group_id: str, trunk_name: str
+    ):
+        """Deletes a trunk group.
+
+        Args:
+            service_provider_id (str): Target service provider id
+            group_id (str): Target group id where trunk group is hosted
+            name (str): Target trunk group
+
+        Returns:
+            None
+        """
+        endpoint = "/groups/trunk-groups"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "name": trunk_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
