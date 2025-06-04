@@ -128,12 +128,12 @@ class TrunkGroups(BaseEndpoint):
         """Fetches a list of users available to assign to the trunk group
 
         Args:
-            service_provider_id (str): [description]
-            group_id (str): [description]
-            trunk_name (str): [description]
+            service_provider_id (str): Target service provider id
+            group_id (str): Target group id where trunk group is hosted
+            name (str): Target trunk group
 
         Returns:
-            [type]: [description]
+            Dict: List of available users for assigning to trunk group
         """
         endpoint = "/groups/trunk-groups/users/hosted"
 
@@ -142,6 +142,23 @@ class TrunkGroups(BaseEndpoint):
             "groupId": group_id,
             "name": trunk_name,
         }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_service_providers_trunk_call_capacity_report_show(
+        self, service_provider_id: str
+    ):
+        """Returns a report of each group in a Servcice Provider showing their call capacity values etc.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Detailed report of group and trunk group details.
+        """
+        endpoint = "/service-providers/trunk-groups/call-capacity/reports"
+
+        params = {"serviceProviderId": service_provider_id}
 
         return self._requester.get(endpoint, params=params)
 
