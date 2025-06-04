@@ -1,7 +1,7 @@
 # Table of contents
 
 * [Welcome](README.md)
-* [What's New](whats-new.md)
+<!-- * [What's New](whats-new.md) -->
 * [Getting Started](getting-started/README.md)
   * [Getting the Essentials](getting-started/getting-the-essentials.md)
   * [Create API Object](getting-started/create-api-object.md)
@@ -271,6 +271,6 @@
   * [Frequently Asked Questions](troubleshooting-and-faq/faq/README.md)
   * [Common Issues](troubleshooting-and-faq/common-issues/README.md)
     * [Graphviz Troubleshooting](troubleshooting-and-faq/common-issues/graphviz-troubleshooting.md)
-* [Change Log](change-log.md)
+<!-- * [Change Log](change-log.md) -->
 * [Bugs and Issues](bugs-and-issues.md)
 * [Contact](contact.md)
