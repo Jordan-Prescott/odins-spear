@@ -1089,20 +1089,20 @@
     - [ ] PUT - User Third Party Voice Mail Support
 - [ ] **Time Zones**
     - [ ] GET - System Time Zones
-- [ ] **Trunk Groups**
+- [x] **Trunk Groups**
     - [x] GET - Group Trunk Groups Call Capacity
     - [x] PUT - Group Trunk Groups Call Capacity
     - [x] GET - Group Trunk Groups
     - [x] POST - Group Trunk Group
     - [x] GET - Group Trunk Group
     - [x] PUT - Group Trunk Group
-    - [ ] DELETE - Group Trunk Group
-    - [ ] GET - Group Trunk Group Users
-    - [ ] GET - Group Trunk Group Available Hosted Users
+    - [x] DELETE - Group Trunk Group
+    - [x] GET - Group Trunk Group Users
+    - [x] GET - Group Trunk Group Available Hosted Users
     - [x] GET - Service Providers Trunk Group Call Capacity
     - [x] PUT - Service Providers Trunk Group Call Capacity
     - [x] GET - Service Providers Trunk Call Capacity Report
-    - [ ] GET - Service Providers Trunk Call Capacity Report Show
+    - [x] GET - Service Providers Trunk Call Capacity Report Show
 - [ ] **Two Stage Dialing**
     - [ ] GET - User Two Stage Dialing
     - [ ] PUT - User Two Stage Dialing
