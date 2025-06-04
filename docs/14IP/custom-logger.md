@@ -4,6 +4,8 @@ The **ESLogger** is a custom Python logger designed to simultaneously send log r
 
 It extends Python’s built-in `logging.Logger` to capture accurate caller information (file, function, and line number) and to support flexible logging output.
 
+NOTE: You need elasticsearch 8.17.2 for this to work, get get that run the command `pip install elasticsearch==8.17.2`
+
 ---
 
 ## Overview
