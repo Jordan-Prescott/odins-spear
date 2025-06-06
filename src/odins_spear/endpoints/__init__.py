@@ -16,6 +16,7 @@ from .devices import Devices
 from .dns import DNs
 from .groups import Groups
 from .emergency_zones import EmergencyZones
+from .extensions import Extensions
 from .do_not_disturb import DoNotDisturb
 from .hunt_groups import HuntGroups
 from .service_providers import ServiceProviders
@@ -48,6 +49,7 @@ __all__ = [
     "DNs",
     "Groups",
     "EmergencyZones",
+    "Extensions",
     "DoNotDisturb",
     "HuntGroups",
     "ServiceProviders",

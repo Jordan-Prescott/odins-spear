@@ -68,6 +68,7 @@ class API:
         self.dns = DNs()  # noqa: F405
         self.groups = Groups()  # noqa: F405
         self.emergency_zones = EmergencyZones()  # noqa: F405
+        self.extensions = Extensions()  # noqa: F405
         self.do_not_disturb = DoNotDisturb()  # noqa: F405
         self.hunt_groups = HuntGroups()  # noqa: F405
         self.service_providers = ServiceProviders()  # noqa: F405
