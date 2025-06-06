@@ -16,7 +16,7 @@ Retrieves Pickup Group information for the specified user.
 
 {% code overflow="wrap" %}
 ```python
-my_api.call_pickup.put_call_pickup_group_user(
+my_api.call_pickup.get_call_pickup_group_user(
     "my_service_provider_id", 
     "my_group_id", 
     "john.smith@testdomain.net"
