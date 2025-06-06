@@ -291,13 +291,13 @@
     - [ ] GET - Call Park Group Users
     - [ ] PUT - Call Park Group
     - [ ] DELETE - Call Park Group
-- [ ] **Call Pickup**
-    - [ ] GET - Call Pickup Groups
-    - [ ] POST - Call Pickup Group
-    - [ ] GET - Call Pickup Group
+- [x] **Call Pickup**
+    - [x] GET - Call Pickup Groups
+    - [x] POST - Call Pickup Group
+    - [x] GET - Call Pickup Group
     - [x] GET - Call Pickup Available Users
-    - [ ] PUT - Call Pickup Group
-    - [ ] DELETE - Call Pickup Group
+    - [x] PUT - Call Pickup Group
+    - [x] DELETE - Call Pickup Group
 - [ ] **Call Policies**
     - [ ] GET - User Call Policies
     - [x] PUT - User Call Policies
