@@ -42,6 +42,25 @@ class Groups(BaseEndpoint):
 
 
 # POST
+    def post_group(self, defaultDomain: str, userLimit: int, group_id: str, group_name: str, service_provider_id: str) -> dict:
+        """Returns the specificied Group's settings and information.
+
+        Args:
+            defaultDomain (str): Default Domain for the Group
+            userLimit (int): User Limit for the Group
+            group_id (str): Target Group ID
+            group_name (str): Name of the Group
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Returns information about the specified group, such as the DID, userCount and Domain.
+        """
+
+        endpoint = "/groups"
+
+        params = {"serviceProviderId": service_provider_id, "groupId": group_id}
+
+        return self._requester.get(endpoint, params=params)
 
 # PUT
 
