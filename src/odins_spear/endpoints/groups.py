@@ -43,8 +43,8 @@ class Groups(BaseEndpoint):
     # POST
     def post_group(
         self,
-        defaultDomain: str,
-        userLimit: int,
+        default_domain: str,
+        user_limit: int,
         group_id: str,
         group_name: str,
         service_provider_id: str,
@@ -52,8 +52,8 @@ class Groups(BaseEndpoint):
         """Creates a new Group.
 
         Args:
-            defaultDomain (str): Default Domain for the Group
-            userLimit (int): User Limit for the Group
+            default_domain (str): Default Domain for the Group
+            user_limit (int): User Limit for the Group
             group_id (str): Target Group ID
             group_name (str): Name of the Group
             service_provider_id (str): Target Service Provider ID
@@ -68,8 +68,8 @@ class Groups(BaseEndpoint):
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
             "groupName": group_name,
-            "userLimit": userLimit,
-            "defaultDomain": defaultDomain,
+            "userLimit": user_limit,
+            "defaultDomain": default_domain,
         }
 
         return self._requester.post(endpoint, data=data)
@@ -80,7 +80,7 @@ class Groups(BaseEndpoint):
         self,
         service_provider_id: str,
         group_id: str,
-        defaultDomain: str,
+        default_domain: str,
         timezone: str,
         updates: dict,
     ) -> dict:
@@ -89,7 +89,7 @@ class Groups(BaseEndpoint):
         Args:
             service_provider_id (str): Target Service Provider ID
             group_id (str): Target Group ID
-            defaultDomain (str): Default Domain of the Group
+            default_domain (str): Default Domain of the Group
             timezone (str): Timezone of the Group
             updates (dict): Dictionary of updates to apply to the group.
 
@@ -102,7 +102,7 @@ class Groups(BaseEndpoint):
         data = {
             "serviceProviderId": service_provider_id,
             "groupId": group_id,
-            "defaultDomain": defaultDomain,
+            "defaultDomain": default_domain,
             "timeZone": timezone,
             **updates,
         }
