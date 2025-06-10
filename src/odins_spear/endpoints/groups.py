@@ -40,10 +40,16 @@ class Groups(BaseEndpoint):
 
         return self._requester.get(endpoint, params=params)
 
-
-# POST
-    def post_group(self, defaultDomain: str, userLimit: int, group_id: str, group_name: str, service_provider_id: str) -> dict:
-        """Returns the specificied Group's settings and information.
+    # POST
+    def post_group(
+        self,
+        defaultDomain: str,
+        userLimit: int,
+        group_id: str,
+        group_name: str,
+        service_provider_id: str,
+    ) -> dict:
+        """Creates a new Group.
 
         Args:
             defaultDomain (str): Default Domain for the Group
@@ -53,15 +59,73 @@ class Groups(BaseEndpoint):
             service_provider_id (str): Target Service Provider ID
 
         Returns:
-            Dict: Returns information about the specified group, such as the DID, userCount and Domain.
+            Dict: Returns the newly created Group's information, such as the ID, userCount, Domain and Timezone.
         """
 
         endpoint = "/groups"
 
-        params = {"serviceProviderId": service_provider_id, "groupId": group_id}
+        data = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "groupName": group_name,
+            "userLimit": userLimit,
+            "defaultDomain": defaultDomain,
+        }
 
-        return self._requester.get(endpoint, params=params)
+        return self._requester.post(endpoint, data=data)
 
-# PUT
+    # PUT
 
-# DELETE
+    def put_group(
+        self,
+        service_provider_id: str,
+        group_id: str,
+        defaultDomain: str,
+        timezone: str,
+        updates: dict,
+    ) -> dict:
+        """Updates an existing Group with the specified settings.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+            group_id (str): Target Group ID
+            defaultDomain (str): Default Domain of the Group
+            timezone (str): Timezone of the Group
+            updates (dict): Dictionary of updates to apply to the group.
+
+        Returns:
+            Dict: Returns the updated Group's information, such as the ID, userCount, Domain and Timezone.
+        """
+
+        endpoint = "/groups"
+
+        data = {
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "defaultDomain": defaultDomain,
+            "timeZone": timezone,
+            **updates,
+        }
+
+        return self._requester.put(endpoint, data=data)
+
+    # DELETE
+
+    def delete_group(self, service_provider_id: str, group_id: str) -> dict:
+        """Deletes a Group and all associated users, settings, services and numbers.
+
+        Please use with caution! This action is irreversible unless you have a backup of the group.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+            group_id (str): Target Group ID
+
+        Returns:
+            Dict: Returns the deleted Group's information, such as the ID, userCount, Domain and Timezone.
+        """
+
+        endpoint = "/groups"
+
+        data = {"serviceProviderId": service_provider_id, "groupId": group_id}
+
+        return self._requester.delete(endpoint, data=data)
