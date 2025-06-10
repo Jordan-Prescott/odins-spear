@@ -19,7 +19,9 @@ class CallCenters(BaseEndpoint):
         """
 
         endpoint = "/groups/call-centers"
+
         params = {"serviceProviderId": service_provider_id, "groupId": group_id}
+
         return self._requester.get(endpoint, params=params)
 
     def get_group_call_center(self, service_user_id: str):
@@ -143,10 +145,289 @@ class CallCenters(BaseEndpoint):
         Returns:
             Dict: Number to be Forwarded to, and Agents with an Unavailable Code set.
         """
-
         endpoint = "/groups/call-centers/stranded-calls-unavailable"
 
         params = {"serviceUserId": service_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center(self, service_provider_id: str):
+        """Retrieves call center settings that are hosted by the specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Call Centers and their settings.
+
+            TOOD: Docs
+        """
+        endpoint = "/enterprises/call-centers"
+
+        params = {"serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_routing_policy(self, service_provider_id: str):
+        """Retrieves call center call routing settings that are hosted by the specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Call Centers and their settings.
+
+            TODO: Docs
+        """
+        endpoint = "/enterprises/call-centers"
+
+        params = {"serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_agent_unavailable_codes(
+        self, service_provider_id: str
+    ):
+        """Retrieves call center agent unavailable codes that are hosted by the specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Call Centers and their settings.
+
+            TODO: Docs
+        """
+        endpoint = "/enterprises/call-centers/agent-unavailable-codes"
+
+        params = {"serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_agent_unavailable_codes_settings(
+        self, service_provider_id: str
+    ):
+        """Retrieves call center agent unavailable codes that are hosted by the specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Call Centers and their settings.
+
+            TODO: Docs
+        """
+        endpoint = "/enterprises/call-centers/agent-unavailable-codes-settings"
+
+        params = {"serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_enhanced_reporting(self, service_provider_id: str):
+        """Enables/ retrieves enhanced reporting for specified service provider.
+
+        NOTE: Not fully understood. Use with caution.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Service Provider enhanced reporting
+
+            TODO: Docs
+        """
+        endpoint = "/enterprises/call-centers/enhanced-reporting"
+
+        params = {"serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_enhanced_reporting_branding(
+        self, service_provider_id: str
+    ):
+        """Enables/ retrieves enhanced reporting for specified service provider.
+
+        NOTE: Not fully understood. Use with caution.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Service Provider enhanced reporting
+
+            TODO: Docs
+        """
+        endpoint = "/enterprises/call-centers/enhanced-reporting-branding"
+
+        params = {"serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_enhanced_reporting_scheduled_reports(
+        self, service_provider_id: str
+    ):
+        """Retrieves list of all scheduled reports for specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Service Provider enhanced reporting
+
+            TODO: Docs
+        """
+        endpoint = "/enterprises/call-centers/enhanced-reporting/scheduled-reports"
+
+        params = {"serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_enhanced_reporting_scheduled_report(
+        self, service_provider_id: str, schedule_name: str
+    ):
+        """Retrieves a single scheduled report for specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+            schedule_name (str): Target Schedule Name
+
+        Returns:
+            Dict: Service Provider enhanced reporting
+
+            TODO: Docs
+        """
+        endpoint = "/enterprises/call-centers/enhanced-reporting/scheduled-reports"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "scheduleName": schedule_name,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_enhanced_reporting_scheduled_report_call_centers(
+        self, service_provider_id: str, schedule_name: str
+    ):
+        """Retrieves a detailed single scheduled report for specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+            schedule_name (str): Target Schedule Name
+
+        Returns:
+            Dict: Service Provider enhanced reporting
+
+            TODO: Docs
+        """
+        endpoint = (
+            "/enterprises/call-centers/enhanced-reporting/scheduled-report-call-centers"
+        )
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "scheduleName": schedule_name,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_threshold_profile(
+        self, service_provider_id: str, profile_name: str
+    ):
+        """Retrieves a threshold profile of specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+            profile_name (str): Target Profile Name
+
+        Returns:
+            Dict: Service Provider enhanced reporting
+
+            TODO: Docs
+        """
+        endpoint = (
+            "/enterprises/call-centers/enhanced-reporting/scheduled-report-call-centers"
+        )
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "scheduleName": profile_name,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_threshold_profiles(self, service_provider_id: str):
+        """Retrieves threshold profiles of specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Service Provider enhanced reporting
+
+            TODO: Docs
+        """
+        endpoint = (
+            "/enterprises/call-centers/enhanced-reporting/scheduled-report-call-centers"
+        )
+
+        params = {"serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_call_disposition_codes(
+        self, service_provider_id: str
+    ):
+        """Retrieves disposition codes of specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+
+        Returns:
+            Dict: Service Provider enhanced reporting
+
+            TODO: Docs
+        """
+        endpoint = (
+            "/enterprises/call-centers/enhanced-reporting/scheduled-report-call-centers"
+        )
+
+        params = {"serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_call_disposition_code(
+        self, service_provider_id: str, disposition_code: str
+    ):
+        """Retrieves a single disposition code of specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+            disposition_code (str): Target Disposition Code
+
+        Returns:
+            Dict: Details on disposition code.
+        """
+        endpoint = "/enterprises/call-centers/call-disposition-code"
+
+        params = {"serviceProviderId": service_provider_id, "code": disposition_code}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_enterprise_call_center_call_disposition_code_usage(
+        self, service_provider_id: str, disposition_code: str
+    ):
+        """Retrieves the usage of asingle disposition code of specified service provider.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID
+            disposition_code (str): Target Disposition Code
+
+        Returns:
+            Dict: Details on disposition code.
+        """
+        endpoint = "/enterprises/call-centers/call-disposition-code-usage"
+
+        params = {"serviceProviderId": service_provider_id, "code": disposition_code}
 
         return self._requester.get(endpoint, params=params)
 
