@@ -138,7 +138,7 @@
     * [Groups](docs/methods/groups/README.md)
       * [GET - Group Information](docs/methods/groups/get-group.md)
       * [POST - Create Group](docs/methods/groups/post-group.md)
-      * [PUT - Update Group](docs/methods/groups/post-group.md)
+      * [PUT - Update Group](docs/methods/groups/put-group.md)
       * [DELETE - Delete Group](docs/methods/groups/delete-group.md)
       * [GET - Service Provider Groups](docs/methods/groups/get-groups.md)
     * [Hunt Groups](docs/methods/hunt-groups/README.md)
