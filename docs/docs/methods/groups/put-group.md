@@ -18,6 +18,8 @@ Updates an existing Group with the specified settings.
 
 {% code overflow="wrap" %}
 ```python
+updates = "contact": {"contactName": "test name"}
+
 my_api.groups.post_group{
      "serviceProviderId",
      "groupId",
@@ -46,8 +48,6 @@ my_api.groups.post_group{
   "locationDialingCode": 234,
   "contact": {
     "contactName": "test name",
-    "contactNumber": "513-123-1234",
-    "contactEmail": "testname@domain.com"
   },
   "serviceProviderId": "ent.test",
   "groupId": "grp.test"
