@@ -8,7 +8,7 @@ class SharedCallAppearance(BaseEndpoint):
     # GET
 
     def get_user_shared_call_appearance(self, user_id: str):
-        """Gets all Shared Call Appearances (SCAs) for a specifieduser.
+        """Gets all Shared Call Appearances (SCAs) for a specified user.
 
         Args:
             user_id (str): Target user id of user to get SCA for.
