@@ -6,35 +6,32 @@ Creates a new Shared Call Apprance (SCA) on a single user.
 
 * service\_provider\_id (str): Service Provider/ Enterprise ID where Group is hosted.&#x20;
 * group\_id (str): Target Group ID where users are located.
+* device\_name (str): Device to add for SCA from available devices.
 
 ### Returns
 
-* Dict: Session details
+* Dict: New SCA details applied to user.
 
 ### How To Use:
 
 ```python
-my_api.session.get_session()
+my_api.post_user_shared_call_appearance_endpoint(
+        "user@domain.com, 
+        "line1", 
+        "dev1"
+    ):
 ```
 
 ### Example Data Returned (Formatted)
 
 ```python
 {
-  "userId": "mock.user@as3.xdp.broadsoft.com",
-  "groupId": null,
-  "serviceProviderId": null,
-  "isEnterprise": false,
-  "loginType": "Provisioning",
-  "userDomain": "as3.xdp.broadsoft.com",
-  "passwordExpiresDays": 2147483647,
-  "local": "en_US",
-  "encoding": null,
-  "systemDomain": "as3.xdp.broadsoft.com",
-  "softwareVersion": "21sp1",
-  "isSystemAdmin": true,
-  "readOnly": false,
-  "policy": [],
-  "version": "latest"
+	"userId":"user@domain.com",
+	"linePort":"line@domain",
+	"isActive":true,
+  "allowOrigination":true,
+	"allowTermination":true,
+	"deviceName":"dev1",
+	"deviceLevel":"Group"
 }
 ```

@@ -17,9 +17,9 @@ Updates Shared Call Appearance (SCA) settings for a specified user.
 my_api.shared_call_appearance.put_user_shared_call_appearance(
     user_id="user@example.com",
     settings={
-        "isActive": True,
-        "allowOrigination": True,
-        "allowTermination": True
+        "enableMultipleCallArrangement":true,
+	    "multipleCallArrangementIsActive":true,
+	    "allowBridgingBetweenLocations":true,
     }
 )
 ```
@@ -28,12 +28,15 @@ my_api.shared_call_appearance.put_user_shared_call_appearance(
 
 ```python
 {
-    "userId": "user@example.com",
-    "isActive": true,
-    "allowOrigination": true,
-    "allowTermination": true,
-    "deviceName": "device1",
-    "deviceLevel": "Group",
-    "linePort": "line1"
+	"alertAllAppearancesForClickToDialCalls":true,
+	"alertAllAppearancesForGroupPagingCalls":true,
+	"maxAppearances":35,
+	"allowSCACallRetrieve":true,
+	"enableMultipleCallArrangement":true,
+	"multipleCallArrangementIsActive":true,
+	"allowBridgingBetweenLocations":true,
+	"bridgeWarningTone":"Barge-In",
+	"enableCallParkNotification":true,
+	"userId":"9709580001@microv-works.com"
 }
 ```
