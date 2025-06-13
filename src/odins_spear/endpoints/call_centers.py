@@ -431,6 +431,318 @@ class CallCenters(BaseEndpoint):
 
         return self._requester.get(endpoint, params=params)
 
+    def get_group_call_center_queue_status(self, call_center_user_id: str):
+        """Retrieves the queue status of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+
+        Returns:
+            Dict: Queue status of the call center. #TODO: docs
+        """
+        endpoint = "/groups/call-centers/status"
+
+        params = {"serviceUserId": call_center_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_call_center_queue_status_notifications(
+        self, call_center_user_id: str
+    ):
+        """Retrieves the queue status notifications of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+
+        Returns:
+            Dict: Queue status notifications of the call center. #TODO: docs
+        """
+        endpoint = "/groups/call-centers/queue-status-notifications"
+
+        params = {"serviceUserId": call_center_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_call_center_enhanced_reporting(
+        self, service_provider_id: str, group_id: str
+    ):
+        """Retrieves the enhanced reporting of a call center.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID. Can't be Enterprise ID.
+            group_id (str): Target Group ID
+
+        Returns:
+            Dict: Enhanced reporting details
+        """
+        endpoint = "/groups/call-centers/enhanced-reporting"
+
+        params = {"serviceProviderId": service_provider_id, "groupId": group_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_call_center_reporting(self, call_center_user_id: str):
+        """Retrieves the reporting details of a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+
+        Returns:
+            Dict: Reporting details of call center.
+        """
+        endpoint = "/groups/call-centers/reporting"
+
+        params = {"serviceUserId": call_center_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_call_center_statistics(
+        self,
+        call_center_user_id: str,
+        start_date: str,
+        end_date: str,
+        start_time: str = "00:00:00",
+        end_time: str = "23:59:59",
+        time_zone: str = "Z",
+    ):
+        """Retrieves the statistics of a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+            start_date (str): Start date of desired time period. Date must follow format 'YYYY-MM-DD'
+            end_date (str): End date of desired time period. Date must follow format 'YYYY-MM-DD'
+            start_time (str): Start time of desired time period. Time must follow formate 'HH:MM:SS'.
+            end_time (str): End time of desired time period. Time must follow formate 'HH:MM:SS'.
+            time_zone (str): A specified time you would like to see call records in.
+                Time zone must follow format 'GMT', 'EST', 'PST'. Defaults to "Z" (UTC Time Zone).
+
+        Returns:
+            Dict: Statistics of call center.
+        """
+        endpoint = "/groups/call-centers/statistics"
+
+        params = {
+            "serviceUserId": call_center_user_id,
+            "start": f"{start_date}T{start_time}{time_zone}",
+            "end": f"{end_date}T{end_time}{time_zone}",
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_call_center_stranded_calls(self, call_center_user_id: str):
+        """Retrieves the stranded calls settings of a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+
+        Returns:
+            Dict: Stranded calls settings of call center.
+        """
+        endpoint = "/groups/call-centers/stranded-calls"
+
+        params = {"serviceUserId": call_center_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_call_center_stranded_calls_unavailable(self, call_center_user_id: str):
+        """Retrieves the stranded calls unavailable settings of a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+
+        Returns:
+            Dict: Stranded calls unavailable settings of call center.
+        """
+        endpoint = "/groups/call-centers/stranded-calls-unavailable"
+
+        params = {"serviceUserId": call_center_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_call_center_supervisors(self, call_center_user_id: str):
+        """Retrieves the supervisors of a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+
+        Returns:
+            Dict: Supervisors of call center.
+        """
+        endpoint = "/groups/call-centers/supervisors"
+
+        params = {"serviceUserId": call_center_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_call_center_supervisor_agents(
+        self, call_center_user_id: str, supervisor_user_id: str
+    ):
+        """Retrieves the agents of a supervisor of a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+            supervisor_user_id (str): Target Supervisor User ID
+
+        Returns:
+            Dict: Agents of supervisor of call center.
+        """
+        endpoint = "/groups/call-centers/supervisors/agents"
+
+        params = {
+            "serviceUserId": call_center_user_id,
+            "supervisorUserId": supervisor_user_id,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_call_center_thresholds(self, call_center_user_id: str):
+        """Retrieves the thresholds of a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+
+        Returns:
+            Dict: Thresholds of call center.
+        """
+        endpoint = "/groups/call-centers/thresholds"
+
+        params = {
+            "serviceUserId": call_center_user_id,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_user_call_center_dnis(self, call_center_user_id: str):
+        """Retrieves the DNIS of a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+
+        Returns:
+            Dict: DNIS of call center.
+        """
+        endpoint = "/users/call-centers/dnis"
+
+        params = {"userId": call_center_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_user_call_center_disposition_codes(self, call_center_user_id: str):
+        """Retrieves the disposition codes of a call center agent.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+
+        Returns:
+            Dict: Disposition codes of call center agent.
+        """
+        endpoint = "/users/call-centers/disposition-codes"
+
+        params = {"userId": call_center_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_user_call_center_monitoring(self, call_center_user_id: str):
+        """Retrieves the monitoring settings of a call center agent.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+
+        Returns:
+            Dict: Monitoring settings of call center agent.
+        """
+        endpoint = "/users/call-centers/monitoring"
+
+        params = {"userId": call_center_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_user_call_center_agents(self, agent_user_id: str):
+        """Retrieves the agents of a call center agent.
+
+        Args:
+            agent_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+
+        Returns:
+            Dict: Agents of call center agent.
+        """
+
+        endpoint = "/user/call-centers/agents"
+
+        params = {"agentUserId": agent_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_user_call_center_agent(self, agent_user_id: str):
+        """Retrieves the details of a call center agent.
+
+        Args:
+            agent_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+
+        Returns:
+            Dict: Details of call center agent.
+        """
+
+        endpoint = "/user/call-centers/agents"
+
+        params = {"agentUserId": agent_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_user_call_center_supervisors(
+        self, agent_user_id: str, supervisor_user_id: str
+    ):
+        """Retrieves the supervisors of a call center agent.
+
+        Args:
+            agent_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+            supervisor_user_id (str): Target Supervisor User ID
+
+        Returns:
+            Dict: Supervisors of call center agent. #TODO: docs
+        """
+        endpoint = "/user/call-centers/agents/supervisors"
+
+        params = {"agentUserId": agent_user_id, "supervisorUserId": supervisor_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_user_call_center_supervisors_all_agents(
+        self, call_center_user_id: str, supervisor_user_id: str
+    ):
+        """Retrieves all agents of a supervisor of a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+            supervisor_user_id (str): Target Supervisor User ID
+
+        Returns:
+            Dict: All agents of a supervisor of a call center. #TODO: docs
+        """
+        endpoint = "/user/call-centers/agents/supervisors"
+
+        params = {
+            "serviceUserId": call_center_user_id,
+            "supervisorUserId": supervisor_user_id,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_user_call_center_supervisor_call_centers(self, supervisor_user_id: str):
+        """Retrieves the call centers of a supervisor.
+
+        Args:
+            supervisor_user_id (str): Target Supervisor User ID
+
+        Returns:
+            Dict: Call centers of a supervisor. #TODO: docs
+        """
+        endpoint = "/user/call-centers/supervisor/call-centers"
+
+        params = {"supervisorUserId": supervisor_user_id}
+
+        return self._requester.get(endpoint, params=params)
+
     # POST
 
     # PUT
