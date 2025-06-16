@@ -7,11 +7,163 @@ class Services(BaseEndpoint):
 
     # GET
 
-    def get_user_services_assigned(self, user_id: str):
+    def get_system_services(self):
+        """Fetch all services assigned to the system.
+
+        Returns:
+            Dict: A dictionary containing all the services assigned to the system.
         """
 
+        endpoint = "/system/services"
+
+        return self._requester.get(endpoint)
+
+    def get_service_provider_services(
+        self,
+        service_provider_id: str,
+        onlyLicensed: bool = False,
+        onlyAuthorised: bool = False,
+    ):
+        """Fetch all services within a service provider.
+
         Args:
-            user_id (str): _description_
+            service_provider_id (str): Service provider ID of the target
+            onlyLicensed (bool, optional): Only fetch licensed services. Defaults to False.
+            onlyAuthorised (bool, optional): Only fetch authorised services. Defaults to False.
+
+        Returns:
+            Dict: A dictionary containing all the services within the service provider alongside their settings.
+        """
+
+        endpoint = "/service-providers/services"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "onlyLicensed": onlyLicensed,
+            "onlyAuthorised": onlyAuthorised,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_service_provider_services_assignable(self, service_provider_id: str):
+        """Fetch all services within a service provider that are assignable.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target
+
+        Returns:
+            Dict: A dictionary with the service names of all assignable services.
+        """
+
+        endpoint = "/service-providers/services/assignable"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_service_provider_services_authorized(self, service_provider_id: str):
+        """Fetch all services within a service provider that are authorized alongside their quantity and limit.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target
+
+        Returns:
+            Dict: A dictionary with the service names of all authorized services alongside their quantity and limit.
+        """
+
+        endpoint = "/service-providers/services/authorized"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_services(self, service_provider_id: str, group_id: str):
+        """Fetch all services within a group.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target
+            group_id (str): Group ID of the target
+
+        Returns:
+            Dict: A dictionary with the service names of all User Services, Group Services and Service Pack Services within the group.
+        """
+
+        endpoint = "/groups/services"
+
+        params = {"groupId": group_id, "serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_services_authorized(self, service_provider_id: str, group_id: str):
+        """Fetch all services authorized within a group.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target
+            group_id (str): Group ID of the target
+
+        Returns:
+            Dict: A dictionary with the service names of all authorized services within the group.
+        """
+
+        endpoint = "/groups/services/authorized"
+
+        params = {"groupId": group_id, "serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_services_assigned(self, service_provider_id: str, group_id: str):
+        """Fetch all services assigned within a group.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target
+            group_id (str): Group ID of the target
+
+        Returns:
+            List: A list with the service names of all assigned services within the group.
+        """
+
+        endpoint = "/groups/services/assigned-list"
+
+        params = {"groupId": group_id, "serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_service_is_assigned(
+        self, service_provider_id: str, group_id: str, service_name: str
+    ):
+        """Fetch users who a service is assigned to within a group.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target
+            group_id (str): Group ID of the target
+            service_name (str): Service name of the target
+
+        Returns:
+            Dict: A dictionary with the users who the service is assigned to.
+        """
+
+        endpoint = "/groups/services/assigned"
+
+        params = {
+            "groupId": group_id,
+            "serviceProviderId": service_provider_id,
+            "serviceName": service_name,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_user_services_assigned(self, user_id: str):
+        """Fetch all services assigned to a user.
+
+        Args:
+            user_id (str): User ID of the target
+
+        Returns:
+            Dict: A dictionary with the service names of all assigned services.
         """
         endpoint = "/users/services/assigned"
 
