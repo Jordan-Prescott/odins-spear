@@ -745,7 +745,256 @@ class CallCenters(BaseEndpoint):
 
     # POST
 
+    def post_enterprise_call_center_agent_unavailable_codes(
+        self,
+        service_provider_id: str,
+        code: int,
+        description: str,
+        is_active: bool,
+    ):
+        """Creates a new agent unavailable code for a call center.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID.
+            code (int): The code of the unavailable code.
+            description (str): The description of the unavailable code.
+            is_active (bool): Whether the unavailable code is active.
+
+        Returns:
+            Dict: The new agent unavailable code.
+        """
+        endpoint = "/enterprise/call-centers/agent-unavailable-codes"
+
+        data = {
+            "serviceProviderId": service_provider_id,
+            "code": code,
+            "description": description,
+            "isActive": is_active,
+        }
+
+        return self._requester.post(endpoint, data=data)
+
+    def post_enterprise_call_center_enhanced_reporting_scheduled_report(
+        self, service_provider_id: str, name: str, description: str, payload: dict = {}
+    ):
+        """Creates a new scheduled report for a call center.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID.
+            name (str): The name of the scheduled report.
+            description (str): The description of the scheduled report.
+            payload (dict): The payload of the scheduled report.
+
+        Returns:
+            Dict: The new scheduled report.
+        """
+        endpoint = "/enterprise/call-centers/enhanced-reporting/scheduled-reports"
+
+        payload["serviceProviderId"] = service_provider_id
+        payload["scheduleName"] = name
+        payload["description"] = description
+
+        return self._requester.post(endpoint, data=payload)
+
+    def post_enterprise_call_center_threshold_profile(
+        self, service_provider_id: str, name: str, description: str, payload: dict = {}
+    ):
+        """Creates a new threshold profile for a call center.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID.
+            name (str): The name of the threshold profile.
+            description (str): The description of the threshold profile.
+            payload (dict): The payload of the threshold profile.
+
+        Returns:
+            Dict: The new threshold profile.
+        """
+        endpoint = "/service-providers/call-centers/threshold-profile"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "profileName": name,
+        }
+
+        payload["profileDescription"] = description
+
+        return self._requester.post(endpoint, data=payload, params=params)
+
+    def post_enterprise_call_center_call_disposition_code(
+        self, service_provider_id: str, code: int, description: str, is_active: bool
+    ):
+        """Creates a new call disposition code for a call center.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID.
+            code (int): The code of the call disposition code.
+            description (str): The description of the call disposition code.
+            is_active (bool): Whether the call disposition code is active.
+
+        Returns:
+            Dict: The new call disposition code.
+        """
+        endpoint = "/enterprises/call-centers/call-disposition-code"
+
+        data = {
+            "code": code,
+            "description": description,
+            "isActive": is_active,
+            "serviceProviderId": service_provider_id,
+        }
+
+        return self._requester.post(endpoint, data=data)
+
+    def post_group_call_center(
+        self,
+        service_provider_id: str,
+        group_id: str,
+        name: str,
+        call_center_user_id: str,
+        policy: str = "Circular",
+        type: str = "Standard",
+        payload: dict = {},
+    ):
+        """Creates a new call center.
+
+        Args:
+            service_provider_id (str): Target Service Provider ID.
+            group_id (str): Target Group ID.
+            name (str): The name of the call center.
+            call_center_user_id (str): The user ID of the call center.
+            policy (str): The policy of the call center. Defaults to Circular.
+            type (str): The type of the call center. Defaults to Standard.
+            payload (dict): The payload of the call center. Remainder of settings.
+
+        Returns:
+            Dict: The new call center.
+        """
+        endpoint = "/groups/call-centers"
+
+        payload["serviceProviderId"] = service_provider_id
+        payload["groupId"] = group_id
+        payload["serviceInstanceProfile"]["name"] = name
+        payload["serviceUserId"] = call_center_user_id
+        payload["policy"] = policy
+        payload["type"] = type
+
+        return self._requester.post(endpoint, data=payload)
+
+    def post_group_call_center_agents(
+        self, call_center_user_id: str, agent_user_ids: list
+    ):
+        """Adds agents to a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+            agent_user_ids (list): List of user IDs to be added to call center.
+
+        Returns:
+            None
+        """
+        endpoint = "/groups/call-centers/agents"
+
+        data = {
+            "serviceUserId": call_center_user_id,
+            "agents": [{"userId": agent_id} for agent_id in agent_user_ids],
+        }
+
+        return self._requester.post(endpoint, data=data)
+
+    def post_group_call_center_dnis_instance(
+        self, service_user_id: str, name: str, payload: dict = {}
+    ):
+        """Creates a new DNIS instance for a call center.
+
+        Args:
+            service_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+            name (str): The name of the DNIS instance.
+            payload (dict): The payload of the DNIS instance.
+
+        Returns:
+            None
+        """
+        endpoint = "/groups/call-centers/dnis/instances"
+
+        payload["serviceUserID"] = service_user_id
+        payload["name"] = name
+
+        return self._requester.post(endpoint, data=payload)
+
+    def post_group_call_center_queue_disposition_code(
+        self, call_center_user_id: str, code: str, description: str, is_active: bool
+    ):
+        """Creates a new queue disposition code for a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+            code (str): The code of the queue disposition code.
+            description (str): The description of the queue disposition code.
+            is_active (bool): Whether the queue disposition code is active.
+
+        Returns:
+            None
+        """
+        endpoint = "/groups/call-centers/disposition-codes/codes"
+
+        data = {
+            "serviceUserId": call_center_user_id,
+            "code": code,
+            "description": description,
+            "isActive": is_active,
+        }
+
+        return self._requester.post(endpoint, data=data)
+
+    def post_group_call_center_supervisors(
+        self, call_center_user_id: str, supervisor_user_ids: list
+    ):
+        """Adds supervisors to a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+            supervisor_user_ids (list): List of user IDs to be added to call center.
+
+        Returns:
+            None
+        """
+        endpoint = "/groups/call-centers/supervisors"
+
+        data = {
+            "serviceUserId": call_center_user_id,
+            "supervisors": [
+                {"userId": supervisor_id} for supervisor_id in supervisor_user_ids
+            ],
+        }
+
+        return self._requester.post(endpoint, data=data)
+
+    def post_user_call_center_supervisor_agents(
+        self, call_center_user_id: str, supervisor_user_id: str, agent_user_ids: list
+    ):
+        """Adds agents to a supervisor of a call center.
+
+        Args:
+            call_center_user_id (str): Target Service Provider ID. Can't be Enterprise ID.
+            supervisor_user_id (str): Target Supervisor User ID
+            agent_user_ids (list): List of user IDs to be added to call center.
+
+        Returns:
+            Dict: The new agents.
+        """
+        endpoint = "/user/call-centers/supervisors"
+
+        data = {
+            "serviceUserId": call_center_user_id,
+            "supervisorUserId": supervisor_user_id,
+            "agents": [{"userId": agent_id} for agent_id in agent_user_ids],
+        }
+
+        return self._requester.post(endpoint, data=data)
+
     # PUT
+
     def put_group_call_centers_status(
         self, call_center_user_ids: list, status: bool = True
     ):
