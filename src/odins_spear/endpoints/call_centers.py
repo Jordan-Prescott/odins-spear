@@ -1282,5 +1282,196 @@ class CallCenters(BaseEndpoint):
 
         return self._requester.put(endpoint, data=data)
 
+    # DELETE
 
-# DELETE
+    def delete_enterprise_call_center_agent_unavailable_codes(
+        self, service_provider_id: str, code: int
+    ):
+        """Delete an agent unavailable code from an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            code (int): Code of the agent unavailable code to delete.
+
+        Returns:
+            Dict: Dictionary of the new state of the CC.
+        """
+
+        endpoint = "/enterprise/call-centers/agent-unavailable-codes"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "code": code,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_enterprise_call_center_threshold_profile(
+        self, service_provider_id: str, profile_name: str
+    ):
+        """Delete an agent unavailable code from an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            profile_name (str): Name of the threshold profile to delete.
+
+        Returns:
+            Dict: Dictionary of the new state of the CC.
+        """
+
+        endpoint = "/enterprise/call-centers/threshold-profiles"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "profileName": profile_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_enterprise_call_center_call_disposition_code(
+        self, service_provider_id: str, code: int
+    ):
+        """Delete a call disposition code from an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            code (int): Code of the call disposition code to delete.
+
+        Returns:
+            Dict: Dictionary of the new state of the CC.
+        """
+
+        endpoint = "/enterprise/call-centers/call-disposition-codes"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "code": code,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_group_call_center(self, call_center_user_id: str):
+        """Delete a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+
+        Returns:
+            None: This method does not return any specific value.
+        """
+
+        endpoint = "/groups/call-centers"
+
+        params = {"serviceUserId": call_center_user_id}
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_group_call_center_agents(
+        self, call_center_user_id: str, agent_user_ids: list
+    ):
+        """Delete a list of agents from a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            agent_user_ids (list): List of user IDs of agents to delete.
+
+        Returns:
+            None: This method does not return any specific value.
+        """
+
+        endpoint = "/groups/call-centers/agents"
+
+        data = {
+            "serviceUserId": call_center_user_id,
+            "agents": [{"userId": agent_id} for agent_id in agent_user_ids],
+        }
+
+        return self._requester.delete(endpoint, data=data)
+
+    def delete_group_call_center_dnis_instance(
+        self, call_center_user_id: str, name: str
+    ):
+        """Delete a DNIS instance from a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            name (str): Name of the DNIS instance to delete.
+
+        Returns:
+            None: This method does not return any specific value.
+        """
+
+        endpoint = "/groups/call-centers/dnis/instances"
+
+        params = {
+            "serviceUserId": call_center_user_id,
+            "name": name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_group_call_center_queue_disposition_code(
+        self, call_center_user_id: str, code: str
+    ):
+        """Delete a queue disposition code from a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            code (str): Code of the queue disposition code to delete.
+
+        Returns:
+            None: This method does not return any specific value.
+        """
+
+        endpoint = "/groups/call-centers/disposition-codes/codes"
+
+        params = {
+            "serviceUserId": call_center_user_id,
+            "code": code,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_group_call_center_supervisors(
+        self, call_center_user_id: str, supervisor_user_ids: list
+    ):
+        """Delete a list of supervisors from a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            supervisor_user_ids (list): List of user IDs of supervisors to delete.
+
+        Returns:
+            None: This method does not return any specific value.
+        """
+
+        endpoint = "/groups/call-centers/supervisors"
+
+        data = {
+            "serviceUserId": call_center_user_id,
+            "supervisors": [
+                {"userId": supervisor_id} for supervisor_id in supervisor_user_ids
+            ],
+        }
+
+        return self._requester.delete(endpoint, data=data)
+
+    def delete_user_call_center_supervised_agents(
+        self, call_center_user_id: str, supervisor_user_id: str, agent_user_ids: list
+    ):
+        """Delete a list of agents from a supervisor's call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            supervisor_user_id (str): User ID of the supervisor.
+            agent_user_ids (list): List of user IDs of agents to delete.
+        """
+        endpoint = "/users/call-centers/supervisors"
+
+        data = {
+            "serviceUserId": call_center_user_id,
+            "supervisorUserId": supervisor_user_id,
+            "supervisors": [{"userId": agent_id} for agent_id in agent_user_ids],
+        }
+
+        return self._requester.delete(endpoint, data=data)
