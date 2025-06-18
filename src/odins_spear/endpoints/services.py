@@ -1,4 +1,5 @@
 from .base_endpoint import BaseEndpoint
+from ..utils.formatters import format_filter_value
 
 
 class Services(BaseEndpoint):
@@ -81,23 +82,6 @@ class Services(BaseEndpoint):
 
         return self._requester.get(endpoint, params=params)
 
-    def get_group_services(self, service_provider_id: str, group_id: str):
-        """Fetch all services within a group.
-
-        Args:
-            service_provider_id (str): Service provider ID of the target
-            group_id (str): Group ID of the target
-
-        Returns:
-            Dict: A dictionary with the service names of all User Services, Group Services and Service Pack Services within the group.
-        """
-
-        endpoint = "/groups/services"
-
-        params = {"groupId": group_id, "serviceProviderId": service_provider_id}
-
-        return self._requester.get(endpoint, params=params)
-
     def get_group_services_authorized(self, service_provider_id: str, group_id: str):
         """Fetch all services authorized within a group.
 
@@ -135,7 +119,7 @@ class Services(BaseEndpoint):
     def get_group_service_is_assigned(
         self, service_provider_id: str, group_id: str, service_name: str
     ):
-        """Fetch users who a service is assigned to within a group.
+        """Fetch users which have a service assigned to them within a group.
 
         Args:
             service_provider_id (str): Service provider ID of the target
@@ -143,7 +127,7 @@ class Services(BaseEndpoint):
             service_name (str): Service name of the target
 
         Returns:
-            Dict: A dictionary with the users who the service is assigned to.
+            Dict: A dictionary with the users who have the service assigned to them.
         """
 
         endpoint = "/groups/services/assigned"
@@ -151,6 +135,72 @@ class Services(BaseEndpoint):
         params = {
             "groupId": group_id,
             "serviceProviderId": service_provider_id,
+            "serviceName": service_name,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_services_available(self, service_provider_id: str, group_id: str):
+        """Fetch all services available within a group.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target
+            group_id (str): Group ID of the target
+
+        Returns:
+            List: A list with the service names of all available services within the group.
+        """
+
+        endpoint = "/groups/services/available"
+
+        params = {"groupId": group_id, "serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_services(self, group_id: str, service_provider_id: str):
+        """
+        Fetch all userServices, groupServices and servicePackServices assigned to a group.
+
+        Args:
+            group_id (str): GroupID of the target
+            service_provider_id (str): Service Provider or Enterprise ID of the target.
+
+        Returns:
+            Dict: Authorised and assigned services within the group.
+        """
+
+        endpoint = "/groups/services"
+
+        params = {"groupId": group_id, "serviceProviderId": service_provider_id}
+
+        return self._requester.get(endpoint, params=params)
+
+    def get_group_services_user_assigned(
+        self,
+        group_id: str,
+        service_provider_id: str,
+        service_name: str,
+        service_type: str,
+    ):
+        """
+        Get details of the user/service instances where a particular service is assigned.
+
+        Args:
+            group_id (str): GroupID being targeted
+            service_provider_id (str): Service provider/Enterprise ID where the group is located.
+            service_name (str): Name of the service querying
+            service_type (str): Type of service. Either: serviceName or servicePackName
+
+        Returns:
+            Dict: Users/Service Instances where the service is assigned.
+        """
+
+        endpoint = "/groups/services/assigned"
+
+        params = {
+            "groupId": group_id,
+            "serviceProviderId": service_provider_id,
+            "serviceType": service_type,
             "serviceName": service_name,
         }
 
@@ -204,52 +254,67 @@ class Services(BaseEndpoint):
 
         return self._requester.get(endpoint, params=params)
 
-    def get_group_services(self, group_id: str, service_provider_id: str):
-        """
-        Fetch all userServices, groupServices and servicePackServices assigned to a group.
+    def get_user_services_viewable(self, user_id: str):
+        """Same as User Services Assigned, except filtered for Viewable Service Pack assignment.
 
         Args:
-            group_id (str): GroupID of the target
-            service_provider_id (str): Service Provider or Enterprise ID of the target.
+            user_id (str): ID of the target user
 
         Returns:
-            Dict: Authorised and assigned services within the group.
+            Dict: A dictionary containing all the services viewable by the user.
         """
 
-        endpoint = "/groups/services"
+        endpoint = "/users/services/viewable"
 
-        params = {"groupId": group_id, "serviceProviderId": service_provider_id}
+        params = {"userId": user_id}
 
         return self._requester.get(endpoint, params=params)
 
-    def get_group_services_user_assigned(
+    def get_user_service_instance_search(
         self,
-        group_id: str,
-        service_provider_id: str,
-        service_name: str,
-        service_type: str,
+        user_id: str = None,
+        service_provider_id: str = None,
+        group_id: str = None,
+        filter: str = None,
+        filter_type: str = None,
+        filter_value: str = None,
+        limit: int = None,
+        extended=False,
     ):
-        """
-        Get details of the user/service instances where a particular service is assigned.
+        """Search for service instances for a user, group or service provider.
 
         Args:
-            group_id (str): GroupID being targeted
-            service_provider_id (str): Service provider/Enterprise ID where the group is located.
-            service_name (str): Name of the service querying
-            service_type (str): Type of service. Either: serviceName or servicePackName
+            user_id (str): ID of the target user
+            service_provider_id (str, optional): Service provider ID of the target
+            group_id (str, optional): Group ID of the target
+            filter (str, optional): Filter criteria, supported filters below. Defaults to None.
+            filter_type (str, optional): Options: equals, startsWith, endsWith, contains or endsWith. Defaults to None.
+            filter_value (str, optional): Value filtering on e.g. firstName. Defaults to None.
+            limit (int, optional): Limits the amount of values API returns. Defaults to None.
+            extended (bool, optional): If True, returns the full user profile. Defaults to False.
 
         Returns:
-            Dict: Users/Service Instances where the service is assigned.
+            Dict: A dictionary containing all the service instances for the user, group or service provider.
         """
 
-        endpoint = "/groups/services/assigned"
+        endpoint = "/users/services/search"
 
-        params = {
-            "groupId": group_id,
-            "serviceProviderId": service_provider_id,
-            "serviceType": service_type,
-            "serviceName": service_name,
-        }
+        params = {"userId": user_id}
+
+        if service_provider_id:
+            params["serviceProviderId"] = service_provider_id
+            if group_id:
+                params["groupId"] = group_id
+        if filter:
+            params[filter] = format_filter_value(
+                filter_criteria=filter,
+                filter_type=filter_type,
+                filter_value=filter_value,
+            )
+        if limit:
+            params["limit"] = limit
+        if extended:
+            params["extended"] = True
 
         return self._requester.get(endpoint, params=params)
 
