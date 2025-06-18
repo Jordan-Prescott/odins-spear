@@ -1199,6 +1199,44 @@ class CallCenters(BaseEndpoint):
 
         return self._requester.put(endpoint, data=updates)
 
+    def put_group_call_center_announcements(
+        self, call_center_user_id: str, updates: dict
+    ):
+        """Update the announcements of a single Call Center (CC).
+
+        Args:
+            call_center_user_id (str): Service user ID of the target CC.
+            updates (dict): Updates to be applied to the CC.
+
+        Returns:
+            None: This method does not return any specific value.
+        """
+
+        endpoint = "/groups/call-centers/announcements"
+
+        updates["serviceUserID"] = call_center_user_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_call_center_comfort_message_bypass(
+        self, call_center_user_id: str, updates: dict
+    ):
+        """Update the comfort message bypass settings of a single Call Center (CC).
+
+        Args:
+            call_center_user_id (str): Service user ID of the target CC.
+            updates (dict): Updates to be applied to the CC.
+
+        Returns:
+            None: This method does not return any specific value.
+        """
+
+        endpoint = "/groups/call-centers/comfort-message-bypass"
+
+        updates["serviceUserID"] = call_center_user_id
+
+        return self._requester.put(endpoint, data=updates)
+
     def put_user_call_center_supervised_agents(
         self, call_center_user_id: str, supervisor_user_id: str, agent_ids: list
     ):
@@ -1278,6 +1316,229 @@ class CallCenters(BaseEndpoint):
 
         data = {
             "agentUserId": user_id,
+        }
+
+        return self._requester.put(endpoint, data=data)
+
+    def put_enterprise_call_center(self, service_provider_id: str, updates: dict = {}):
+        """Update an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            updates (dict): Updates to be applied to the enterprise call center.
+
+        Returns:
+            None: This method does not return any specific value.
+        """
+
+        endpoint = "/enterprise/call-centers"
+
+        updates["serviceProviderId"] = service_provider_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_enterprise_call_center_routing_policy(
+        self, service_provider_id: str, updates: dict = {}
+    ):
+        """Update the routing policy of an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            updates (dict): Updates to be applied to the enterprise call center.
+
+        Returns:
+            Dict: Dictionary of the new state of the CC.
+        """
+
+        endpoint = "/enterprise/call-centers/routing-policy"
+
+        updates["serviceProviderId"] = service_provider_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_enterprise_call_center_agent_unavailable_codes(
+        self, service_provider_id: str, code: int, description: str, is_active: bool
+    ):
+        """Update an agent unavailable code in an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            code (int): Code of the agent unavailable code to update.
+            description (str): Description of the agent unavailable code to update.
+            is_active (bool): Whether the agent unavailable code is active.
+
+        Returns:
+            Dict: Dictionary of the new state of the code.
+        """
+
+        endpoint = "/enterprise/call-centers/agent-unavailable-codes"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+        }
+
+        data = {
+            "code": code,
+            "description": description,
+            "isActive": is_active,
+        }
+
+        return self._requester.put(endpoint, params=params, data=data)
+
+    def put_enterprise_call_center_agent_unavailable_codes_settings(
+        self, service_provider_id: str, updates: dict = {}
+    ):
+        """Update the agent unavailable code settings of an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            updates (dict): Updates to be applied to the enterprise call center.
+
+        Returns:
+            Dict: Dictionary of the new state of the CC.
+        """
+
+        endpoint = "/enterprise/call-centers/agent-unavailable-codes-settings"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+        }
+
+        return self._requester.put(endpoint, params=params, data=updates)
+
+    def put_enterprise_call_center_enhanced_reporting(
+        self, service_provider_id: str, reporting_server: str
+    ):
+        """Update the enhanced reporting settings of an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            reporting_server (str): Reporting server of the enterprise call center.
+
+        Returns:
+            Dict: Dictionary of the new state of the reporting.
+        """
+
+        endpoint = "/enterprise/call-centers/enhanced-reporting"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+        }
+
+        data = {
+            "reportingServer": reporting_server,
+            "serviceProviderId": service_provider_id,
+        }
+
+        return self._requester.put(endpoint, params=params, data=data)
+
+    def put_enterprise_call_center_enhanced_reporting_branding(
+        self,
+        service_provider_id: str,
+        branding_choice: str,
+        description: str,
+        content: str,
+    ):
+        """Update the branding of an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            branding_choice (str): Choice of branding to update.
+            description (str): Description of the branding to update.
+            content (str): Content of the branding to update.
+
+        Returns:
+            Dict: Dictionary of the new state of the branding.
+        """
+
+        endpoint = "/enterprise/call-centers/enhanced-reporting-branding"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+        }
+
+        data = {
+            "serviceProviderId": service_provider_id,
+            "brandingChoice": branding_choice,
+            "description": description,
+            "content": content,
+        }
+
+        return self._requester.put(endpoint, params=params, data=data)
+
+    def put_enterprise_call_center_enhanced_reporting_branding_filename(
+        self, service_provider_id: str, branding_choice: str, filename: str
+    ):
+        """Update the filename of an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            branding_choice (str): Choice of branding to update.
+            filename (str): Filename of the branding to update.
+
+        Returns:
+            Dict: Dictionary of the new state of the branding.
+        """
+
+        endpoint = "/enterprise/call-centers/enhanced-reporting-branding"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+        }
+
+        data = {
+            "serviceProviderId": service_provider_id,
+            "brandingChoice": branding_choice,
+            "filename": filename,
+        }
+
+        return self._requester.put(endpoint, params=params, data=data)
+
+    def put_enterprise_call_center_threshold_profile(
+        self, service_provider_id: str, profile_name: str, updates: dict = {}
+    ):
+        """Update a threshold profile of an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            profile_name (str): Name of the threshold profile to update.
+            updates (dict): Updates to be applied to the threshold profile.
+
+        Returns:
+            Dict: Dictionary of the new state of the threshold profile.
+        """
+
+        endpoint = "/service-providers/call-centers/threshold-profiles"
+
+        params = {
+            "serviceProviderId": service_provider_id,
+            "profileName": profile_name,
+        }
+
+        return self._requester.put(endpoint, params=params, data=updates)
+
+    def put_enterprise_call_center_disposition_code(
+        self, service_provider_id: str, code: int, description: str, is_active: bool
+    ):
+        """Update a disposition code of an enterprise call center.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target enterprise call center.
+            code (int): Code of the disposition code to update.
+            description (str): Description of the disposition code to update.
+            is_active (bool): Whether the disposition code is active.
+
+        Returns:
+            Dict: Dictionary of the new state of the disposition code.
+        """
+
+        endpoint = "/enterprises/call-centers/call-disposition-code"
+
+        data = {
+            "serviceProviderId": service_provider_id,
+            "code": code,
+            "description": description,
+            "isActive": is_active,
         }
 
         return self._requester.put(endpoint, data=data)
@@ -1465,6 +1726,9 @@ class CallCenters(BaseEndpoint):
             call_center_user_id (str): Service user ID of the target call center.
             supervisor_user_id (str): User ID of the supervisor.
             agent_user_ids (list): List of user IDs of agents to delete.
+
+        Returns:
+            None: This method does not return any specific value.
         """
         endpoint = "/users/call-centers/supervisors"
 
