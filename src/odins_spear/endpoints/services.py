@@ -318,9 +318,135 @@ class Services(BaseEndpoint):
 
         return self._requester.get(endpoint, params=params)
 
+    def group_user_services_assigned_all(
+        self,
+        service_provider_id: str,
+        group_id: str,
+        service_name: str,
+        service_type: str,
+    ):
+        """Shows all users with a user service assigned, whether directly or via service pack
+
+        Args:
+            group_id (str): Group ID of the target
+            service_provider_id (str): Service provider ID of the target
+            service_name (str): Name of the service
+            service_type (str): Type of service. Either: serviceName or servicePackName
+
+        Returns:
+            Dict: A dictionary containing all the users assigned to the service within the group.
+        """
+
+        endpoint = "/groups/services/assignedall"
+
+        params = {
+            "groupId": group_id,
+            "serviceProviderId": service_provider_id,
+            "serviceName": service_name,
+            "serviceType": service_type,
+        }
+
+        return self._requester.get(endpoint, params=params)
+
     # POST
 
     # PUT
+
+    def put_service_provider_services(
+        self,
+        service_provider_id: str,
+        services: list,
+        assigned: bool = True,
+        authorized: bool = True,
+        quantity: int = None,
+        unlimited: bool = False,
+        allocated: int = None,
+    ):
+        """Update the services assigned to a service provider.
+
+        Args:
+            service_provider_id (str): Service provider ID of the target
+            services (list): List of services to be applied to service provider.
+            assigned (bool, optional): Assign (True) or unassign(False). Defaults to True.
+            authorized (bool, optional): Authorize (True) or unauthorize(False). Defaults to True.
+            quantity (int, optional): Quantity of services to be applied to service provider. Defaults to None.
+            unlimited (bool, optional): If True, quantity is unlimited. Defaults to False.
+            allocated (int, optional): Allocated quantity of services to be applied to service provider. Defaults to None.
+
+        Returns:
+            Dict: Service provider services assigned to the service provider.
+        """
+
+        endpoint = "/service-providers/services"
+
+        data = {"serviceProviderId": service_provider_id}
+
+        if unlimited:
+            limited = "Unlimited"
+            quantity = -1
+        else:
+            limited = "Limited"
+
+        if services:
+            data["userServices"] = [
+                {
+                    "serviceName": service,
+                    "assigned": assigned,
+                    "authorized": authorized,
+                    "quantity": quantity,
+                    "limited": limited,
+                    "allocated": allocated,
+                }
+                for service in services
+            ]
+
+        return self._requester.put(endpoint, data=data)
+
+    def put_group_services(
+        self,
+        group_id: str,
+        services: list,
+        assigned: bool = True,
+        authorized: bool = True,
+        quantity: int = None,
+        unlimited: bool = False,
+        allocated: int = None,
+    ):
+        """Update the services assigned to a group.
+
+        Args:
+            group_id (str): Group ID of the target
+            services (list): List of services to be applied to group.
+            assigned (bool, optional): Assign (True) or unassign(False). Defaults to True.
+            authorized (bool, optional): Authorize (True) or unauthorize(False). Defaults to True.
+            quantity (int, optional): Quantity of services to be applied to group. Defaults to None.
+            unlimited (bool, optional): If True, quantity is unlimited. Defaults to False.
+            allocated (int, optional): Allocated quantity of services to be applied to group. Defaults to None.
+        """
+
+        endpoint = "/groups/services"
+
+        data = {"groupId": group_id}
+
+        if unlimited:
+            limited = "Unlimited"
+            quantity = -1
+        else:
+            limited = "Limited"
+
+        if services:
+            data["groupServices"] = [
+                {
+                    "serviceName": service,
+                    "assigned": assigned,
+                    "authorized": authorized,
+                    "quantity": quantity,
+                    "limited": limited,
+                    "allocated": allocated,
+                }
+                for service in services
+            ]
+        return self._requester.put(endpoint, data=data)
 
     def put_user_services(
         self,
