@@ -1543,6 +1543,232 @@ class CallCenters(BaseEndpoint):
 
         return self._requester.put(endpoint, data=data)
 
+    def put_group_call_center_distinctive_ringing(
+        self, call_center_user_id: str, updates: dict = {}
+    ):
+        """Update the distinctive ringing settings of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            updates (dict): Updates to be applied to the call center.
+        """
+
+        endpoint = "/groups/call-centers/distinctive-ringing"
+
+        updates["serviceUserId"] = call_center_user_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_call_center_dnis_instance_announcements(
+        self, call_center_user_id: str, name: str, updates={}
+    ):
+        """Update the announcements of a DNIS instance of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            name (str): Name of the DNIS instance to update.
+            updates (dict): Updates to be applied to the DNIS instance.
+
+        Returns:
+            Dict: Dictionary of the new state of the DNIS instance.
+        """
+
+        endpoint = "/groups/call-centers/dnis/instances/announcements"
+
+        updates["serviceUserId"] = call_center_user_id
+        updates["name"] = name
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_call_center_dnis_settings(
+        self, call_center_user_id: str, name: str, updates={}
+    ):
+        """Update the settings of a DNIS instance of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            name (str): Name of the DNIS instance to update.
+            updates (dict): Updates to be applied to the DNIS instance.
+        """
+
+        endpoint = "/groups/call-centers/dnis"
+
+        updates["serviceUserId"] = call_center_user_id
+        updates["instances"][0]["name"] = name
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_call_center_holiday_service(
+        self, call_center_user_id: str, updates={}
+    ):
+        """Update the holiday service of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            updates (dict): Updates to be applied to the call center.
+        """
+
+        endpoint = "/groups/call-centers/holiday-service"
+
+        updates["serviceUserId"] = call_center_user_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_call_center_night_service(self, call_center_user_id: str, updates={}):
+        """Update the night service of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            updates (dict): Updates to be applied to the call center.
+        """
+
+        endpoint = "/groups/call-centers/night-service"
+
+        updates["serviceUserId"] = call_center_user_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_call_center_queue_disposition_codes_settings(
+        self, call_center_user_id: str, updates={}
+    ):
+        """Update the queue disposition codes settings of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            updates (dict): Updates to be applied to the call center.
+        """
+
+        endpoint = "/groups/call-centers/queue-disposition-codes"
+
+        updates["serviceUserId"] = call_center_user_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_call_center_queue_disposition_code(
+        self,
+        call_center_user_id: str,
+        code: int,
+        is_active: bool,
+        description: str,
+        level: str,
+    ):
+        """Update a queue disposition code of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            code (int): Code of the queue disposition code to update.
+            is_active (bool): Whether the queue disposition code is active.
+            description (str): Description of the queue disposition code to update.
+            level (str): Level of the queue disposition code to update.
+
+        Returns:
+            Dict: Dictionary of the new state of the queue disposition code.
+        """
+
+        endpoint = "/groups/call-centers/disposition-codes/codes"
+
+        data = {
+            "serviceUserId": call_center_user_id,
+            "code": code,
+            "isActive": is_active,
+            "description": description,
+            "level": level,
+        }
+
+        return self._requester.put(endpoint, data=data)
+
+    def put_group_call_center_queue_status_notifications(
+        self, call_center_user_id: str, updates={}
+    ):
+        """Update the queue status notifications of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            updates (dict): Updates to be applied to the call center.
+
+        Returns:
+            Dict: Dictionary of the new state of the queue disposition code.
+        """
+
+        endpoint = "/groups/call-centers/queue-status-notifications"
+
+        updates["serviceUserId"] = call_center_user_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_call_center_reporting(self, call_center_user_id: str, updates={}):
+        """Update the enhanced reporting of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            updates (dict): Updates to be applied to the call center.
+
+        Returns:
+            Dict: Dictionary of the new state of the call center.
+        """
+
+        endpoint = "/groups/call-centers/reporting"
+
+        updates["serviceUserId"] = call_center_user_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_group_call_center_supervisors(
+        self, call_center_user_id: str, supervisor_user_ids: list
+    ):
+        """Update the supervisors of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            supervisor_user_ids (list): List of user IDs of supervisors to update.
+
+        Returns:
+            Dict: Dictionary of the new state of the call center.
+        """
+        endpoint = "/groups/call-centers/supervisors"
+
+        data = {
+            "serviceUserId": call_center_user_id,
+            "supervisors": [
+                {"userId": supervisor_id} for supervisor_id in supervisor_user_ids
+            ],
+        }
+
+        return self._requester.put(endpoint, data=data)
+
+    def put_group_call_center_thresholds(self, call_center_user_id: str, updates={}):
+        """Update the thresholds of a call center.
+
+        Args:
+            call_center_user_id (str): Service user ID of the target call center.
+            updates (dict): Updates to be applied to the call center.
+
+        Returns:
+            None: This method does not return any specific value.
+        """
+        endpoint = "/groups/call-centers/thresholds"
+
+        updates["serviceUserId"] = call_center_user_id
+
+        return self._requester.put(endpoint, data=updates)
+
+    def put_user_call_center_monitoring(self, user_id: str, notify_agent: bool):
+        """Update the monitoring of a user call center.
+
+        Args:
+            user_id (str): User ID of the target user call center.
+            notify_agent (bool): Whether to notify the agent.
+
+        Returns:
+            None: This method does not return any specific value.
+        """
+
+        endpoint = "/users/call-centers/monitoring"
+
+        data = {"userId": user_id, "playToneToAgentForSilentMonitoring": notify_agent}
+
+        return self._requester.put(endpoint, data=data)
+
     # DELETE
 
     def delete_enterprise_call_center_agent_unavailable_codes(
