@@ -1125,3 +1125,272 @@ class Devices(BaseEndpoint):
         updates["deviceType"] = device_type
 
         return self._requester.put(endpoint, data=updates)
+
+    # DELETE
+    def delete_group_device(
+        self, device_name: str, group_id: str, service_provider_id: str
+    ):
+        """Deletes the specified device at group level.
+
+        Args:
+            service_user_id (str): The service user ID of the device to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/groups/devices"
+
+        params = {
+            "deviceName": device_name,
+            "groupId": group_id,
+            "serviceProviderId": service_provider_id,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_service_provider_device(
+        self, device_name: str, service_provider_id: str
+    ):
+        """Deletes the specified device at service provider level.
+
+        Args:
+            service_user_id (str): The service user ID of the device to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/service-providers/devices"
+
+        params = {
+            "deviceName": device_name,
+            "serviceProviderId": service_provider_id,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_system_device(self, device_name: str):
+        """Deletes the specified device at system level.
+
+        Args:
+            service_user_id (str): The service user ID of the device to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/system/device"
+
+        params = {
+            "deviceName": device_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_group_device_tag(
+        self, tag_name: str, service_provider_id: str, group_id: str, device_name: str
+    ):
+        """Deletes the specified device tags on group level.
+
+        Args:
+            tag_name (str): Name of the device tag to be deleted.
+            service_user_id (str): The service user ID of the device to be deleted.
+            group_id (str): Group ID of the device.
+            device_name (str): Name of the device with the tag to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/groups/devices/tags"
+
+        params = {
+            "tagName": tag_name,
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "deviceName": device_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_group_device_tag_multiple(
+        self, tags: list, service_provider_id: str, group_id: str, device_name: str
+    ):
+        """Deletes the specified device tags on group level.
+
+        Args:
+            tags (List): List of tag names to be deleted.
+            service_user_id (str): The service user ID of the device to be deleted.
+            group_id (str): Group ID of the device.
+            device_name (str): Name of the device with the tag to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/groups/devices/multiple-tags"
+
+        params = {
+            "tags": tags,
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "deviceName": device_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_service_provider_device_tag(
+        self, tag_name: str, service_provider_id: str, device_name: str
+    ):
+        """Deletes the specified device tags on group level.
+
+        Args:
+            tag_name (str): Tag to be deleted.
+            service_user_id (str): The service user ID of the device to be deleted.
+            device_name (str): Name of the device with the tag to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/service-providers/devices/tags"
+
+        params = {
+            "tagName": tag_name,
+            "serviceProviderId": service_provider_id,
+            "deviceName": device_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_service_provider_device_tag_multiple(
+        self, tags: list, service_provider_id: str, group_id: str, device_name: str
+    ):
+        """Deletes the specified device tags on group level.
+
+        Args:
+            tags (List): List of tag names to be deleted.
+            service_user_id (str): The service user ID of the device to be deleted.
+            group_id (str): Group ID of the device.
+            device_name (str): Name of the device with the tag to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/service-providers/devices/multiple-tags"
+
+        params = {
+            "tags": tags,
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "deviceName": device_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_system_device_tag(self, tag_name: str, device_name: str):
+        """Deletes the specified device tags on group level.
+
+        Args:
+            tag_name (List): Tag to be deleted.
+            service_user_id (str): The service user ID of the device to be deleted.
+            group_id (str): Group ID of the device.
+            device_name (str): Name of the device with the tag to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/system/devices/tags"
+
+        params = {
+            "tagName": tag_name,
+            "deviceName": device_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_system_device_tag_multiple(self, tags: list, device_name: str):
+        """Deletes the specified device tags on group level.
+
+        Args:
+            tags (List): List of tag names to be deleted.
+            service_user_id (str): The service user ID of the device to be deleted.
+            group_id (str): Group ID of the device.
+            device_name (str): Name of the device with the tag to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/system/devices/multiple-tags"
+
+        params = {
+            "tags": tags,
+            "deviceName": device_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_group_device_type_tag(
+        self, tag_name: str, service_provider_id: str, group_id: str, device_name: str
+    ):
+        """Deletes the specified device tags on group level.
+
+        Args:
+            tag_name (str): Name of the device tag to be deleted.
+            service_user_id (str): The service user ID of the device to be deleted.
+            group_id (str): Group ID of the device.
+            device_name (str): Name of the device with the tag to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/groups/device-types/tags"
+
+        params = {
+            "tagName": tag_name,
+            "serviceProviderId": service_provider_id,
+            "groupId": group_id,
+            "deviceName": device_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
+
+    def delete_service_provider_device_type_tag(
+        self, tag_name: str, service_provider_id: str, device_name: str
+    ):
+        """Deletes the specified device tags on group level.
+
+        Args:
+            tag_name (str): Tag to be deleted.
+            service_user_id (str): The service user ID of the device to be deleted.
+            device_name (str): Name of the device with the tag to be deleted.
+
+        Returns:
+            Dict: Profile of the deleted device.
+
+        """
+
+        endpoint = "/service-providers/device-types/tags"
+
+        params = {
+            "tagName": tag_name,
+            "serviceProviderId": service_provider_id,
+            "deviceName": device_name,
+        }
+
+        return self._requester.delete(endpoint, params=params)
