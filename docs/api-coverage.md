@@ -1044,14 +1044,14 @@
     - [x] GET - User Services Assigned
     - [ ] GET - User Services Viewable
     - [ ] GET - User Service Search
-- [ ] **Shared Call Appearance**
-    - [ ] GET - User Shared Call Appearance
-    - [ ] PUT - User Shared Call Appearance
-    - [ ] GET - User Shared Call Appearance Bulk
+- [x] **Shared Call Appearance**
+    - [x] GET - User Shared Call Appearance
+    - [x] PUT - User Shared Call Appearance
+    - [x] GET - User Shared Call Appearance Bulk
     - [x] POST - User Shared Call Appearance Endpoint
-    - [ ] GET - User Shared Call Appearance Endpoint
-    - [ ] DELETE - User Shared Call Appearance Endpoint
-    - [ ] PUT - User Shared Call Appearance Endpoint
+    - [x] GET - User Shared Call Appearance Endpoint
+    - [x] DELETE - User Shared Call Appearance Endpoint
+    - [x] PUT - User Shared Call Appearance Endpoint
 - [ ] **Silent Alerting**
     - [ ] GET - User Silent Alerting
     - [ ] PUT - User Silent Alerting
