@@ -1,4 +1,4 @@
-def main(api, service_provider_id: str, group_id: str):
+def main(api, service_provider_id: str, group_id: str, users: list[str]):
 
     logger = api.logger
 
@@ -6,10 +6,13 @@ def main(api, service_provider_id: str, group_id: str):
 
     try:
 
-        user_list = api.users.get_users(
-            service_provider_id,
-            group_id
-        )
+        if not users:
+            user_list = api.users.get_users(
+                service_provider_id,
+                group_id
+            )
+        else:
+            user_list = users
 
     except KeyError as ke:
         logger.error(f"Received Key Error Accessing Invalid Dictionary Entry -> {ke}")

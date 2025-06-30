@@ -279,13 +279,15 @@ class Scripter:
     def vm_auto_login(
         self,
         service_provider_id: str,
-        group_id: str
+        group_id: str,
+        users: Optional[list[str]]
     ) -> list | bool:
         """Takes an Enterprise and Group as input and will iterate through all the users in the group and enable Voice Portal Auto Login.
 
         Args:
             service_provider_id (str): Service Provider ID where group is hosted.
             group_id (str): Group ID where target user list is hosted.
+            users (list[str]): List Of Users For Auto Login
 
         Returns:
             None: This routine has no specified return type
@@ -298,6 +300,7 @@ class Scripter:
             "vm_auto_login",
             service_provider_id,
             group_id,
+            users
         )
     
     def webex_builder(
