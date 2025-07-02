@@ -164,6 +164,7 @@
       * [GET - Bulk User Registration](docs/methods/registration/bulk-user-registration.md)
     * [Reports](docs/methods/reports/README.md)
       * [GET - User Report](docs/methods/reports/get-user-report.md)
+      * [GET - Group Report](docs/methods/reports/get-group-report.md)
     * [Schedules](docs/methods/schedules/README.md)
       * [GET - Group Schedules](docs/methods/schedules/get-group-schedules.md)
       * [GET - Group Events](docs/methods/schedules/get-group-events.md)
