@@ -4,6 +4,7 @@ Update the services assigned to a group.
 
 ### Parameters
 
+*   service\_provider\_id (str): Service provider ID of the target
 *   group\_id (str): Group ID of the target
 *   services (list): List of services to be applied to group.
 *   assigned (bool, optional): Assign (True) or unassign(False). Defaults to True.
@@ -16,6 +17,7 @@ Update the services assigned to a group.
 
 ```python
 my_api.services.put_group_services(
+    service_provider_id="service_provider_id",
     group_id="group_id",
     services=["Anonymous Call Rejection", "Authentication"],
     assigned=True,
@@ -29,21 +31,23 @@ my_api.services.put_group_services(
 
 ```json
 {
-  "userId": "0@domain.com",
+  "serviceProviderId": "service_provider_id",
+  "groupId": "group_id",
   "userServices": [
     {
-      "serviceName": "Authentication"
+      "serviceName": "Anonymous Call Rejection",
+      "authorized": true,
+      "assigned": false,
+      "limited": "Unlimited",
+      "quantity": -1,
+      "usage": 0,
+      "licensed": true,
+      "allowed": -1,
+      "userAssignable": true,
+      "groupServiceAssignable": true,
+      "tags": [],
+      "alias": "Anonymous Call Rejection"
     },
-    {
-      "serviceName": "Basic Call Logs"
-    },
-    {
-      "serviceName": "BroadWorks Anywhere"
-    },
-    {
-      "serviceName": "BroadWorks Mobility",
-      "isActive": "false"
-    }
   ]
 }
 ```

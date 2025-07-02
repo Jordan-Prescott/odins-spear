@@ -24,8 +24,8 @@ my_api.services.put_user_services(
 )
 
 my_api.user_services(
-user_id = hunt_group_user_id,
-services = hunt_group_services,
-assigned = False
+    user_id = hunt_group_user_id,
+    services = hunt_group_services,
+    assigned = False
 )
 ```

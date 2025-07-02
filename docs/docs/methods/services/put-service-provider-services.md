@@ -20,7 +20,7 @@ Update the services assigned to a service provider.
 
 ```python
 my_api.services.put_service_provider_services(
-    service_provider_id="your_service_provider_id",
+    service_provider_id="service_provider_id",
     services=["Anonymous Call Rejection", "Authentication"],
     assigned=True,
     authorized=True,
@@ -34,23 +34,35 @@ my_api.services.put_service_provider_services(
 
 ```json
 {
-    "serviceProviderId": "your_service_provider_id",
+    "serviceProviderId": "service_provider_id",
     "userServices": [
         {
-            "serviceName": "Anonymous Call Rejection",
-            "assigned": true,
-            "authorized": true,
-            "quantity": 100,
-            "limited": "Limited",
-            "allocated": 50
+            "serviceName": "3G/4G Continuity",
+            "authorized": false,
+            "assigned": false,
+            "limited": "Unlimited",
+            "quantity": -1,
+            "allocated": 0,
+            "licensed": false,
+            "servicePackAllocation": 0,
+            "userAssignable": true,
+            "servicePackAssignable": true,
+            "tags": [],
+            "alias": "3G/4G Continuity"
         },
         {
-            "serviceName": "Authentication",
-            "assigned": true,
-            "authorized": true,
-            "quantity": 100,
-            "limited": "Limited",
-            "allocated": 50
+            "serviceName": "Advice Of Charge",
+            "authorized": false,
+            "assigned": false,
+            "limited": "Unlimited",
+            "quantity": -1,
+            "allocated": 0,
+            "licensed": false,
+            "servicePackAllocation": 0,
+            "userAssignable": true,
+            "servicePackAssignable": true,
+            "tags": [],
+            "alias": "Advice Of Charge"
         }
     ]
 }
