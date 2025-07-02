@@ -295,6 +295,7 @@
   * [Bulk Build Service Provider Admins](powered-by-odins-spear/bulk-build-service-provider-admins.md)
   * [Service Pack Audit](powered-by-odins-spear/service-pack-audit.md)
   * [VM Bulk Passcode Set CSV](powered-by-odins-spear/vm-bulk-passcode-set-csv.md)
+  * [User Service Report](powered-by-odins-spear/user-service-report.md)
 * [14IP](14IP/README.md)
   * [Custom Logger](14IP/custom-logger.md)
 * [Development](development.md)
