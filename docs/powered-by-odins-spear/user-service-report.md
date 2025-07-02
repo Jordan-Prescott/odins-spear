@@ -1,7 +1,6 @@
 # User Service Report (Filtered)
 
-This script will pull certain information from a user report, including active Line Ports and Service Packs.
-
+This script will pull certain information from a user report, including active Line Ports and Service Packs into an excel document.
 
 ### How To Use:
 
